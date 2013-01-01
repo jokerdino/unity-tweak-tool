@@ -1730,6 +1730,7 @@
                             <property name="tooltip_markup" translatable="yes">If enabled, the window switcher cycles through all windows on all workspaces</property>
                             <property name="tooltip_text" translatable="yes">If enabled, the window switcher cycles through all windows on all workspaces</property>
                             <property name="xalign">0</property>
+                            <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_check_switchwindows_all_workspaces_toggled" swapped="no"/>
                           </object>
