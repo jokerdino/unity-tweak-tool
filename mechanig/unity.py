@@ -490,10 +490,10 @@ class Unitysettings ():
     def on_check_switchwindows_all_workspaces_toggled(self, widget, udata = None):
 
         if widget.get_active():
-            gsettings.unityshell.set_boolean('alt-tab-bias-viewport', True)
+            gsettings.unityshell.set_boolean('alt-tab-bias-viewport', False)
 
         else:
-            gsettings.unityshell.set_boolean('alt-tab-bias-viewport', False)
+            gsettings.unityshell.set_boolean('alt-tab-bias-viewport', True)
 
 
     def on_check_switcher_showdesktop_toggled(self, widget, udata = None):
