@@ -127,7 +127,7 @@ class Compizsettings ():
 
         cr.set_source_surface(base_surface)
         cr.paint()
-        cr.set_source_rgba(221/255, 72/255, 20/255);
+        cr.set_source_rgba(221/255, 72/255, 20/255)
 
         if corner_store['cbox_' + cbox_title + '_top'][0] != 0:
             cr.new_path()
@@ -236,14 +236,14 @@ class Compizsettings ():
 
         # Removing potentially conflicting bindings
         if 'show_desktop' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['show_desktop']:
-                self.hotcorner_values['show_desktop'].remove(self.hotcorners_cboxes[cbox_id][1])
-                gsettings.core.set_string('show-desktop-edge', '|'.join(self.hotcorner_values['show_desktop']))
+            self.hotcorner_values['show_desktop'].remove(self.hotcorners_cboxes[cbox_id][1])
+            gsettings.core.set_string('show-desktop-edge', '|'.join(self.hotcorner_values['show_desktop']))
         if 'expo' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['expo']:
-                self.hotcorner_values['expo'].remove(self.hotcorners_cboxes[cbox_id][1])
-                gsettings.expo.set_string('expo-edge', '|'.join(self.hotcorner_values['expo']))
+            self.hotcorner_values['expo'].remove(self.hotcorners_cboxes[cbox_id][1])
+            gsettings.expo.set_string('expo-edge', '|'.join(self.hotcorner_values['expo']))
         if 'window_spread' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['window_spread']:
-                self.hotcorner_values['window_spread'].remove(self.hotcorners_cboxes[cbox_id][1])
-                gsettings.scale.set_string('initiate-edge', '|'.join(self.hotcorner_values['window_spread']))
+            self.hotcorner_values['window_spread'].remove(self.hotcorners_cboxes[cbox_id][1])
+            gsettings.scale.set_string('initiate-edge', '|'.join(self.hotcorner_values['window_spread']))
 
         self.hotcorners_drawable.queue_draw()
 

@@ -58,8 +58,11 @@ class Unitysettings ():
         self.ui['sc_panel_transparency'].add_mark(.67, Gtk.PositionType.BOTTOM, None)
 
         if Gdk.Screen.get_default().get_n_monitors() == 1:
-            self.ui['radio_launcher_visibility_all'].set_sensitive(False)
-            self.ui['radio_launcher_visibility_primary'].set_sensitive(False)
+            dependants = ['l_launcher_visibility',
+                          'radio_launcher_visibility_all',
+                          'radio_launcher_visibility_primary']
+            self.ui.unsensitize(dependants)
+
 
         self.refresh()
 
@@ -188,8 +191,8 @@ class Unitysettings ():
 
         # Refreshing Unity switcher settings
 
-        self.ui['check_switchwindows_all_workspaces'].set_active(gsettings.unityshell.get_boolean('alt-tab-bias-viewport'))
-        self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop')is False else False)
+        self.ui['check_switchwindows_all_workspaces'].set_active(True if gsettings.unityshell.get_boolean('alt-tab-bias-viewport') is False else False)
+        self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop') is False else False)
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
         self.ui['check_autoexposewindows'].set_active(gsettings.unityshell.get_boolean('alt-tab-timeout'))
 
