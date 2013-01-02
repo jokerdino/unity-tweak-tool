@@ -42,7 +42,6 @@ class Startpage ():
         self.builder = Gtk.Builder()
         self.container = container
         self.notebook = notebook
-# TODO : Use os module to resolve to the full path.
         self.glade = (os.path.join(settings.UI_DIR, 
                                    'startpage.ui'))
         self.builder.add_from_file(self.glade)
@@ -106,3 +105,4 @@ class Startpage ():
 if __name__ == '__main__':
 # Fire up the Engines
     Startpage()
+# FIXME : This should fail. 2 missing arguments.

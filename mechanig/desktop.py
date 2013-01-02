@@ -44,7 +44,6 @@ class Desktopsettings ():
         self.glade = (os.path.join(settings.UI_DIR, 
                                     'desktop.ui'))
         self.container = container
-# TODO : Use os module to resolve to the full path.
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
         self.page = self.ui['box_desktop_settings']
@@ -113,3 +112,4 @@ class Desktopsettings ():
 if __name__ == '__main__':
 # Fire up the Engines
     Desktopsettings()
+# FIXME : Guaranteed to fail
