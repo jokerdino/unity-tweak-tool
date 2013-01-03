@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.46666667"
      inkscape:pageshadow="2"
      inkscape:zoom="11"
-     inkscape:cx="23.202956"
+     inkscape:cx="8.5211378"
      inkscape:cy="24.50481"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -102,15 +102,5 @@
        id="path3004"
        d="m 20,63 -4,-4 8,0 z"
        style="fill:#eae9e7;fill-opacity:1;stroke:none" />
-    <rect
-       transform="matrix(0,1,-1,0,0,0)"
-       ry="0"
-       rx="0"
-       y="-33"
-       x="38"
-       height="26"
-       width="2"
-       id="rect2996"
-       style="fill:#eae9e7;fill-opacity:1;stroke:none;opacity:0.2" />
   </g>
 </svg>
