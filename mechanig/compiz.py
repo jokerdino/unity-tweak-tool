@@ -397,7 +397,7 @@ class Compizsettings ():
             self.ui.sensitize(dependants)
             if 'ezoom' not in plugins:
                 plugins.append('ezoom')
-                gsettings.core.set_strv('active-plugins', plugins)
+                gsettings.core.zset_strv('active-plugins', plugins)
 
         else:
             self.ui.unsensitize(dependants)
