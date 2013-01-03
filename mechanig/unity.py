@@ -151,6 +151,14 @@ class Unitysettings ():
 
         del dependants
 
+        dash_suggestions = gsettings.lenses.get_string('remote-content-search')
+
+        if dash_suggestions == 'all':
+            self.ui['sw_dash_suggestions'].set_active(True)
+
+        else:
+            self.ui['sw_dash_suggestions'].set_active(False)
+
         # Refreshing Unity panel settings
 
         self.ui['spin_menu_visible'].set_value(gsettings.unityshell.get_int('menus-discovery-duration'))
@@ -402,6 +410,15 @@ class Unitysettings ():
         else:
             self.ui.unsensitize(dependants)
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
+
+    def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
+        key = remote-content-search
+
+        if self.ui['sw_dash_suggestions'].get_active():
+            gsettings.lenses.set_string(key, "none")
+
+        else:
+            gsettings.lenses.set_string(key, "all")
 
     def on_radio_dash_blur_smart_toggled(self, button, udata = None):
 

@@ -70,6 +70,21 @@ class Desktopsettings ():
 # Apologies Gnome devs, but Glade is not our favorite.      |
 #___________________________________________________________/
 
+#=====================================================================#
+#                                Helpers                              #
+#=====================================================================#
+    def refresh(self):
+        '''Reads the current config and refreshes the displayed values'''
+
+        desktop_icons = gsettings.background.get_boolean("show-desktop-icons")
+
+        if desktop_icons == True:
+            self.ui['sw_desktop_icon'].set_active(True)
+
+        else:
+            self.ui['sw_desktop_icon'].set_active(False)
+
+
 #======== Begin Desktop Settings
     def on_sw_desktop_icon_active_notify(self, widget, udata = None):
         dependants = ['l_desktop_icons_display', 
