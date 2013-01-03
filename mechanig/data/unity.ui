@@ -897,6 +897,75 @@
               </packing>
             </child>
             <child>
+              <object class="GtkGrid" id="grid_application_lens">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="l_dash_lens_applications">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="label" translatable="yes">Applications Lens</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="cb_show_recent_applications">
+                    <property name="label" translatable="yes">Show "Recent Used" applications</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, the Dash displays recently used apps in the Applications lens.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, the Dash displays recently used apps in the Applications lens.</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="cb_show_available_apps">
+                    <property name="label" translatable="yes">Show "More Suggestions"</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, the Dash displays applications available for download in the Applications lens.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, the Dash displays applications available for download in the Applications lens.</property>
+                    <property name="margin_left">12</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_unity_suggestions">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
