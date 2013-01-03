@@ -431,7 +431,6 @@ class Unitysettings ():
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
 
     def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
-        key = 
 
         if self.ui['sw_dash_suggestions'].get_active():
             gsettings.lenses.set_string('remote-content-search', "none")
