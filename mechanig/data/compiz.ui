@@ -235,7 +235,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_synctovblank">
-                        <property name="label" translatable="yes">Perform screen updates during monitor's vertical blanking interval</property>
+                        <property name="label" translatable="yes">Update display during VBlank</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
