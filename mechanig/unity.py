@@ -171,6 +171,7 @@ class Unitysettings ():
         dependants = ['l_transparent_panel',
                     'sc_panel_transparency',
                     'check_panel_opaque']
+
         opacity = gsettings.unityshell.get_double('panel-opacity')
         if opacity == 1:
             self.ui['sw_transparent_panel'].set_active(False)
@@ -181,6 +182,14 @@ class Unitysettings ():
         self.ui['sc_panel_transparency'].set_value(opacity)
         del dependants
         del opacity
+
+        # Panel opacity check
+        panel_opacity_value = gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle')
+        if panel_opacity_value == True:
+            self.ui['check_panel_opaque'].set_active(True)
+        else:
+            self.ui['check_panel_opaque'].set_active(False)
+        del panel_opacity_value
 
         # Date time indicator check
         clock_visibility = gsettings.datetime.get_boolean('show-clock')
@@ -239,8 +248,6 @@ class Unitysettings ():
         else:
             self.ui['check_indicator_battery_life'].set_active(False)
         del battery_life
-
-        self.ui['check_panel_opaque'].set_active(gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle'))
 
         # 24 hour time format
         time_format = gsettings.datetime.get_string('time-format')
@@ -557,13 +564,15 @@ class Unitysettings ():
 
         if widget.get_active():
             self.ui.sensitize(dependants)
-            self.ui['check_panel_opaque'].set_active(True)
+
 
             # Design call from me4oslav to do the following if the switch is turned on
 
             if self.ui['sc_panel_transparency'].get_value() == 1.0:
                 self.ui['sc_panel_transparency'].set_value(0.67)
+                self.ui['check_panel_opaque'].set_active(True)
                 gsettings.unityshell.set_double('panel-opacity', 0.33)
+                gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', True)
 
             else:
                 panel_transparency = self.ui['sc_panel_transparency'].get_value()
