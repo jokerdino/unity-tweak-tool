@@ -29,6 +29,7 @@
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkEntryBuffer" id="entrybuffer_custom_format"/>
   <object class="GtkListStore" id="list_unity_additional_accelerators">
     <columns>
       <!-- column-name Title -->
@@ -760,6 +761,8 @@
               <object class="GtkGrid" id="grid_unity_dash_blur">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
+                <property name="margin_top">4</property>
                 <child>
                   <object class="GtkLabel" id="l_dash_blur">
                     <property name="visible">True</property>
@@ -900,6 +903,7 @@
               <object class="GtkGrid" id="grid_application_lens">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
                 <child>
                   <object class="GtkLabel" id="l_dash_lens_applications">
                     <property name="visible">True</property>
@@ -971,6 +975,7 @@
               <object class="GtkGrid" id="grid_unity_suggestions">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
                 <child>
                   <object class="GtkLabel" id="l_lens_suggestions">
                     <property name="visible">True</property>
@@ -1029,7 +1034,7 @@
                 <property name="tooltip_markup" translatable="yes">Restore the default Dash configurations</property>
                 <property name="tooltip_text" translatable="yes">Restore the default Dash configurations</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">10</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_unity_dash_reset_clicked" swapped="no"/>
@@ -1127,23 +1132,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_indicators">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Indicators:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkSwitch" id="sw_transparent_panel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -1162,46 +1150,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="check_indicator_username">
-                    <property name="label" translatable="yes">Display user's real name</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, the user's real name will appear in the panel</property>
-                    <property name="tooltip_text" translatable="yes">If enabled, the user's real name will appear in the panel</property>
-                    <property name="margin_top">9</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_check_indicator_username_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="check_indicator_batterytime">
-                    <property name="label" translatable="yes">Display remaining battery life</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, the remaining percentage of battery life will appear in the panel</property>
-                    <property name="tooltip_text" translatable="yes">If enabled, the remaining percentage of battery life will appear in the panel</property>
-                    <property name="margin_top">4</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_check_indicator_batterytime_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="l_panel_transparency_empty">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -1209,18 +1157,6 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">3</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_indicators_empty">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -1266,207 +1202,6 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid" id="grid_panel_showdate">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbox_timeformat">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">Select the date-time format</property>
-                        <property name="tooltip_text" translatable="yes">Select the date-time format</property>
-                        <property name="entry_text_column">0</property>
-                        <property name="id_column">1</property>
-                        <items>
-                          <item translatable="yes">ISO</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="l_formatdisplay">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="xpad">4</property>
-                        <property name="label" translatable="yes">format and display the </property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">3</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbox_timepanel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="entry_text_column">0</property>
-                        <property name="id_column">1</property>
-                        <items>
-                          <item translatable="yes">day, month and year</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left_attach">4</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbox_showdate">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">Select whether to hide or show the date</property>
-                        <property name="tooltip_text" translatable="yes">Select whether to hide or show the date</property>
-                        <property name="entry_text_column">0</property>
-                        <property name="id_column">1</property>
-                        <items>
-                          <item translatable="yes">Show</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="l_showdatepresent">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="xalign">0.60000002384185791</property>
-                        <property name="xpad">4</property>
-                        <property name="label" translatable="yes">the date, presented in</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
-                    <property name="width">2</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid" id="grid_panel_timeformat">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_top">5</property>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbox_formattime">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="entry_text_column">0</property>
-                        <property name="id_column">1</property>
-                        <items>
-                          <item translatable="yes">AM/PM</item>
-                          <item translatable="yes">24 hours</item>
-                          <item translatable="yes">Custom</item>
-                        </items>
-                        <signal name="changed" handler="on_cbox_formattime_changed" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbox_time_seconds">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="entry_text_column">0</property>
-                        <property name="id_column">1</property>
-                        <items>
-                          <item translatable="yes">with</item>
-                          <item translatable="yes">without</item>
-                        </items>
-                        <signal name="changed" handler="on_cbox_time_seconds_changed" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="l_formattime">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="xalign">0.019999999552965164</property>
-                        <property name="xpad">4</property>
-                        <property name="label" translatable="yes">format time</property>
-                        <property name="justify">fill</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="l_showseconds">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="xalign">0.25</property>
-                        <property name="xpad">4</property>
-                        <property name="label" translatable="yes">the seconds.</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">3</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
-                    <property name="width">2</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="b_unity_panel_reset">
-                    <property name="label" translatable="yes">Restore defaults</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Restore the default Unity panel settings</property>
-                    <property name="tooltip_text" translatable="yes">Restore the default Unity panel settings</property>
-                    <property name="halign">start</property>
-                    <property name="margin_top">10</property>
-                    <property name="margin_bottom">10</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -1527,42 +1262,456 @@
                     <property name="height">2</property>
                   </packing>
                 </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">6</property>
                 <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_indicators">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="has_tooltip">True</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Indicators</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkNotebook" id="notebook_indicators">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="show_border">False</property>
+                <property name="scrollable">True</property>
+                <child>
+                  <object class="GtkBox" id="box_indicator_datetime">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_bottom">12</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkCheckButton" id="check_indicator_datetime">
+                        <property name="label" translatable="yes">Show the panel clock</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="receives_default">False</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip_markup" translatable="yes">If enabled, the date &amp;amp; time indicator will be visible.</property>
+                        <property name="tooltip_text" translatable="yes">If enabled, the date &amp; time indicator will be visible.</property>
+                        <property name="margin_left">12</property>
+                        <property name="margin_top">12</property>
+                        <property name="xalign">0</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="notify::active" handler="on_check_indicator_datetime_active" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkGrid" id="grid_indicator_datetime">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">22</property>
+                        <property name="margin_right">22</property>
+                        <property name="margin_top">6</property>
+                        <child>
+                          <object class="GtkRadioButton" id="radio_12hour">
+                            <property name="label" translatable="yes">Use 12-hour time</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">Use 12-hour time in the panel clock.</property>
+                            <property name="tooltip_text" translatable="yes">Use 12-hour time in the panel clock.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <property name="group">radio_24hour</property>
+                            <signal name="notify::active" handler="on_radio_12hour_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkRadioButton" id="radio_24hour">
+                            <property name="label" translatable="yes">Use 24-hour time</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">Use 24-hour time in the panel clock.</property>
+                            <property name="tooltip_text" translatable="yes">Use 24-hour time in the panel clock.</property>
+                            <property name="xalign">0</property>
+                            <property name="active">True</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_radio_24hour_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_time_seconds">
+                            <property name="label" translatable="yes">Show the seconds</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, second will be visible in the clock.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, second will be visible in the clock.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_time_seconds_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_date">
+                            <property name="label" translatable="yes">Show the date</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_date_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">3</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_weekday">
+                            <property name="label" translatable="yes">Show the weekday</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_weekday_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">4</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_calendar">
+                            <property name="label" translatable="yes">Show the calendar</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, the calendar will be visible in the indicator.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, the calendar will be visible in the indicator.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_calendar_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">5</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="l_page_datetime">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Settings for the date &amp; time menu.</property>
+                    <property name="tooltip_text" translatable="yes">Settings for the date &amp; time menu.</property>
+                    <property name="label" translatable="yes">Date &amp; Time</property>
+                  </object>
+                  <packing>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_indicator_username">
+                    <property name="label" translatable="yes">Show the user's real name</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, show the user&amp;apos;s real name in the panel.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, show the user's real name in the panel.</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_top">12</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="notify::active" handler="on_check_indicator_username_active" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="l_page_session">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Settings for the session menu.</property>
+                    <property name="tooltip_text" translatable="yes">Settings for the session menu.</property>
+                    <property name="label" translatable="yes">Session</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box_indicator_power">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkCheckButton" id="check_indicator_battery">
+                        <property name="label" translatable="yes">Show the power indicator</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="receives_default">False</property>
+                        <property name="margin_left">12</property>
+                        <property name="margin_top">12</property>
+                        <property name="xalign">0</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="notify::active" handler="on_check_indicator_battery_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkGrid" id="grid_indicator_power">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">20</property>
+                        <property name="margin_top">6</property>
+                        <child>
+                          <object class="GtkRadioButton" id="radio_power_charging">
+                            <property name="label" translatable="yes">Visible when charging or discharging</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <property name="group">radio_power_always</property>
+                            <signal name="notify::active" handler="on_radio_power_charging_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkRadioButton" id="radio_power_always">
+                            <property name="label" translatable="yes">Always visible</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <property name="group">radio_power_charging</property>
+                            <signal name="notify::active" handler="on_radio_power_always_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_indicator_battery_life">
+                            <property name="label" translatable="yes">Show the remaining battery life</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, show the remaining battery life in the power indicator.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, show the remaining battery life in the power indicator.</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_indicator_battery_life_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="l_page_power">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Settings for the power menu.</property>
+                    <property name="tooltip_text" translatable="yes">Settings for the power menu.</property>
+                    <property name="label" translatable="yes">Power</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_indicator_sound">
+                    <property name="label" translatable="yes">Show the volume indicator</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_top">12</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="notify::active" handler="on_check_indicator_sound_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="l_page_sound">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Settings for the sound menu.</property>
+                    <property name="tooltip_text" translatable="yes">Settings for the sound menu.</property>
+                    <property name="label" translatable="yes">Sound</property>
+                  </object>
+                  <packing>
+                    <property name="position">3</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_indicator_bluetooth">
+                    <property name="label" translatable="yes">Show the bluetooth indicator</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_top">12</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="notify::active" handler="on_check_indicator_bluetooth_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="l_indicator_bluetooth">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Settings for the bluetooth menu.</property>
+                    <property name="tooltip_text" translatable="yes">Settings for the bluetooth menu.</property>
+                    <property name="label" translatable="yes">Bluetooth</property>
+                  </object>
+                  <packing>
+                    <property name="position">4</property>
+                    <property name="tab_fill">False</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="b_unity_panel_reset">
+                <property name="label" translatable="yes">Restore defaults</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default Unity panel settings</property>
+                <property name="tooltip_text" translatable="yes">Restore the default Unity panel settings</property>
+                <property name="halign">start</property>
+                <property name="margin_left">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">8</property>
               </packing>
             </child>
           </object>

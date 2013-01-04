@@ -149,6 +149,7 @@ class Unitysettings ():
             self.ui.sensitize(dependants)
             self.ui['radio_dash_blur_smart'].set_active(True)
 
+
         del dependants
 
         dash_suggestions = gsettings.lenses.get_string('remote-content-search')
@@ -181,28 +182,123 @@ class Unitysettings ():
         del dependants
         del opacity
 
-        self.ui['check_indicator_username'].set_active(gsettings.session.get_boolean('show-real-name-on-panel'))
-        self.ui['check_indicator_batterytime'].set_active(gsettings.power.get_boolean('show-time'))
+        # Date time indicator check
+        clock_visibility = gsettings.datetime.get_boolean('show-clock')
+        dependants = ['radio_12hour',
+                    'radio_24hour',
+                    'check_date',
+                    'check_weekday',
+                    'check_calendar',
+                    'check_time_seconds']
+
+        if clock_visibility == True:
+            self.ui['check_indicator_datetime'].set_active(True)
+            self.ui.sensitize(dependants)
+        else:
+            self.ui['check_indicator_datetime'].set_active(False)
+            self.ui.sensitize(dependants)
+        del clock_visibility
+        del dependants
+
+        # User name indicator check
+        show_username = gsettings.session.get_boolean('show-real-name-on-panel')
+        if show_username == True:
+            self.ui['check_indicator_username'].set_active(True)
+        else:
+            self.ui['check_indicator_username'].set_active(False)
+        del show_username
+
+        # Battery life
+        battery_status = gsettings.power.get_string('icon-policy')
+
+        dependants = ['check_indicator_battery_life',
+                    'radio_power_charging',
+                    'radio_power_always']
+
+        if battery_status == 'present':
+            self.ui['check_indicator_battery'].set_active(True)
+            self.ui.sensitize(dependants)
+        elif battery_status == 'charge':
+            self.ui['check_indicator_battery'].set_active(True)
+            self.ui.sensitize(dependants)
+        elif battery_status == 'never':
+            self.ui['check_indicator_battery'].set_active(False)
+            self.ui.unsensitize(dependants)
+        else:
+            self.ui['check_indicator_battery'].set_active(True)
+            self.ui.sensitize(dependants)
+        del battery_status
+        del dependants
+
+
+        # Battery life indicator check
+        battery_life = gsettings.power.get_boolean('show-time')
+
+        if battery_life == True:
+            self.ui['check_indicator_battery_life'].set_active(True)
+        else:
+            self.ui['check_indicator_battery_life'].set_active(False)
+        del battery_life
 
         self.ui['check_panel_opaque'].set_active(gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle'))
 
+        # 24 hour time format
         time_format = gsettings.datetime.get_string('time-format')
-
         if time_format == '12-hour':
-            self.ui['cbox_formattime'].set_active(0)
-        elif time_format == '24-hour':
-            self.ui['cbox_formattime'].set_active(1)
+            self.ui['radio_12hour'].set_active(True)
         else:
-            self.ui['cbox_formattime'].set_active(2)
+            self.ui['radio_24hour'].set_active(True)
         del time_format
 
-        if gsettings.datetime.get_boolean('show-seconds') is True:
-            self.ui['cbox_time_seconds'].set_active(0)
+        # Seconds check
+        show_seconds = gsettings.datetime.get_boolean('show-seconds')
+        if show_seconds == True:
+            self.ui['check_time_seconds'].set_active(True)
         else:
-            self.ui['cbox_time_seconds'].set_active(1)
+            self.ui['check_time_seconds'].set_active(False)
+        del show_seconds
+
+        # Date check
+        show_date = gsettings.datetime.get_boolean('show-date')
+        if show_date == True:
+            self.ui['check_date'].set_active(True)
+        else:
+            self.ui['check_date'].set_active(False)
+        del show_date
+
+        # Day check
+        show_weekday = gsettings.datetime.get_boolean('show-day')
+        if show_weekday == True:
+            self.ui['check_weekday'].set_active(True)
+        else:
+            self.ui['check_weekday'].set_active(False)
+        del show_weekday
+
+        # Calendar check
+        show_calendar = gsettings.datetime.get_boolean('show-calendar')
+        if show_calendar == True:
+            self.ui['check_calendar'].set_active(True)
+        else:
+            self.ui['check_calendar'].set_active(False)
+        del show_calendar
+
+        # Bluetooth check
+        show_bluetooth = gsettings.bluetooth.get_boolean('visible')
+        if show_bluetooth == True:
+            self.ui['check_indicator_bluetooth'].set_active(True)
+        else:
+            self.ui['check_indicator_bluetooth'].set_active(False)
+        del show_bluetooth
+
+        # Sound check
+        show_sound = gsettings.sound.get_boolean('visible')
+        if show_sound == True:
+            self.ui['check_indicator_sound'].set_active(True)
+        else:
+            self.ui['check_indicator_sound'].set_active(False)
+        del show_sound
 
         # Refreshing Unity switcher settings
-
         self.ui['check_switchwindows_all_workspaces'].set_active(True if gsettings.unityshell.get_boolean('alt-tab-bias-viewport') is False else False)
         self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop') is False else False)
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
@@ -422,7 +518,6 @@ class Unitysettings ():
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
     def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
-
         if self.ui['sw_dash_suggestions'].get_active():
             gsettings.lenses.set_string('remote-content-search', "all")
 
@@ -489,40 +584,113 @@ class Unitysettings ():
         else:
             gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', False)
 
-
-    def on_check_indicator_username_toggled(self, widget, udata = None):
+    def on_check_indicator_username_active(self, widget, udata = None):
 
         if widget.get_active():
             gsettings.session.set_boolean('show-real-name-on-panel', True)
         else:
             gsettings.session.set_boolean('show-real-name-on-panel', False)
 
+    def on_check_indicator_battery_toggled(self, widget, udata = None):
+        dependants = ['check_indicator_battery_life',
+                    'radio_power_charging',
+                    'radio_power_always']
 
-    def on_check_indicator_batterytime_toggled(self, widget, udata = None):
+        if self.ui['check_indicator_battery'].get_active() == True:
+            gsettings.power.set_string('icon-policy', 'charge')
+            self.ui.sensitize(dependants)
+        else:
+            gsettings.power.set_string('icon-policy', 'never')
+            self.ui.unsensitize(dependants)
+
+    def on_radio_power_charging_toggled(self, button, udata = None):
+
+        mode = self.ui['radio_power_charging'].get_active()
+
+        if mode == 'True':
+            gsettings.power.set_string('icon-policy', "charge")
+        else:
+            gsettings.power.set_string('icon-policy', "present")
+
+    def on_radio_power_always_toggled(self, button, udata = None):
+
+        mode = self.ui['radio_power_always'].get_active()
+
+        if mode == 'True':
+            gsettings.power.set_string('icon-policy', "present")
+        else:
+            gsettings.power.set_string('icon-policy', "charge")
+
+    def on_check_indicator_battery_life_toggled(self, widget, udata = None):
 
         if widget.get_active():
             gsettings.power.set_boolean('show-time', True)
         else:
             gsettings.power.set_boolean('show-time', False)
 
-    def on_cbox_formattime_changed(self, widget, udata = None):
+    def on_check_indicator_datetime_active(self, widget, udata = None):
+        dependants = ['radio_12hour',
+                    'radio_24hour',
+                    'check_date',
+                    'check_weekday',
+                    'check_calendar',
+                    'check_time_seconds']
 
-        mode = self.ui['cbox_formattime'].get_active()
+        if widget.get_active():
+            gsettings.datetime.set_boolean('show-clock', True)
+            self.ui.sensitize(dependants)
+        else:
+            gsettings.datetime.set_boolean('show-clock', False)
+            self.ui.unsensitize(dependants)
 
-        if mode == 0:
+    def on_radio_12hour_toggled(self, button, udata = None):
+
+        mode = self.ui['radio_12hour'].get_active()
+
+        if mode == 'True':
+            gsettings.datetime.set_string('time-format', '24-hour')
+        else:
             gsettings.datetime.set_string('time-format', '12-hour')
-        elif mode == 1:
+
+    def on_radio_24hour_toggled(self, button, udata = None):
+
+        mode = self.ui['radio_24hour'].get_active()
+
+        if mode == 'True':
+            gsettings.datetime.set_string('time-format', '12-hour')
+        else:
             gsettings.datetime.set_string('time-format', '24-hour')
 
-    def on_cbox_time_seconds_changed(self, widget, udata = None):
 
-        mode = self.ui['cbox_time_seconds'].get_active()
+    def on_check_time_seconds_toggled(self, widget, udata = None):
+        gsettings.datetime.set_boolean('show-seconds',
+                  self.ui['check_time_seconds'].get_active())
 
-        if mode == 0:
-            gsettings.datetime.set_boolean('show-seconds', True)
+    def on_check_date_toggled(self, widget, udata = None):
+        gsettings.datetime.set_boolean('show-date',
+                  self.ui['check_date'].get_active())
+        
+    def on_check_weekday_toggled(self, widget, udata = None):
+        gsettings.datetime.set_boolean('show-day',
+                  self.ui['check_weekday'].get_active())
+
+    def on_check_calendar_toggled(self, widget, udata = None):
+        gsettings.datetime.set_boolean('show-calendar',
+                  self.ui['check_calendar'].get_active())
+
+    def on_check_indicator_bluetooth_toggled(self, widget, udata = None):
+
+        if widget.get_active():
+            gsettings.bluetooth.set_boolean('visible', True)
         else:
-            gsettings.datetime.set_boolean('show-seconds', False)
+            gsettings.bluetooth.set_boolean('visible', False)
 
+    def on_check_indicator_sound_toggled(self, widget, udata = None):
+
+        if widget.get_active():
+            gsettings.sound.set_boolean('visible', True)
+        else:
+            gsettings.sound.set_boolean('visible', False)
 
 #-----BEGIN: Switcher-----
 
