@@ -924,7 +924,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="cb_show_recent_apps">
+                  <object class="GtkCheckButton" id="check_show_recent_apps">
                     <property name="label" translatable="yes">Show "Recently Used" applications</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -934,6 +934,7 @@
                     <property name="margin_left">12</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_show_recent_apps_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -943,7 +944,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="cb_show_available_apps">
+                  <object class="GtkCheckButton" id="check_show_available_apps">
                     <property name="label" translatable="yes">Show "More Suggestions"</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -954,7 +955,7 @@
                     <property name="margin_top">6</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
-                    <signal name="notify::active" handler="on_cb_show_available_apps_toggled" swapped="no"/>
+                    <signal name="toggled" handler="on_check_show_available_apps_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1036,6 +1037,7 @@
                 <property name="margin_left">10</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
+                <signal name="clicked" handler="on_b_unity_dash_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

@@ -160,24 +160,9 @@ class Unitysettings ():
         else:
             self.ui['sw_dash_suggestions'].set_active(False)
 
+        self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
+        self.ui['check_show_available_apps'].set_active(gsettings.lens_apps.get_boolean('display-available-apps'))
 
-        recent_apps = gsettings.lens_apps.get_boolean('display-recent-apps')
-
-        if recent_apps == True:
-            self.ui['cb_show_recent_apps'].set_active(True)
-
-        else:
-            self.ui['cb_show_recent_apps'].set_active(False)
-
-
-        available_apps = gsettings.lens_apps.get_boolean('display-available-apps')
-
-        if available_apps == True:
-            self.ui['cb_show_available_apps'].set_active(True)
-
-        else:
-            self.ui['cb_show_available_apps'].set_active(False)
-        
 
         # Refreshing Unity panel settings
 
@@ -519,6 +504,8 @@ class Unitysettings ():
 
         if self.ui['sw_dash_blur'].get_active():
             self.ui.sensitize(dependants)
+
+            # Setting it to Active blur (2) instead of static blur (1)
             gsettings.unityshell.set_int('dash-blur-experimental', 2)
             self.ui['radio_dash_blur_smart'].set_active(True)
 
@@ -526,26 +513,39 @@ class Unitysettings ():
             self.ui.unsensitize(dependants)
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
 
+<<<<<<< HEAD
     def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
         if self.ui['sw_dash_suggestions'].get_active() == False:
             gsettings.lenses.set_string('remote-content-search', "none")
-
-        else:
-            gsettings.lenses.set_string('remote-content-search', "all")
-
-    def on_cb_show_recent_apps_toggled(self, widget, udata = None):
-        gsettings.lens_apps.set_boolean('display-recent-apps', 
-                            self.ui['cb_show_recent_apps'].get_active())
-
-    def on_cb_show_available_apps_toggled(self, widget, udata = None):
-        gsettings.lens_apps.set_boolean('display-available-apps', 
-                            self.ui['cb_show_recent_apps'].get_active())
-
+=======
     def on_radio_dash_blur_smart_toggled(self, button, udata = None):
-
         mode = 2 if button.get_active() else 1
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
+    def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
+>>>>>>> a78f27ceffd2dc2da98edea672eec46074f85dcc
+
+        if self.ui['sw_dash_suggestions'].get_active():
+            gsettings.lenses.set_string('remote-content-search', "all")
+
+        else:
+            gsettings.lenses.set_string('remote-content-search', "none")
+
+    def on_check_show_recent_apps_toggled(self, widget, udata = None):
+        gsettings.lens_apps.set_boolean('display-recent-apps',
+                            self.ui['check_show_recent_apps'].get_active())
+
+    def on_check_show_available_apps_toggled(self, widget, udata = None):
+        gsettings.lens_apps.set_boolean('display-available-apps',
+                            self.ui['check_show_available_apps'].get_active())
+
+
+    def on_b_unity_dash_reset_clicked(self, widget):
+        gsettings.unityshell.reset('dash-blur-experimental')
+        gsettings.lenses.reset('remote-content-search')
+        gsettings.lens_apps.reset('display-recent-apps')
+        gsettings.lens_apps.reset('display-available-apps')
+        self.refresh()
 
 #-----BEGIN: Panel -----
 
