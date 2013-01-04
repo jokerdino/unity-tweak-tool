@@ -513,18 +513,11 @@ class Unitysettings ():
             self.ui.unsensitize(dependants)
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
 
-<<<<<<< HEAD
-    def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
-        if self.ui['sw_dash_suggestions'].get_active() == False:
-            gsettings.lenses.set_string('remote-content-search', "none")
-=======
     def on_radio_dash_blur_smart_toggled(self, button, udata = None):
         mode = 2 if button.get_active() else 1
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
     def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
->>>>>>> a78f27ceffd2dc2da98edea672eec46074f85dcc
-
         if self.ui['sw_dash_suggestions'].get_active():
             gsettings.lenses.set_string('remote-content-search', "all")
 
