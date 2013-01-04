@@ -1297,6 +1297,9 @@
                 <property name="margin_right">12</property>
                 <property name="show_border">False</property>
                 <property name="scrollable">True</property>
+                <style>
+                  <class name="tab {&#10;    background-image: none;&#10;    background-color: transparent;&#10;    border-style: solid;&#10;    border-image: -gtk-gradient (linear, left top, left bottom,&#10;                                 from (alpha (shade (#223424, 0.9), 0.0)),&#10;                                 to (shade (@bg_color, 0.9))) 1;&#10;    border-image-width: 0 1px;&#10;    border-color: transparent;&#10;    border-width: 0;&#10;    box-shadow: none;&#10;    /*color: shade (@fg_color, 1.2);*/&#10;}"/>
+                </style>
                 <child>
                   <object class="GtkBox" id="box_indicator_datetime">
                     <property name="visible">True</property>
