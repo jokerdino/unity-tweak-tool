@@ -371,7 +371,6 @@ class Compizsettings ():
             self.ui['color_outline_color'].set_color(gdkcolor)
         del color, valid, gdkcolor
 
-
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -642,6 +641,7 @@ class Compizsettings ():
         gsettings.grid.reset('outline-color')
         gsettings.grid.reset('top-edge-action')
         self.refresh()
+
 
 if __name__ == '__main__':
 # Fire up the Engines
