@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkAction" id="action1"/>
   <object class="GtkAdjustment" id="adj_compiz_spacing">
     <property name="upper">250</property>
     <property name="value">68</property>
@@ -43,6 +42,7 @@
               <object class="GtkBox" id="box_compiz_general_zoom">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
                 <property name="margin_top">6</property>
                 <property name="orientation">vertical</property>
                 <child>
@@ -90,8 +90,8 @@
               <object class="GtkScrolledWindow" id="scrolledwindow_compiz_general_zoom">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
                 <property name="margin_top">10</property>
                 <property name="shadow_type">in</property>
                 <child>
@@ -149,7 +149,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
                 <property name="label" translatable="yes">Hardware acceleration</property>
                 <attributes>
@@ -166,6 +166,7 @@
               <object class="GtkGrid" id="grid_opengl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
                 <child>
                   <object class="GtkLabel" id="l_synctovblank_empty">
                     <property name="visible">True</property>
@@ -192,8 +193,8 @@
                           <object class="GtkLabel" id="l_texture_quality">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_markup" translatable="yes">Select the quality of texture rendering done by OpenGL</property>
-                            <property name="tooltip_text" translatable="yes">Select the quality of texture rendering done by OpenGL</property>
+                            <property name="tooltip_markup" translatable="yes">Select the level of texture rendering done by OpenGL</property>
+                            <property name="tooltip_text" translatable="yes">Select the level of texture rendering done by OpenGL</property>
                             <property name="halign">end</property>
                             <property name="margin_right">6</property>
                             <property name="label" translatable="yes">Texture quality: </property>
@@ -234,12 +235,12 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_synctovblank">
-                        <property name="label" translatable="yes">Sync to VBlank</property>
+                        <property name="label" translatable="yes">Perform screen updates during monitor's vertical blanking interval</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
-                        <property name="tooltip_markup" translatable="yes">When enabled, allow OpenGL to sync to VBlank</property>
-                        <property name="tooltip_text" translatable="yes">When enabled, allow OpenGL to sync to VBlank</property>
+                        <property name="tooltip_markup" translatable="yes">When enabled, screen updates are performed when the monitor is in vertical blank mode.</property>
+                        <property name="tooltip_text" translatable="yes">When enabled, screen updates are performed when the monitor is in vertical blank mode.</property>
                         <property name="halign">start</property>
                         <property name="margin_left">10</property>
                         <property name="xalign">0</property>
@@ -271,7 +272,7 @@
               <object class="GtkLabel" id="l_compiz_general_keyboardshortcuts">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">12</property>
                 <property name="margin_right">6</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
@@ -291,8 +292,8 @@
               <object class="GtkScrolledWindow" id="scrolledwindow_compiz_general_keys">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="treeview_compiz_general_keys">
@@ -355,7 +356,7 @@
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
+                <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_general_reset_clicked" swapped="no"/>
               </object>
               <packing>
@@ -386,7 +387,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
                 <property name="label" translatable="yes">Workspace switcher</property>
@@ -407,7 +408,7 @@
                 <property name="tooltip_markup" translatable="yes">Enable the window manager to draw multiple workspaces</property>
                 <property name="tooltip_text" translatable="yes">Enable the window manager to draw multiple workspaces</property>
                 <property name="halign">start</property>
-                <property name="margin_left">12</property>
+                <property name="margin_left">18</property>
                 <property name="active">True</property>
                 <signal name="notify::active" handler="on_sw_workspace_switcher_active_notify" swapped="no"/>
               </object>
@@ -421,7 +422,7 @@
               <object class="GtkGrid" id="grid_workspace_desktops">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">18</property>
                 <child>
                   <object class="GtkLabel" id="l_horizontal_desktop">
                     <property name="visible">True</property>
@@ -540,8 +541,8 @@
               <object class="GtkScrolledWindow" id="scrolledwindow_compiz_workspace">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
                 <property name="margin_top">6</property>
                 <property name="shadow_type">in</property>
                 <child>
@@ -598,7 +599,7 @@
               <object class="GtkGrid" id="grid_workspace_misc">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
+                <property name="margin_left">6</property>
                 <property name="margin_bottom">10</property>
                 <child>
                   <object class="GtkLinkButton" id="lb_configure_hot_corner">
@@ -610,6 +611,7 @@
                     <property name="tooltip_markup" translatable="yes">Configure desktop hotcorner behaviour</property>
                     <property name="tooltip_text" translatable="yes">Configure desktop hotcorner behaviour</property>
                     <property name="halign">start</property>
+                    <property name="margin_left">6</property>
                     <property name="margin_bottom">6</property>
                     <property name="relief">none</property>
                     <signal name="activate-link" handler="on_lb_configure_hot_corner_activate_link" object="nb_compizsettings" swapped="no"/>
@@ -630,6 +632,7 @@
                     <property name="tooltip_markup" translatable="yes">Restore default workspace configuration</property>
                     <property name="tooltip_text" translatable="yes">Restore default workspace configuration</property>
                     <property name="halign">start</property>
+                    <property name="margin_left">6</property>
                     <signal name="clicked" handler="on_b_compiz_workspace_reset_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -672,7 +675,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
                 <property name="xalign">1</property>
                 <property name="label" translatable="yes">Window spread</property>
@@ -693,7 +696,7 @@
                 <property name="tooltip_markup" translatable="yes">Enable the window spread?</property>
                 <property name="tooltip_text" translatable="yes">Enable the window spread?</property>
                 <property name="halign">start</property>
-                <property name="margin_left">12</property>
+                <property name="margin_left">18</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
                 <property name="active">True</property>
@@ -709,6 +712,7 @@
               <object class="GtkBox" id="box_windows_spacing">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkGrid" id="grid_windows_spacing">
@@ -807,8 +811,8 @@
               <object class="GtkScrolledWindow" id="scrolledwindow_compiz_window_spread">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="treeview_compiz_windows_spread">
@@ -891,7 +895,7 @@
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
-                <property name="margin_bottom">10</property>
+                <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_windows_spread_reset_clicked" swapped="no"/>
               </object>
               <packing>
@@ -930,7 +934,7 @@
                   <object class="GtkLabel" id="l_window_snapping">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_left">6</property>
+                    <property name="margin_left">12</property>
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="label" translatable="yes">Window snapping</property>
@@ -950,7 +954,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">12</property>
+                    <property name="margin_left">18</property>
                     <property name="margin_top">6</property>
                     <signal name="notify::active" handler="on_sw_window_snapping_active_notify" swapped="no"/>
                   </object>
@@ -972,7 +976,7 @@
               <object class="GtkGrid" id="grid_window_snapping_colours">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">14</property>
+                <property name="margin_left">18</property>
                 <child>
                   <object class="GtkLabel" id="l_outline_color">
                     <property name="visible">True</property>
@@ -1050,10 +1054,10 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
-                <property name="margin_top">20</property>
-                <property name="margin_bottom">20</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
                 <child>
                   <object class="GtkGrid" id="grid_window_snapping_left">
                     <property name="visible">True</property>
@@ -1285,9 +1289,9 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
-                <property name="margin_left">20</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
+                <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_windowsnapping_reset_clicked" swapped="no"/>
               </object>
               <packing>
@@ -1319,13 +1323,48 @@
             <property name="halign">center</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_hotcorners">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">Hotcorners</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="switch_hotcorners">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="active">True</property>
+                <signal name="notify::active" handler="on_switch_hotcorners_active_notify" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_hotcorners">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
-                <property name="margin_top">20</property>
-                <property name="margin_bottom">20</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
                 <child>
                   <object class="GtkGrid" id="grid_hotcorners_left">
                     <property name="visible">True</property>
@@ -1547,7 +1586,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -1557,14 +1596,14 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
-                <property name="margin_left">20</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
@@ -1665,7 +1704,7 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Do Nothing</col>
+        <col id="0" translatable="yes">Disabled</col>
       </row>
       <row>
         <col id="0" translatable="yes">Toggle Desktop</col>
