@@ -1054,10 +1054,10 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
-                <property name="margin_top">20</property>
-                <property name="margin_bottom">20</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
                 <child>
                   <object class="GtkGrid" id="grid_window_snapping_left">
                     <property name="visible">True</property>
@@ -1323,13 +1323,48 @@
             <property name="halign">center</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_hotcorners">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">Hotcorners</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="switch_hotcorners">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="active">True</property>
+                <signal name="notify::active" handler="on_switch_hotcorners_active_notify" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_hotcorners">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
-                <property name="margin_top">20</property>
-                <property name="margin_bottom">20</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
                 <child>
                   <object class="GtkGrid" id="grid_hotcorners_left">
                     <property name="visible">True</property>
@@ -1561,7 +1596,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
-                <property name="margin_left">20</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
               </object>
@@ -1669,7 +1704,7 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Do Nothing</col>
+        <col id="0" translatable="yes">Disabled</col>
       </row>
       <row>
         <col id="0" translatable="yes">Toggle Desktop</col>
