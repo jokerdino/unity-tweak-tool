@@ -1303,6 +1303,7 @@
                   <object class="GtkBox" id="box_indicator_datetime">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_bottom">12</property>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_datetime">
