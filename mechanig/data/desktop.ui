@@ -117,7 +117,7 @@
             </child>
             <child>
               <object class="GtkCheckButton" id="check_desktop_trash">
-                <property name="label" translatable="yes">Trash</property>
+                <property name="label" translatable="yes">Rubbish Bin</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">False</property>
