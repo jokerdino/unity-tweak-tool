@@ -52,13 +52,40 @@ class Themesettings ():
         gtkthemestore=Gtk.ListStore(str)
         self.ui['tree_gtk'].set_model(gtkthemestore)
         self.ui['tree_windows'].set_model(gtkthemestore)
-        for theme in os.listdir('/usr/share/themes'):
+# Get all themes
+        systhdir='/usr/share/themes'
+        systemthemes=[theme for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
+        try:
+            uthdir=os.path.expanduser('~/.themes')
+            userthemes=[theme for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
+        except OSError as e:
+            userthemes=[]
+        for theme in systemthemes+userthemes:
             gtkthemestore.append([theme])
 
         iconthemestore=Gtk.ListStore(str)
-        self.ui['tv_icon_theme'].set_model(iconthemestore)
-        for theme in os.listdir('/usr/share/icons'):
+        cursorthemestore=Gtk.ListStore(str)
+        self.ui['tree_icon_theme'].set_model(iconthemestore)
+        self.ui['tree_cursor_theme'].set_model(cursorthemestore)
+        
+        sysithdir='/usr/share/icons'
+        systemiconthemes= [os.path.join(sysithdir,theme) for theme in os.listdir(sysithdir) if os.path.isdir(os.path.join(sysithdir,theme))]
+        to_be_hidden=['/usr/share/icons/LoginIcons','/usr/share/icons/unity-webapps-applications']
+        for item in to_be_hidden:
+            try:
+                systemiconthemes.remove(item)
+            except ValueError as e:
+                pass
+        try:
+            uithdir=os.path.expanduser('~/.icons')
+            usericonthemes=[os.path.join(uithdir,theme) for theme in os.listdir(uithdir) if os.path.isdir(os.path.join(uithdir,theme))]
+        except OSError as e:
+            usericonthemes=[]
+        for themepath in systemiconthemes+usericonthemes:
+            theme=os.path.split(themepath)[1]
             iconthemestore.append([theme])
+            if os.path.isdir(os.path.join(themepath,'cursors')):
+                cursorthemestore.append([theme])
 
 # TODO : Find how to get this list.
 # /etc/X11/cursors has some filess. Or do I have to look for 'cursors' under each one in PREFIX /themes?
