@@ -530,6 +530,14 @@ class Unitysettings ():
         gsettings.unityshell.reset('launcher-hide-mode')
         gsettings.unityshell.reset('edge-responsiveness')
         gsettings.unityshell.reset('reveal-trigger')
+        
+        # Remove "Show Desktop" icon
+        fav = gsettings.launcher.get_strv('favorites')
+        desktop = "unity://desktop-icon"
+        if desktop in fav:
+            fav.remove(desktop)
+            gsettings.launcher.set_strv('favorites', fav)
+
         self.refresh()
 
 # ----- END: Launcher -----
