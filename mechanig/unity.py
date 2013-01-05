@@ -51,7 +51,7 @@ class Unitysettings ():
         self.page.unparent()
         self.builder.connect_signals(self)
 
-        self.ui['sc_reveal_sensitivity'].add_mark(5.333, Gtk.PositionType.BOTTOM, None)
+        self.ui['sc_reveal_sensitivity'].add_mark(2.0, Gtk.PositionType.BOTTOM, None)
 
         self.ui['sc_launcher_transparency'].add_mark(.666, Gtk.PositionType.BOTTOM, None)
 
@@ -412,8 +412,10 @@ class Unitysettings ():
                     'sc_reveal_sensitivity',
                     'l_launcher_reveal',
                     'l_launcher_reveal_sensitivity']
+
         if self.ui['sw_launcher_hidemode'].get_active():
             gsettings.unityshell.set_int("launcher-hide-mode", 1)
+            gsettings.unityshell.set_double('edge-responsiveness', 2.0)
             self.ui.sensitize(dependants)
         else:
             gsettings.unityshell.set_int("launcher-hide-mode", 0)
