@@ -48,6 +48,24 @@ class Themesettings ():
         self.ui = ui(self.builder)
         self.page = self.ui['nb_themesettings']
         self.page.unparent()
+        
+        gtkthemestore=Gtk.ListStore(str)
+        self.ui['tree_gtk'].set_model(gtkthemestore)
+        self.ui['tree_windows'].set_model(gtkthemestore)
+        for theme in os.listdir('/usr/share/themes'):
+            gtkthemestore.append([theme])
+
+        iconthemestore=Gtk.ListStore(str)
+        self.ui['tv_icon_theme'].set_model(iconthemestore)
+        for theme in os.listdir('/usr/share/icons'):
+            iconthemestore.append([theme])
+
+# TODO : Find how to get this list.
+# /etc/X11/cursors has some filess. Or do I have to look for 'cursors' under each one in PREFIX /themes?
+#        cursorthemestore=Gtk.ListStore(str)
+#        self.ui[''].set_model(cursorthemestore)
+#        for theme in os.listdir(''):
+
         self.builder.connect_signals(self)
         self.refresh()
 
@@ -57,6 +75,10 @@ class Themesettings ():
 
 
     def refresh(self):
+        # TODO : System theme
+        # TODO : Icon theme
+# TODO : Cursor theme
+# Fonts
         self.ui['font_default'].set_font_name(gsettings.font.get_string('font-name'))
         self.ui['font_document'].set_font_name(gsettings.font.get_string('document-font-name'))
         self.ui['font_monospace'].set_font_name(gsettings.font.get_string('monospace-font-name'))
@@ -86,16 +108,8 @@ class Themesettings ():
 # Do it the dumb way now. BIIIG refactoring needed later.
 
 
-
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
-# Dont trust glade to pass the objects properly.            |
-# Always add required references to init and use them.      |
-# That way, mechanig can resist glade stupidity.            |
-# Apologies Gnome devs, but Glade is not our favorite.      |
-#___________________________________________________________/
-
-
 #-----BEGIN: Theme settings------
+# System Theme
 
 
 #-----Font settings--------
