@@ -51,7 +51,7 @@ class Unitysettings ():
         self.page.unparent()
         self.builder.connect_signals(self)
 
-        self.ui['sc_reveal_sensitivity'].add_mark(5.333, Gtk.PositionType.BOTTOM, None)
+        self.ui['sc_reveal_sensitivity'].add_mark(2.0, Gtk.PositionType.BOTTOM, None)
 
         self.ui['sc_launcher_transparency'].add_mark(.666, Gtk.PositionType.BOTTOM, None)
 
@@ -412,8 +412,10 @@ class Unitysettings ():
                     'sc_reveal_sensitivity',
                     'l_launcher_reveal',
                     'l_launcher_reveal_sensitivity']
+
         if self.ui['sw_launcher_hidemode'].get_active():
             gsettings.unityshell.set_int("launcher-hide-mode", 1)
+            gsettings.unityshell.set_double('edge-responsiveness', 2.0)
             self.ui.sensitize(dependants)
         else:
             gsettings.unityshell.set_int("launcher-hide-mode", 0)
@@ -442,14 +444,24 @@ class Unitysettings ():
     def on_sw_launcher_transparent_active_notify(self, widget, udata = None):
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
-        if self.ui['sw_launcher_transparent'].get_active():
+
+        opacity = self.ui['sc_launcher_transparency'].get_value()        
+
+        if widget.get_active():
             self.ui.sensitize(dependants)
-            opacity = self.ui['sc_launcher_transparency'].get_value()
-            gsettings.unityshell.set_double('launcher-opacity', opacity)
+
+            if self.ui['sc_launcher_transparency'].get_value() == 1.0:
+                self.ui['sc_launcher_transparency'].set_value(0.67)
+                gsettings.unityshell.set_double('panel-opacity', 0.33)
+
+            else:
+                panel_transparency = self.ui['sc_panel_transparency'].get_value()
+                gsettings.unityshell.set_double('launcher-opacity', opacity)
+
         else:
             self.ui.unsensitize(dependants)
-            gsettings.unityshell.set_double('launcher-opacity', 1)
-            self.ui['sc_launcher_transparency'].set_value(1)
+            gsettings.unityshell.set_double('launcher-opacity', 1.00)
+
 # Check adj_launcher_transparency if this misbehaves
 
     def on_sc_launcher_transparency_value_changed(self, widget, udata = None):
@@ -564,9 +576,6 @@ class Unitysettings ():
 
         if widget.get_active():
             self.ui.sensitize(dependants)
-
-
-            # Design call from me4oslav to do the following if the switch is turned on
 
             if self.ui['sc_panel_transparency'].get_value() == 1.0:
                 self.ui['sc_panel_transparency'].set_value(0.67)
