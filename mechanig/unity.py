@@ -123,6 +123,8 @@ class Unitysettings ():
         self.ui['spin_launcher_icon_size'].set_value(gsettings.unityshell.get_int('icon-size'))
 
         self.ui['cbox_launcher_icon_colouring'].set_active(gsettings.unityshell.get_int('backlight-mode'))
+        self.ui['cbox_urgent_animation'].set_active(gsettings.unityshell.get_int('urgent-animation'))
+        self.ui['cbox_launch_animation'].set_active(gsettings.unityshell.get_int('launch-animation'))
 
         self.ui['sw_launcher_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
 
@@ -198,6 +200,7 @@ class Unitysettings ():
                     'check_date',
                     'check_weekday',
                     'check_calendar',
+                    'l_clock',
                     'check_time_seconds']
 
         if clock_visibility == True:
@@ -499,6 +502,14 @@ class Unitysettings ():
         mode = self.ui['cbox_launcher_icon_colouring'].get_active()
         gsettings.unityshell.set_int('backlight-mode', mode)
 
+    def on_cbox_urgent_animation_changed(self, widget, udata = None):
+        mode = self.ui['cbox_urgent_animation'].get_active()
+        gsettings.unityshell.set_int('urgent-animation', mode)
+
+    def on_cbox_launch_animation_changed(self, widget, udata = None):
+        mode = self.ui['cbox_launch_animation'].get_active()
+        gsettings.unityshell.set_int('launch-animation', mode)
+
     def on_sw_launcher_show_desktop_active_notify(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
@@ -651,6 +662,7 @@ class Unitysettings ():
                     'radio_24hour',
                     'check_date',
                     'check_weekday',
+                    'l_clock',
                     'check_calendar',
                     'check_time_seconds']
 

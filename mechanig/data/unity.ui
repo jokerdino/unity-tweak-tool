@@ -29,7 +29,6 @@
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkEntryBuffer" id="entrybuffer_custom_format"/>
   <object class="GtkListStore" id="list_unity_additional_accelerators">
     <columns>
       <!-- column-name Title -->
@@ -141,9 +140,10 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="grid_launcher_settings">
+              <object class="GtkGrid" id="grid_launcher_behaviour">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
                 <child>
@@ -205,26 +205,8 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_visibility">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the locations which the will launcher visible </property>
-                    <property name="tooltip_text" translatable="yes">Select the locations which the will launcher visible </property>
-                    <property name="margin_right">7</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Launcher visibility:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkScale" id="sc_reveal_sensitivity">
+                    <property name="width_request">200</property>
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
@@ -241,47 +223,6 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">3</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="radio_launcher_visibility_all">
-                    <property name="label" translatable="yes">All desktops</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on all desktops</property>
-                    <property name="tooltip_text" translatable="yes">If selected, the launcher is visible on all desktops</property>
-                    <property name="margin_top">7</property>
-                    <property name="xalign">0</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_radio_launcher_visibility_all_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="radio_launcher_visibility_primary">
-                    <property name="label" translatable="yes">Primary desktop</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on the primary desktop</property>
-                    <property name="tooltip_text" translatable="yes">If selected, the launcher is visible on the primary desktop</property>
-                    <property name="xalign">0</property>
-                    <property name="yalign">0.54000002145767212</property>
-                    <property name="draw_indicator">True</property>
-                    <property name="group">radio_launcher_visibility_all</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -351,6 +292,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_launcher_reveal_empty">
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="justify">right</property>
@@ -362,296 +304,54 @@
                     <property name="height">1</property>
                   </packing>
                 </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grid_launcher_appearance">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_visibility_empty">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_launcher_colour">
+                  <object class="GtkLabel" id="l_launcher_transparent_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the option for colouring the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the option for colouring the launcher</property>
-                    <property name="margin_left">1</property>
-                    <property name="margin_right">6</property>
+                    <property name="tooltip_markup" translatable="yes">Enable launcher transparency?</property>
+                    <property name="tooltip_text" translatable="yes">Enable launcher transparency?</property>
+                    <property name="margin_right">7</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Launcher colour:</property>
+                    <property name="ypad">4</property>
+                    <property name="label" translatable="yes">Transparency:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_colour_empty">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_launcher_colour_box_empty">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">9</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="spin_launcher_icon_size">
+                  <object class="GtkSwitch" id="sw_launcher_transparent">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="halign">start</property>
-                    <property name="margin_top">7</property>
-                    <property name="invisible_char">•</property>
-                    <property name="invisible_char_set">True</property>
-                    <property name="adjustment">adj_launcher_icon_size</property>
-                    <signal name="value-changed" handler="on_spin_launcher_icon_size_value_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">10</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="cbox_launcher_icon_colouring">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="margin_top">7</property>
-                    <property name="active">1</property>
-                    <property name="entry_text_column">0</property>
-                    <property name="id_column">1</property>
-                    <items>
-                      <item translatable="yes">Backlight Always On</item>
-                      <item translatable="yes">Backlight Toggles</item>
-                      <item translatable="yes">Backlight Always Off</item>
-                      <item translatable="yes">Edge Illumination Toggles</item>
-                      <item translatable="yes">Backlight and Edge Illumination Toggles</item>
-                    </items>
-                    <signal name="changed" handler="on_cbox_launcher_icon_colouring_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">11</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_icon_size">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="margin_right">5</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Icon size:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">10</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_icon_colouring">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="margin_right">5</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Icon colouring:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">11</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_show_desktop_icon">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Show a "Show Desktop" button on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher</property>
-                    <property name="margin_right">5</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">"Show desktop" icon:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">12</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="sw_launcher_show_desktop">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="tooltip_markup" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
-                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
+                    <property name="tooltip_markup" translatable="yes">Enable launcher transparency?</property>
+                    <property name="tooltip_text" translatable="yes">Enable launcher transparency?</property>
                     <property name="halign">start</property>
                     <property name="margin_left">1</property>
                     <property name="margin_top">7</property>
-                    <signal name="notify::active" handler="on_sw_launcher_show_desktop_active_notify" swapped="no"/>
+                    <signal name="notify::active" handler="on_sw_launcher_transparent_active_notify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">12</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid" id="grid_launcher_color">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkRadioButton" id="radio_launcher_color_cham">
-                        <property name="label" translatable="yes">Based on wallpaper</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_markup" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
-                        <property name="tooltip_text" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
-                        <property name="margin_top">7</property>
-                        <property name="xalign">0</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkGrid" id="grid_launcher_custom_colour">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkRadioButton" id="radio_launcher_color_cus">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="has_tooltip">True</property>
-                            <property name="tooltip_markup" translatable="yes">If selected, the launcher will be the colour chosen by the user</property>
-                            <property name="tooltip_text" translatable="yes">If selected, the launcher will be the colour chosen by the user</property>
-                            <property name="xalign">0</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radio_launcher_color_cham</property>
-                            <signal name="toggled" handler="on_radio_launcher_color_cus_toggled" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkColorButton" id="color_launcher_color_cus">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="halign">start</property>
-                            <property name="margin_left">4</property>
-                            <property name="margin_top">1</property>
-                            <signal name="color-set" handler="on_color_launcher_color_cus_color_set" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="l_custom_colour">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Custom:</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">8</property>
-                    <property name="width">1</property>
-                    <property name="height">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScale" id="sc_launcher_transparency">
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">How transparent should the launcher be?</property>
-                    <property name="tooltip_text" translatable="yes">How transparent should the launcher be?</property>
-                    <property name="margin_left">3</property>
-                    <property name="margin_top">18</property>
-                    <property name="adjustment">adj_launcher_transparency</property>
-                    <property name="inverted">True</property>
-                    <property name="digits">2</property>
-                    <property name="draw_value">False</property>
-                    <signal name="value-changed" handler="on_sc_launcher_transparency_value_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -671,22 +371,113 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScale" id="sc_launcher_transparency">
+                    <property name="width_request">200</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">How transparent should the launcher be?</property>
+                    <property name="tooltip_text" translatable="yes">How transparent should the launcher be?</property>
+                    <property name="margin_left">3</property>
+                    <property name="margin_top">18</property>
+                    <property name="adjustment">adj_launcher_transparency</property>
+                    <property name="inverted">True</property>
+                    <property name="digits">2</property>
+                    <property name="draw_value">False</property>
+                    <signal name="value-changed" handler="on_sc_launcher_transparency_value_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_launcher_visibility_empty">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_launcher_visibility">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the locations which the will launcher visible </property>
+                    <property name="tooltip_text" translatable="yes">Select the locations which the will launcher visible </property>
+                    <property name="margin_right">7</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Visibility:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_launcher_colour_box_empty">
+                    <property name="width_request">150</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">5</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSwitch" id="sw_launcher_transparent">
+                  <object class="GtkLabel" id="l_launcher_colour">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the option for colouring the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select the option for colouring the launcher</property>
+                    <property name="margin_left">1</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Colour:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="radio_launcher_color_cham">
+                    <property name="label" translatable="yes">Based on wallpaper</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable launcher transparency?</property>
-                    <property name="tooltip_text" translatable="yes">Enable launcher transparency?</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">1</property>
+                    <property name="tooltip_markup" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
+                    <property name="tooltip_text" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
                     <property name="margin_top">7</property>
-                    <signal name="notify::active" handler="on_sw_launcher_transparent_active_notify" swapped="no"/>
+                    <property name="xalign">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radio_launcher_color_cus</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -696,21 +487,96 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_transparent_switch">
+                  <object class="GtkRadioButton" id="radio_launcher_visibility_primary">
+                    <property name="label" translatable="yes">Primary desktop</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable launcher transparency?</property>
-                    <property name="tooltip_text" translatable="yes">Enable launcher transparency?</property>
-                    <property name="margin_right">7</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="ypad">4</property>
-                    <property name="label" translatable="yes">Launcher transparency:</property>
+                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on the primary desktop</property>
+                    <property name="tooltip_text" translatable="yes">If selected, the launcher is visible on the primary desktop</property>
+                    <property name="xalign">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radio_launcher_visibility_all</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="radio_launcher_visibility_all">
+                    <property name="label" translatable="yes">All desktops</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on all desktops</property>
+                    <property name="tooltip_text" translatable="yes">If selected, the launcher is visible on all desktops</property>
+                    <property name="margin_top">7</property>
+                    <property name="xalign">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_radio_launcher_visibility_all_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid_launcher_custom_colour">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkRadioButton" id="radio_launcher_color_cus">
+                        <property name="label" translatable="yes">Custom:</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip_markup" translatable="yes">If selected, the launcher will be the colour chosen by the user</property>
+                        <property name="tooltip_text" translatable="yes">If selected, the launcher will be the colour chosen by the user</property>
+                        <property name="xalign">0</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_radio_launcher_color_cus_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="color_launcher_color_cus">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="halign">start</property>
+                        <property name="margin_left">4</property>
+                        <property name="margin_top">1</property>
+                        <property name="color">#000000000000</property>
+                        <property name="rgba">rgb(0,0,0)</property>
+                        <signal name="color-set" handler="on_color_launcher_color_cus_color_set" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">5</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -719,7 +585,218 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grid_launcher_items">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">6</property>
+                <child>
+                  <object class="GtkLabel" id="l_show_desktop_icon">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a &amp;quot;Show Desktop&amp;quot; button on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher</property>
+                    <property name="margin_right">5</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">"Show desktop" icon:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="sw_launcher_show_desktop">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a &amp;quot;Show Desktop&amp;quot; button on the launcher?</property>
+                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">1</property>
+                    <property name="margin_top">7</property>
+                    <signal name="notify::active" handler="on_sw_launcher_show_desktop_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">4</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cbox_launcher_icon_colouring">
+                    <property name="width_request">200</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
+                    <property name="margin_top">7</property>
+                    <property name="active">1</property>
+                    <property name="entry_text_column">0</property>
+                    <property name="id_column">1</property>
+                    <items>
+                      <item translatable="yes">For all application icons</item>
+                      <item translatable="yes">Open applications only</item>
+                      <item translatable="yes">No colouring</item>
+                      <item translatable="yes">Coloured edges</item>
+                    </items>
+                    <signal name="changed" handler="on_cbox_launcher_icon_colouring_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_icon_colouring">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
+                    <property name="margin_right">5</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Item backgrounds:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_launcher_icon_size">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="halign">start</property>
+                    <property name="margin_top">7</property>
+                    <property name="invisible_char">•</property>
+                    <property name="invisible_char_set">True</property>
+                    <property name="adjustment">adj_launcher_icon_size</property>
+                    <signal name="value-changed" handler="on_spin_launcher_icon_size_value_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_icon_size">
+                    <property name="width_request">150</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="margin_right">5</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Icon size:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_urgent_animation">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="margin_right">6</property>
+                    <property name="label" translatable="yes">Urgent animation:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cbox_urgent_animation">
+                    <property name="width_request">200</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="entry_text_column">0</property>
+                    <property name="id_column">1</property>
+                    <items>
+                      <item translatable="yes">No animation</item>
+                      <item translatable="yes">Pulse</item>
+                      <item translatable="yes">Wiggle</item>
+                    </items>
+                    <signal name="changed" handler="on_cbox_urgent_animation_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_launch_animation">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="margin_right">6</property>
+                    <property name="label" translatable="yes">Launch animation:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cbox_launch_animation">
+                    <property name="width_request">200</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="entry_text_column">0</property>
+                    <property name="id_column">1</property>
+                    <items>
+                      <item translatable="yes">No animation</item>
+                      <item translatable="yes">Pulse</item>
+                      <item translatable="yes">Blink</item>
+                    </items>
+                    <signal name="changed" handler="on_cbox_launch_animation_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -1313,7 +1390,7 @@
                         <property name="spacing">2</property>
                         <child>
                           <object class="GtkCheckButton" id="check_indicator_datetime">
-                            <property name="label" translatable="yes">Panel clock</property>
+                            <property name="label" translatable="yes">Date &amp; time</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -1404,7 +1481,7 @@
                             </child>
                             <child>
                               <object class="GtkCheckButton" id="check_date">
-                                <property name="label" translatable="yes">Day &amp; month</property>
+                                <property name="label" translatable="yes">Date</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
@@ -1453,6 +1530,7 @@
                                 <property name="has_tooltip">True</property>
                                 <property name="tooltip_markup" translatable="yes">If enabled, the calendar will be visible in the indicator menu.</property>
                                 <property name="tooltip_text" translatable="yes">If enabled, the calendar will be visible in the indicator menu.</property>
+                                <property name="margin_top">6</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
                                 <signal name="notify::active" handler="on_check_calendar_toggled" swapped="no"/>
@@ -1471,7 +1549,6 @@
                                 <property name="halign">start</property>
                                 <property name="margin_left">2</property>
                                 <property name="margin_top">6</property>
-                                <property name="margin_bottom">6</property>
                                 <property name="label" translatable="yes">Show the:</property>
                               </object>
                               <packing>
@@ -1517,7 +1594,7 @@
                         <property name="spacing">2</property>
                         <child>
                           <object class="GtkCheckButton" id="check_indicator_battery">
-                            <property name="label" translatable="yes">Power indicator</property>
+                            <property name="label" translatable="yes">Power</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -1548,7 +1625,6 @@
                                 <property name="receives_default">False</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
-                                <property name="group">radio_power_always</property>
                                 <signal name="notify::active" handler="on_radio_power_charging_toggled" swapped="no"/>
                               </object>
                               <packing>
@@ -1612,7 +1688,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_sound">
-                        <property name="label" translatable="yes">Volume indicator</property>
+                        <property name="label" translatable="yes">Volume</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
@@ -1631,7 +1707,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_bluetooth">
-                        <property name="label" translatable="yes">Bluetooth indicator</property>
+                        <property name="label" translatable="yes">Bluetooth</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
