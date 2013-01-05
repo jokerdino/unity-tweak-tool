@@ -1313,7 +1313,7 @@
                         <property name="spacing">2</property>
                         <child>
                           <object class="GtkCheckButton" id="check_indicator_datetime">
-                            <property name="label" translatable="yes">Show the panel clock</property>
+                            <property name="label" translatable="yes">Panel clock</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -1383,36 +1383,17 @@
                             </child>
                             <child>
                               <object class="GtkCheckButton" id="check_time_seconds">
-                                <property name="label" translatable="yes">Show the seconds</property>
+                                <property name="label" translatable="yes">Seconds</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
                                 <property name="has_tooltip">True</property>
                                 <property name="tooltip_markup" translatable="yes">If enabled, the clock will display seconds.</property>
                                 <property name="tooltip_text" translatable="yes">If enabled, the clock will display seconds.</property>
+                                <property name="margin_left">10</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
                                 <signal name="notify::active" handler="on_check_time_seconds_toggled" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="check_date">
-                                <property name="label" translatable="yes">Show the date</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="receives_default">False</property>
-                                <property name="has_tooltip">True</property>
-                                <property name="tooltip_markup" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
-                                <property name="tooltip_text" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <signal name="notify::active" handler="on_check_date_toggled" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -1422,17 +1403,18 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkCheckButton" id="check_weekday">
-                                <property name="label" translatable="yes">Show the weekday</property>
+                              <object class="GtkCheckButton" id="check_date">
+                                <property name="label" translatable="yes">Day &amp; month</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
                                 <property name="has_tooltip">True</property>
-                                <property name="tooltip_markup" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
-                                <property name="tooltip_text" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
+                                <property name="tooltip_markup" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
+                                <property name="tooltip_text" translatable="yes">If enabled, the month and day will be visible in the panel.</property>
+                                <property name="margin_left">10</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
-                                <signal name="notify::active" handler="on_check_weekday_toggled" swapped="no"/>
+                                <signal name="notify::active" handler="on_check_date_toggled" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -1442,8 +1424,29 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkCheckButton" id="check_weekday">
+                                <property name="label" translatable="yes">Weekday</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">False</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip_markup" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
+                                <property name="tooltip_text" translatable="yes">If enabled, the day of the week will be visible in the panel.</property>
+                                <property name="margin_left">10</property>
+                                <property name="xalign">0</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="notify::active" handler="on_check_weekday_toggled" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">5</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkCheckButton" id="check_calendar">
-                                <property name="label" translatable="yes">Show the calendar</property>
+                                <property name="label" translatable="yes">Calendar</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
@@ -1456,7 +1459,24 @@
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">5</property>
+                                <property name="top_attach">6</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="l_clock">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="halign">start</property>
+                                <property name="margin_left">2</property>
+                                <property name="margin_top">6</property>
+                                <property name="margin_bottom">6</property>
+                                <property name="label" translatable="yes">Show the:</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
                                 <property name="width">1</property>
                                 <property name="height">1</property>
                               </packing>
@@ -1497,7 +1517,7 @@
                         <property name="spacing">2</property>
                         <child>
                           <object class="GtkCheckButton" id="check_indicator_battery">
-                            <property name="label" translatable="yes">Show the power indicator</property>
+                            <property name="label" translatable="yes">Power indicator</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
@@ -1558,7 +1578,7 @@
                             </child>
                             <child>
                               <object class="GtkCheckButton" id="check_indicator_battery_life">
-                                <property name="label" translatable="yes">Show the remaining battery life</property>
+                                <property name="label" translatable="yes">Display remaining battery life</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
@@ -1592,7 +1612,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_sound">
-                        <property name="label" translatable="yes">Show the volume indicator</property>
+                        <property name="label" translatable="yes">Volume indicator</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
@@ -1611,7 +1631,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_bluetooth">
-                        <property name="label" translatable="yes">Show the bluetooth indicator</property>
+                        <property name="label" translatable="yes">Bluetooth indicator</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
@@ -1633,7 +1653,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="check_indicator_username">
-                        <property name="label" translatable="yes">Show the user's real name</property>
+                        <property name="label" translatable="yes">User's real name</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
