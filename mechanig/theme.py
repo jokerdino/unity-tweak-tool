@@ -49,28 +49,30 @@ class Themesettings ():
         self.page = self.ui['nb_themesettings']
         self.page.unparent()
         
-        gtkthemestore=Gtk.ListStore(str)
-        self.ui['tree_gtk'].set_model(gtkthemestore)
+        gtkthemestore=Gtk.ListStore(str,str)
+        self.ui['tree_gtk_theme'].set_model(gtkthemestore)
         self.ui['tree_windows'].set_model(gtkthemestore)
 # Get all themes
         systhdir='/usr/share/themes'
-        systemthemes=[theme for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
+        systemthemes=[(theme.capitalize(),theme) for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
         try:
             uthdir=os.path.expanduser('~/.themes')
-            userthemes=[theme for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
+            userthemes=[(theme.capitalize(),theme) for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
         except OSError as e:
             userthemes=[]
-        for theme in systemthemes+userthemes:
-            gtkthemestore.append([theme])
+        allthemes=systemthemes+userthemes
+        allthemes.sort()
+        for theme in allthemes:
+            gtkthemestore.append(theme)
 
-        iconthemestore=Gtk.ListStore(str)
-        cursorthemestore=Gtk.ListStore(str)
+        iconthemestore=Gtk.ListStore(str,str)
+        cursorthemestore=Gtk.ListStore(str,str)
         self.ui['tree_icon_theme'].set_model(iconthemestore)
         self.ui['tree_cursor_theme'].set_model(cursorthemestore)
         
         sysithdir='/usr/share/icons'
-        systemiconthemes= [os.path.join(sysithdir,theme) for theme in os.listdir(sysithdir) if os.path.isdir(os.path.join(sysithdir,theme))]
-        to_be_hidden=['/usr/share/icons/LoginIcons','/usr/share/icons/unity-webapps-applications']
+        systemiconthemes= [(theme.capitalize(),os.path.join(sysithdir,theme)) for theme in os.listdir(sysithdir) if os.path.isdir(os.path.join(sysithdir,theme))]
+        to_be_hidden=[('Loginicons','/usr/share/icons/LoginIcons'),('Unity-webapps-applications','/usr/share/icons/unity-webapps-applications')]
         for item in to_be_hidden:
             try:
                 systemiconthemes.remove(item)
@@ -78,21 +80,17 @@ class Themesettings ():
                 pass
         try:
             uithdir=os.path.expanduser('~/.icons')
-            usericonthemes=[os.path.join(uithdir,theme) for theme in os.listdir(uithdir) if os.path.isdir(os.path.join(uithdir,theme))]
+            usericonthemes=[(theme.capitalize(),os.path.join(uithdir,theme)) for theme in os.listdir(uithdir) if os.path.isdir(os.path.join(uithdir,theme))]
         except OSError as e:
             usericonthemes=[]
-        for themepath in systemiconthemes+usericonthemes:
-            theme=os.path.split(themepath)[1]
-            iconthemestore.append([theme])
+        allithemes=systemiconthemes+usericonthemes
+        allithemes.sort()
+        for theme,themepath in allithemes:
+            iconthemestore.append([theme,themepath])
             if os.path.isdir(os.path.join(themepath,'cursors')):
-                cursorthemestore.append([theme])
+                cursorthemestore.append([theme,themepath])
 
-# TODO : Find how to get this list.
-# /etc/X11/cursors has some filess. Or do I have to look for 'cursors' under each one in PREFIX /themes?
-#        cursorthemestore=Gtk.ListStore(str)
-#        self.ui[''].set_model(cursorthemestore)
-#        for theme in os.listdir(''):
-
+        self.matchthemes=True
         self.builder.connect_signals(self)
         self.refresh()
 
@@ -137,8 +135,31 @@ class Themesettings ():
 
 #-----BEGIN: Theme settings------
 # System Theme
+# Gtk.Settings
+# gtk-icon-theme-name
+# gtk-cursor-scheme
+# gtk-cursor-theme-name
+# gtk-theme-name
+    def on_tree_gtk_theme_cursor_changed(self,udata=None):
+        cursorthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
+        themepath=cursorthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('gtk-theme',theme)
 
 
+# Icon theme
+    def on_tree_icon_theme_cursor_changed(self,udata=None):
+        cursorthemestore,iter = self.ui['tree_icon_theme'].get_selection().get_selected()
+        themepath=cursorthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('icon-theme',theme)
+
+# Cursor theme
+    def on_tree_cursor_theme_cursor_changed(self,udata=None):
+        cursorthemestore,iter = self.ui['tree_cursor_theme'].get_selection().get_selected()
+        themepath=cursorthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
 #-----Font settings--------
 
     def on_font_default_font_set(self, widget):
