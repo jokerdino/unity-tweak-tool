@@ -321,12 +321,13 @@ class Unitysettings ():
 
         # Default Player
         interested_players = gsettings.sound.get_strv('interested-media-players')
+        preferred_players = gsettings.sound.get_strv('preferred-media-players')
 
         for player in interested_players:
             self.ui['cbox_default_player'].append_text(player.capitalize())
+            if preferred_players[0] in interested_players:
+                self.ui['cbox_default_player'].set_active(interested_players.index(preferred_players[0]))
         del player
-
-        preferred_players = gsettings.sound.get_strv('preferred-media-players')
 
         # ====== Unity Switcher helpers ====== #
 
@@ -466,7 +467,7 @@ class Unitysettings ():
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
 
-        opacity = self.ui['sc_launcher_transparency'].get_value()        
+        opacity = self.ui['sc_launcher_transparency'].get_value()
 
         if widget.get_active():
             self.ui.sensitize(dependants)
@@ -546,7 +547,7 @@ class Unitysettings ():
         gsettings.unityshell.reset('launcher-hide-mode')
         gsettings.unityshell.reset('edge-responsiveness')
         gsettings.unityshell.reset('reveal-trigger')
-        
+
         # Remove "Show Desktop" icon
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
@@ -734,7 +735,7 @@ class Unitysettings ():
     def on_check_date_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-date',
                   self.ui['check_date'].get_active())
-        
+
     def on_check_weekday_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-day',
                   self.ui['check_weekday'].get_active())
