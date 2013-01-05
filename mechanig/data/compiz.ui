@@ -423,6 +423,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_horizontal_desktop">
                     <property name="visible">True</property>
@@ -431,7 +432,6 @@
                     <property name="tooltip_markup" translatable="yes">Select the number of horizontal workspaces</property>
                     <property name="tooltip_text" translatable="yes">Select the number of horizontal workspaces</property>
                     <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Horizontal workspaces:</property>
                   </object>
@@ -450,7 +450,6 @@
                     <property name="tooltip_markup" translatable="yes">Select the number of vertical workspaces</property>
                     <property name="tooltip_text" translatable="yes">Select the number of vertical workspaces</property>
                     <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Vertical workspaces:</property>
                   </object>
@@ -504,7 +503,6 @@
                     <property name="tooltip_text" translatable="yes">Select the outline colour of the current workspace in the overview</property>
                     <property name="margin_left">6</property>
                     <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Current workspace colour:</property>
                   </object>
@@ -596,57 +594,24 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_workspace_misc">
+              <object class="GtkButton" id="b_compiz_workspace_reset">
+                <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
+                <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore default workspace configuration</property>
+                <property name="tooltip_text" translatable="yes">Restore default workspace configuration</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
-                <child>
-                  <object class="GtkLinkButton" id="lb_configure_hot_corner">
-                    <property name="label" translatable="yes">Configure hot corner</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Configure desktop hotcorner behaviour</property>
-                    <property name="tooltip_text" translatable="yes">Configure desktop hotcorner behaviour</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="relief">none</property>
-                    <signal name="activate-link" handler="on_lb_configure_hot_corner_activate_link" object="nb_compizsettings" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="b_compiz_workspace_reset">
-                    <property name="label" translatable="yes">Restore defaults</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_markup" translatable="yes">Restore default workspace configuration</property>
-                    <property name="tooltip_text" translatable="yes">Restore default workspace configuration</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">6</property>
-                    <signal name="clicked" handler="on_b_compiz_workspace_reset_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
+                <signal name="clicked" handler="on_b_compiz_workspace_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
@@ -727,7 +692,7 @@
                         <property name="margin_left">12</property>
                         <property name="margin_right">6</property>
                         <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Window spacing:</property>
+                        <property name="label" translatable="yes">Spacing:</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -862,26 +827,6 @@
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLinkButton" id="lb_configure_hot_corner_windows_spread">
-                <property name="label" translatable="yes">Configure hot corner</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">True</property>
-                <property name="has_tooltip">True</property>
-                <property name="tooltip_markup" translatable="yes">Configure desktop hotcorner behaviour</property>
-                <property name="tooltip_text" translatable="yes">Configure desktop hotcorner behaviour</property>
-                <property name="halign">start</property>
-                <property name="margin_left">12</property>
-                <property name="relief">none</property>
-                <signal name="activate-link" handler="on_lb_configure_hot_corner_windows_spread_activate_link" object="nb_compizsettings" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">4</property>
               </packing>
             </child>
             <child>
