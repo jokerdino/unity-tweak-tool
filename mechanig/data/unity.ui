@@ -808,6 +808,7 @@
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
+                <signal name="clicked" handler="on_b_unity_launcher_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1774,6 +1775,7 @@
                 <property name="margin_left">12</property>
                 <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
+                <signal name="clicked" handler="on_b_unity_panel_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
