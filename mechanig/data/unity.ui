@@ -562,8 +562,6 @@
                         <property name="halign">start</property>
                         <property name="margin_left">4</property>
                         <property name="margin_top">1</property>
-                        <property name="color">#000000000000</property>
-                        <property name="rgba">rgb(0,0,0)</property>
                         <signal name="color-set" handler="on_color_launcher_color_cus_color_set" swapped="no"/>
                       </object>
                       <packing>
@@ -594,6 +592,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">6</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_show_desktop_icon">
                     <property name="visible">True</property>
@@ -622,7 +621,6 @@
                     <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
                     <property name="halign">start</property>
                     <property name="margin_left">1</property>
-                    <property name="margin_top">7</property>
                     <signal name="notify::active" handler="on_sw_launcher_show_desktop_active_notify" swapped="no"/>
                   </object>
                   <packing>
@@ -639,7 +637,6 @@
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
                     <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="margin_top">7</property>
                     <property name="active">1</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
