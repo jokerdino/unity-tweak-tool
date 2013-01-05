@@ -312,6 +312,22 @@ class Unitysettings ():
             self.ui['check_indicator_sound'].set_active(False)
         del show_sound
 
+        show_notifyosd = gsettings.sound.get_boolean('show-notify-osd-on-scroll')
+        if show_notifyosd == True:
+            self.ui['check_scroll_notifyosd'].set_active(True)
+        else:
+            self.ui['check_scroll_notifyosd'].set_active(False)
+        del show_notifyosd
+
+        # Default Player
+        interested_players = gsettings.sound.get_strv('interested-media-players')
+
+        for player in interested_players:
+            self.ui['cbox_default_player'].append_text(player.capitalize())
+        del player
+
+        preferred_players = gsettings.sound.get_strv('preferred-media-players')
+
         # ====== Unity Switcher helpers ====== #
 
         self.ui['check_switchwindows_all_workspaces'].set_active(True if gsettings.unityshell.get_boolean('alt-tab-bias-viewport') is False else False)
@@ -741,6 +757,17 @@ class Unitysettings ():
         else:
             gsettings.sound.set_boolean('visible', False)
 
+    def on_check_scroll_notifyosd_toggled(self, widget, udata = None):
+
+        if widget.get_active():
+            gsettings.sound.set_boolean('show-notify-osd-on-scroll', True)
+        else:
+            gsettings.sound.set_boolean('show-notify-osd-on-scroll', False)
+
+    def on_cbox_default_player_changed(self, widget, udata = None):
+        combobox_text = self.ui['cbox_default_player'].get_active_text()
+        gsettings.sound.set_strv('preferred-media-players', [combobox_text.lower()])
+
     def on_b_unity_panel_reset_clicked(self, widget):
         gsettings.sound.reset('visible')
         gsettings.bluetooth.reset('visible')
@@ -755,6 +782,8 @@ class Unitysettings ():
         gsettings.session.reset('show-real-name-on-panel')
         gsettings.unityshell.reset('panel-opacity-maximized-toggle')
         gsettings.unityshell.reset('panel-opacity')
+        gsettings.sound.reset('preferred-media-players')
+        gsettings.sound.reset('show-notify-osd-on-scroll')
         self.refresh()
 
 #----- END: Panel -----
