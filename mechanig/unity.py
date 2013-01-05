@@ -169,7 +169,6 @@ class Unitysettings ():
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
         self.ui['check_show_available_apps'].set_active(gsettings.lens_apps.get_boolean('display-available-apps'))
 
-
         # ====== Panel Helpers ====== #
 
         self.ui['spin_menu_visible'].set_value(gsettings.unityshell.get_int('menus-discovery-duration'))
@@ -246,7 +245,6 @@ class Unitysettings ():
         del battery_status
         del dependants
 
-
         # Battery life indicator
         battery_life = gsettings.power.get_boolean('show-time')
 
@@ -319,7 +317,7 @@ class Unitysettings ():
             self.ui['check_scroll_notifyosd'].set_active(False)
         del show_notifyosd
 
-        # Default Player
+         # Default Player
         interested_players = gsettings.sound.get_strv('interested-media-players')
         preferred_players = gsettings.sound.get_strv('preferred-media-players')
 
@@ -335,7 +333,6 @@ class Unitysettings ():
         self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop') is False else False)
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
         self.ui['check_autoexposewindows'].set_active(gsettings.unityshell.get_boolean('alt-tab-timeout'))
-
 
         model = self.ui['list_unity_switcher_windows_accelerators']
 
@@ -427,8 +424,6 @@ class Unitysettings ():
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
-
-
 # ===== BEGIN: Unity settings =====
 # ----- BEGIN: Launcher -----
 
@@ -486,7 +481,7 @@ class Unitysettings ():
         gsettings.unityshell.set_double('launcher-opacity', opacity)
 
     def on_radio_launcher_visibility_all_toggled(self, widget, udata = None):
-        if self.ui['radio_launcher_visibility_all'].get_active():
+        if self.ui['radio_launcher_vihsibility_all'].get_active():
             gsettings.unityshell.set_int('num-launchers', 0)
         else:
             gsettings.unityshell.set_int('num-launchers', 1)
