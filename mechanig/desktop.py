@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 #
 # Team:
-#   J Phani Mahesh <phanimahesh@gmail.com> 
-#   Barneedhar (jokerdino) <barneedhar@ubuntu.com> 
+#   J Phani Mahesh <phanimahesh@gmail.com>
+#   Barneedhar (jokerdino) <barneedhar@ubuntu.com>
 #   Amith KK <amithkumaran@gmail.com>
 #   Georgi Karavasilev <motorslav@gmail.com>
 #   Sam Tran <samvtran@gmail.com>
@@ -41,7 +41,7 @@ class Desktopsettings ():
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
-        self.glade = (os.path.join(settings.UI_DIR, 
+        self.glade = (os.path.join(settings.UI_DIR,
                                     'desktop.ui'))
         self.container = container
         self.builder.add_from_file(self.glade)
@@ -56,11 +56,16 @@ class Desktopsettings ():
 #                                Helpers                              #
 #=====================================================================#
     def refresh(self):
-        return True
+        '''Reads the current config and refreshes the displayed values'''
+
+        self.ui['sw_desktop_icon'].set_active(gsettings.background.get_boolean("show-desktop-icons"))
+        self.ui['check_desktop_home'].set_active(gsettings.desktop.get_boolean('home-icon-visible'))
+        self.ui['check_desktop_networkserver'].set_active(gsettings.desktop.get_boolean('network-icon-visible'))
+        self.ui['check_desktop_trash'].set_active(gsettings.desktop.get_boolean('trash-icon-visible'))
+        self.ui['check_desktop_devices'].set_active(gsettings.desktop.get_boolean('volumes-visible'))
 
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
-
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
 # Dont trust glade to pass the objects properly.            |
@@ -69,12 +74,13 @@ class Desktopsettings ():
 # Apologies Gnome devs, but Glade is not our favorite.      |
 #___________________________________________________________/
 
+
 #======== Begin Desktop Settings
     def on_sw_desktop_icon_active_notify(self, widget, udata = None):
-        dependants = ['l_desktop_icons_display', 
-                    'check_desktop_home', 
-                    'check_desktop_networkserver', 
-                    'check_desktop_trash', 
+        dependants = ['l_desktop_icons_display',
+                    'check_desktop_home',
+                    'check_desktop_networkserver',
+                    'check_desktop_trash',
                     'check_desktop_devices']
 
         if widget.get_active():
@@ -86,28 +92,28 @@ class Desktopsettings ():
             gsettings.background.set_boolean("show-desktop-icons", False)
 
     def on_check_desktop_home_toggled(self, widget, udata = None):
-        gsettings.desktop.set_boolean('home-icon-visible', 
+        gsettings.desktop.set_boolean('home-icon-visible',
                                  self.ui['check_desktop_home'].get_active())
 
     def on_check_desktop_networkserver_toggled(self, widget, udata = None):
-        gsettings.desktop.set_boolean('network-icon-visible', 
+        gsettings.desktop.set_boolean('network-icon-visible',
                             self.ui['check_desktop_networkserver'].get_active())
 
     def on_check_desktop_trash_toggled(self, widget, udata = None):
-        gsettings.desktop.set_boolean('trash-icon-visible', 
+        gsettings.desktop.set_boolean('trash-icon-visible',
                             self.ui['check_desktop_trash'].get_active())
 
     def on_check_desktop_devices_toggled(self, widget, udata = None):
-        gsettings.desktop.set_boolean('volumes-visible', 
+        gsettings.desktop.set_boolean('volumes-visible',
                             self.ui['check_desktop_devices'].get_active())
 
-    def on_spin_iconsize_value_changed(self, udata = None):
-        size = self.ui['spin_iconsize'].get_value()
-# TODO : Find where this setting is.
-
-    def on_check_alignment_toggled(self, widget, udata = None):
-        pass
-# TODO : Find where this setting is.
+    def on_b_desktop_settings_reset_clicked(self, widget):
+        gsettings.desktop.reset('show-desktop-icons')
+        gsettings.desktop.reset('home-icon-visible')
+        gsettings.desktop.reset('network-icon-visible')
+        gsettings.desktop.reset('trash-icon-visible')
+        gsettings.desktop.reset('volumes-visible')
+        self.refresh()
 
 if __name__ == '__main__':
 # Fire up the Engines

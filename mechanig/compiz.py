@@ -370,7 +370,6 @@ class Compizsettings ():
             self.ui['color_outline_color'].set_color(gdkcolor)
         del color, valid, gdkcolor
 
-
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -641,6 +640,33 @@ class Compizsettings ():
         gsettings.grid.reset('outline-color')
         gsettings.grid.reset('top-edge-action')
         self.refresh()
+
+
+#-----BEGIN: Hot Corners -----
+
+    def on_switch_hotcorners_active_notify(self, widget, udata = None):
+        dependants = ['cbox_hotcorners_topleft',
+                    'cbox_hotcorners_left',
+                    'cbox_hotcorners_bottomleft',
+                    'cbox_hotcorners_topright',
+                    'cbox_hotcorners_right',
+                    'cbox_hotcorners_bottomright',
+                    'cbox_hotcorners_top',
+                    'cbox_hotcorners_bottom']
+ 
+        if not hasattr(self, 'hotcorners_previous'):
+            self.hotcorners_previous = {}
+ 
+        if widget.get_active():
+            self.ui.sensitize(dependants)
+            for box in self.hotcorners_cboxes:
+                self.ui[box].set_active(self.hotcorners_previous[box])
+ 
+        else:
+            self.ui.unsensitize(dependants)
+            for box in self.hotcorners_cboxes:
+                self.hotcorners_previous[box] = self.hotcorners_cboxes[box][0]
+                self.ui[box].set_active(0)
 
 if __name__ == '__main__':
 # Fire up the Engines
