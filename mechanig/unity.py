@@ -168,6 +168,8 @@ class Unitysettings ():
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
         self.ui['check_show_available_apps'].set_active(gsettings.lens_apps.get_boolean('display-available-apps'))
 
+        # Files Lens
+        self.ui['check_use_locate'].set_active(gsettings.lens_files.get_boolean('use-locate'))
 
         # ====== Panel Helpers ====== #
 
@@ -245,7 +247,6 @@ class Unitysettings ():
         del battery_status
         del dependants
 
-
         # Battery life indicator
         battery_life = gsettings.power.get_boolean('show-time')
 
@@ -311,13 +312,29 @@ class Unitysettings ():
             self.ui['check_indicator_sound'].set_active(False)
         del show_sound
 
+        show_notifyosd = gsettings.sound.get_boolean('show-notify-osd-on-scroll')
+        if show_notifyosd == True:
+            self.ui['check_scroll_notifyosd'].set_active(True)
+        else:
+            self.ui['check_scroll_notifyosd'].set_active(False)
+        del show_notifyosd
+
+         # Default Player
+        interested_players = gsettings.sound.get_strv('interested-media-players')
+        preferred_players = gsettings.sound.get_strv('preferred-media-players')
+
+        for player in interested_players:
+            self.ui['cbox_default_player'].append_text(player.capitalize())
+            if preferred_players[0] in interested_players:
+                self.ui['cbox_default_player'].set_active(interested_players.index(preferred_players[0]))
+        del player
+
         # ====== Unity Switcher helpers ====== #
 
         self.ui['check_switchwindows_all_workspaces'].set_active(True if gsettings.unityshell.get_boolean('alt-tab-bias-viewport') is False else False)
         self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop') is False else False)
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
         self.ui['check_autoexposewindows'].set_active(gsettings.unityshell.get_boolean('alt-tab-timeout'))
-
 
         model = self.ui['list_unity_switcher_windows_accelerators']
 
@@ -409,8 +426,6 @@ class Unitysettings ():
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
-
-
 # ===== BEGIN: Unity settings =====
 # ----- BEGIN: Launcher -----
 
@@ -449,7 +464,7 @@ class Unitysettings ():
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
 
-        opacity = self.ui['sc_launcher_transparency'].get_value()        
+        opacity = self.ui['sc_launcher_transparency'].get_value()
 
         if widget.get_active():
             self.ui.sensitize(dependants)
@@ -529,7 +544,7 @@ class Unitysettings ():
         gsettings.unityshell.reset('launcher-hide-mode')
         gsettings.unityshell.reset('edge-responsiveness')
         gsettings.unityshell.reset('reveal-trigger')
-        
+
         # Remove "Show Desktop" icon
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
@@ -577,6 +592,10 @@ class Unitysettings ():
     def on_check_show_available_apps_toggled(self, widget, udata = None):
         gsettings.lens_apps.set_boolean('display-available-apps',
                             self.ui['check_show_available_apps'].get_active())
+
+    def on_check_use_locate_toggled(self, widget, udata = None):
+        gsettings.lens_files.set_boolean('use-locate',
+                            self.ui['check_use_locate'].get_active())
 
 
     def on_b_unity_dash_reset_clicked(self, widget):
@@ -717,7 +736,7 @@ class Unitysettings ():
     def on_check_date_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-date',
                   self.ui['check_date'].get_active())
-        
+
     def on_check_weekday_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-day',
                   self.ui['check_weekday'].get_active())
@@ -740,6 +759,17 @@ class Unitysettings ():
         else:
             gsettings.sound.set_boolean('visible', False)
 
+    def on_check_scroll_notifyosd_toggled(self, widget, udata = None):
+
+        if widget.get_active():
+            gsettings.sound.set_boolean('show-notify-osd-on-scroll', True)
+        else:
+            gsettings.sound.set_boolean('show-notify-osd-on-scroll', False)
+
+    def on_cbox_default_player_changed(self, widget, udata = None):
+        combobox_text = self.ui['cbox_default_player'].get_active_text()
+        gsettings.sound.set_strv('preferred-media-players', [combobox_text.lower()])
+
     def on_b_unity_panel_reset_clicked(self, widget):
         gsettings.sound.reset('visible')
         gsettings.bluetooth.reset('visible')
@@ -754,6 +784,8 @@ class Unitysettings ():
         gsettings.session.reset('show-real-name-on-panel')
         gsettings.unityshell.reset('panel-opacity-maximized-toggle')
         gsettings.unityshell.reset('panel-opacity')
+        gsettings.sound.reset('preferred-media-players')
+        gsettings.sound.reset('show-notify-osd-on-scroll')
         self.refresh()
 
 #----- END: Panel -----

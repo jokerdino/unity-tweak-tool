@@ -291,15 +291,77 @@ class Compizsettings ():
 
         del model, close_window_key, iter_close_window_key, initiate_key, iter_initiate_key, show_desktop_key, iter_show_desktop_key
 
-        # refreshing workspace settings
+
+        # Animations
+        unminimize_value = gsettings.animation.get_strv('unminimize-effects')
+
+        if unminimize_value == ['animation:None']:
+            self.ui['cbox_unminimize_animation'].set_active(0)
+        elif unminimize_value == ['animation:Random']:
+            self.ui['cbox_unminimize_animation'].set_active(1)
+        elif unminimize_value == ['animation:Curved Fold']:
+            self.ui['cbox_unminimize_animation'].set_active(2)
+        elif unminimize_value == ['animation:Fade']:
+            self.ui['cbox_unminimize_animation'].set_active(3)
+        elif unminimize_value == ['animation:Glide 1']:
+            self.ui['cbox_unminimize_animation'].set_active(4)
+        elif unminimize_value == ['animation:Glide 2']:
+            self.ui['cbox_unminimize_animation'].set_active(5)
+        elif unminimize_value == ['animation:Horizontal Folds']:
+            self.ui['cbox_unminimize_animation'].set_active(6)
+        elif unminimize_value == ['animation:Magic Lamp']:
+            self.ui['cbox_unminimize_animation'].set_active(7)
+        elif unminimize_value == ['animation:Magic Lamp Wavy']:
+            self.ui['cbox_unminimize_animation'].set_active(8)
+        elif unminimize_value == ['animation:Sidekick']:
+            self.ui['cbox_unminimize_animation'].set_active(9)
+        elif unminimize_value == ['animation:Zoom']:
+            self.ui['cbox_unminimize_animation'].set_active(10)
+        else:
+            self.ui['cbox_unminimize_animation'].set_active(0)
+        del unminimize_value
+
+        minimize_value = gsettings.animation.get_strv('minimize-effects')
+
+        if minimize_value == ['animation:None']:
+            self.ui['cbox_minimize_animation'].set_active(0)
+        elif minimize_value == ['animation:Random']:
+            self.ui['cbox_minimize_animation'].set_active(1)
+        elif minimize_value == ['animation:Curved Fold']:
+            self.ui['cbox_minimize_animation'].set_active(2)
+        elif minimize_value == ['animation:Fade']:
+            self.ui['cbox_minimize_animation'].set_active(3)
+        elif minimize_value == ['animation:Glide 1']:
+            self.ui['cbox_minimize_animation'].set_active(4)
+        elif minimize_value == ['animation:Glide 2']:
+            self.ui['cbox_minimize_animation'].set_active(5)
+        elif minimize_value == ['animation:Horizontal Folds']:
+            self.ui['cbox_minimize_animation'].set_active(6)
+        elif minimize_value == ['animation:Magic Lamp']:
+            self.ui['cbox_minimize_animation'].set_active(7)
+        elif minimize_value == ['animation:Magic Lamp Wavy']:
+            self.ui['cbox_minimize_animation'].set_active(8)
+        elif minimize_value == ['animation:Sidekick']:
+            self.ui['cbox_minimize_animation'].set_active(9)
+        elif minimize_value == ['animation:Zoom']:
+            self.ui['cbox_minimize_animation'].set_active(10)
+        else:
+            self.ui['cbox_minimize_animation'].set_active(0)
+        del minimize_value
+
+        # ===== Workspace settings ===== #
 
         hsize = gsettings.core.get_int('hsize')
         vsize = gsettings.core.get_int('vsize')
+        dependants = ['spin_horizontal_desktop',
+                    'spin_vertical_desktop']
 
         if hsize > 1 or vsize > 1:
             self.ui['sw_workspace_switcher'].set_active(True)
+            self.ui.sensitize(dependants)
         else:
             self.ui['sw_workspace_switcher'].set_active(False)
+            self.ui.unsensitize(dependants)
 
         self.ui['spin_horizontal_desktop'].set_value(hsize)
         self.ui['spin_vertical_desktop'].set_value(vsize)
@@ -319,7 +381,7 @@ class Compizsettings ():
 
         del model, expo_key, iter_expo_key
 
-        # refreshing windows spread settings
+        # ===== Windows Spread settings ===== #
 
         plugins = gsettings.core.get_strv('active-plugins')
         if 'scale' in plugins:
@@ -349,7 +411,7 @@ class Compizsettings ():
 
         del model, initiate_key, iter_initiate_key, initiate_all_key, iter_initiate_all_key
 
-        # refreshing window snapping settings
+        # ===== Window Snapping settings ===== #
 
         plugins = gsettings.core.get_strv('active-plugins')
         if 'grid' in plugins:
@@ -458,8 +520,20 @@ class Compizsettings ():
         else:
             gsettings.core.set_string('show-desktop-key', "Disabled")
 
+    #-----General: Animations
+
+    def on_cbox_unminimize_animation_changed(self, widget, udata = None):
+        combobox_text = self.ui['cbox_unminimize_animation'].get_active_text()
+        gsettings.animation.set_strv('unminimize-effects', ['animation:'+combobox_text])
+
+    def on_cbox_minimize_animation_changed(self, widget, udata = None):
+        combobox_text = self.ui['cbox_minimize_animation'].get_active_text()
+        gsettings.animation.set_strv('minimize-effects', ['animation:'+combobox_text])
+
     def on_b_compiz_general_reset_clicked(self, widget):
         gsettings.core.reset('active-plugins')
+        gsettings.animation.reset('unminimize-effects')
+        gsettings.animation.reset('minimize-effects')
         gsettings.zoom.reset('zoom-in-key')
         gsettings.zoom.reset('zoom-out-key')
         gsettings.opengl.reset('texture-filter')
@@ -481,6 +555,10 @@ class Compizsettings ():
 
         if widget.get_active():
             self.ui.sensitize(dependants)
+            gsettings.core.set_int('hsize', 2)
+            gsettings.core.set_int('hsize', 2)
+            self.ui['spin_horizontal_desktop'].set_value(2)
+            self.ui['spin_vertical_desktop'].set_value(2)
 
         else:
             self.ui.unsensitize(dependants)
@@ -517,19 +595,12 @@ class Compizsettings ():
         model.set_value(titer, 1, "Disabled")
         gsettings.expo.set_string('expo-key', "Disabled")
 
-
-    # compiz hotcorner linked button
-    def on_lb_configure_hot_corner_activate_link(self, udata):
-        self.ui['nb_compizsettings'].set_current_page(4)
-
     def on_b_compiz_workspace_reset_clicked(self, widget):
         gsettings.core.reset('hsize')
         gsettings.core.reset('vsize')
         gsettings.expo.reset('selected-color')
         gsettings.expo.reset('expo-key')
         self.refresh()
-
-
 
 #-----BEGIN: Windows Spread -----
 
@@ -593,11 +664,6 @@ class Compizsettings ():
         else:
             gsettings.scale.set_string("initiate-all-key", "Disabled")
 
-    # compiz hotcorner linked button
-
-    def on_lb_configure_hot_corner_windows_spread_activate_link(self, udata):
-        self.ui['nb_compizsettings'].set_current_page(4)
-
     def on_b_compiz_windows_spread_reset_clicked(self, widget):
         gsettings.core.reset('active-plugins')
         gsettings.scale.reset('spacing')
@@ -642,7 +708,7 @@ class Compizsettings ():
         self.refresh()
 
 
-#-----BEGIN: Hot Corners -----
+# ----- BEGIN: Hot Corners -----
 
     def on_switch_hotcorners_active_notify(self, widget, udata = None):
         dependants = ['cbox_hotcorners_topleft',

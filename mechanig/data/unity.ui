@@ -144,8 +144,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
                 <child>
                   <object class="GtkSwitch" id="sw_launcher_hidemode">
                     <property name="visible">True</property>
@@ -193,7 +191,6 @@
                     <property name="tooltip_markup" translatable="yes">The amount of "pressure" required to reveal the launcher with the mouse.</property>
                     <property name="tooltip_text" translatable="yes">The amount of "pressure" required to reveal the launcher with the mouse.</property>
                     <property name="margin_right">7</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Reveal sensitivity:</property>
                   </object>
@@ -214,7 +211,7 @@
                     <property name="tooltip_markup" translatable="yes">How much "pressure" should required to reveal the launcher with the mouse.</property>
                     <property name="tooltip_text" translatable="yes">How much "pressure" should required to reveal the launcher with the mouse.</property>
                     <property name="margin_left">3</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="adjustment">adj_reveal_sensitivity</property>
                     <property name="digits">2</property>
                     <property name="draw_value">False</property>
@@ -316,7 +313,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">12</property>
                 <child>
                   <object class="GtkLabel" id="l_launcher_transparent_switch">
                     <property name="visible">True</property>
@@ -365,7 +361,6 @@
                     <property name="tooltip_markup" translatable="yes">Select the level of the transparency of the launcher</property>
                     <property name="tooltip_text" translatable="yes">Select the level of the transparency of the launcher</property>
                     <property name="margin_right">7</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Transparency level:</property>
                   </object>
@@ -386,7 +381,7 @@
                     <property name="tooltip_markup" translatable="yes">How transparent should the launcher be?</property>
                     <property name="tooltip_text" translatable="yes">How transparent should the launcher be?</property>
                     <property name="margin_left">3</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="adjustment">adj_launcher_transparency</property>
                     <property name="inverted">True</property>
                     <property name="digits">2</property>
@@ -402,6 +397,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_launcher_visibility_empty">
+                    <property name="width_request">156</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -562,8 +558,6 @@
                         <property name="halign">start</property>
                         <property name="margin_left">4</property>
                         <property name="margin_top">1</property>
-                        <property name="color">#000000000000</property>
-                        <property name="rgba">rgb(0,0,0)</property>
                         <signal name="color-set" handler="on_color_launcher_color_cus_color_set" swapped="no"/>
                       </object>
                       <packing>
@@ -593,7 +587,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">6</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_show_desktop_icon">
                     <property name="visible">True</property>
@@ -601,8 +595,7 @@
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Show a &amp;quot;Show Desktop&amp;quot; button on the launcher</property>
                     <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher</property>
-                    <property name="margin_right">5</property>
-                    <property name="margin_top">6</property>
+                    <property name="margin_right">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">"Show desktop" icon:</property>
                   </object>
@@ -622,7 +615,6 @@
                     <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
                     <property name="halign">start</property>
                     <property name="margin_left">1</property>
-                    <property name="margin_top">7</property>
                     <signal name="notify::active" handler="on_sw_launcher_show_desktop_active_notify" swapped="no"/>
                   </object>
                   <packing>
@@ -639,7 +631,6 @@
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
                     <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="margin_top">7</property>
                     <property name="active">1</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
@@ -660,15 +651,15 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_icon_colouring">
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
                     <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
                     <property name="margin_right">5</property>
-                    <property name="margin_top">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Item backgrounds:</property>
+                    <property name="label" translatable="yes">Icon backgrounds:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -738,6 +729,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the animation used for an urgent notification on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select the animation used for an urgent notification on the launcher</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
@@ -773,6 +766,8 @@
                   <object class="GtkComboBoxText" id="cbox_launch_animation">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Select the animation used for launching an application.</property>
+                    <property name="tooltip_text" translatable="yes">Select the animation used for launching an application.</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
@@ -834,11 +829,9 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="grid_unity_dash_blur">
+              <object class="GtkGrid" id="grid_unity_dash_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
-                <property name="margin_top">6</property>
                 <child>
                   <object class="GtkLabel" id="l_dash_blur">
                     <property name="visible">True</property>
@@ -846,15 +839,11 @@
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Enable dash blur?</property>
                     <property name="tooltip_text" translatable="yes">Enable dash blur?</property>
-                    <property name="halign">start</property>
-                    <property name="margin_left">6</property>
+                    <property name="halign">end</property>
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Dash blur</property>
-                    <attributes>
-                      <attribute name="weight" value="bold"/>
-                    </attributes>
+                    <property name="label" translatable="yes">Dash blur:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -871,9 +860,80 @@
                     <property name="tooltip_markup" translatable="yes">Enable dash blur?</property>
                     <property name="tooltip_text" translatable="yes">Enable dash blur?</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">12</property>
                     <property name="margin_top">6</property>
                     <signal name="notify::active" handler="on_sw_dash_blur_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="radio_dash_blur_static">
+                    <property name="label" translatable="yes">Static</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_bottom">6</property>
+                    <property name="xalign">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="radio_dash_blur_smart">
+                    <property name="label" translatable="yes">Active</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="margin_top">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radio_dash_blur_static</property>
+                    <signal name="toggled" handler="on_radio_dash_blur_smart_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_dash_blur_type_empty">
+                    <property name="width_request">150</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_dash_blur_type">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the type of blur in the dash</property>
+                    <property name="tooltip_text" translatable="yes">Select the type of blur in the dash</property>
+                    <property name="halign">end</property>
+                    <property name="margin_left">14</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Blur type:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -883,87 +943,37 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="grid_unity_blur_type">
+                  <object class="GtkSwitch" id="sw_dash_suggestions">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkLabel" id="l_dash_blur_type">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">Select the type of blur in the dash</property>
-                        <property name="tooltip_text" translatable="yes">Select the type of blur in the dash</property>
-                        <property name="halign">start</property>
-                        <property name="margin_left">14</property>
-                        <property name="margin_right">6</property>
-                        <property name="margin_top">6</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Blur type:</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="radio_dash_blur_smart">
-                        <property name="label" translatable="yes">Active</property>
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">False</property>
-                        <property name="receives_default">False</property>
-                        <property name="margin_right">1</property>
-                        <property name="margin_top">6</property>
-                        <property name="xalign">0</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="group">radio_dash_blur_static</property>
-                        <signal name="toggled" handler="on_radio_dash_blur_smart_toggled" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="radio_dash_blur_static">
-                        <property name="label" translatable="yes">Static</property>
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">False</property>
-                        <property name="receives_default">False</property>
-                        <property name="margin_right">1</property>
-                        <property name="xalign">0</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="l_dash_blur_type_empty">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
+                    <property name="tooltip_text" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
+                    <property name="halign">start</property>
+                    <property name="active">True</property>
+                    <signal name="notify::active" handler="on_sw_dash_suggestions_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_lens_suggestions">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
+                    <property name="tooltip_text" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Online Suggestions:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="top_attach">3</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -987,7 +997,7 @@
                     <property name="halign">start</property>
                     <property name="margin_left">6</property>
                     <property name="margin_top">6</property>
-                    <property name="label" translatable="yes">Applications Lens</property>
+                    <property name="label" translatable="yes">Applications</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                     </attributes>
@@ -1005,8 +1015,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, the Dash displays recently used apps in the Applications lens.</property>
-                    <property name="tooltip_text" translatable="yes">If enabled, the Dash displays recently used apps in the Applications lens.</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, show recently used applications in the Dash.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, show recently used applications in the Dash.</property>
                     <property name="margin_left">12</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -1025,8 +1035,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, the Dash displays applications available for download in the Applications lens.</property>
-                    <property name="tooltip_text" translatable="yes">If enabled, the Dash displays applications available for download in the Applications lens.</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, show applications available for download in the Dash.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, show applications available for download in the Dash.</property>
                     <property name="margin_left">12</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">0</property>
@@ -1044,25 +1054,23 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_unity_suggestions">
+              <object class="GtkGrid" id="grid_files_lens">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">6</property>
+                <property name="margin_top">6</property>
                 <child>
-                  <object class="GtkLabel" id="l_lens_suggestions">
+                  <object class="GtkLabel" id="l_files_lens">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
-                    <property name="tooltip_text" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
+                    <property name="halign">start</property>
                     <property name="margin_left">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Online Suggestions</property>
+                    <property name="margin_right">6</property>
+                    <property name="label" translatable="yes">Files</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                     </attributes>
@@ -1075,16 +1083,18 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSwitch" id="sw_dash_suggestions">
+                  <object class="GtkCheckButton" id="check_use_locate">
+                    <property name="label" translatable="yes">Enable search of your files</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_markup" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
-                    <property name="tooltip_text" translatable="yes">Enable suggestions from Online sources in the Dash?</property>
-                    <property name="halign">start</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, allow searches to find your files that aren't logged.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, allow searches to find your files that aren't logged.</property>
                     <property name="margin_left">12</property>
                     <property name="margin_top">6</property>
-                    <property name="active">True</property>
-                    <signal name="notify::active" handler="on_sw_dash_suggestions_active_notify" swapped="no"/>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_use_locate_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1097,7 +1107,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -1144,11 +1154,9 @@
             <property name="vexpand">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="grid_panel_menu">
+              <object class="GtkGrid" id="grid_panel_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
                 <child>
                   <object class="GtkLabel" id="l_menu_visible">
                     <property name="visible">True</property>
@@ -1178,7 +1186,7 @@
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Transparent panel:</property>
+                    <property name="label" translatable="yes">Transparency:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1198,7 +1206,7 @@
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Panel transparency:</property>
+                    <property name="label" translatable="yes">Transparency level:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1227,6 +1235,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_panel_transparency_empty">
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -1416,7 +1425,7 @@
                             <property name="row_spacing">2</property>
                             <child>
                               <object class="GtkRadioButton" id="radio_12hour">
-                                <property name="label" translatable="yes">Use 12-hour time</property>
+                                <property name="label" translatable="yes">12-hour time</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
@@ -1437,7 +1446,7 @@
                             </child>
                             <child>
                               <object class="GtkRadioButton" id="radio_24hour">
-                                <property name="label" translatable="yes">Use 24-hour time</property>
+                                <property name="label" translatable="yes">24-hour time</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
@@ -1520,6 +1529,22 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkLabel" id="l_clock">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="halign">start</property>
+                                <property name="margin_left">2</property>
+                                <property name="margin_top">6</property>
+                                <property name="label" translatable="yes">Include:</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkCheckButton" id="check_calendar">
                                 <property name="label" translatable="yes">Calendar</property>
                                 <property name="visible">True</property>
@@ -1528,7 +1553,7 @@
                                 <property name="has_tooltip">True</property>
                                 <property name="tooltip_markup" translatable="yes">If enabled, the calendar will be visible in the indicator menu.</property>
                                 <property name="tooltip_text" translatable="yes">If enabled, the calendar will be visible in the indicator menu.</property>
-                                <property name="margin_top">6</property>
+                                <property name="margin_left">10</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
                                 <signal name="notify::active" handler="on_check_calendar_toggled" swapped="no"/>
@@ -1536,22 +1561,6 @@
                               <packing>
                                 <property name="left_attach">0</property>
                                 <property name="top_attach">6</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="l_clock">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="margin_left">2</property>
-                                <property name="margin_top">6</property>
-                                <property name="label" translatable="yes">Show the:</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
                                 <property name="width">1</property>
                                 <property name="height">1</property>
                               </packing>
@@ -1568,6 +1577,28 @@
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="check_indicator_bluetooth">
+                        <property name="label" translatable="yes">Bluetooth</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="receives_default">False</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip_markup" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+                        <property name="tooltip_text" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+                        <property name="halign">start</property>
+                        <property name="valign">start</property>
+                        <property name="margin_left">12</property>
+                        <property name="xalign">0</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="notify::active" handler="on_check_indicator_bluetooth_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
@@ -1685,17 +1716,89 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="check_indicator_sound">
-                        <property name="label" translatable="yes">Volume</property>
+                      <object class="GtkGrid" id="grid_indicator_sound">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="receives_default">False</property>
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="margin_left">12</property>
-                        <property name="xalign">0</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="notify::active" handler="on_check_indicator_sound_toggled" swapped="no"/>
+                        <child>
+                          <object class="GtkCheckButton" id="check_indicator_sound">
+                            <property name="label" translatable="yes">Volume</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">start</property>
+                            <property name="margin_left">12</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="notify::active" handler="on_check_indicator_sound_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkGrid" id="grid_default_players">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_left">23</property>
+                            <child>
+                              <object class="GtkLabel" id="l_default_player">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_right">6</property>
+                                <property name="label" translatable="yes">Default player:</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="cbox_default_player">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="entry_text_column">0</property>
+                                <property name="id_column">1</property>
+                                <signal name="changed" handler="on_cbox_default_player_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="top_attach">0</property>
+                                <property name="width">1</property>
+                                <property name="height">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="check_scroll_notifyosd">
+                            <property name="label" translatable="yes">Notifications when scrolling</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="receives_default">False</property>
+                            <property name="margin_left">20</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_check_scroll_notifyosd_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1704,30 +1807,8 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="check_indicator_bluetooth">
-                        <property name="label" translatable="yes">Bluetooth</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="receives_default">False</property>
-                        <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
-                        <property name="tooltip_text" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="margin_left">12</property>
-                        <property name="xalign">0</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="notify::active" handler="on_check_indicator_bluetooth_toggled" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkCheckButton" id="check_indicator_username">
-                        <property name="label" translatable="yes">User's real name</property>
+                        <property name="label" translatable="yes">Show my name</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
@@ -1744,7 +1825,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -1837,7 +1918,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="grid_box_unity_switcher_windows">
+                      <object class="GtkGrid" id="grid_switcher_settings">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
@@ -1857,7 +1938,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">1</property>
                             <property name="width">1</property>
                             <property name="height">1</property>
                           </packing>
@@ -1876,7 +1957,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
+                            <property name="top_attach">0</property>
                             <property name="width">1</property>
                             <property name="height">1</property>
                           </packing>
