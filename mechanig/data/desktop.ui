@@ -159,7 +159,7 @@
                 <property name="halign">start</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
-                <signal name="clicked" handler="on_b_desktop_settings_reset_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_b_desktop_settings_icons_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

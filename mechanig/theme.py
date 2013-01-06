@@ -162,7 +162,8 @@ class Themesettings ():
 
 
 #-----BEGIN: Theme settings------
-# System Theme
+
+    # System Theme
     def on_treeselection_gtk_theme_changed(self,udata=None):
         gtkthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
         if self.matchthemes:
@@ -179,14 +180,15 @@ class Themesettings ():
         themepath=windowthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.wm.preferences').set_string('theme',theme)
-# Icon theme
+
+    # Icon theme
     def on_tree_icon_theme_cursor_changed(self,udata=None):
         cursorthemestore,iter = self.ui['tree_icon_theme'].get_selection().get_selected()
         themepath=cursorthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('icon-theme',theme)
 
-# Cursor theme
+    # Cursor theme
     def on_tree_cursor_theme_cursor_changed(self,udata=None):
         cursorthemestore,iter = self.ui['tree_cursor_theme'].get_selection().get_selected()
         themepath=cursorthemestore.get_value(iter,1)
@@ -194,7 +196,7 @@ class Themesettings ():
         gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
 
 
-#-----Font settings--------
+#----- Begin: Font settings--------
 
     def on_font_default_font_set(self, widget):
         gsettings.font.set_string('font-name', self.ui['font_default'].get_font_name())
