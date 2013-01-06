@@ -51,9 +51,10 @@
                                 <property name="headers_clickable">False</property>
                                 <property name="search_column">0</property>
                                 <property name="show_expanders">False</property>
-                                <signal name="cursor-changed" handler="on_tree_gtk_theme_cursor_changed" swapped="no"/>
                                 <child internal-child="selection">
-                                  <object class="GtkTreeSelection" id="treeview-selection_gtk_theme"/>
+                                  <object class="GtkTreeSelection" id="treeselection_gtk_theme">
+                                    <signal name="changed" handler="on_treeselection_gtk_theme_changed" swapped="no"/>
+                                  </object>
                                 </child>
                                 <child>
                                   <object class="GtkTreeViewColumn" id="treeviewcolumn_gtk_theme">
@@ -87,7 +88,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <child>
-                              <object class="GtkTreeView" id="tree_windows">
+                              <object class="GtkTreeView" id="tree_window_theme">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="tooltip_markup" translatable="yes">List of Window decoration themes</property>
@@ -95,7 +96,9 @@
                                 <property name="headers_clickable">False</property>
                                 <property name="search_column">0</property>
                                 <child internal-child="selection">
-                                  <object class="GtkTreeSelection" id="treeview-selection_window_theme"/>
+                                  <object class="GtkTreeSelection" id="treeselection_window_theme">
+                                    <signal name="changed" handler="on_treeselection_window_theme_changed" swapped="no"/>
+                                  </object>
                                 </child>
                                 <child>
                                   <object class="GtkTreeViewColumn" id="treeviewcolumn_window_theme">
@@ -175,9 +178,28 @@
               </packing>
             </child>
             <child>
+              <object class="GtkCheckButton" id="check_show_incomplete">
+                <property name="label" translatable="yes">Display incomplete themes</property>
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="has_tooltip">True</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_check_show_incomplete_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkCheckButton" id="check_simultaneous">
                 <property name="label" translatable="yes">Match themes</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="tooltip_markup" translatable="yes">When enabled, the GTK Theme is matched to its default Window decorations.</property>
@@ -186,12 +208,13 @@
                 <property name="relief">half</property>
                 <property name="use_underline">True</property>
                 <property name="xalign">0</property>
+                <property name="active">True</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -209,7 +232,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>

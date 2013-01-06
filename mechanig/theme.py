@@ -49,26 +49,34 @@ class Themesettings ():
         self.page = self.ui['nb_themesettings']
         self.page.unparent()
         
-        gtkthemestore=Gtk.ListStore(str,str)
-        self.ui['tree_gtk_theme'].set_model(gtkthemestore)
-        self.ui['tree_windows'].set_model(gtkthemestore)
+        self.gtkthemestore=Gtk.ListStore(str,str)
+        self.windowthemestore=self.gtkthemestore
+        self.ui['tree_gtk_theme'].set_model(self.gtkthemestore)
+        self.ui['tree_window_theme'].set_model(self.windowthemestore)
 # Get all themes
         systhdir='/usr/share/themes'
-        systemthemes=[(theme.capitalize(),theme) for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
+        systemthemes=[(theme.capitalize(),os.path.join(systhdir,theme)) for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
         try:
             uthdir=os.path.expanduser('~/.themes')
-            userthemes=[(theme.capitalize(),theme) for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
+            userthemes=[(theme.capitalize(),os.path.join(uthdir,theme)) for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
         except OSError as e:
             userthemes=[]
         allthemes=systemthemes+userthemes
         allthemes.sort()
+        required=['gtk-2.0','gtk-3.0','metacity-1']
+        self.gtkthemes={}
+        self.windowthemes={}
         for theme in allthemes:
-            gtkthemestore.append(theme)
+            if all([os.path.isdir(os.path.join(theme[1],req)) for req in required]):
+                iter=self.gtkthemestore.append(theme)
+                themename=os.path.split(theme[1])[1]
+                self.gtkthemes[themename]={"iter":iter,"path":theme[1]}
+                self.windowthemes[themename]={"iter":iter,"path":theme[1]}
 
-        iconthemestore=Gtk.ListStore(str,str)
-        cursorthemestore=Gtk.ListStore(str,str)
-        self.ui['tree_icon_theme'].set_model(iconthemestore)
-        self.ui['tree_cursor_theme'].set_model(cursorthemestore)
+        self.iconthemestore=Gtk.ListStore(str,str)
+        self.cursorthemestore=Gtk.ListStore(str,str)
+        self.ui['tree_icon_theme'].set_model(self.iconthemestore)
+        self.ui['tree_cursor_theme'].set_model(self.cursorthemestore)
         
         sysithdir='/usr/share/icons'
         systemiconthemes= [(theme.capitalize(),os.path.join(sysithdir,theme)) for theme in os.listdir(sysithdir) if os.path.isdir(os.path.join(sysithdir,theme))]
@@ -85,10 +93,15 @@ class Themesettings ():
             usericonthemes=[]
         allithemes=systemiconthemes+usericonthemes
         allithemes.sort()
-        for theme,themepath in allithemes:
-            iconthemestore.append([theme,themepath])
-            if os.path.isdir(os.path.join(themepath,'cursors')):
-                cursorthemestore.append([theme,themepath])
+        self.iconthemes={}
+        self.cursorthemes={}
+        for theme in allithemes:
+            self.iconthemestore.append(theme)
+            themename=os.path.split(theme[1])[1]
+            self.iconthemes[themename]={"iter":iter,"path":theme[1]}
+            if os.path.isdir(os.path.join(theme[1],'cursors')):
+                self.cursorthemestore.append(theme)
+                self.cursorthemes[themename]={"iter":iter,"path":theme[1]}
 
         self.matchthemes=True
         self.refresh()
@@ -101,6 +114,14 @@ class Themesettings ():
 
     def refresh(self):
         # TODO : System theme
+        gtkthemesel=self.ui['tree_gtk_theme'].get_selection()
+        gtktheme=gsettings.gnome('desktop.interface').get_string('gtk-theme')
+        gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
+
+        
+        windowthemesel=self.ui['tree_window_theme'].get_selection()
+        windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
+        windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
         # TODO : Icon theme
 # TODO : Cursor theme
 # Fonts
@@ -135,18 +156,22 @@ class Themesettings ():
 
 #-----BEGIN: Theme settings------
 # System Theme
-# Gtk.Settings
-# gtk-icon-theme-name
-# gtk-cursor-scheme
-# gtk-cursor-theme-name
-# gtk-theme-name
-    def on_tree_gtk_theme_cursor_changed(self,udata=None):
-        cursorthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
-        themepath=cursorthemestore.get_value(iter,1)
+    def on_treeselection_gtk_theme_changed(self,udata=None):
+        gtkthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
+        if self.matchthemes:
+            self.ui['treeselection_window_theme'].select_iter(iter)
+        themepath=gtkthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('gtk-theme',theme)
 
 
+    def on_treeselection_window_theme_changed(self,udata=None):
+        windowthemestore,iter = self.ui['tree_window_theme'].get_selection().get_selected()
+        if self.matchthemes:
+            self.ui['treeselection_gtk_theme'].select_iter(iter)
+        themepath=windowthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.wm.preferences').set_string('theme',theme)
 # Icon theme
     def on_tree_icon_theme_cursor_changed(self,udata=None):
         cursorthemestore,iter = self.ui['tree_icon_theme'].get_selection().get_selected()
@@ -160,6 +185,8 @@ class Themesettings ():
         themepath=cursorthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
+
+
 #-----Font settings--------
 
     def on_font_default_font_set(self, widget):
