@@ -169,6 +169,9 @@ class Unitysettings ():
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
         self.ui['check_show_available_apps'].set_active(gsettings.lens_apps.get_boolean('display-available-apps'))
 
+        # Files Lens
+        self.ui['check_use_locate'].set_active(gsettings.lens_files.get_boolean('use-locate'))
+
         # ====== Panel Helpers ====== #
 
         self.ui['spin_menu_visible'].set_value(gsettings.unityshell.get_int('menus-discovery-duration'))
@@ -590,6 +593,10 @@ class Unitysettings ():
     def on_check_show_available_apps_toggled(self, widget, udata = None):
         gsettings.lens_apps.set_boolean('display-available-apps',
                             self.ui['check_show_available_apps'].get_active())
+
+    def on_check_use_locate_toggled(self, widget, udata = None):
+        gsettings.lens_files.set_boolean('use-locate',
+                            self.ui['check_use_locate'].get_active())
 
 
     def on_b_unity_dash_reset_clicked(self, widget):
