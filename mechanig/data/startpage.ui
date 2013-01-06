@@ -46,11 +46,6 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/appearance-settings-font-dark_36.svg</property>
   </object>
-  <object class="GtkImage" id="i_tool_system">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-theme-dark_36.svg</property>
-  </object>
   <object class="GtkImage" id="i_tool_general">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -75,6 +70,11 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/unity-settings-panel-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_system">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/36/appearance-settings-theme-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_unity_switcher">
     <property name="visible">True</property>
@@ -110,7 +110,7 @@
   <object class="GtkLabel" id="l_tool_workspace_switcher">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="label" translatable="yes">Workspace switcher</property>
+    <property name="label" translatable="yes">Workspaces</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
   </object>

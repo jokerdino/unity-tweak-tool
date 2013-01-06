@@ -484,7 +484,7 @@ class Unitysettings ():
         gsettings.unityshell.set_double('launcher-opacity', opacity)
 
     def on_radio_launcher_visibility_all_toggled(self, widget, udata = None):
-        if self.ui['radio_launcher_vihsibility_all'].get_active():
+        if self.ui['radio_launcher_visibility_all'].get_active():
             gsettings.unityshell.set_int('num-launchers', 0)
         else:
             gsettings.unityshell.set_int('num-launchers', 1)
