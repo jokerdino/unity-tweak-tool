@@ -100,8 +100,12 @@ class Startpage ():
         self.notebook.get_nth_page(3).set_current_page(3)
 
     # desktop settings on start page
-    def on_tool_desktop_clicked(self, udata):
+    def on_tool_desktop_icons_clicked(self, udata):
         self.container['tool_desktopsettings'].set_active(True)
+        self.notebook.get_nth_page(4).set_current_page(0)
+    def on_tool_desktop_security_clicked(self, udata):
+        self.container['tool_desktopsettings'].set_active(True)
+        self.notebook.get_nth_page(4).set_current_page(1)
 
 if __name__ == '__main__':
 # Fire up the Engines

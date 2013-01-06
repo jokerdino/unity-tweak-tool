@@ -10,66 +10,25 @@
   <object class="GtkWindow" id="desktop_window">
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkBox" id="box_desktop_settings">
+      <object class="GtkNotebook" id="nb_desktop_settings">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">12</property>
-        <property name="margin_top">12</property>
-        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="l_desktop_icons">
+          <object class="GtkBox" id="box_desktop_icons">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="has_tooltip">True</property>
-            <property name="halign">start</property>
-            <property name="margin_right">6</property>
-            <property name="xalign">1</property>
-            <property name="label" translatable="yes">Desktop icons</property>
-            <attributes>
-              <attribute name="weight" value="bold"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="sw_desktop_icon">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_tooltip">True</property>
-            <property name="tooltip_markup" translatable="yes">When enabled, the file manager will draw the desktop icons.</property>
-            <property name="tooltip_text" translatable="yes">When enabled, the file manager will draw the desktop icons.</property>
-            <property name="halign">start</property>
-            <property name="margin_left">10</property>
+            <property name="margin_left">12</property>
             <property name="margin_top">6</property>
-            <property name="active">True</property>
-            <signal name="notify::active" handler="on_sw_desktop_icon_active_notify" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox" id="box_desktop_icons_display">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="l_desktop_icons_display">
+              <object class="GtkCheckButton" id="check_desktop_icons">
+                <property name="label" translatable="yes">Desktop icons</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">A list of icons to display on the desktop</property>
-                <property name="tooltip_text" translatable="yes">A list of icons to display on the desktop</property>
-                <property name="halign">start</property>
-                <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Icons to display:</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_check_desktop_icons_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -78,36 +37,109 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_desktop_home">
-                <property name="label" translatable="yes">Home folder</property>
+              <object class="GtkBox" id="box_desktop_icons_display">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">Show a shortcut to "Home Folder" on the desktop</property>
-                <property name="tooltip_text" translatable="yes">Show a shortcut to "Home Folder" on the desktop</property>
-                <property name="margin_left">18</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_desktop_home_toggled" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="check_desktop_networkserver">
-                <property name="label" translatable="yes">Network</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">Show a shortcut to "Network" on the desktop</property>
-                <property name="tooltip_text" translatable="yes">Show a shortcut to "Network" on the desktop</property>
-                <property name="margin_left">18</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_desktop_networkserver_toggled" swapped="no"/>
+                <property name="margin_left">6</property>
+                <property name="margin_top">6</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="l_desktop_icons_display">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">A list of icons to display on the desktop</property>
+                    <property name="tooltip_text" translatable="yes">A list of icons to display on the desktop</property>
+                    <property name="halign">start</property>
+                    <property name="margin_bottom">6</property>
+                    <property name="label" translatable="yes">Icons to display:</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_desktop_home">
+                    <property name="label" translatable="yes">Home folder</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a shortcut to &amp;quot;Home Folder&amp;quot; on the desktop</property>
+                    <property name="tooltip_text" translatable="yes">Show a shortcut to "Home Folder" on the desktop</property>
+                    <property name="margin_left">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_desktop_home_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_desktop_networkserver">
+                    <property name="label" translatable="yes">Network</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a shortcut to &amp;quot;Network&amp;quot; on the desktop</property>
+                    <property name="tooltip_text" translatable="yes">Show a shortcut to "Network" on the desktop</property>
+                    <property name="margin_left">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_desktop_networkserver_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_desktop_trash">
+                    <property name="label" translatable="yes">Rubbish Bin</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a shortcut to &amp;quot;Trash&amp;quot; on the desktop</property>
+                    <property name="tooltip_text" translatable="yes">Show a shortcut to "Trash" on the desktop</property>
+                    <property name="margin_left">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_desktop_trash_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_desktop_devices">
+                    <property name="label" translatable="yes">Devices</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Show a shortcut to &amp;quot;Devices&amp;quot; on the desktop</property>
+                    <property name="tooltip_text" translatable="yes">Show a shortcut to "Devices" on the desktop</property>
+                    <property name="margin_left">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_desktop_devices_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -116,67 +148,165 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_desktop_trash">
-                <property name="label" translatable="yes">Rubbish Bin</property>
+              <object class="GtkButton" id="b_desktop_settings_icons_reset">
+                <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">Show a shortcut to "Trash" on the desktop</property>
-                <property name="tooltip_text" translatable="yes">Show a shortcut to "Trash" on the desktop</property>
-                <property name="margin_left">18</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_desktop_trash_toggled" swapped="no"/>
+                <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default configurations for Desktop icons</property>
+                <property name="tooltip_text" translatable="yes">Restore the default configurations for Desktop icons</property>
+                <property name="halign">start</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+                <signal name="clicked" handler="on_b_desktop_settings_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="check_desktop_devices">
-                <property name="label" translatable="yes">Devices</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">Show a shortcut to "Devices" on the desktop</property>
-                <property name="tooltip_text" translatable="yes">Show a shortcut to "Devices" on the desktop</property>
-                <property name="margin_left">18</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_desktop_devices_toggled" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="position">7</property>
               </packing>
             </child>
           </object>
+        </child>
+        <child type="tab">
+          <object class="GtkLabel" id="l_desktop_icons">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Icons</property>
+          </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="tab_fill">False</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="b_desktop_settings_reset">
-            <property name="label" translatable="yes">Restore defaults</property>
+          <object class="GtkBox" id="box_desktop_security">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_markup" translatable="yes">Restore the default configurations for Desktop icons</property>
-            <property name="tooltip_text" translatable="yes">Restore the default configurations for Desktop icons</property>
-            <property name="halign">start</property>
-            <property name="margin_top">12</property>
-            <property name="margin_bottom">12</property>
-            <signal name="clicked" handler="on_b_desktop_settings_reset_clicked" swapped="no"/>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkGrid" id="grid_lockdown">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <child>
+                  <object class="GtkCheckButton" id="check_security_lock_screen">
+                    <property name="label" translatable="yes">Desktop lock</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, the user can activate the desktop lock screen.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, the user can activate the desktop lock screen.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_security_lock_screen_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_security_logout">
+                    <property name="label" translatable="yes">User log out</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, users can log out of the session they're in.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, users can log out of the session they're in.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_security_logout_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_security_user_switching">
+                    <property name="label" translatable="yes">User switching</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, allow the user to switch to another account while their session is active.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, allow the user to switch to another account while their session is active.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_security_user_switching_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_security_printing">
+                    <property name="label" translatable="yes">Printing</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, allow the access to the system's printers and print setup.</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, allow the access to the system's printers and print setup.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_check_security_printing_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="b_desktop_settings_security_reset">
+                <property name="label" translatable="yes">Restore defaults</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default configurations for Security settings</property>
+                <property name="tooltip_text" translatable="yes">Restore the default configurations for Security settings</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+                <signal name="clicked" handler="on_b_desktop_settings_security_reset_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">7</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child type="tab">
+          <object class="GtkLabel" id="l_security">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Security</property>
+          </object>
+          <packing>
+            <property name="position">1</property>
+            <property name="tab_fill">False</property>
           </packing>
         </child>
       </object>
