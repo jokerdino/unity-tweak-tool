@@ -96,11 +96,11 @@ class Themesettings ():
         self.iconthemes={}
         self.cursorthemes={}
         for theme in allithemes:
-            self.iconthemestore.append(theme)
+            iter=self.iconthemestore.append(theme)
             themename=os.path.split(theme[1])[1]
             self.iconthemes[themename]={"iter":iter,"path":theme[1]}
             if os.path.isdir(os.path.join(theme[1],'cursors')):
-                self.cursorthemestore.append(theme)
+                iter=self.cursorthemestore.append(theme)
                 self.cursorthemes[themename]={"iter":iter,"path":theme[1]}
 
         self.matchthemes=True
@@ -113,7 +113,7 @@ class Themesettings ():
 
 
     def refresh(self):
-        # TODO : System theme
+        # System theme
         gtkthemesel=self.ui['tree_gtk_theme'].get_selection()
         gtktheme=gsettings.gnome('desktop.interface').get_string('gtk-theme')
         gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
@@ -123,6 +123,13 @@ class Themesettings ():
         windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
         windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
         # TODO : Icon theme
+        iconthemesel=self.ui['tree_icon_theme'].get_selection()
+        icontheme=gsettings.gnome('desktop.interface').get_string('icon-theme')
+        iconthemesel.select_iter(self.iconthemes[icontheme]['iter'])
+
+        cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
+        cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
+        cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
 # TODO : Cursor theme
 # Fonts
         self.ui['font_default'].set_font_name(gsettings.font.get_string('font-name'))
