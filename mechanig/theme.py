@@ -44,15 +44,68 @@ class Themesettings ():
         self.glade = (os.path.join(settings.UI_DIR, 
                                     'theme.ui'))
         self.container = container
-# TODO : Use os module to resolve to the full path.
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
         self.page = self.ui['nb_themesettings']
         self.page.unparent()
-        self.builder.connect_signals(self)
+        
+        self.gtkthemestore=Gtk.ListStore(str,str)
+        self.windowthemestore=self.gtkthemestore
+        self.ui['tree_gtk_theme'].set_model(self.gtkthemestore)
+        self.ui['tree_window_theme'].set_model(self.windowthemestore)
+# Get all themes
+        systhdir='/usr/share/themes'
+        systemthemes=[(theme.capitalize(),os.path.join(systhdir,theme)) for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
+        try:
+            uthdir=os.path.expanduser('~/.themes')
+            userthemes=[(theme.capitalize(),os.path.join(uthdir,theme)) for theme in os.listdir(uthdir) if os.path.isdir(os.path.join(uthdir,theme))]
+        except OSError as e:
+            userthemes=[]
+        allthemes=systemthemes+userthemes
+        allthemes.sort()
+        required=['gtk-2.0','gtk-3.0','metacity-1']
+        self.gtkthemes={}
+        self.windowthemes={}
+        for theme in allthemes:
+            if all([os.path.isdir(os.path.join(theme[1],req)) for req in required]):
+                iter=self.gtkthemestore.append(theme)
+                themename=os.path.split(theme[1])[1]
+                self.gtkthemes[themename]={"iter":iter,"path":theme[1]}
+                self.windowthemes[themename]={"iter":iter,"path":theme[1]}
 
-        self.builder.connect_signals(self)
+        self.iconthemestore=Gtk.ListStore(str,str)
+        self.cursorthemestore=Gtk.ListStore(str,str)
+        self.ui['tree_icon_theme'].set_model(self.iconthemestore)
+        self.ui['tree_cursor_theme'].set_model(self.cursorthemestore)
+        
+        sysithdir='/usr/share/icons'
+        systemiconthemes= [(theme.capitalize(),os.path.join(sysithdir,theme)) for theme in os.listdir(sysithdir) if os.path.isdir(os.path.join(sysithdir,theme))]
+        to_be_hidden=[('Loginicons','/usr/share/icons/LoginIcons'),('Unity-webapps-applications','/usr/share/icons/unity-webapps-applications')]
+        for item in to_be_hidden:
+            try:
+                systemiconthemes.remove(item)
+            except ValueError as e:
+                pass
+        try:
+            uithdir=os.path.expanduser('~/.icons')
+            usericonthemes=[(theme.capitalize(),os.path.join(uithdir,theme)) for theme in os.listdir(uithdir) if os.path.isdir(os.path.join(uithdir,theme))]
+        except OSError as e:
+            usericonthemes=[]
+        allithemes=systemiconthemes+usericonthemes
+        allithemes.sort()
+        self.iconthemes={}
+        self.cursorthemes={}
+        for theme in allithemes:
+            iter=self.iconthemestore.append(theme)
+            themename=os.path.split(theme[1])[1]
+            self.iconthemes[themename]={"iter":iter,"path":theme[1]}
+            if os.path.isdir(os.path.join(theme[1],'cursors')):
+                iter=self.cursorthemestore.append(theme)
+                self.cursorthemes[themename]={"iter":iter,"path":theme[1]}
+
+        self.matchthemes=True
         self.refresh()
+        self.builder.connect_signals(self)
 
 #=====================================================================#
 #                                Helpers                              #
@@ -60,6 +113,25 @@ class Themesettings ():
 
 
     def refresh(self):
+        # System theme
+        gtkthemesel=self.ui['tree_gtk_theme'].get_selection()
+        gtktheme=gsettings.gnome('desktop.interface').get_string('gtk-theme')
+        gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
+
+        
+        windowthemesel=self.ui['tree_window_theme'].get_selection()
+        windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
+        windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
+        # TODO : Icon theme
+        iconthemesel=self.ui['tree_icon_theme'].get_selection()
+        icontheme=gsettings.gnome('desktop.interface').get_string('icon-theme')
+        iconthemesel.select_iter(self.iconthemes[icontheme]['iter'])
+
+        cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
+        cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
+        cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
+# TODO : Cursor theme
+# Fonts
         self.ui['font_default'].set_font_name(gsettings.font.get_string('font-name'))
         self.ui['font_document'].set_font_name(gsettings.font.get_string('document-font-name'))
         self.ui['font_monospace'].set_font_name(gsettings.font.get_string('monospace-font-name'))
@@ -89,16 +161,37 @@ class Themesettings ():
 # Do it the dumb way now. BIIIG refactoring needed later.
 
 
-
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
-# Dont trust glade to pass the objects properly.            |
-# Always add required references to init and use them.      |
-# That way, mechanig can resist glade stupidity.            |
-# Apologies Gnome devs, but Glade is not our favorite.      |
-#___________________________________________________________/
-
-
 #-----BEGIN: Theme settings------
+# System Theme
+    def on_treeselection_gtk_theme_changed(self,udata=None):
+        gtkthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
+        if self.matchthemes:
+            self.ui['treeselection_window_theme'].select_iter(iter)
+        themepath=gtkthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('gtk-theme',theme)
+
+
+    def on_treeselection_window_theme_changed(self,udata=None):
+        windowthemestore,iter = self.ui['tree_window_theme'].get_selection().get_selected()
+        if self.matchthemes:
+            self.ui['treeselection_gtk_theme'].select_iter(iter)
+        themepath=windowthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.wm.preferences').set_string('theme',theme)
+# Icon theme
+    def on_tree_icon_theme_cursor_changed(self,udata=None):
+        cursorthemestore,iter = self.ui['tree_icon_theme'].get_selection().get_selected()
+        themepath=cursorthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('icon-theme',theme)
+
+# Cursor theme
+    def on_tree_cursor_theme_cursor_changed(self,udata=None):
+        cursorthemestore,iter = self.ui['tree_cursor_theme'].get_selection().get_selected()
+        themepath=cursorthemestore.get_value(iter,1)
+        theme=os.path.split(themepath)[1]
+        gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
 
 
 #-----Font settings--------
@@ -151,3 +244,4 @@ class Themesettings ():
 if __name__ == '__main__':
 # Fire up the Engines
     Themesettings()
+# FIXME : Guaranteed to fail. Arguments mismatch.

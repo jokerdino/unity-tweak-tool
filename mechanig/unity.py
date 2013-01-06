@@ -44,12 +44,10 @@ class Unitysettings ():
         self.glade = (os.path.join(settings.UI_DIR,
                                     'unity.ui'))
         self.container = container
-# TODO : Use os module to resolve to the full path.
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
         self.page = self.ui['nb_unitysettings']
         self.page.unparent()
-        self.builder.connect_signals(self)
 
         self.ui['sc_reveal_sensitivity'].add_mark(2.0, Gtk.PositionType.BOTTOM, None)
 
@@ -65,6 +63,7 @@ class Unitysettings ():
 
 
         self.refresh()
+        self.builder.connect_signals(self)
 
 #=====================================================================#
 #                                Helpers                              #
@@ -465,7 +464,7 @@ class Unitysettings ():
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
 
-        opacity = self.ui['sc_launcher_transparency'].get_value()        
+        opacity = self.ui['sc_launcher_transparency'].get_value()
 
         if widget.get_active():
             self.ui.sensitize(dependants)
@@ -545,7 +544,7 @@ class Unitysettings ():
         gsettings.unityshell.reset('launcher-hide-mode')
         gsettings.unityshell.reset('edge-responsiveness')
         gsettings.unityshell.reset('reveal-trigger')
-        
+
         # Remove "Show Desktop" icon
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
@@ -737,7 +736,7 @@ class Unitysettings ():
     def on_check_date_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-date',
                   self.ui['check_date'].get_active())
-        
+
     def on_check_weekday_toggled(self, widget, udata = None):
         gsettings.datetime.set_boolean('show-day',
                   self.ui['check_weekday'].get_active())
@@ -987,3 +986,4 @@ class Unitysettings ():
 if __name__ == '__main__':
 # Fire up the Engines
     Unitysettings()
+# FIXME : Guaranteed to fail.

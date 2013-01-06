@@ -46,7 +46,6 @@ class Compizsettings ():
         self.glade = (os.path.join(settings.UI_DIR,
                                     'compiz.ui'))
         self.container = container
-# TODO : Use os module to resolve to the full path.
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
         self.page = self.ui['nb_compizsettings']
@@ -103,8 +102,8 @@ class Compizsettings ():
 
             self.ui[box].set_active(self.hotcorners_cboxes[box][0])
             self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
-        self.builder.connect_signals(self)
         self.refresh()
+        self.builder.connect_signals(self)
 
     def on_draw_hotcorners_draw (self, window, cr):
         self.draw_monitor(window, cr, self._base_hotcorners_surface, self.hotcorners_cboxes, 'hotcorners')
@@ -738,3 +737,4 @@ class Compizsettings ():
 if __name__ == '__main__':
 # Fire up the Engines
     Compizsettings()
+# FIXME : This is guaranteed to fail.
