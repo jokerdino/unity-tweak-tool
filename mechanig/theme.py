@@ -91,8 +91,8 @@ class Themesettings ():
                 cursorthemestore.append([theme,themepath])
 
         self.matchthemes=True
-        self.builder.connect_signals(self)
         self.refresh()
+        self.builder.connect_signals(self)
 
 #=====================================================================#
 #                                Helpers                              #

@@ -102,8 +102,8 @@ class Compizsettings ():
 
             self.ui[box].set_active(self.hotcorners_cboxes[box][0])
             self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
-        self.builder.connect_signals(self)
         self.refresh()
+        self.builder.connect_signals(self)
 
     def on_draw_hotcorners_draw (self, window, cr):
         self.draw_monitor(window, cr, self._base_hotcorners_surface, self.hotcorners_cboxes, 'hotcorners')

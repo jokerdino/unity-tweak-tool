@@ -49,9 +49,8 @@ class Desktopsettings ():
         self.page = self.ui['box_desktop_settings']
         self.page.unparent()
 
-        self.builder.connect_signals(self)
         self.refresh()
-
+        self.builder.connect_signals(self)
 #=====================================================================#
 #                                Helpers                              #
 #=====================================================================#

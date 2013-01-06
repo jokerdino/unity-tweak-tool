@@ -48,7 +48,6 @@ class Unitysettings ():
         self.ui = ui(self.builder)
         self.page = self.ui['nb_unitysettings']
         self.page.unparent()
-        self.builder.connect_signals(self)
 
         self.ui['sc_reveal_sensitivity'].add_mark(2.0, Gtk.PositionType.BOTTOM, None)
 
@@ -64,18 +63,23 @@ class Unitysettings ():
 
 
         self.refresh()
+        self.builder.connect_signals(self)
 
 #=====================================================================#
 #                                Helpers                              #
 #=====================================================================#
     def refresh(self):
         '''Reads the current config and refreshes the displayed values'''
-    # Launcher
+
+        # ====== Launcher Helpers ===== #
+
+        # Auto hide
         dependants = ['radio_reveal_left',
                     'radio_reveal_topleft',
                     'sc_reveal_sensitivity',
                     'l_launcher_reveal',
                     'l_launcher_reveal_sensitivity']
+
         if gsettings.unityshell.get_int('launcher-hide-mode'):
             self.ui['sw_launcher_hidemode'].set_active(True)
             self.ui.sensitize(dependants)
@@ -83,12 +87,13 @@ class Unitysettings ():
             self.ui['sw_launcher_hidemode'].set_active(False)
             self.ui.unsensitize(dependants)
         del dependants
-# Preferring readability over optimisations.
-# I am aware of the redundancy and the better "[not] bool(value)"
+
+        # Reveal
         self.ui['radio_reveal_left'].set_active(True if gsettings.unityshell.get_int('reveal-trigger') is 0 else False)
         self.ui['radio_reveal_topleft'].set_active(True if gsettings.unityshell.get_int('reveal-trigger') is 1 else False)
         self.ui['sc_reveal_sensitivity'].set_value(gsettings.unityshell.get_double('edge-responsiveness'))
 
+        # Transparency
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
         opacity = gsettings.unityshell.get_double('launcher-opacity')
@@ -98,15 +103,17 @@ class Unitysettings ():
         else:
             self.ui['sw_launcher_transparent'].set_active(True)
             self.ui.sensitize(dependants)
-        self.ui['sc_launcher_transparency'].set_value(opacity)
+        self.ui['sc_launcher_transparency'].set_value(0.67)
         del dependants
         del opacity
 
+        # Visibility
         mode = gsettings.unityshell.get_int('num-launchers')
         self.ui['radio_launcher_visibility_all'].set_active(True if mode is 0 else False)
         self.ui['radio_launcher_visibility_primary'].set_active(True if mode is 1 else False)
         del mode
 
+        # Colour
         color = gsettings.unityshell.get_string('background-color')
         if color.endswith('00'):
             self.ui['radio_launcher_color_cham'].set_active(True)
@@ -119,17 +126,20 @@ class Unitysettings ():
             self.ui['color_launcher_color_cus'].set_color(gdkcolor)
         del color, valid, gdkcolor
 
+        # Icons
         self.ui['spin_launcher_icon_size'].set_value(gsettings.unityshell.get_int('icon-size'))
-
         self.ui['cbox_launcher_icon_colouring'].set_active(gsettings.unityshell.get_int('backlight-mode'))
+        self.ui['cbox_urgent_animation'].set_active(gsettings.unityshell.get_int('urgent-animation'))
+        self.ui['cbox_launch_animation'].set_active(gsettings.unityshell.get_int('launch-animation'))
 
+        # Show Desktop
         self.ui['sw_launcher_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
 
 
-        # Unity dash settings
+        # ====== Dash Helpers ===== #
 
+        # Blur
         dash_blur = gsettings.unityshell.get_int('dash-blur-experimental')
-
         dependants = ['radio_dash_blur_smart',
                     'radio_dash_blur_static',
                     'l_dash_blur_type']
@@ -137,33 +147,29 @@ class Unitysettings ():
         if dash_blur == 0:
             self.ui['sw_dash_blur'].set_active(False)
             self.ui.unsensitize(dependants)
-
         elif dash_blur == 1:
             self.ui['sw_dash_blur'].set_active(True)
             self.ui.sensitize(dependants)
             self.ui['radio_dash_blur_static'].set_active(True)
-
         else:
             self.ui['sw_dash_blur'].set_active(True)
             self.ui.sensitize(dependants)
             self.ui['radio_dash_blur_smart'].set_active(True)
-
-
         del dependants
 
+        # Suggestions
         dash_suggestions = gsettings.lenses.get_string('remote-content-search')
-
         if dash_suggestions == 'all':
             self.ui['sw_dash_suggestions'].set_active(True)
-
         else:
             self.ui['sw_dash_suggestions'].set_active(False)
 
+        # Applications Lens
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
         self.ui['check_show_available_apps'].set_active(gsettings.lens_apps.get_boolean('display-available-apps'))
 
 
-        # Refreshing Unity panel settings
+        # ====== Panel Helpers ====== #
 
         self.ui['spin_menu_visible'].set_value(gsettings.unityshell.get_int('menus-discovery-duration'))
 
@@ -182,7 +188,7 @@ class Unitysettings ():
         del dependants
         del opacity
 
-        # Panel opacity check
+        # Panel opacity
         panel_opacity_value = gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle')
         if panel_opacity_value == True:
             self.ui['check_panel_opaque'].set_active(True)
@@ -190,13 +196,14 @@ class Unitysettings ():
             self.ui['check_panel_opaque'].set_active(False)
         del panel_opacity_value
 
-        # Date time indicator check
+        # Date time indicator
         clock_visibility = gsettings.datetime.get_boolean('show-clock')
         dependants = ['radio_12hour',
                     'radio_24hour',
                     'check_date',
                     'check_weekday',
                     'check_calendar',
+                    'l_clock',
                     'check_time_seconds']
 
         if clock_visibility == True:
@@ -208,7 +215,7 @@ class Unitysettings ():
         del clock_visibility
         del dependants
 
-        # User name indicator check
+        # User name indicator
         show_username = gsettings.session.get_boolean('show-real-name-on-panel')
         if show_username == True:
             self.ui['check_indicator_username'].set_active(True)
@@ -216,7 +223,7 @@ class Unitysettings ():
             self.ui['check_indicator_username'].set_active(False)
         del show_username
 
-        # Battery life
+        # Battery status
         battery_status = gsettings.power.get_string('icon-policy')
 
         dependants = ['check_indicator_battery_life',
@@ -239,7 +246,7 @@ class Unitysettings ():
         del dependants
 
 
-        # Battery life indicator check
+        # Battery life indicator
         battery_life = gsettings.power.get_boolean('show-time')
 
         if battery_life == True:
@@ -256,7 +263,7 @@ class Unitysettings ():
             self.ui['radio_24hour'].set_active(True)
         del time_format
 
-        # Seconds check
+        # Seconds
         show_seconds = gsettings.datetime.get_boolean('show-seconds')
         if show_seconds == True:
             self.ui['check_time_seconds'].set_active(True)
@@ -264,7 +271,7 @@ class Unitysettings ():
             self.ui['check_time_seconds'].set_active(False)
         del show_seconds
 
-        # Date check
+        # Date
         show_date = gsettings.datetime.get_boolean('show-date')
         if show_date == True:
             self.ui['check_date'].set_active(True)
@@ -272,7 +279,7 @@ class Unitysettings ():
             self.ui['check_date'].set_active(False)
         del show_date
 
-        # Day check
+        # Day
         show_weekday = gsettings.datetime.get_boolean('show-day')
         if show_weekday == True:
             self.ui['check_weekday'].set_active(True)
@@ -280,7 +287,7 @@ class Unitysettings ():
             self.ui['check_weekday'].set_active(False)
         del show_weekday
 
-        # Calendar check
+        # Calendar
         show_calendar = gsettings.datetime.get_boolean('show-calendar')
         if show_calendar == True:
             self.ui['check_calendar'].set_active(True)
@@ -288,7 +295,7 @@ class Unitysettings ():
             self.ui['check_calendar'].set_active(False)
         del show_calendar
 
-        # Bluetooth check
+        # Bluetooth indicator
         show_bluetooth = gsettings.bluetooth.get_boolean('visible')
         if show_bluetooth == True:
             self.ui['check_indicator_bluetooth'].set_active(True)
@@ -296,7 +303,7 @@ class Unitysettings ():
             self.ui['check_indicator_bluetooth'].set_active(False)
         del show_bluetooth
 
-        # Sound check
+        # Sound indicator
         show_sound = gsettings.sound.get_boolean('visible')
         if show_sound == True:
             self.ui['check_indicator_sound'].set_active(True)
@@ -304,7 +311,8 @@ class Unitysettings ():
             self.ui['check_indicator_sound'].set_active(False)
         del show_sound
 
-        # Refreshing Unity switcher settings
+        # ====== Unity Switcher helpers ====== #
+
         self.ui['check_switchwindows_all_workspaces'].set_active(True if gsettings.unityshell.get_boolean('alt-tab-bias-viewport') is False else False)
         self.ui['check_switcher_showdesktop'].set_active(True if gsettings.unityshell.get_boolean('disable-show-desktop') is False else False)
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
@@ -369,7 +377,7 @@ class Unitysettings ():
         del model, launcher_switcher_forward, iter_launcher_switcher_forward, launcher_switcher_prev, iter_launcher_switcher_prev
 
 
-        # Refreshing Unity additional settings
+        # ====== Unity additional helpers ======= #
 
         self.ui['check_shortcuts_hints_overlay'].set_active(gsettings.unityshell.get_boolean('shortcut-overlay'))
 
@@ -403,8 +411,9 @@ class Unitysettings ():
 
 
 
-#===== BEGIN: Unity settings =====
-#-----BEGIN: Launcher ----------
+# ===== BEGIN: Unity settings =====
+# ----- BEGIN: Launcher -----
+
     def on_sw_launcher_hidemode_active_notify(self, widget, udata = None):
         dependants = ['radio_reveal_left',
                     'radio_reveal_topleft',
@@ -435,10 +444,6 @@ class Unitysettings ():
         slider = self.ui['sc_reveal_sensitivity']
         val = slider.get_value()
         gsettings.unityshell.set_double('edge-responsiveness', val)
-# Two settings possible:
-#        reveal-pressure (int, (1, 1000))
-#        edge-responsiveness (double, (0.2, 8.0))
-# XXX : To be discussed and changed if necessary.
 
     def on_sw_launcher_transparent_active_notify(self, widget, udata = None):
         dependants = ['l_launcher_transparency_scale',
@@ -448,25 +453,19 @@ class Unitysettings ():
 
         if widget.get_active():
             self.ui.sensitize(dependants)
-
             if self.ui['sc_launcher_transparency'].get_value() == 1.0:
                 self.ui['sc_launcher_transparency'].set_value(0.67)
-                gsettings.unityshell.set_double('panel-opacity', 0.33)
-
+                gsettings.unityshell.set_double('launcher-opacity', 0.33)
             else:
                 panel_transparency = self.ui['sc_panel_transparency'].get_value()
                 gsettings.unityshell.set_double('launcher-opacity', opacity)
-
         else:
             self.ui.unsensitize(dependants)
             gsettings.unityshell.set_double('launcher-opacity', 1.00)
 
-# Check adj_launcher_transparency if this misbehaves
-
     def on_sc_launcher_transparency_value_changed(self, widget, udata = None):
         opacity = self.ui['sc_launcher_transparency'].get_value()
         gsettings.unityshell.set_double('launcher-opacity', opacity)
-# Check adj_launcher_transparency if this misbehaves
 
     def on_radio_launcher_visibility_all_toggled(self, widget, udata = None):
         if self.ui['radio_launcher_visibility_all'].get_active():
@@ -498,6 +497,14 @@ class Unitysettings ():
         mode = self.ui['cbox_launcher_icon_colouring'].get_active()
         gsettings.unityshell.set_int('backlight-mode', mode)
 
+    def on_cbox_urgent_animation_changed(self, widget, udata = None):
+        mode = self.ui['cbox_urgent_animation'].get_active()
+        gsettings.unityshell.set_int('urgent-animation', mode)
+
+    def on_cbox_launch_animation_changed(self, widget, udata = None):
+        mode = self.ui['cbox_launch_animation'].get_active()
+        gsettings.unityshell.set_int('launch-animation', mode)
+
     def on_sw_launcher_show_desktop_active_notify(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
@@ -510,10 +517,31 @@ class Unitysettings ():
                 fav.remove(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
 
-# TODO : RESET handler
-# ---------- END Launcher -------
+    def on_b_unity_launcher_reset_clicked(self, widget):
+        gsettings.unityshell.reset('launch-animation')
+        gsettings.unityshell.reset('urgent-animation')
+        gsettings.unityshell.reset('backlight-mode')
+        gsettings.unityshell.reset('icon-size')
+        gsettings.unityshell.reset('background-color')
+        gsettings.unityshell.reset('num-launchers')
+        gsettings.unityshell.reset('panel-opacity')
+        gsettings.unityshell.reset('launcher-opacity')
+        gsettings.unityshell.reset('launcher-hide-mode')
+        gsettings.unityshell.reset('edge-responsiveness')
+        gsettings.unityshell.reset('reveal-trigger')
+        
+        # Remove "Show Desktop" icon
+        fav = gsettings.launcher.get_strv('favorites')
+        desktop = "unity://desktop-icon"
+        if desktop in fav:
+            fav.remove(desktop)
+            gsettings.launcher.set_strv('favorites', fav)
 
-# ---------- BEGIN DASH
+        self.refresh()
+
+# ----- END: Launcher -----
+
+# ----- BEGIN: Dash -----
 
     def on_sw_dash_blur_active_notify(self, widget, udata = None):
         dependants = ['radio_dash_blur_smart',
@@ -558,7 +586,9 @@ class Unitysettings ():
         gsettings.lens_apps.reset('display-available-apps')
         self.refresh()
 
-#-----BEGIN: Panel -----
+#----- END: Dash -------
+
+#----- BEGIN: Panel -----
 
     def on_spin_menu_visible_value_changed(self, widget, udata = None):
 
@@ -650,6 +680,7 @@ class Unitysettings ():
                     'radio_24hour',
                     'check_date',
                     'check_weekday',
+                    'l_clock',
                     'check_calendar',
                     'check_time_seconds']
 
@@ -709,7 +740,25 @@ class Unitysettings ():
         else:
             gsettings.sound.set_boolean('visible', False)
 
-#-----BEGIN: Switcher-----
+    def on_b_unity_panel_reset_clicked(self, widget):
+        gsettings.sound.reset('visible')
+        gsettings.bluetooth.reset('visible')
+        gsettings.datetime.reset('show-calendar')
+        gsettings.datetime.reset('show-day')
+        gsettings.datetime.reset('show-date')
+        gsettings.datetime.reset('show-seconds')
+        gsettings.datetime.reset('show-clock')
+        gsettings.datetime.reset('time-format')
+        gsettings.power.reset('show-time')
+        gsettings.power.reset('icon-policy')
+        gsettings.session.reset('show-real-name-on-panel')
+        gsettings.unityshell.reset('panel-opacity-maximized-toggle')
+        gsettings.unityshell.reset('panel-opacity')
+        self.refresh()
+
+#----- END: Panel -----
+
+#----- BEGIN: Switcher -----
 
     def on_check_switchwindows_all_workspaces_toggled(self, widget, udata = None):
 
@@ -841,9 +890,9 @@ class Unitysettings ():
         gsettings.unityshell.reset('launcher-switcher-prev')
         self.refresh()
 
+#----- END: Switch -----
 
-
-#-----BEGIN: Additional -----
+#----- BEGIN: Additional -----
 
     def on_check_shortcuts_hints_overlay_toggled(self, widget, udata = None):
 
@@ -899,6 +948,8 @@ class Unitysettings ():
         gsettings.unityshell.reset('keyboard-focus')
         gsettings.unityshell.reset('panel-first-menu')
         self.refresh()
+
+#----- END: Additional -----
 
 if __name__ == '__main__':
 # Fire up the Engines
