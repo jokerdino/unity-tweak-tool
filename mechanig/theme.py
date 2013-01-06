@@ -188,6 +188,9 @@ class Themesettings ():
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('icon-theme',theme)
 
+    def on_check_show_incomplete_toggled(self,udata=None):
+        print('To do')
+
     # Cursor theme
     def on_tree_cursor_theme_cursor_changed(self,udata=None):
         cursorthemestore,iter = self.ui['tree_cursor_theme'].get_selection().get_selected()
