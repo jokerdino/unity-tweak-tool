@@ -667,7 +667,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">6</property>
-                    <property name="label" translatable="yes">Desktop</property>
+                    <property name="label" translatable="yes">System</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -700,7 +700,7 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the desktop icons</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the desktop icons</property>
-                    <property name="label" translatable="yes">Icons</property>
+                    <property name="label" translatable="yes">Desktop Icons</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_desktop_icons</property>
                     <signal name="clicked" handler="on_tool_desktop_icons_clicked" swapped="no"/>

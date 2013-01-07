@@ -65,10 +65,10 @@ class Desktopsettings ():
                     'check_desktop_trash',
                     'check_desktop_devices']
         if desktop_icons == True:
-            self.ui['check_desktop_icons'].set_active(True)
+            self.ui['switch_desktop_icons'].set_active(True)
             self.ui.sensitize(dependants)
         else:
-            self.ui['check_desktop_icons'].set_active(False)
+            self.ui['switch_desktop_icons'].set_active(False)
             self.ui.unsensitize(dependants)
         del desktop_icons
         del dependants
@@ -117,10 +117,10 @@ class Desktopsettings ():
                     'cbox_overlay_scrollbar_mode']
 
         if overlay_scrollbars == True:
-            self.ui['check_scrolling_overlay_scrollbars'].set_active(True)
+            self.ui['switch_overlay_scrollbars'].set_active(True)
             self.ui.sensitize(dependants)
         else:
-            self.ui['check_scrolling_overlay_scrollbars'].set_active(False)
+            self.ui['switch_overlay_scrollbars'].set_active(False)
             self.ui.unsensitize(dependants)
         del overlay_scrollbars
         del dependants
@@ -137,7 +137,7 @@ class Desktopsettings ():
             self.ui['cbox_overlay_scrollbar_mode'].set_active(0)
 
         # Touchpad scroll mode
-        scroll_mode = gsettings.touchpad.get_string('scroll-method')
+        scroll_mode = gsettings.touch.get_string('scroll-method')
         if scroll_mode == 'edge-scrolling':
             self.ui['radio_edge'].set_active(True)
         else:
@@ -145,7 +145,7 @@ class Desktopsettings ():
         del scroll_mode
 
         # Natural Scrolling
-        self.ui['check_natural_scrolling'].set_active(gsettings.touchpad.get_boolean('natural-scroll'))
+        self.ui['check_natural_scrolling'].set_active(gsettings.touch.get_boolean('natural-scroll'))
 
 
 # TODO : Find a clever way or set each one manually.
@@ -160,17 +160,17 @@ class Desktopsettings ():
 
 
 #======== Begin Desktop Icons Settings
-    def on_check_desktop_icons_toggled(self, widget, udata = None):
+
+    def on_switch_desktop_icons_active_notify(self, widget, udata = None):
         dependants = ['l_desktop_icons_display',
                     'check_desktop_home',
                     'check_desktop_networkserver',
                     'check_desktop_trash',
                     'check_desktop_devices']
 
-        if self.ui['check_desktop_icons'].get_active() == True:
+        if self.ui['switch_desktop_icons'].get_active():
             gsettings.background.set_boolean("show-desktop-icons", True)
             self.ui.sensitize(dependants)
-
         else:
             self.ui.unsensitize(dependants)
             gsettings.background.set_boolean("show-desktop-icons", False)
@@ -237,10 +237,10 @@ class Desktopsettings ():
 
 #======== Begin Desktop Scrolling Settings
 
-    def on_check_scrolling_overlay_scrollbars_toggled(self, widget, udata = None):
+    def on_switch_overlay_scrollbars_active_notify(self, widget, udata = None):
         dependants = ['l_overlay_scrollbar_mode',
                     'cbox_overlay_scrollbar_mode']
-        if self.ui['check_scrolling_overlay_scrollbars'].get_active() == True :
+        if self.ui['switch_overlay_scrollbars'].get_active() == True :
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
             self.ui.sensitize(dependants)
         else:
@@ -254,29 +254,35 @@ class Desktopsettings ():
         elif mode == 1:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-pointer')
         elif mode == 2:
-            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-pointer')
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-touch')
         else:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
 
     def on_radio_edge_toggled(self, button, udata = None):
         mode = self.ui['radio_edge'].get_active()
         if mode == True:
-            gsettings.touchpad.set_string('scroll-method', 'edge-scrolling')
+            gsettings.touch.set_string('scroll-method', 'edge-scrolling')
         else:
-            gsettings.touchpad.set_string('scroll-method', 'two-finger-scrolling')
+            gsettings.touch.set_string('scroll-method', 'two-finger-scrolling')
 
     def on_radio_two_finger_toggled(self, button, udata = None):
         mode = self.ui['radio_two_finger'].get_active()
         if mode == True:
-            gsettings.touchpad.set_string('scroll-method', 'two-finger-scrolling')
+            gsettings.touch.set_string('scroll-method', 'two-finger-scrolling')
         else:
-            gsettings.touchpad.set_string('scroll-method', 'edge-scrolling')
+            gsettings.touch.set_string('scroll-method', 'edge-scrolling')
 
     def on_check_natural_scrolling_toggled(self, widget, udata = None):
         if self.ui['check_scrolling_overlay_scrollbars'].get_active() == True :
             gsettings.touch.set_boolean('natural-scroll', True)
         else:
             gsettings.touch.set_boolean('natural-scroll', False)
+
+    def on_b_settings_scrolling_reset_clicked(self, widget):
+        gsettings.touch.reset('natural-scroll')
+        gsettings.touch.reset('scroll-method')
+        gsettings.scrollbars.rest('scrollbar-mode')
+        self.refresh()
 
 
 if __name__ == '__main__':
