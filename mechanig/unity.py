@@ -714,7 +714,7 @@ class Unitysettings ():
 
         mode = self.ui['radio_12hour'].get_active()
 
-        if mode == 'True':
+        if mode == True:
             gsettings.datetime.set_string('time-format', '24-hour')
         else:
             gsettings.datetime.set_string('time-format', '12-hour')
@@ -723,7 +723,7 @@ class Unitysettings ():
 
         mode = self.ui['radio_24hour'].get_active()
 
-        if mode == 'True':
+        if mode == True:
             gsettings.datetime.set_string('time-format', '12-hour')
         else:
             gsettings.datetime.set_string('time-format', '24-hour')

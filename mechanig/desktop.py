@@ -58,7 +58,7 @@ class Desktopsettings ():
         '''Reads the current config and refreshes the displayed values'''
 
         # ===== Icons ===== #
-        desktop_icons = gsettings.background.get_boolean("show-desktop-icons")
+        desktop_icons = gsettings.background.get_boolean('show-desktop-icons')
         dependants = ['l_desktop_icons_display',
                     'check_desktop_home',
                     'check_desktop_networkserver',
@@ -73,33 +73,11 @@ class Desktopsettings ():
         del desktop_icons
         del dependants
 
-        home_icon = gsettings.desktop.get_boolean('home-icon-visible')
-        if home_icon == True:
-            self.ui['check_desktop_home'].set_active(True)
-        else:
-            self.ui['check_desktop_icons'].set_active(False)
-        del home_icon
+        self.ui['check_desktop_home'].set_active(gsettings.desktop.get_boolean('home-icon-visible'))
+        self.ui['check_desktop_networkserver'].set_active(gsettings.desktop.get_boolean('network-icon-visible'))
+        self.ui['check_desktop_trash'].set_active(gsettings.desktop.get_boolean('trash-icon-visible'))
+        self.ui['check_desktop_devices'].set_active(gsettings.desktop.get_boolean('volumes-visible'))
 
-        network_icon = gsettings.desktop.get_boolean('network-icon-visible')
-        if network_icon == True:
-            self.ui['check_desktop_networkserver'].set_active(True)
-        else:
-            self.ui['check_desktop_networkserver'].set_active(False)
-        del network_icon
-
-        trash_icon = gsettings.desktop.get_boolean('trash-icon-visible')
-        if trash_icon == True:
-            self.ui['check_desktop_trash'].set_active(True)
-        else:
-            self.ui['check_desktop_trash'].set_active(False)
-        del trash_icon
-
-        devices = gsettings.desktop.get_boolean('volumes-visible')
-        if devices == True:
-            self.ui['check_desktop_devices'].set_active(True)
-        else:
-            self.ui['check_desktop_devices'].set_active(False)
-        del devices
 
         # ===== Security ===== #
 
@@ -131,6 +109,43 @@ class Desktopsettings ():
             self.ui['check_security_user_switching'].set_active(True)
         del user_switching
 
+        # ===== Scrolling ===== #
+
+        # Scrollbars
+        overlay_scrollbars = gsettings.interface.get_boolean('ubuntu-overlay-scrollbars')
+        dependants = ['l_overlay_scrollbar_mode',
+                    'cbox_overlay_scrollbar_mode']
+
+        if overlay_scrollbars == True:
+            self.ui['check_scrolling_overlay_scrollbars'].set_active(True)
+            self.ui.sensitize(dependants)
+        else:
+            self.ui['check_scrolling_overlay_scrollbars'].set_active(False)
+            self.ui.unsensitize(dependants)
+        del overlay_scrollbars
+        del dependants
+    
+        # Scrollbar mode
+        scrollbar_mode = gsettings.scrollbars.get_strv('scrollbar-mode')
+        if scrollbar_mode == 'overlay-auto':
+            self.ui['cbox_overlay_scrollbar_mode'].set_active(0)
+        elif scrollbar_mode == 'overlay-pointer':
+            self.ui['cbox_overlay_scrollbar_mode'].set_active(1)
+        elif scrollbar_mode == 'overlay-touch':
+            self.ui['cbox_overlay_scrollbar_mode'].set_active(2)
+        else:
+            self.ui['cbox_overlay_scrollbar_mode'].set_active(0)
+
+        # Touchpad scroll mode
+        scroll_mode = gsettings.touchpad.get_string('scroll-method')
+        if scroll_mode == 'edge-scrolling':
+            self.ui['radio_edge'].set_active(True)
+        else:
+            self.ui['radio_two_finger'].set_active(True)
+        del scroll_mode
+
+        # Natural Scrolling
+        self.ui['check_natural_scrolling'].set_active(gsettings.touchpad.get_boolean('natural-scroll'))
 
 
 # TODO : Find a clever way or set each one manually.
@@ -219,6 +234,50 @@ class Desktopsettings ():
         gsettings.lockdown.reset('disable-print-setup')
         gsettings.lockdown.reset('disable-user-switching')
         self.refresh()
+
+#======== Begin Desktop Scrolling Settings
+
+    def on_check_scrolling_overlay_scrollbars_toggled(self, widget, udata = None):
+        dependants = ['l_overlay_scrollbar_mode',
+                    'cbox_overlay_scrollbar_mode']
+        if self.ui['check_scrolling_overlay_scrollbars'].get_active() == True :
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
+            self.ui.sensitize(dependants)
+        else:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'normal')
+            self.ui.unsensitize(dependants)
+
+    def on_cbox_overlay_scrollbar_mode_changed(self, widget, udata = None):
+        mode = self.ui['cbox_overlay_scrollbar_mode'].get_active()
+        if mode == 0:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
+        elif mode == 1:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-pointer')
+        elif mode == 2:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-pointer')
+        else:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
+
+    def on_radio_edge_toggled(self, button, udata = None):
+        mode = self.ui['radio_edge'].get_active()
+        if mode == True:
+            gsettings.touchpad.set_string('scroll-method', 'edge-scrolling')
+        else:
+            gsettings.touchpad.set_string('scroll-method', 'two-finger-scrolling')
+
+    def on_radio_two_finger_toggled(self, button, udata = None):
+        mode = self.ui['radio_two_finger'].get_active()
+        if mode == True:
+            gsettings.touchpad.set_string('scroll-method', 'two-finger-scrolling')
+        else:
+            gsettings.touchpad.set_string('scroll-method', 'edge-scrolling')
+
+    def on_check_natural_scrolling_toggled(self, widget, udata = None):
+        if self.ui['check_scrolling_overlay_scrollbars'].get_active() == True :
+            gsettings.touch.set_boolean('natural-scroll', True)
+        else:
+            gsettings.touch.set_boolean('natural-scroll', False)
+
 
 if __name__ == '__main__':
 # Fire up the Engines
