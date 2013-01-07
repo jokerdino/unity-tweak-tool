@@ -639,7 +639,7 @@
                       <item translatable="yes">Open applications only</item>
                       <item translatable="yes">No colouring</item>
                       <item translatable="yes">Coloured edges</item>
-                      <item translatable="yes">Coloured per workspace</item>
+                      <item translatable="yes">Alternated for each workspace</item>
                     </items>
                     <signal name="changed" handler="on_cbox_launcher_icon_colouring_changed" swapped="no"/>
                   </object>
