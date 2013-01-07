@@ -5,7 +5,8 @@
   <object class="GtkAction" id="a_tool_compiz_switcher"/>
   <object class="GtkAction" id="a_tool_cursors"/>
   <object class="GtkAction" id="a_tool_dash"/>
-  <object class="GtkAction" id="a_tool_desktop"/>
+  <object class="GtkAction" id="a_tool_desktop_icons"/>
+  <object class="GtkAction" id="a_tool_desktop_security"/>
   <object class="GtkAction" id="a_tool_fonts"/>
   <object class="GtkAction" id="a_tool_general"/>
   <object class="GtkAction" id="a_tool_hotcorners"/>
@@ -16,6 +17,11 @@
   <object class="GtkAction" id="a_tool_unity_switcher"/>
   <object class="GtkAction" id="a_tool_window_snapping"/>
   <object class="GtkAction" id="a_tool_window_spread"/>
+  <object class="GtkImage" id="i_tool_window_spread">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_additional">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -36,10 +42,15 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/unity-settings-dash-dark_36.svg</property>
   </object>
-  <object class="GtkImage" id="i_tool_desktop">
+  <object class="GtkImage" id="i_tool_desktop_icons">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/desktop-settings-icons-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_desktop_security">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/36/desktop-settings-security-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_fonts">
     <property name="visible">True</property>
@@ -85,11 +96,6 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/wm-settings-window-snapping-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_window_spread">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
   </object>
   <object class="GtkLabel" id="l_tool_windows_snapping">
     <property name="width_request">70</property>
@@ -680,9 +686,9 @@
                 <property name="show_arrow">False</property>
                 <property name="icon_size">5</property>
                 <child>
-                  <object class="GtkToolButton" id="tool_desktop">
+                  <object class="GtkToolButton" id="tool_desktop_icons">
                     <property name="use_action_appearance">False</property>
-                    <property name="related_action">a_tool_desktop</property>
+                    <property name="related_action">a_tool_desktop_icons</property>
                     <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -690,8 +696,25 @@
                     <property name="tooltip_text" translatable="yes">Show the settings for the desktop icons</property>
                     <property name="label" translatable="yes">Icons</property>
                     <property name="use_underline">True</property>
-                    <property name="icon_widget">i_tool_desktop</property>
-                    <signal name="clicked" handler="on_tool_desktop_clicked" swapped="no"/>
+                    <property name="icon_widget">i_tool_desktop_icons</property>
+                    <signal name="clicked" handler="on_tool_desktop_icons_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="tool_desktop_security">
+                    <property name="use_action_appearance">False</property>
+                    <property name="related_action">a_tool_desktop_security</property>
+                    <property name="width_request">90</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Security</property>
+                    <property name="use_underline">True</property>
+                    <property name="icon_widget">i_tool_desktop_security</property>
+                    <signal name="clicked" handler="on_tool_desktop_security_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>

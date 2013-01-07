@@ -39,6 +39,7 @@ def color_to_hash(c):
 unityshell = plugin('unityshell')
 desktop = gnome('nautilus.desktop')
 background = gnome('desktop.background')
+lockdown = gnome('desktop.lockdown')
 launcher = unity('Launcher')
 lenses = unity('Lenses')
 lens_apps = unity('ApplicationsLens')
