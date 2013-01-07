@@ -13,6 +13,7 @@
       <object class="GtkNotebook" id="nb_desktop_settings">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_top">4</property>
         <child>
           <object class="GtkBox" id="box_desktop_icons">
             <property name="visible">True</property>
@@ -21,14 +22,36 @@
             <property name="margin_top">6</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkCheckButton" id="check_desktop_icons">
-                <property name="label" translatable="yes">Desktop icons</property>
+              <object class="GtkGrid" id="grid_switch_desktop_icons">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_desktop_icons_toggled" swapped="no"/>
+                <child>
+                  <object class="GtkLabel" id="l_desktop_icon">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_right">6</property>
+                    <property name="label" translatable="yes">Desktop icons:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_desktop_icons">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <signal name="notify::active" handler="on_switch_desktop_icons_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -40,7 +63,7 @@
               <object class="GtkBox" id="box_desktop_icons_display">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
+                <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
                 <property name="orientation">vertical</property>
                 <child>
@@ -62,7 +85,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="check_desktop_home">
-                    <property name="label" translatable="yes">Home folder</property>
+                    <property name="label" translatable="yes">Home Folder</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -173,7 +196,7 @@
           <object class="GtkLabel" id="l_desktop_icons">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Icons</property>
+            <property name="label" translatable="yes">Desktop Icons</property>
           </object>
           <packing>
             <property name="tab_fill">False</property>
@@ -185,10 +208,28 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_lockdown">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">Security settings</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_lockdown">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
+                <property name="margin_left">18</property>
                 <property name="margin_top">6</property>
                 <child>
                   <object class="GtkCheckButton" id="check_security_lock_screen">
@@ -196,6 +237,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">If enabled, the user can activate the desktop lock screen.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, the user can activate the desktop lock screen.</property>
                     <property name="xalign">0</property>
@@ -215,7 +257,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, users can log out of the session they're in.</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, users can log out of the session they&amp;apos;re in.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, users can log out of the session they're in.</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -234,6 +277,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">If enabled, allow the user to switch to another account while their session is active.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, allow the user to switch to another account while their session is active.</property>
                     <property name="xalign">0</property>
@@ -253,7 +297,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
-                    <property name="tooltip_markup" translatable="yes">If enabled, allow the access to the system's printers and print setup.</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, allow the access to the system&amp;apos;s printers and print setup.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, allow the access to the system's printers and print setup.</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -270,7 +315,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -279,6 +324,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
                 <property name="tooltip_markup" translatable="yes">Restore the default configurations for Security settings</property>
                 <property name="tooltip_text" translatable="yes">Restore the default configurations for Security settings</property>
                 <property name="halign">start</property>
@@ -290,7 +336,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -313,21 +359,19 @@
           <object class="GtkBox" id="box_desktop_scrolling">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">12</property>
-            <property name="margin_top">6</property>
             <property name="orientation">vertical</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkCheckButton" id="check_scrolling_overlay_scrollbars">
-                <property name="label" translatable="yes">Overlay scrollbars</property>
+              <object class="GtkLabel" id="l_scrollbars">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">If enabled, overlay scrollbars are on.</property>
-                <property name="tooltip_text" translatable="yes">If enabled, overlay scrollbars are on.</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_check_scrolling_overlay_scrollbars_toggled" swapped="no"/>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">Scrollbars</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -336,13 +380,45 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_overlay_scrollbar_mode">
+              <object class="GtkGrid" id="grid_overlay_scrollbars">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">18</property>
+                <property name="row_spacing">6</property>
+                <child>
+                  <object class="GtkLabel" id="l_overlay_scrollbars">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="margin_right">6</property>
+                    <property name="label" translatable="yes">Overlay scrollbars:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_overlay_scrollbars">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <signal name="notify::active" handler="on_switch_overlay_scrollbars_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkComboBoxText" id="cbox_overlay_scrollbar_mode">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
                     <property name="tooltip_text" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
                     <property name="halign">start</property>
@@ -357,7 +433,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -366,13 +442,13 @@
                   <object class="GtkLabel" id="l_overlay_scrollbar_mode">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_left">12</property>
+                    <property name="halign">end</property>
                     <property name="margin_right">6</property>
                     <property name="label" translatable="yes">Behaviour:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -388,30 +464,16 @@
               <object class="GtkGrid" id="grid_touchpad_scrolling">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkLabel" id="l_touchpad_scrolling">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="label" translatable="yes">Touchpads:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
+                <property name="margin_left">12</property>
                 <child>
                   <object class="GtkRadioButton" id="radio_edge">
-                    <property name="label" translatable="yes">Edge scrolling</property>
+                    <property name="label" translatable="yes">Edge</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
                     <property name="tooltip_markup" translatable="yes">If enabled, edge scrolling is active on touchpads.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, edge scrolling is active on touchpads.</property>
-                    <property name="margin_left">12</property>
+                    <property name="margin_left">6</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">radio_two_finger</property>
@@ -426,13 +488,13 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="radio_two_finger">
-                    <property name="label" translatable="yes">Two-finger scrolling</property>
+                    <property name="label" translatable="yes">Two-finger</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
                     <property name="tooltip_markup" translatable="yes">If enabled, two-finger scrolling is active on multitouch touchpads.</property>
                     <property name="tooltip_text" translatable="yes">If enabled, two-finger scrolling is active on multitouch touchpads.</property>
-                    <property name="margin_left">12</property>
+                    <property name="margin_left">6</property>
                     <property name="xalign">0</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
@@ -445,6 +507,44 @@
                     <property name="height">1</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_natural_scrolling">
+                    <property name="label" translatable="yes">Natural scrolling</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">If enabled, scrolling is natural (reversed).</property>
+                    <property name="tooltip_text" translatable="yes">If enabled, scrolling is natural (reversed).</property>
+                    <property name="margin_left">6</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_touch_scrolling">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_bottom">6</property>
+                    <property name="label" translatable="yes">Touch scrolling:</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -453,30 +553,22 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_natural_scrolling">
-                <property name="label" translatable="yes">Natural scrolling</property>
+              <object class="GtkButton" id="b_settings_scrolling_reset">
+                <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">If enabled, scrolling is natural (reversed).</property>
-                <property name="tooltip_text" translatable="yes">If enabled, scrolling is natural (reversed).</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">12</property>
+                <signal name="clicked" handler="on_b_settings_scrolling_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">3</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
             </child>
           </object>
           <packing>

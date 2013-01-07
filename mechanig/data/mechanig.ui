@@ -403,7 +403,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_markup" translatable="yes">Show the desktop settings panel</property>
                 <property name="tooltip_text" translatable="yes">Show the desktop settings panel</property>
-                <property name="label" translatable="yes">Desktop</property>
+                <property name="label" translatable="yes">System</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_desktopsettings</property>
                 <property name="group">tool_startpage</property>
