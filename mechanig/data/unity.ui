@@ -635,10 +635,11 @@
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
-                      <item translatable="yes">For all application icons</item>
+                      <item translatable="yes">All applications</item>
                       <item translatable="yes">Open applications only</item>
                       <item translatable="yes">No colouring</item>
                       <item translatable="yes">Coloured edges</item>
+                      <item translatable="yes">Coloured per workspace</item>
                     </items>
                     <signal name="changed" handler="on_cbox_launcher_icon_colouring_changed" swapped="no"/>
                   </object>

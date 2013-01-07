@@ -132,9 +132,9 @@ class Themesettings ():
         cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
 # TODO : Cursor theme
 # Fonts
-        self.ui['font_default'].set_font_name(gsettings.font.get_string('font-name'))
-        self.ui['font_document'].set_font_name(gsettings.font.get_string('document-font-name'))
-        self.ui['font_monospace'].set_font_name(gsettings.font.get_string('monospace-font-name'))
+        self.ui['font_default'].set_font_name(gsettings.interface.get_string('font-name'))
+        self.ui['font_document'].set_font_name(gsettings.interface.get_string('document-font-name'))
+        self.ui['font_monospace'].set_font_name(gsettings.interface.get_string('monospace-font-name'))
         self.ui['font_window_title'].set_font_name(gsettings.titlefont.get_string('titlebar-font'))
         
         antialiasing = gsettings.antialiasing.get_string('antialiasing')
@@ -155,7 +155,7 @@ class Themesettings ():
         elif hinting == 'full':
             self.ui['cbox_hinting'].set_active(3)
         
-        self.ui['spin_textscaling'].set_value(gsettings.font.get_double('text-scaling-factor'))
+        self.ui['spin_textscaling'].set_value(gsettings.interface.get_double('text-scaling-factor'))
       
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
@@ -202,13 +202,13 @@ class Themesettings ():
 #----- Begin: Font settings--------
 
     def on_font_default_font_set(self, widget):
-        gsettings.font.set_string('font-name', self.ui['font_default'].get_font_name())
+        gsettings.interface.set_string('font-name', self.ui['font_default'].get_font_name())
     
     def on_font_document_font_set(self, widget):
-        gsettings.font.set_string('document-font-name', self.ui['font_document'].get_font_name())
+        gsettings.interface.set_string('document-font-name', self.ui['font_document'].get_font_name())
     
     def on_font_monospace_font_set(self, widget):
-        gsettings.font.set_string('monospace-font-name', self.ui['font_monospace'].get_font_name())
+        gsettings.interface.set_string('monospace-font-name', self.ui['font_monospace'].get_font_name())
         
     def on_font_window_title_font_set(self, widget):
         gsettings.titlefont.set_string('titlebar-font', self.ui['font_window_title'].get_font_name())
@@ -234,16 +234,16 @@ class Themesettings ():
             gsettings.antialiasing.set_string('hinting', "full")
             
     def on_spin_textscaling_value_changed(self, widget):
-        gsettings.font.set_double('text-scaling-factor', self.ui['spin_textscaling'].get_value())
+        gsettings.interface.set_double('text-scaling-factor', self.ui['spin_textscaling'].get_value())
 
     def on_b_theme_font_reset_clicked(self, widget):
-        gsettings.font.reset('font-name')
-        gsettings.font.reset('document-font-name')
-        gsettings.font.reset('monospace-font-name')
+        gsettings.interface.reset('font-name')
+        gsettings.interface.reset('document-font-name')
+        gsettings.interface.reset('monospace-font-name')
         gsettings.titlefont.reset('titlebar-font')
         gsettings.antialiasing.reset('antialiasing')
         gsettings.antialiasing.reset('hinting')
-        gsettings.font.reset('text-scaling-factor')
+        gsettings.interface.reset('text-scaling-factor')
         self.refresh()
         
 if __name__ == '__main__':
