@@ -117,10 +117,10 @@ class Desktopsettings ():
                     'cbox_overlay_scrollbar_mode']
 
         if overlay_scrollbars == True:
-            self.ui['switch_overlay_scrollbars'].set_active(True)
+            self.ui['radio_overlay_scrollbars'].set_active(True)
             self.ui.sensitize(dependants)
         else:
-            self.ui['switch_overlay_scrollbars'].set_active(False)
+            self.ui['radio_legacy_scrollbars'].set_active(False)
             self.ui.unsensitize(dependants)
         del overlay_scrollbars
         del dependants
@@ -237,10 +237,22 @@ class Desktopsettings ():
 
 #======== Begin Desktop Scrolling Settings
 
-    def on_switch_overlay_scrollbars_active_notify(self, widget, udata = None):
+    def on_radio_legacy_scrollbars_toggled(self, button, udata = None):
         dependants = ['l_overlay_scrollbar_mode',
                     'cbox_overlay_scrollbar_mode']
-        if self.ui['switch_overlay_scrollbars'].get_active() == True :
+        mode = self.ui['radio_legacy_scrollbars'].get_active()
+        if mode == True:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'normal')
+            self.ui.unsensitize(dependants)
+        else:
+            gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
+            self.ui.sensitize(dependants)
+
+    def on_radio_overlay_scrollbars_toggled(self, button, udata = None):
+        dependants = ['l_overlay_scrollbar_mode',
+                    'cbox_overlay_scrollbar_mode']
+        mode = self.ui['radio_overlay_scrollbars'].get_active()
+        if mode == True:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
             self.ui.sensitize(dependants)
         else:

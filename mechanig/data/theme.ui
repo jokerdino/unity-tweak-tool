@@ -21,13 +21,32 @@
             <property name="can_focus">False</property>
             <property name="margin_left">12</property>
             <property name="margin_right">12</property>
-            <property name="margin_top">12</property>
-            <property name="margin_bottom">10</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">12</property>
             <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="l_system_theme">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Look &amp; feel</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
             <child>
               <object class="GtkScrolledWindow" id="scrolledwindow_theme_system">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkViewport" id="viewport_theme_system">
@@ -128,13 +147,16 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkToolbar" id="tool_theme_system">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="toolbar_style">icons</property>
                 <property name="icon_size">1</property>
                 <style>
@@ -174,7 +196,24 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_theme_settings">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Settings</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -187,7 +226,7 @@
                 <property name="has_tooltip">True</property>
                 <property name="tooltip_markup" translatable="yes">If enabled, incomplete themes will appear in the lists of themes.</property>
                 <property name="tooltip_text" translatable="yes">If enabled, incomplete themes will appear in the lists of themes.</property>
-                <property name="margin_top">6</property>
+                <property name="margin_left">6</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
                 <signal name="toggled" handler="on_check_show_incomplete_toggled" swapped="no"/>
@@ -195,7 +234,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -207,7 +246,8 @@
                 <property name="receives_default">False</property>
                 <property name="tooltip_markup" translatable="yes">When enabled, the GTK Theme is matched to its default Window decorations.</property>
                 <property name="tooltip_text" translatable="yes">When enabled, the GTK Theme is matched to its default Window decorations.</property>
-                <property name="margin_top">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_bottom">6</property>
                 <property name="relief">half</property>
                 <property name="use_underline">True</property>
                 <property name="xalign">0</property>
@@ -217,7 +257,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">6</property>
               </packing>
             </child>
             <child>
@@ -235,7 +275,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">4</property>
+                <property name="position">7</property>
               </packing>
             </child>
           </object>
@@ -256,13 +296,32 @@
             <property name="can_focus">False</property>
             <property name="margin_left">12</property>
             <property name="margin_right">12</property>
-            <property name="margin_top">12</property>
+            <property name="margin_top">6</property>
             <property name="margin_bottom">12</property>
             <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="l_icon_theme">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Icon themes</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
             <child>
               <object class="GtkScrolledWindow" id="scroll_theme_icon">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="tree_icon_theme">
@@ -270,6 +329,7 @@
                     <property name="can_focus">True</property>
                     <property name="tooltip_markup" translatable="yes">List of icon themes</property>
                     <property name="tooltip_text" translatable="yes">List of icon themes</property>
+                    <property name="headers_visible">False</property>
                     <property name="headers_clickable">False</property>
                     <property name="search_column">0</property>
                     <signal name="cursor-changed" handler="on_tree_icon_theme_cursor_changed" swapped="no"/>
@@ -293,13 +353,15 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkToolbar" id="tool_theme_icon">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="toolbar_style">icons</property>
                 <property name="icon_size">1</property>
                 <style>
@@ -339,7 +401,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -357,7 +419,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
@@ -382,13 +444,32 @@
             <property name="can_focus">False</property>
             <property name="margin_left">12</property>
             <property name="margin_right">12</property>
-            <property name="margin_top">12</property>
+            <property name="margin_top">6</property>
             <property name="margin_bottom">12</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow2">
+              <object class="GtkLabel" id="l_cursors">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Cursor themes</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_cursor_theme">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="tree_cursor_theme">
@@ -396,6 +477,7 @@
                     <property name="can_focus">True</property>
                     <property name="tooltip_markup" translatable="yes">List of cursor themes</property>
                     <property name="tooltip_text" translatable="yes">List of cursor themes</property>
+                    <property name="headers_visible">False</property>
                     <signal name="cursor-changed" handler="on_tree_cursor_theme_cursor_changed" swapped="no"/>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection" id="treeview-selection3"/>
@@ -417,13 +499,15 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkToolbar" id="tool_theme_cursor">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="toolbar_style">icons</property>
                 <property name="icon_size">1</property>
                 <style>
@@ -463,7 +547,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -481,7 +565,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
@@ -506,12 +590,30 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_font_general">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">General</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_font_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">14</property>
-                <property name="margin_top">5</property>
-                <property name="row_spacing">5</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_defaultfont">
                     <property name="visible">True</property>
@@ -520,8 +622,6 @@
                     <property name="tooltip_markup" translatable="yes">Select the default font for all applications.</property>
                     <property name="tooltip_text" translatable="yes">Select the default font for all applications.</property>
                     <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Default font:</property>
                   </object>
@@ -533,179 +633,20 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_textscalingfactor">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
-                    <property name="tooltip_text" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Text scaling factor:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="l_documentfont">
+                    <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip_markup" translatable="yes">Select the default font used for reading documents.</property>
                     <property name="tooltip_text" translatable="yes">Select the default font used for reading documents.</property>
                     <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Document font:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_monospacefont">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the default monospace font.</property>
-                    <property name="tooltip_text" translatable="yes">Select the default monospace font.</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Monospace font:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_windowtitlefont">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the default font for the window titlebar.</property>
-                    <property name="tooltip_text" translatable="yes">Select the default font for the window titlebar.</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Window title font:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_antialiasing">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select tSelect the type of hinting to use when rendering fonts</property>
-                    <property name="tooltip_text" translatable="yes">Select tSelect the type of hinting to use when rendering fonts</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Antialiasing:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_hinting">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the type of hinting to use when rendering fonts</property>
-                    <property name="tooltip_text" translatable="yes">Select the type of hinting to use when rendering fonts</property>
-                    <property name="margin_right">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Hinting:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="cbox_hinting">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="entry_text_column">0</property>
-                    <property name="id_column">1</property>
-                    <items>
-                      <item translatable="yes">None</item>
-                      <item translatable="yes">Slight</item>
-                      <item translatable="yes">Medium</item>
-                      <item translatable="yes">Full</item>
-                    </items>
-                    <signal name="changed" handler="on_cbox_hinting_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="spin_textscaling">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="invisible_char">•</property>
-                    <property name="invisible_char_set">True</property>
-                    <property name="adjustment">adj_textscaling</property>
-                    <property name="digits">2</property>
-                    <signal name="value-changed" handler="on_spin_textscaling_value_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="cbox_antialiasing">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="entry_text_column">0</property>
-                    <property name="id_column">1</property>
-                    <items>
-                      <item translatable="yes">None</item>
-                      <item translatable="yes">Grayscale</item>
-                      <item translatable="yes">RGBA</item>
-                    </items>
-                    <signal name="changed" handler="on_cbox_antialiasing_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -729,6 +670,7 @@
                 </child>
                 <child>
                   <object class="GtkFontButton" id="font_document">
+                    <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
@@ -745,6 +687,43 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkLabel" id="l_monospacefont">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default monospace font.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default monospace font.</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Monospace font:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_windowtitlefont">
+                    <property name="width_request">144</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default font for the window titlebar.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default font for the window titlebar.</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Window title font:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkFontButton" id="font_monospace">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -755,14 +734,15 @@
                     <signal name="font-set" handler="on_font_monospace_font_set" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkFontButton" id="font_window_title">
+                    <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
@@ -772,8 +752,8 @@
                     <signal name="font-set" handler="on_font_window_title_font_set" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -783,7 +763,175 @@
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">6</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_font_appearance">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Appearance</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grid_font_appearance">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <child>
+                  <object class="GtkLabel" id="l_antialiasing">
+                    <property name="width_request">120</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select tSelect the type of hinting to use when rendering fonts</property>
+                    <property name="tooltip_text" translatable="yes">Select tSelect the type of hinting to use when rendering fonts</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Antialiasing:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cbox_antialiasing">
+                    <property name="width_request">120</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="entry_text_column">0</property>
+                    <property name="id_column">1</property>
+                    <items>
+                      <item translatable="yes">None</item>
+                      <item translatable="yes">Grayscale</item>
+                      <item translatable="yes">RGBA</item>
+                    </items>
+                    <signal name="changed" handler="on_cbox_antialiasing_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cbox_hinting">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="entry_text_column">0</property>
+                    <property name="id_column">1</property>
+                    <items>
+                      <item translatable="yes">None</item>
+                      <item translatable="yes">Slight</item>
+                      <item translatable="yes">Medium</item>
+                      <item translatable="yes">Full</item>
+                    </items>
+                    <signal name="changed" handler="on_cbox_hinting_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_hinting">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the type of hinting to use when rendering fonts</property>
+                    <property name="tooltip_text" translatable="yes">Select the type of hinting to use when rendering fonts</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Hinting:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_textscalingfactor">
+                    <property name="width_request">144</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
+                    <property name="tooltip_text" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Text scaling factor:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_textscaling">
+                    <property name="width_request">120</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="invisible_char">•</property>
+                    <property name="invisible_char_set">True</property>
+                    <property name="adjustment">adj_textscaling</property>
+                    <property name="digits">2</property>
+                    <signal name="value-changed" handler="on_spin_textscaling_value_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -803,7 +951,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">5</property>
               </packing>
             </child>
           </object>

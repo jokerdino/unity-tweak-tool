@@ -46,6 +46,8 @@
   <object class="GtkImage" id="i_tool_desktop_security">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="tooltip_markup" translatable="yes">Show the settings for the security.</property>
+    <property name="tooltip_text" translatable="yes">Show the settings for the security.</property>
     <property name="pixbuf">icons/36/desktop-settings-security-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_fonts">
@@ -102,6 +104,14 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
+  </object>
+  <object class="GtkLabel" id="l_desktop_icons">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">start</property>
+    <property name="label" translatable="yes">Desktop Icons</property>
+    <property name="justify">center</property>
+    <property name="wrap">True</property>
   </object>
   <object class="GtkLabel" id="l_tool_windows_snapping">
     <property name="width_request">70</property>
@@ -700,8 +710,8 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the desktop icons</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the desktop icons</property>
-                    <property name="label" translatable="yes">Desktop Icons</property>
                     <property name="use_underline">True</property>
+                    <property name="label_widget">l_desktop_icons</property>
                     <property name="icon_widget">i_tool_desktop_icons</property>
                     <signal name="clicked" handler="on_tool_desktop_icons_clicked" swapped="no"/>
                   </object>
@@ -717,6 +727,7 @@
                     <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Security</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_desktop_security</property>
@@ -734,6 +745,9 @@
                     <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Show the settings for the scrolling.</property>
+                    <property name="tooltip_text" translatable="yes">Show the settings for the scrolling.</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Scrolling</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_scrolling</property>
