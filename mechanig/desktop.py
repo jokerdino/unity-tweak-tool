@@ -143,10 +143,6 @@ class Desktopsettings ():
             self.ui['radio_two_finger'].set_active(True)
         del scroll_mode
 
-        # Natural Scrolling
-        self.ui['check_natural_scrolling'].set_active(gsettings.touch.get_boolean('natural-scroll'))
-
-
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -283,14 +279,7 @@ class Desktopsettings ():
         else:
             gsettings.touch.set_string('scroll-method', 'edge-scrolling')
 
-    def on_check_natural_scrolling_toggled(self, widget, udata = None):
-        if self.ui['check_scrolling_overlay_scrollbars'].get_active() == True :
-            gsettings.touch.set_boolean('natural-scroll', True)
-        else:
-            gsettings.touch.set_boolean('natural-scroll', False)
-
     def on_b_settings_scrolling_reset_clicked(self, widget):
-        gsettings.touch.reset('natural-scroll')
         gsettings.touch.reset('scroll-method')
         gsettings.scrollbars.rest('scrollbar-mode')
         self.refresh()
