@@ -327,7 +327,6 @@ class Unitysettings ():
             self.ui['cbox_default_player'].append_text(player.capitalize())
             if preferred_players[0] in interested_players:
                 self.ui['cbox_default_player'].set_active(interested_players.index(preferred_players[0]))
-        del player
 
         # ====== Unity Switcher helpers ====== #
 
@@ -472,7 +471,6 @@ class Unitysettings ():
                 self.ui['sc_launcher_transparency'].set_value(0.67)
                 gsettings.unityshell.set_double('launcher-opacity', 0.33)
             else:
-                panel_transparency = self.ui['sc_panel_transparency'].get_value()
                 gsettings.unityshell.set_double('launcher-opacity', opacity)
         else:
             self.ui.unsensitize(dependants)
