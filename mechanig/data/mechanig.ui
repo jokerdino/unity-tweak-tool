@@ -81,7 +81,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="menuimage_unity_settings">
-                        <property name="label" translatable="yes">Unity Settings</property>
+                        <property name="label" translatable="yes">Unity</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">image_menu_unity_settings</property>
@@ -136,7 +136,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menuimage_compiz_settings">
-                        <property name="label" translatable="yes">Compiz Settings</property>
+                        <property name="label" translatable="yes">Window Manager</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">image_menu_compiz_settings</property>
@@ -191,7 +191,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menuimage_theme_settings">
-                        <property name="label" translatable="yes">Theme Settings</property>
+                        <property name="label" translatable="yes">Appearance</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">image_menu_theme_settings</property>
@@ -238,7 +238,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menuimage_system_settings">
-                        <property name="label" translatable="yes">System Settings</property>
+                        <property name="label" translatable="yes">System</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">image_menu_desktop_settings</property>
