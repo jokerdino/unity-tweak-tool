@@ -1,5 +1,32 @@
 #!/usr/bin/env python3
-#-*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+#
+# Team:
+#   J Phani Mahesh <phanimahesh@gmail.com>
+#   Barneedhar (jokerdino) <barneedhar@ubuntu.com>
+#   Amith KK <amithkumaran@gmail.com>
+#   Georgi Karavasilev <motorslav@gmail.com>
+#   Sam Tran <samvtran@gmail.com>
+#   Sam Hewitt <hewittsamuel@gmail.com>
+#
+# Description:
+#   A One-stop configuration tool for Unity.
+#
+# Legal Stuff:
+#
+# This file is a part of Mechanig
+#
+# Mechanig is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; version 3.
+#
+# Mechanig is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
 from gi.repository import Gio,  Gdk
 
@@ -36,29 +63,34 @@ def color_to_hash(c):
 
 # GSettings objects go here
 
-unityshell = plugin('unityshell')
-desktop = gnome('nautilus.desktop')
-background = gnome('desktop.background')
-lockdown = gnome('desktop.lockdown')
-launcher = unity('Launcher')
-lenses = unity('Lenses')
-lens_apps = unity('ApplicationsLens')
-lens_files = unity('FilesLens')
-power = canonical('indicator.power')
+# Sorted by function type and alphabetical order
+
 bluetooth = canonical('indicator.bluetooth')
-sound = canonical('indicator.sound')
-session = canonical('indicator.session')
 datetime = canonical('indicator.datetime')
+power = canonical('indicator.power')
 scrollbars= canonical('desktop.interface')
+session = canonical('indicator.session')
+sound = canonical('indicator.sound')
+
+antialiasing = gnome('settings-daemon.plugins.xsettings')
+background = gnome('desktop.background')
+desktop = gnome('nautilus.desktop')
 interface = gnome('desktop.interface')
+lockdown = gnome('desktop.lockdown')
 titlefont = gnome('desktop.wm.preferences')
 touch = gnome('settings-daemon.peripherals.touchpad')
-antialiasing = gnome('settings-daemon.plugins.xsettings')
+
 animation = plugin('animation')
-opengl = plugin('opengl')
 core = plugin('core')
-scale = plugin('scale')
 expo = plugin('expo')
-move = plugin('move')
-zoom = plugin('ezoom')
 grid = plugin('grid')
+move = plugin('move')
+opengl = plugin('opengl')
+scale = plugin('scale')
+unityshell = plugin('unityshell')
+zoom = plugin('ezoom')
+
+launcher = unity('Launcher')
+lens_apps = unity('ApplicationsLens')
+lenses = unity('Lenses')
+lens_files = unity('FilesLens')

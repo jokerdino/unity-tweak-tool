@@ -122,11 +122,10 @@ class Desktopsettings ():
         else:
             self.ui['radio_legacy_scrollbars'].set_active(False)
             self.ui.unsensitize(dependants)
-        del overlay_scrollbars
-        del dependants
-    
+        del overlay_scrollbars, dependants
+
         # Scrollbar mode
-        scrollbar_mode = gsettings.scrollbars.get_strv('scrollbar-mode')
+        scrollbar_mode = gsettings.scrollbars.get_string('scrollbar-mode')
         if scrollbar_mode == 'overlay-auto':
             self.ui['cbox_overlay_scrollbar_mode'].set_active(0)
         elif scrollbar_mode == 'overlay-pointer':
