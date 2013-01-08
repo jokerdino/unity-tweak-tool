@@ -30,7 +30,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Look &amp; feel</property>
+                <property name="label" translatable="yes">Available themes</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -200,12 +200,25 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator6">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkLabel" id="l_theme_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Settings</property>
+                <property name="label" translatable="yes">Preferences</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -261,6 +274,19 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">8</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_theme_system_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -269,13 +295,12 @@
                 <property name="tooltip_markup" translatable="yes">Restore system's default theme configurations</property>
                 <property name="tooltip_text" translatable="yes">Restore system's default theme configurations</property>
                 <property name="halign">start</property>
-                <property name="margin_top">6</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">7</property>
+                <property name="position">9</property>
               </packing>
             </child>
           </object>
@@ -300,28 +325,12 @@
             <property name="margin_bottom">12</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="l_icon_theme">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Icon themes</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkScrolledWindow" id="scroll_theme_icon">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_left">6</property>
                 <property name="margin_right">6</property>
+                <property name="margin_top">12</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="tree_icon_theme">
@@ -405,6 +414,19 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_theme_icon_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -413,13 +435,12 @@
                 <property name="tooltip_markup" translatable="yes">Restore system's default icon theme configurations</property>
                 <property name="tooltip_text" translatable="yes">Restore system's default icon theme configurations</property>
                 <property name="halign">start</property>
-                <property name="margin_top">6</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
@@ -448,28 +469,12 @@
             <property name="margin_bottom">12</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="l_cursors">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Cursor themes</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkScrolledWindow" id="scrolledwindow_cursor_theme">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_left">6</property>
                 <property name="margin_right">6</property>
+                <property name="margin_top">12</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="tree_cursor_theme">
@@ -551,6 +556,19 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_theme_cursor_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -559,13 +577,12 @@
                 <property name="tooltip_markup" translatable="yes">Restore system's default cursor theme configurations</property>
                 <property name="tooltip_text" translatable="yes">Restore system's default cursor theme configurations</property>
                 <property name="halign">start</property>
-                <property name="margin_top">6</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
@@ -867,12 +884,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkLabel" id="l_hinting">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -927,11 +938,31 @@
                     <property name="height">1</property>
                   </packing>
                 </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -951,7 +982,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>

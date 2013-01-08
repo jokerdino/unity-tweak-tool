@@ -22,26 +22,9 @@
             <property name="margin_top">6</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="l_desktop_icon_general">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">General</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkGrid" id="grid_switch_desktop_icons">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
                 <property name="margin_top">6</property>
                 <child>
                   <object class="GtkLabel" id="l_desktop_icon">
@@ -81,7 +64,6 @@
               <object class="GtkBox" id="box_desktop_icons_display">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
                 <property name="margin_top">6</property>
                 <property name="orientation">vertical</property>
                 <child>
@@ -185,7 +167,20 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -198,14 +193,13 @@
                 <property name="tooltip_markup" translatable="yes">Restore the default configurations for Desktop icons</property>
                 <property name="tooltip_text" translatable="yes">Restore the default configurations for Desktop icons</property>
                 <property name="halign">start</property>
-                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_desktop_settings_icons_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">8</property>
+                <property name="position">9</property>
               </packing>
             </child>
           </object>
@@ -225,24 +219,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel" id="l_lockdown">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
-                <property name="label" translatable="yes">Security settings</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
             <child>
               <object class="GtkGrid" id="grid_lockdown">
                 <property name="visible">True</property>
@@ -337,6 +313,21 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_desktop_settings_security_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -347,14 +338,13 @@
                 <property name="tooltip_text" translatable="yes">Restore the default configurations for Security settings</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_desktop_settings_security_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
@@ -416,7 +406,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -434,6 +424,59 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid_overlay_scrollbars_behaviour">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">12</property>
+                    <property name="row_spacing">6</property>
+                    <child>
+                      <object class="GtkComboBoxText" id="cbox_overlay_scrollbar_mode">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip_markup" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
+                        <property name="tooltip_text" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
+                        <property name="halign">start</property>
+                        <property name="entry_text_column">0</property>
+                        <property name="id_column">1</property>
+                        <items>
+                          <item translatable="yes">Default</item>
+                          <item translatable="yes">Overlay with mouse</item>
+                          <item translatable="yes">No overlay</item>
+                        </items>
+                        <signal name="changed" handler="on_cbox_overlay_scrollbar_mode_changed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="l_overlay_scrollbar_mode">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="margin_right">6</property>
+                        <property name="label" translatable="yes">Behaviour:</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
@@ -444,58 +487,6 @@
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkGrid" id="grid_overlay_scrollbars">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">24</property>
-                <property name="row_spacing">6</property>
-                <child>
-                  <object class="GtkLabel" id="l_overlay_scrollbar_mode">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="margin_right">6</property>
-                    <property name="label" translatable="yes">Behaviour:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="cbox_overlay_scrollbar_mode">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
-                    <property name="tooltip_text" translatable="yes">Select the behaviour of the overlay scrollbars.</property>
-                    <property name="halign">start</property>
-                    <property name="entry_text_column">0</property>
-                    <property name="id_column">1</property>
-                    <items>
-                      <item translatable="yes">Default</item>
-                      <item translatable="yes">Overlay with mouse</item>
-                      <item translatable="yes">No overlay</item>
-                    </items>
-                    <signal name="changed" handler="on_cbox_overlay_scrollbar_mode_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -606,6 +597,21 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_settings_scrolling_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -613,14 +619,13 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_settings_scrolling_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
