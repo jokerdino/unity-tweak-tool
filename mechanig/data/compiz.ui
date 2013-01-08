@@ -191,7 +191,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
                 <property name="label" translatable="yes">Hardware acceleration</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
@@ -442,7 +441,6 @@
                 <property name="can_focus">False</property>
                 <property name="margin_left">12</property>
                 <property name="margin_right">6</property>
-                <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">Keyboard shortcuts</property>
@@ -469,6 +467,7 @@
                     <property name="can_focus">True</property>
                     <property name="tooltip_markup" translatable="yes">List of window manager keyboard shortcuts</property>
                     <property name="tooltip_text" translatable="yes">List of window manager keyboard shortcuts</property>
+                    <property name="vexpand">True</property>
                     <property name="model">list_compiz_general_keys_accelerators</property>
                     <property name="headers_visible">False</property>
                     <property name="headers_clickable">False</property>
@@ -514,6 +513,21 @@
               </packing>
             </child>
             <child>
+              <object class="GtkSeparator" id="separator9">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">11</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_compiz_general_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -523,14 +537,13 @@
                 <property name="tooltip_text" translatable="yes">Restore default window manager settings</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">10</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_general_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">11</property>
+                <property name="position">12</property>
               </packing>
             </child>
           </object>
@@ -740,7 +753,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="label" translatable="yes">Workspace Shortcuts</property>
+                <property name="label" translatable="yes">Workspace shortcuts</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -806,7 +819,22 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator8">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">6</property>
               </packing>
             </child>
             <child>
@@ -820,14 +848,13 @@
                 <property name="tooltip_text" translatable="yes">Restore default workspace configuration</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
+                <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_workspace_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
               </packing>
             </child>
           </object>
@@ -875,7 +902,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
-                <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
                 <property name="row_spacing">6</property>
                 <child>
@@ -961,11 +987,10 @@
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
                 <property name="margin_right">18</property>
-                <property name="margin_bottom">6</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkCheckButton" id="check_overlay_emblem">
-                    <property name="label" translatable="yes">Show application icons on window previews</property>
+                    <property name="label" translatable="yes">Icons on previews</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -983,7 +1008,7 @@
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="check_click_desktop">
-                    <property name="label" translatable="yes">Clicking on the desktop switches to it</property>
+                    <property name="label" translatable="yes">Click to access desktop</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
@@ -1093,7 +1118,22 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">6</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator7">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">7</property>
               </packing>
             </child>
             <child>
@@ -1106,14 +1146,13 @@
                 <property name="tooltip_text" translatable="yes">Restore default window spread settings</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_windows_spread_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">8</property>
+                <property name="position">9</property>
               </packing>
             </child>
           </object>
@@ -1277,13 +1316,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="l_snapping_areas">
+              <object class="GtkLabel" id="l_snapping_preferences">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Area settings</property>
+                <property name="label" translatable="yes">Preferences</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -1524,7 +1563,22 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">6</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator10">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">7</property>
               </packing>
             </child>
             <child>
@@ -1535,14 +1589,13 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">10</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_compiz_windowsnapping_reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">7</property>
+                <property name="position">8</property>
               </packing>
             </child>
           </object>
@@ -1568,13 +1621,29 @@
             <property name="halign">center</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_hotcorners_general">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="label" translatable="yes">General</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_hotcorners_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
-                <property name="margin_right">18</property>
                 <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
                 <child>
                   <object class="GtkSwitch" id="switch_hotcorners">
                     <property name="visible">True</property>
@@ -1609,7 +1678,40 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator11">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_hotcorner_preferences">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Preferences</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -1841,7 +1943,22 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator12">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -1852,13 +1969,12 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
+                <property name="margin_bottom">12</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
