@@ -63,9 +63,12 @@ class Startpage ():
     def on_tool_unity_switcher_clicked(self, udata):
         self.container['tool_unitysettings'].set_active(True)
         self.notebook.get_nth_page(1).set_current_page(3)
-    def on_tool_additional_clicked(self, udata):
+    def on_tool_unity_webapps_clicked(self, udata):
         self.container['tool_unitysettings'].set_active(True)
         self.notebook.get_nth_page(1).set_current_page(4)
+    def on_tool_additional_clicked(self, udata):
+        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.get_nth_page(1).set_current_page(5)
 
     # Compiz settings buttons on start page
     def on_tool_general_clicked(self, udata):

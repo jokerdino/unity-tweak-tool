@@ -40,6 +40,11 @@ def unity(child = None):
     schema = schema+'.'+child if child else schema
     return Gio.Settings(schema)
 
+def unity_webapps(child = None):
+    schema = 'com.canonical.unity'
+    schema = schema+'.'+child if child else schema
+    return Gio.Settings(schema)
+
 def canonical(child):
     schema = 'com.canonical.'+child
     return Gio.Settings(schema)
@@ -94,3 +99,4 @@ launcher = unity('Launcher')
 lens_apps = unity('ApplicationsLens')
 lenses = unity('Lenses')
 lens_files = unity('FilesLens')
+webapps = unity_webapps('webapps')

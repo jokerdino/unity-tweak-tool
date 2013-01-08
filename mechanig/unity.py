@@ -393,6 +393,15 @@ class Unitysettings ():
 
         del model, launcher_switcher_forward, iter_launcher_switcher_forward, launcher_switcher_prev, iter_launcher_switcher_prev
 
+        # ====== Unity Webapps helpers ===== #
+
+        # Integration
+        webapp_integration = gsettings.webapps.get_boolean('integration-allowed')
+        if webapp_integration == True:
+            self.ui['check_webapps_integration'].set_active(True)
+        else:
+            self.ui['check_webapps_integration'].set_active(False)
+        del webapp_integration
 
         # ====== Unity additional helpers ======= #
 
@@ -922,6 +931,20 @@ class Unitysettings ():
         self.refresh()
 
 #----- END: Switch -----
+
+#----- BEGIN: Webapps -----
+	
+    def on_check_webapps_integration_toggled(self, widget, udata = None):
+        if self.ui['check_webapps_integration'].get_active() == True:
+            gsettings.webapps.set_boolean('integration-allowed', True)
+        else:
+            gsettings.webapps.set_boolean('integration-allowed', False)
+
+    def on_b_unity_webapps_reset_clicked(self, widget):
+        gsettings.webapps.reset('integration-allowed')
+        self.refresh()
+
+#----- END: Webapps -----
 
 #----- BEGIN: Additional -----
 
