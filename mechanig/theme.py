@@ -122,15 +122,15 @@ class Themesettings ():
         windowthemesel=self.ui['tree_window_theme'].get_selection()
         windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
         windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
-        # TODO : Icon theme
+        # Icon theme
         iconthemesel=self.ui['tree_icon_theme'].get_selection()
         icontheme=gsettings.gnome('desktop.interface').get_string('icon-theme')
         iconthemesel.select_iter(self.iconthemes[icontheme]['iter'])
 
+# Cursor theme
         cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
         cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
         cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
-# TODO : Cursor theme
 # Fonts
         self.ui['font_default'].set_font_name(gsettings.interface.get_string('font-name'))
         self.ui['font_document'].set_font_name(gsettings.interface.get_string('document-font-name'))
@@ -163,9 +163,14 @@ class Themesettings ():
 
 #-----BEGIN: Theme settings------
 
+# These check for nonetype and return since for some bizzare reason Gtk.quit destroys the selection object and then calls these callbacks. This is a temporary fix to LP:1096964
+
     # System Theme
     def on_treeselection_gtk_theme_changed(self,udata=None):
-        gtkthemestore,iter = self.ui['tree_gtk_theme'].get_selection().get_selected()
+        gtktreesel = self.ui['tree_gtk_theme'].get_selection()
+        if gtktreesel is None:
+            return
+        gtkthemestore,iter = gtktreesel.get_selected()
         if self.matchthemes:
             self.ui['treeselection_window_theme'].select_iter(iter)
         themepath=gtkthemestore.get_value(iter,1)
@@ -174,7 +179,10 @@ class Themesettings ():
 
 
     def on_treeselection_window_theme_changed(self,udata=None):
-        windowthemestore,iter = self.ui['tree_window_theme'].get_selection().get_selected()
+        windowtreesel = self.ui['tree_window_theme'].get_selection()
+        if windowtreesel is None:
+            return
+        windowthemestore,iter = windowtreesel.get_selected()
         if self.matchthemes:
             self.ui['treeselection_gtk_theme'].select_iter(iter)
         themepath=windowthemestore.get_value(iter,1)
@@ -183,17 +191,24 @@ class Themesettings ():
 
     # Icon theme
     def on_tree_icon_theme_cursor_changed(self,udata=None):
-        cursorthemestore,iter = self.ui['tree_icon_theme'].get_selection().get_selected()
-        themepath=cursorthemestore.get_value(iter,1)
+        icontreesel = self.ui['tree_icon_theme'].get_selection()
+        if icontreesel is None:
+            return
+        iconthemestore,iter = icontreesel.get_selected()
+        themepath=iconthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('icon-theme',theme)
 
     def on_check_show_incomplete_toggled(self,udata=None):
+    # TODO 
         print('To do')
 
     # Cursor theme
     def on_tree_cursor_theme_cursor_changed(self,udata=None):
-        cursorthemestore,iter = self.ui['tree_cursor_theme'].get_selection().get_selected()
+        cursortreesel = self.ui['tree_cursor_theme'].get_selection()
+        if cursortreesel is None:
+            return
+        cursorthemestore,iter = cursortreesel.get_selected()
         themepath=cursorthemestore.get_value(iter,1)
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
