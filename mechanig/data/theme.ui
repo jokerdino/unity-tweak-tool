@@ -213,7 +213,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="l_theme_settings">
+              <object class="GtkLabel" id="l_theme_behaviour">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>

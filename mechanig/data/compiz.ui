@@ -1322,7 +1322,7 @@
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Preferences</property>
+                <property name="label" translatable="yes">Behaviour</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -1703,7 +1703,7 @@
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Preferences</property>
+                <property name="label" translatable="yes">Behaviour</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
