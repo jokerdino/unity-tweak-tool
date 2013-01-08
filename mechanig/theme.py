@@ -130,7 +130,16 @@ class Themesettings ():
 # Cursor theme
         cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
         cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
-        cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
+
+# FIXME: LP bug: #1097227
+
+        try:
+            cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
+# TODO: except part should make sure the selection is deselected.
+        except KeyError:
+            cursorthemesel.unselect_all()
+
+
 # Fonts
         self.ui['font_default'].set_font_name(gsettings.interface.get_string('font-name'))
         self.ui['font_document'].set_font_name(gsettings.interface.get_string('document-font-name'))
