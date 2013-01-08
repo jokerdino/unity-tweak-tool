@@ -158,11 +158,12 @@ class Unitysettings ():
         del dependants
 
         # Suggestions
-        dash_suggestions = gsettings.lenses.get_string('remote-content-search')
-        if dash_suggestions == 'all':
-            self.ui['sw_dash_suggestions'].set_active(True)
+        suggestions = gsettings.lenses.get_string('remote-content-search')
+        if suggestions == 'all':
+            self.ui['check_suggestions'].set_active(True)
         else:
-            self.ui['sw_dash_suggestions'].set_active(False)
+            self.ui['check_suggestions'].set_active(False)
+        del suggestions
 
         # Applications Lens
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
@@ -576,8 +577,8 @@ class Unitysettings ():
         mode = 2 if button.get_active() else 1
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
-    def on_sw_dash_suggestions_active_notify(self, widget, udata = None):
-        if self.ui['sw_dash_suggestions'].get_active():
+    def on_check_suggestions_toggled(self, widget, udata = None):
+        if self.ui['check_suggestions'].get_active():
             gsettings.lenses.set_string('remote-content-search', "all")
 
         else:
