@@ -2485,6 +2485,8 @@
                   <object class="GtkLabel" id="l_switch_unity_webapps">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
+                    <property name="tooltip_text" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
                     <property name="margin_right">6</property>
                     <property name="label" translatable="yes">Integration prompts:</property>
                   </object>
