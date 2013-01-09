@@ -14,13 +14,13 @@
 #
 # Legal Stuff:
 #
-# This file is a part of Mechanig
+# This file is a part of Unity Settings Hub. (USH)
 #
-# Mechanig is free software; you can redistribute it and/or modify it under
+# USH is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation; version 3.
 #
-# Mechanig is distributed in the hope that it will be useful, but WITHOUT
+# USH is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 # details.
@@ -32,28 +32,28 @@ import os, os.path
 
 from gi.repository import Gtk, Gio
 
-from mechanig.ui import ui
-from mechanig.start import Startpage
-from mechanig.unity import Unitysettings
-from mechanig.compiz import Compizsettings
-from mechanig.theme import Themesettings
-from mechanig.desktop import Desktopsettings
-from mechanig import settings
+from ush.ui import ui
+from ush.start import Startpage
+from ush.unity import Unitysettings
+from ush.compiz import Compizsettings
+from ush.theme import Themesettings
+from ush.desktop import Desktopsettings
+from ush import settings
 
-class Mechanig ():
+class USH ():
     def __init__(self):
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
         self.glade = (os.path.join(settings.UI_DIR,
-                                    'mechanig.ui'))
+                                    'ush.ui'))
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
 
         self.builder.connect_signals(self)
-        self.ui['mechanig_main'].set_resizable(False)
+        self.ui['ush_main'].set_resizable(False)
 
-        self.notebook = self.ui['nb_mechanig']
+        self.notebook = self.ui['nb_ush']
 
         self.startpage = Startpage(self.ui, self.notebook)
         self.unitysettings = Unitysettings(self.ui)
@@ -67,8 +67,8 @@ class Mechanig ():
         self.notebook.append_page(self.themesettings.page, None)
         self.notebook.append_page(self.desktopsettings.page, None)
 
-        self.ui['mechanig_main'].show_all()
-        self.ui['mechanig_main'].connect("delete-event", Gtk.main_quit)
+        self.ui['ush_main'].show_all()
+        self.ui['ush_main'].connect("delete-event", Gtk.main_quit)
 
         Gtk.main()
 
@@ -123,6 +123,6 @@ class Mechanig ():
 
 if __name__=='__main__':
 # Fire up the Engines
-    Mechanig()
+    USH()
 else:
     print("WARNING: This module is not tailored to be imported. Proceed at your own risk.")

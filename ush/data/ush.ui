@@ -41,7 +41,7 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-missing-image</property>
   </object>
-  <object class="GtkImage" id="image_menu_mechanig_help">
+  <object class="GtkImage" id="image_menu_ush_help">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-missing-image</property>
@@ -57,9 +57,9 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-missing-image</property>
   </object>
-  <object class="GtkWindow" id="mechanig_main">
+  <object class="GtkWindow" id="ush_main">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Mechanig</property>
+    <property name="title" translatable="yes">Unity Settings Hub</property>
     <child>
       <object class="GtkBox" id="box_toolbar">
         <property name="visible">True</property>
@@ -309,7 +309,7 @@
                         <property name="label" translatable="yes">Mechanig Help</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="image">image_menu_mechanig_help</property>
+                        <property name="image">image_menu_ush_help</property>
                         <property name="use_stock">False</property>
                       </object>
                     </child>
@@ -493,7 +493,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkNotebook" id="nb_mechanig">
+          <object class="GtkNotebook" id="nb_ush">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="show_tabs">False</property>

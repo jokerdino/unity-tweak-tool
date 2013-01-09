@@ -1,4 +1,4 @@
-mechanig
+Unity Settings Hub
 ========
 
-Mechanig - Unity configuration tool
+Unity Settings Hub - Unity configuration tool
