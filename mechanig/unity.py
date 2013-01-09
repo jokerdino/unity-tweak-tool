@@ -398,9 +398,9 @@ class Unitysettings ():
         # Integration
         webapp_integration = gsettings.webapps.get_boolean('integration-allowed')
         if webapp_integration == True:
-            self.ui['check_webapps_integration'].set_active(True)
+            self.ui['switch_unity_webapps'].set_active(True)
         else:
-            self.ui['check_webapps_integration'].set_active(False)
+            self.ui['switch_unity_webapps'].set_active(False)
         del webapp_integration
 
         # ====== Unity additional helpers ======= #
@@ -933,9 +933,9 @@ class Unitysettings ():
 #----- END: Switch -----
 
 #----- BEGIN: Webapps -----
-	
-    def on_check_webapps_integration_toggled(self, widget, udata = None):
-        if self.ui['check_webapps_integration'].get_active() == True:
+
+    def on_switch_webapps_active_notify(self, widget, udata = None):
+        if self.ui['switch_unity_webapps'].get_active() == True:
             gsettings.webapps.set_boolean('integration-allowed', True)
         else:
             gsettings.webapps.set_boolean('integration-allowed', False)
