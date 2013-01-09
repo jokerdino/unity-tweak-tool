@@ -14,7 +14,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="wm-settings-general-dark_36.svg">
+   sodipodi:docname="appearance-settings-theme-dark_36.svg">
   <defs
      id="defs2987" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.46666667"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.556349"
-     inkscape:cx="9.6719293"
-     inkscape:cy="17.743863"
+     inkscape:zoom="62.225396"
+     inkscape:cx="4.5568795"
+     inkscape:cy="24.519121"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,7 +68,7 @@
      inkscape:groupmode="layer"
      transform="translate(0,-28)">
     <rect
-       style="opacity:0.2;fill:#333333;fill-opacity:1;stroke:none"
+       style="opacity:0.3;fill:#333333;fill-opacity:1;stroke:none"
        id="rect3826"
        width="30"
        height="5"
@@ -94,36 +94,6 @@
        y="38"
        rx="0"
        ry="0" />
-    <path
-       sodipodi:type="arc"
-       style="fill:#333;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="path3816"
-       sodipodi:cx="6"
-       sodipodi:cy="9"
-       sodipodi:rx="1"
-       sodipodi:ry="1"
-       d="M 7,9 A 1,1 0 1 1 5,9 1,1 0 1 1 7,9 z"
-       transform="translate(0,27.449974)" />
-    <path
-       transform="translate(3,27.449974)"
-       d="M 7,9 A 1,1 0 1 1 5,9 1,1 0 1 1 7,9 z"
-       sodipodi:ry="1"
-       sodipodi:rx="1"
-       sodipodi:cy="9"
-       sodipodi:cx="6"
-       id="path3757"
-       style="fill:#333;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       sodipodi:type="arc" />
-    <path
-       sodipodi:type="arc"
-       style="fill:#333;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="path3759"
-       sodipodi:cx="6"
-       sodipodi:cy="9"
-       sodipodi:rx="1"
-       sodipodi:ry="1"
-       d="M 7,9 A 1,1 0 1 1 5,9 1,1 0 1 1 7,9 z"
-       transform="translate(6,27.449974)" />
     <rect
        style="opacity:1;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3766"
@@ -133,12 +103,28 @@
        y="38"
        ry="0" />
     <rect
-       style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;opacity:0.1"
+       style="opacity:0.1;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3768"
-       width="4"
+       width="3"
        height="19"
-       x="3"
+       x="4"
        y="11"
        transform="translate(0,28)" />
+    <path
+       style="fill:#333333;stroke:#333333;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       d="M 5,9 5,8 6,8 6,9 z"
+       id="path3781"
+       inkscape:connector-curvature="0"
+       transform="translate(0,28)" />
+    <path
+       style="fill:#333333;fill-opacity:1;stroke:#333333;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 7,36 0,1 1,0 0,-1 -1,0 z"
+       id="path3783"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#333333;fill-opacity:1;stroke:#333333;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 9,36 0,1 1,0 0,-1 -1,0 z"
+       id="path3785"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
