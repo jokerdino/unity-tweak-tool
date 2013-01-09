@@ -577,7 +577,7 @@ class Compizsettings ():
 
     def on_color_desk_outline_color_set(self, widget, udata = None):
         color = self.ui['color_desk_outline'].get_color()
-        colorhash = self.color_to_hash(color)
+        colorhash = gsettings.color_to_hash(color)
         gsettings.expo.set_string('selected-color', colorhash)
 
     # keyboard widgets in compiz-workspace
