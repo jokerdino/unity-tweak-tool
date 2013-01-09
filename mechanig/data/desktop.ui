@@ -25,7 +25,6 @@
               <object class="GtkGrid" id="grid_switch_desktop_icons">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">6</property>
                 <child>
                   <object class="GtkLabel" id="l_desktop_icon">
                     <property name="visible">True</property>
@@ -171,19 +170,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator" id="separator2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
-                <property name="margin_bottom">12</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">4</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="b_desktop_settings_icons_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -193,6 +179,7 @@
                 <property name="tooltip_markup" translatable="yes">Restore the default configurations for Desktop icons</property>
                 <property name="tooltip_text" translatable="yes">Restore the default configurations for Desktop icons</property>
                 <property name="halign">start</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_desktop_settings_icons_reset_clicked" swapped="no"/>
               </object>
@@ -313,21 +300,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator" id="separator3">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">12</property>
-                <property name="margin_bottom">12</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="b_desktop_settings_security_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -338,6 +310,7 @@
                 <property name="tooltip_text" translatable="yes">Restore the default configurations for Security settings</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_desktop_settings_security_reset_clicked" swapped="no"/>
               </object>
@@ -490,21 +463,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator" id="separator1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">12</property>
-                <property name="margin_bottom">12</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkGrid" id="grid_touchpad_scrolling">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -556,6 +514,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
+                    <property name="margin_top">12</property>
                     <property name="margin_bottom">6</property>
                     <property name="label" translatable="yes">Touch scrolling</property>
                     <attributes>
@@ -577,21 +536,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator" id="separator4">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">12</property>
-                <property name="margin_bottom">12</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">5</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="b_settings_scrolling_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -599,6 +543,7 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_settings_scrolling_reset_clicked" swapped="no"/>
               </object>
