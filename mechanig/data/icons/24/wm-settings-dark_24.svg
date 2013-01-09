@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -74,9 +74,9 @@
        style="fill:#333333;fill-opacity:1;stroke:none"
        id="rect3773"
        width="2"
-       height="16"
-       x="48"
-       y="-20"
+       height="14"
+       x="47"
+       y="-19"
        rx="0.5"
        ry="0.80000001"
        transform="matrix(0,1,-1,0,0,0)" />
