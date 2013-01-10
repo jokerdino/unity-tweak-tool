@@ -1,4 +1,4 @@
-mechanig
+unity-tweak-tool
 ========
 
-Mechanig - Unity configuration tool
+Unity Tweak Tool - Unity configuration tool

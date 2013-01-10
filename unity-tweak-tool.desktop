@@ -1,10 +1,10 @@
 [Desktop Entry]
 Categories=Settings;
 Comment=Configuration frontend for the Unity desktop environment
-Exec=mechanig-gtk %f
+Exec=unity-tweak-tool %f
 Icon=gconf-editor
-GenericName=Mechanig
-Name=Mechanig
+GenericName=Unity Tweak Tool
+Name=Unity Tweak Tool
 OnlyShowIn=Unity;
 StartupNotify=true
 Terminal=false

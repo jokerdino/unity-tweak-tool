@@ -14,13 +14,13 @@
 #
 # Legal Stuff:
 #
-# This file is a part of Mechanig
+# This file is a part of Unity Tweak Tool
 #
-# Mechanig is free software; you can redistribute it and/or modify it under
+# Unity Tweak Tool is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation; version 3.
 #
-# Mechanig is distributed in the hope that it will be useful, but WITHOUT
+# Unity Tweak Tool is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 # details.
@@ -439,7 +439,7 @@ class Compizsettings ():
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
 # Dont trust glade to pass the objects properly.            |
 # Always add required references to init and use them.      |
-# That way, mechanig can resist glade stupidity.            |
+# That way, unity-tweak-tool can resist glade stupidity.    |
 # Apologies Gnome devs, but Glade is not our favorite.      |
 #___________________________________________________________/
 

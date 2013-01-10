@@ -14,13 +14,13 @@
 #
 # Legal Stuff:
 #
-# This file is a part of Mechanig
+# This file is a part of Unity Tweak Tool
 #
-# Mechanig is free software; you can redistribute it and/or modify it under
+# Unity Tweak Tool is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation; version 3.
 #
-# Mechanig is distributed in the hope that it will be useful, but WITHOUT
+# Unity Tweak Tool is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 # details.
@@ -32,29 +32,29 @@ import os, os.path
 
 from gi.repository import Gtk, Gio
 
-from mechanig.ui import ui
-from mechanig.start import Startpage
-from mechanig.unity import Unitysettings
-from mechanig.compiz import Compizsettings
-from mechanig.theme import Themesettings
-from mechanig.desktop import Desktopsettings
-from mechanig.about import About
-from mechanig import settings
+from unitytweak.ui import ui
+from unitytweak.start import Startpage
+from unitytweak.unity import Unitysettings
+from unitytweak.compiz import Compizsettings
+from unitytweak.theme import Themesettings
+from unitytweak.desktop import Desktopsettings
+from unitytweak.about import About
+from unitytweak import settings
 
-class Mechanig ():
+class UnityTweak ():
     def __init__(self):
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
         self.glade = (os.path.join(settings.UI_DIR,
-                                    'mechanig.ui'))
+                                    'unitytweak.ui'))
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
 
         self.builder.connect_signals(self)
-        self.ui['mechanig_main'].set_resizable(False)
+        self.ui['unitytweak_main'].set_resizable(False)
 
-        self.notebook = self.ui['nb_mechanig']
+        self.notebook = self.ui['nb_unitytweak']
 
         self.startpage = Startpage(self.ui, self.notebook)
         self.unitysettings = Unitysettings(self.ui)
@@ -68,8 +68,8 @@ class Mechanig ():
         self.notebook.append_page(self.themesettings.page, None)
         self.notebook.append_page(self.desktopsettings.page, None)
 
-        self.ui['mechanig_main'].show_all()
-        self.ui['mechanig_main'].connect("delete-event", Gtk.main_quit)
+        self.ui['unitytweak_main'].show_all()
+        self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
 
         Gtk.main()
 
@@ -132,6 +132,6 @@ class Mechanig ():
 
 if __name__=='__main__':
 # Fire up the Engines
-    Mechanig()
+    UnityTweak()
 else:
     print("WARNING: This module is not tailored to be imported. Proceed at your own risk.")

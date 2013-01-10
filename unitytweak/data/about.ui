@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkAboutDialog" id="about_mechanig">
+  <object class="GtkAboutDialog" id="about_unitytweak">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="resizable">False</property>
     <property name="default_width">70</property>
     <property name="type_hint">dialog</property>
-    <property name="program_name">Mechanig</property>
+    <property name="program_name">Unity Tweak Tool</property>
     <property name="version">0.0.2</property>
     <property name="copyright" translatable="yes">Copyright © 2013 Freyja Development team</property>
-    <property name="comments" translatable="yes">Mechanig is a settings manager intended to be used with Ubuntu Unity.</property>
-    <property name="website">https://github.com/jokerdino/mechanig</property>
-    <property name="website_label" translatable="yes">Github</property>
+    <property name="comments" translatable="yes">Unity Tweak Tool is a settings manager intended to be used with Ubuntu Unity.</property>
+    <property name="website">https://launchpad.net/unity-tweak-tool</property>
+    <property name="website_label" translatable="yes">Unity Tweak Tool on Launchpad</property>
     <property name="license" translatable="yes">GPL3</property>
     <property name="authors">J Phani Mahesh &lt;phanimahesh@gmail.com&gt;
 Barneedhar (jokerdino) &lt;barneedhar@ubuntu.com&gt;
