@@ -281,7 +281,7 @@ class Desktopsettings ():
 
     def on_b_settings_scrolling_reset_clicked(self, widget):
         gsettings.touch.reset('scroll-method')
-        gsettings.scrollbars.rest('scrollbar-mode')
+        gsettings.scrollbars.reset('scrollbar-mode')
         self.refresh()
 
 
