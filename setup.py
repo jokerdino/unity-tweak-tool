@@ -4,7 +4,7 @@ setup(
     name='unity-tweak-tool',
     description='A One-stop configuration tool for Unity',
     url='https://github.com/freyja-dev/unity-tweak-tool',
-    version='0.0.1',
+    version='0.0.2',
     author='Barneedhar Vigneshwar',
     author_email='barneedhar@ubuntu.com',
     license='GPLv3+',
