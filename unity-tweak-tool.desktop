@@ -9,9 +9,29 @@ OnlyShowIn=Unity;
 StartupNotify=true
 Terminal=false
 Type=Application
-Actions=Restart;
+Actions=Unity;WinMng;Appereance;System;RestartUnity;
 
-[Desktop Action Restart]
+[Desktop Action Unity]
+Name=Unity
+Exec=unity-tweak-tool -u
+OnlyShowIn=Unity;
+
+[Desktop Action WinMng]
+Name=Window Manager
+Exec=unity-tweak-tool -w
+OnlyShowIn=Unity;
+
+[Desktop Action Appereance]
+Name=Appereance
+Exec=unity-tweak-tool -a
+OnlyShowIn=Unity;
+
+[Desktop Action System]
+Name=System
+Exec=unity-tweak-tool -s
+OnlyShowIn=Unity;
+
+[Desktop Action RestartUnity]
 Name=Restart Unity
 Exec=setsid unity
 OnlyShowIn=Unity;
