@@ -1,7 +1,7 @@
 unity-tweak-tool (0.0.2) raring; urgency=low
 
   * New upstream release
-	- Fixes AttributeError in desktop-scrolling (lp: #1098203)
+    - Fixes AttributeError in desktop-scrolling (lp: #1098203)
 
  -- Barneedhar Vigneshwar <barneedhar@ubuntu.com>  Fri, 11 Jan 2013 14:30:53 +0530
 
