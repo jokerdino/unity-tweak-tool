@@ -84,17 +84,13 @@ class UnityTweak ():
         args = parser.parse_args()
 
         if args.unity:
-            self.ui['tool_unitysettings'].set_active(True)
-            self.on_tool_unitysettings_toggled(None)
+            self.ui['tool_unitysettings'].set_active(True)            
         elif args.winmng:
-            self.ui['tool_compizsettings'].set_active(True)
-            self.on_tool_compizsettings_toggled(None)
+            self.ui['tool_compizsettings'].set_active(True)            
         elif args.appereance:
-            self.ui['tool_themesettings'].set_active(True)
-            self.on_tool_themesettings_toggled(None)
+            self.ui['tool_themesettings'].set_active(True)        
         elif args.system:
-            self.ui['tool_desktopsettings'].set_active(True)
-            self.on_tool_desktopsettings_toggled(None)
+            self.ui['tool_desktopsettings'].set_active(True)            
         elif args.restore:
             #TODO : Restore everything in one call
             print()
