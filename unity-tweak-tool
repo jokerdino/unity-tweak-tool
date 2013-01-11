@@ -28,7 +28,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-import os, os.path
+import os, os.path, argparse
 
 from gi.repository import Gtk, Gio
 
@@ -70,6 +70,36 @@ class UnityTweak ():
 
         self.ui['unitytweak_main'].show_all()
         self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
+
+        #---------- Command line options: Start ----------------------
+
+        parser = argparse.ArgumentParser()
+
+        parser.add_argument('-u', '--unity', help='Start in the Unity tab', action='store_true')
+        parser.add_argument('-w', '--winmng', help='Start in the WindowManager tab', action='store_true')
+        parser.add_argument('-a', '--appereance', help='Start in the appereance tab', action='store_true')
+        parser.add_argument('-s', '--system', help='Start in the system tab', action='store_true')
+        parser.add_argument('-r', '--restore', help='Restore settings to its defaults values', action='store_true')
+
+        args = parser.parse_args()
+
+        if args.unity:
+            self.ui['tool_unitysettings'].set_active(True)
+            self.on_tool_unitysettings_toggled(None)
+        elif args.winmng:
+            self.ui['tool_compizsettings'].set_active(True)
+            self.on_tool_compizsettings_toggled(None)
+        elif args.appereance:
+            self.ui['tool_themesettings'].set_active(True)
+            self.on_tool_themesettings_toggled(None)
+        elif args.system:
+            self.ui['tool_desktopsettings'].set_active(True)
+            self.on_tool_desktopsettings_toggled(None)
+        elif args.restore:
+            #TODO : Restore everything in one call
+            print()
+
+        #----------- Command line options: End -----------------------
 
         Gtk.main()
 
