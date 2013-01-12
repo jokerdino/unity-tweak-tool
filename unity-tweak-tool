@@ -30,7 +30,7 @@
 
 import os, os.path, argparse
 
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, Unity, Dbusmenu, Dee
 
 from unitytweak.ui import ui
 from unitytweak.start import Startpage
@@ -54,6 +54,8 @@ class UnityTweak ():
         self.builder.connect_signals(self)
         self.ui['unitytweak_main'].set_resizable(False)
 
+        self.launcher = Unity.LauncherEntry.get_for_desktop_id("unity-tweak-tool.desktop")
+
         self.notebook = self.ui['nb_unitytweak']
 
         self.startpage = Startpage(self.ui, self.notebook)
@@ -71,15 +73,16 @@ class UnityTweak ():
         self.ui['unitytweak_main'].show_all()
         self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
 
+
         #---------- Command line options: Start ----------------------
 
         parser = argparse.ArgumentParser()
 
         parser.add_argument('-u', '--unity', help='Start in the Unity tab', action='store_true')
         parser.add_argument('-w', '--winmng', help='Start in the WindowManager tab', action='store_true')
-        parser.add_argument('-a', '--appereance', help='Start in the appereance tab', action='store_true')
+        parser.add_argument('-a', '--appearance', help='Start in the appearance tab', action='store_true')
         parser.add_argument('-s', '--system', help='Start in the system tab', action='store_true')
-        parser.add_argument('-r', '--restore', help='Restore settings to its defaults values', action='store_true')
+        parser.add_argument('-r', '--restore', help='Restore settings to its default values', action='store_true')
 
         args = parser.parse_args()
 
@@ -87,7 +90,7 @@ class UnityTweak ():
             self.ui['tool_unitysettings'].set_active(True)            
         elif args.winmng:
             self.ui['tool_compizsettings'].set_active(True)            
-        elif args.appereance:
+        elif args.appearance:
             self.ui['tool_themesettings'].set_active(True)        
         elif args.system:
             self.ui['tool_desktopsettings'].set_active(True)            
@@ -96,6 +99,40 @@ class UnityTweak ():
             print()
 
         #----------- Command line options: End -----------------------
+
+
+
+        #  Quicklist
+        quicklist = Dbusmenu.Menuitem.new()
+        sections = ['Overview', 'Unity', 'Window Manager', 'Appearance', 'System']
+        self.section_menu = [None, None, None, None, None, None]
+        for page_id, page_name in enumerate(sections):
+
+            # Create a new item for this section
+            section_menu_item = Dbusmenu.Menuitem.new ()
+
+            # Set the page's name as the menu item's name
+            section_menu_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, page_name)
+
+            # Make the menu item toggle-able
+            section_menu_item.property_set(Dbusmenu.MENUITEM_PROP_TOGGLE_TYPE, Dbusmenu.MENUITEM_TOGGLE_RADIO)
+
+            # Make the menu item visible
+            section_menu_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, True)
+
+            # When the menu item is clicked, make it call menu_item_activated
+            # with the page id, which is used to make that the active page
+            section_menu_item.connect('item_activated', self.section_menu_item_activated, page_id)
+
+            # Add the section's menu item to the Quicklist menu
+            quicklist.child_append(section_menu_item)
+            self.section_menu[page_id] = section_menu_item
+
+        # Listen for the user changing pages
+        self.ui['nb_unitytweak'].connect('change-current-page', self.page_changed)
+        
+        # Apply the quickist to the Launcher icon
+        self.launcher.set_property('quicklist', quicklist)
 
         Gtk.main()
         
@@ -144,6 +181,31 @@ class UnityTweak ():
         self.compizsettings.page.set_current_page(4)
     
 
+    def page_changed(self, controls, page, page_id):
+        ''' Called when the current visible section changes '''
+        for item_id, item in enumerate(self.section_menu):
+            # Check the current section's menu item, unchecking all others
+            if item_id == page_id:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED)
+            else:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED)
+        
+    def section_menu_item_activated(self, menu_item, obj, page_id):
+        ''' Called when a Quicklist menu item is selected '''
+        self.notebook.set_current_page(page_id)
+        if page_id == 0:
+            self.ui['tool_startpage'].set_active(True)            
+        elif page_id == 1:
+            self.ui['tool_unitysettings'].set_active(True)            
+        elif page_id == 2:
+            self.ui['tool_compizsettings'].set_active(True)            
+        elif page_id == 3:
+            self.ui['tool_themesettings'].set_active(True)        
+        elif page_id == 4:
+            self.ui['tool_desktopsettings'].set_active(True)            
+        else:
+            self.ui['tool_startpage'].set_active(True) 
+
     # ===== Top Navigation bar =====
     def on_tool_startpage_toggled(self,udata):
         self.notebook.set_current_page(0)
@@ -159,9 +221,7 @@ class UnityTweak ():
     def on_tool_desktopsettings_toggled(self,udata):
         self.notebook.set_current_page(4)
 
-
-
-    # gtk search box
+    # ===== GTK Search Box =====
 
     # inserting text shows the secondary icon (stock-clear)
 
