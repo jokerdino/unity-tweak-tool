@@ -16,6 +16,7 @@
   <object class="GtkAction" id="a_tool_scrolling"/>
   <object class="GtkAction" id="a_tool_system"/>
   <object class="GtkAction" id="a_tool_unity_switcher"/>
+  <object class="GtkAction" id="a_tool_window_controls"/>
   <object class="GtkAction" id="a_tool_window_snapping"/>
   <object class="GtkAction" id="a_tool_window_spread"/>
   <object class="GtkAction" id="a_unity_webapps"/>
@@ -23,6 +24,12 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/unity-settings-additional-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_unity_webapps">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">start</property>
+    <property name="pixbuf">icons/36/unity-settings-webapps-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_compiz_switcher">
     <property name="visible">True</property>
@@ -106,11 +113,10 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
   </object>
-  <object class="GtkImage" id="i_unity_webapps">
+  <object class="GtkImage" id="i_window_controls">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="valign">start</property>
-    <property name="pixbuf">icons/36/unity-settings-webapps-dark_36.svg</property>
+    <property name="pixbuf">icons/36/appearance-settings-window-controls-dark_36.svg</property>
   </object>
   <object class="GtkLabel" id="l_desktop_icons">
     <property name="visible">True</property>
@@ -140,6 +146,14 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label" translatable="yes">Workspaces</property>
+    <property name="justify">center</property>
+    <property name="wrap">True</property>
+  </object>
+  <object class="GtkLabel" id="l_window_controls">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label" translatable="yes">Window
+Controls</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
   </object>
@@ -529,7 +543,7 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="grid_start_theme">
+              <object class="GtkGrid" id="grid_start_appearance">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -567,7 +581,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolbar" id="toolbar_start_theme">
+              <object class="GtkToolbar" id="toolbar_start_appearance">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
@@ -583,6 +597,7 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the global system themes</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the global system themes</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Theme</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_system</property>
@@ -602,6 +617,7 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the icon themes</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the icon themes</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Icons</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_icons</property>
@@ -621,6 +637,7 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the cursor themes</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the cursor themes</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Cursor</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_cursors</property>
@@ -640,10 +657,29 @@
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the system-wide fonts</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the system-wide fonts</property>
+                    <property name="valign">start</property>
                     <property name="label" translatable="yes">Fonts</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_fonts</property>
                     <signal name="clicked" handler="on_tool_fonts_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="tool_window_controls">
+                    <property name="use_action_appearance">False</property>
+                    <property name="related_action">a_tool_window_controls</property>
+                    <property name="width_request">90</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="valign">start</property>
+                    <property name="use_underline">True</property>
+                    <property name="label_widget">l_window_controls</property>
+                    <property name="icon_widget">i_window_controls</property>
+                    <signal name="clicked" handler="on_tool_window_controls_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
