@@ -102,7 +102,7 @@ class UnityTweak ():
 
 
 
-        #  Quicklist
+        # ===== Quicklist =====
         quicklist = Dbusmenu.Menuitem.new()
         sections = ['Overview', 'Unity', 'Window Manager', 'Appearance', 'System']
         self.section_menu = [None, None, None, None, None, None]
@@ -135,6 +135,32 @@ class UnityTweak ():
         self.launcher.set_property('quicklist', quicklist)
 
         Gtk.main()
+    
+
+    def page_changed(self, controls, page, page_id):
+        ''' Called when the current visible section changes '''
+        for item_id, item in enumerate(self.section_menu):
+            # Check the current section's menu item, unchecking all others
+            if item_id == page_id:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED)
+            else:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED)
+        
+    def section_menu_item_activated(self, menu_item, obj, page_id):
+        ''' Called when a Quicklist menu item is selected '''
+        self.notebook.set_current_page(page_id)
+        if page_id == 0:
+            self.ui['tool_startpage'].set_active(True)            
+        elif page_id == 1:
+            self.ui['tool_unitysettings'].set_active(True)            
+        elif page_id == 2:
+            self.ui['tool_compizsettings'].set_active(True)            
+        elif page_id == 3:
+            self.ui['tool_themesettings'].set_active(True)        
+        elif page_id == 4:
+            self.ui['tool_desktopsettings'].set_active(True)            
+        else:
+            self.ui['tool_startpage'].set_active(True) 
         
     # ===== Menu Bar ==== #
     
@@ -179,32 +205,36 @@ class UnityTweak ():
     def on_menuitem_compiz_hotcorners_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(4)
-    
 
-    def page_changed(self, controls, page, page_id):
-        ''' Called when the current visible section changes '''
-        for item_id, item in enumerate(self.section_menu):
-            # Check the current section's menu item, unchecking all others
-            if item_id == page_id:
-                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED)
-            else:
-                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED)
-        
-    def section_menu_item_activated(self, menu_item, obj, page_id):
-        ''' Called when a Quicklist menu item is selected '''
-        self.notebook.set_current_page(page_id)
-        if page_id == 0:
-            self.ui['tool_startpage'].set_active(True)            
-        elif page_id == 1:
-            self.ui['tool_unitysettings'].set_active(True)            
-        elif page_id == 2:
-            self.ui['tool_compizsettings'].set_active(True)            
-        elif page_id == 3:
-            self.ui['tool_themesettings'].set_active(True)        
-        elif page_id == 4:
-            self.ui['tool_desktopsettings'].set_active(True)            
-        else:
-            self.ui['tool_startpage'].set_active(True) 
+    # ===== Appearance Settings Menu ==== #
+    def on_menuitem_theme_system_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(0)
+
+    def on_menuitem_theme_icon_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(1)
+
+    def on_menuitem_theme_cursor_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(2)
+
+    def on_menuitem_theme_fonts_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(3)
+
+    # ===== System Settings Menu ==== #
+    def on_menuitem_desktop_icons_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(0)
+
+    def on_menuitem_system_security_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(1)
+
+    def on_menuitem_scrolling_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(2)
 
     # ===== Top Navigation bar =====
     def on_tool_startpage_toggled(self,udata):
