@@ -2383,11 +2383,29 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_unity_webapps_general">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">General</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid_switch_unity_webapps">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
+                <property name="margin_left">18</property>
                 <child>
                   <object class="GtkSwitch" id="switch_unity_webapps">
                     <property name="visible">True</property>
@@ -2426,6 +2444,135 @@
               </packing>
             </child>
             <child>
+              <object class="GtkLabel" id="l_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
+                <property name="label" translatable="yes">Sites</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_allowed_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Allowed:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_allowed_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">24</property>
+                <property name="margin_right">24</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="treeview_allowed_domains">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">liststore_allowed_domains</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_dontask_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Blacklisted:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_dontask_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">24</property>
+                <property name="margin_right">18</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="treeview_dontask_domains">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">liststore_dontask_domains</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_preauthorized_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Preauthorized:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">7</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow_preauthorized_domains">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">24</property>
+                <property name="margin_right">18</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="treeview_preauthorized_domains">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">liststore_preauthorized_domains</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">8</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="b_unity_webapps_reset">
                 <property name="label" translatable="yes">Restore defaults</property>
                 <property name="visible">True</property>
@@ -2433,7 +2580,7 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">12</property>
+                <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_unity_webapps_reset_clicked" swapped="no"/>
               </object>
