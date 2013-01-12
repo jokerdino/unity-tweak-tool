@@ -98,6 +98,9 @@ class UnityTweak ():
         #----------- Command line options: End -----------------------
 
         Gtk.main()
+        
+    # ===== Menu Bar ====
+    
 
     # ===== Top Navigation bar =====
     def on_tool_startpage_toggled(self,udata):
