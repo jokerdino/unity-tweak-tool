@@ -624,6 +624,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default font for all applications.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default font for all applications.</property>
                     <property name="font">Sans 12</property>
                     <property name="preview_text"/>
                     <property name="show_preview_entry">False</property>
@@ -642,6 +644,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default font used for reading documents.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default font used for reading documents.</property>
                     <property name="font">Sans 12</property>
                     <property name="preview_text"/>
                     <property name="show_preview_entry">False</property>
@@ -696,6 +700,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default monospace font.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default monospace font.</property>
                     <property name="font">Sans 12</property>
                     <property name="preview_text"/>
                     <property name="show_preview_entry">False</property>
@@ -714,6 +720,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the default font for the window titlebar.Select the default font for the window titlebar.</property>
+                    <property name="tooltip_text" translatable="yes">Select the default font for the window titlebar.</property>
                     <property name="font">Sans 12</property>
                     <property name="preview_text"/>
                     <property name="show_preview_entry">False</property>
@@ -759,6 +767,7 @@
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
                 <property name="margin_right">18</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_antialiasing">
                     <property name="width_request">120</property>
@@ -783,6 +792,8 @@
                     <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Select the type of antialiasing used to render fonts.</property>
+                    <property name="tooltip_text" translatable="yes">Select the type of antialiasing used to render fonts.</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
@@ -803,6 +814,8 @@
                   <object class="GtkComboBoxText" id="cbox_hinting">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Select the type of hinting to use when rendering fonts</property>
+                    <property name="tooltip_text" translatable="yes">Select the type of hinting to use when rendering fonts</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
                     <items>
@@ -862,6 +875,8 @@
                     <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
+                    <property name="tooltip_text" translatable="yes">Select the factor used to enlarge or reduce text display, without changing font size.</property>
                     <property name="invisible_char">•</property>
                     <property name="invisible_char_set">True</property>
                     <property name="adjustment">adj_textscaling</property>

@@ -10,8 +10,3 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Actions=ReloadUnity;
-
-[Desktop Action ReloadUnity]
-Name=Reload Unity
-Exec=setsid unity
-OnlyShowIn=Unity;
