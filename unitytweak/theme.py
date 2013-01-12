@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Team:
@@ -423,13 +423,9 @@ class Themesettings ():
 
     def on_b_theme_window_controls_reset_clicked(self, widget):
         gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
-        print('g')
         self.refresh_window_controls()
-        print('r1')
         self.refresh_window_controls_combobox()
-        print('r2')
         self.refresh_window_controls_checkbox()
-        print('r3')
 
 #----- End: Window control settings--------
         
