@@ -100,6 +100,9 @@ class Startpage ():
     def on_tool_fonts_clicked(self, udata):
         self.container['tool_themesettings'].set_active(True)
         self.notebook.get_nth_page(3).set_current_page(3)
+    def on_tool_window_controls_clicked(self, udata):
+        self.container['tool_themesettings'].set_active(True)
+        self.notebook.get_nth_page(3).set_current_page(4)
 
     # Desktop settings on start page
     def on_tool_desktop_icons_clicked(self, udata):

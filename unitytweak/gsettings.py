@@ -82,7 +82,7 @@ background = gnome('desktop.background')
 desktop = gnome('nautilus.desktop')
 interface = gnome('desktop.interface')
 lockdown = gnome('desktop.lockdown')
-titlefont = gnome('desktop.wm.preferences')
+wm = gnome('desktop.wm.preferences')
 touch = gnome('settings-daemon.peripherals.touchpad')
 
 animation = plugin('animation')

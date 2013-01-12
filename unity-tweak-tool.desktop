@@ -22,7 +22,7 @@ Exec=unity-tweak-tool -w
 OnlyShowIn=Unity;
 
 [Desktop Action Appereance]
-Name=Appereance
+Name=Appearance
 Exec=unity-tweak-tool -a
 OnlyShowIn=Unity;
 
