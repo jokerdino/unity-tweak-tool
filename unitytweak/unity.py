@@ -88,6 +88,8 @@ class Unitysettings ():
             self.ui.unsensitize(dependants)
         del dependants
 
+        self.ui['cbox_autohide_animation'].set_active(gsettings.unityshell.get_int('autohide-animation'))
+
         # Reveal
         self.ui['radio_reveal_left'].set_active(True if gsettings.unityshell.get_int('reveal-trigger') is 0 else False)
         self.ui['radio_reveal_topleft'].set_active(True if gsettings.unityshell.get_int('reveal-trigger') is 1 else False)
@@ -443,7 +445,9 @@ class Unitysettings ():
                     'radio_reveal_topleft',
                     'sc_reveal_sensitivity',
                     'l_launcher_reveal',
-                    'l_launcher_reveal_sensitivity']
+                    'l_launcher_reveal_sensitivity',
+                    'l_autohide_animation',
+                    'cbox_autohide_animation']
 
         if self.ui['sw_launcher_hidemode'].get_active():
             gsettings.unityshell.set_int("launcher-hide-mode", 1)
@@ -457,6 +461,10 @@ class Unitysettings ():
         radio = self.ui['radio_reveal_left']
         mode = 0 if radio.get_active() else 1
         gsettings.unityshell.set_int('reveal-trigger', mode)
+
+    def on_cbox_autohide_animation_changed(self, widget, udata = None):
+        mode = self.ui['cbox_autohide_animation'].get_active()
+        gsettings.unityshell.set_int('autohide-animation', mode)
 
 # XXX :Strictly speaking, only one of these two will suffice.
     def on_radio_reveal_topleft_toggled(self, button, udata = None):
