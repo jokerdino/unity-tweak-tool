@@ -105,6 +105,9 @@ class Themesettings ():
 
         self.matchthemes=True
         self.refresh()
+        self.refresh_window_controls()
+        self.refresh_window_controls_combobox()
+        self.refresh_window_controls_checkbox()
         self.builder.connect_signals(self)
 
 #=====================================================================#
@@ -338,9 +341,10 @@ class Themesettings ():
 
     def on_radio_default_layout_toggled(self, button, udata = None):
         mode = self.ui['radio_default_layout'].get_active()
-        combobox = ['cbox_custom_layout']
+        combobox = ['cbox_custom_layout',]
         dependants = ['radio_left',
-                    'radio_right']
+                    'radio_right',
+                    'l_alignment']
         if mode == True:
             gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
             self.ui.sensitize(dependants)
@@ -367,7 +371,8 @@ class Themesettings ():
     def on_radio_custom_layout_toggled(self, button, udata = None):
         combobox = ['cbox_custom_layout']
         dependants = ['radio_left',
-                    'radio_right']
+                    'radio_right',
+                    'l_alignment']
         if self.ui['radio_custom_layout'].get_active() == True:
             self.ui.sensitize(combobox)
             self.ui.unsensitize(dependants)
@@ -379,7 +384,7 @@ class Themesettings ():
         cbox_mode = self.ui['cbox_custom_layout'].get_active()
         checkbox = ['check_show_menu']
         if cbox_mode == 0:
-            print(cbox_mode)
+            pass
         elif cbox_mode == 1:
             gsettings.wm.set_string('button-layout', 'close:')
             self.ui.sensitize(checkbox)

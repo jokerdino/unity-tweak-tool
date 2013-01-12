@@ -970,7 +970,8 @@
               <object class="GtkGrid" id="grid_window_controls_radio">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">24</property>
+                <property name="margin_left">30</property>
+                <property name="column_spacing">6</property>
                 <child>
                   <object class="GtkRadioButton" id="radio_left">
                     <property name="label" translatable="yes">Left</property>
@@ -982,7 +983,7 @@
                     <signal name="toggled" handler="on_radio_left_toggled" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
+                    <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
@@ -1000,8 +1001,22 @@
                     <signal name="toggled" handler="on_radio_right_toggled" swapped="no"/>
                   </object>
                   <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="l_alignment">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Alignment:</property>
+                  </object>
+                  <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -1039,8 +1054,7 @@
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="margin_left">24</property>
-                <property name="margin_top">6</property>
+                <property name="margin_left">30</property>
                 <property name="entry_text_column">0</property>
                 <property name="id_column">1</property>
                 <items>
