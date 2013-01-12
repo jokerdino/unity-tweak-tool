@@ -99,8 +99,29 @@ class UnityTweak ():
 
         Gtk.main()
         
-    # ===== Menu Bar ====
+    # ===== Menu Bar ==== #
     
+    # ===== Unity Menu ==== #
+    def on_menuitem_unity_launcher_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(0)
+
+    def on_menuitem_unity_dash_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(1)
+ 
+    def on_menuitem_unity_panel_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(2)
+		
+    def on_menuitem_unity_switcher_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(3)
+		
+    def on_menuitem_unity_additional_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(4)
+		
 
     # ===== Top Navigation bar =====
     def on_tool_startpage_toggled(self,udata):
