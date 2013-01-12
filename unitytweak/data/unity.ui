@@ -2450,7 +2450,7 @@
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
-                <property name="label" translatable="yes">Sites</property>
+                <property name="label" translatable="yes">Domains</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -2522,7 +2522,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">24</property>
-                <property name="margin_right">18</property>
+                <property name="margin_right">24</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="treeview_dontask_domains">
@@ -2562,7 +2562,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">24</property>
-                <property name="margin_right">18</property>
+                <property name="margin_right">24</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="treeview_preauthorized_domains">
@@ -2589,7 +2589,7 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_top">6</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <signal name="clicked" handler="on_b_unity_webapps_reset_clicked" swapped="no"/>
               </object>
