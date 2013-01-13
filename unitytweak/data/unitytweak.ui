@@ -19,6 +19,8 @@
   <object class="GtkImage" id="i_tool_startpage">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="tooltip_markup" translatable="yes">Unity Tweak Tool Overview pane.</property>
+    <property name="tooltip_text" translatable="yes">Unity Tweak Tool Overview pane.</property>
     <property name="pixbuf">icons/36/overview-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_themesettings">
@@ -375,8 +377,8 @@
                 <property name="width_request">80</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the Unity settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the Unity settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the Unity settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the Unity settings panel.</property>
                 <property name="label" translatable="yes">Unity</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_unitysettings</property>
@@ -395,8 +397,8 @@
                 <property name="width_request">100</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the window manager settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the window manager settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the window manager settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the window manager settings panel.</property>
                 <property name="label" translatable="yes">Window Manager</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_compizsettings</property>
@@ -415,8 +417,8 @@
                 <property name="width_request">90</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the appearance settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the appearance settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the appearance settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the appearance settings panel.</property>
                 <property name="label" translatable="yes">Appearance</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_themesettings</property>
@@ -435,8 +437,8 @@
                 <property name="width_request">80</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the desktop settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the desktop settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the system settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the system settings panel.</property>
                 <property name="label" translatable="yes">System</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_desktopsettings</property>

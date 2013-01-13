@@ -259,12 +259,14 @@ class Unitysettings ():
             self.ui['check_indicator_battery_life'].set_active(False)
         del battery_life
 
-        # 24 hour time format
+        # Time format
         time_format = gsettings.datetime.get_string('time-format')
         if time_format == '12-hour':
             self.ui['radio_12hour'].set_active(True)
-        else:
+        elif time_format == '24-hour':
             self.ui['radio_24hour'].set_active(True)
+        else:
+            pass
         del time_format
 
         # Seconds
@@ -731,18 +733,18 @@ class Unitysettings ():
         mode = self.ui['radio_12hour'].get_active()
 
         if mode == True:
-            gsettings.datetime.set_string('time-format', '24-hour')
-        else:
             gsettings.datetime.set_string('time-format', '12-hour')
+        else:
+            gsettings.datetime.set_string('time-format', '24-hour')
 
     def on_radio_24hour_toggled(self, button, udata = None):
 
         mode = self.ui['radio_24hour'].get_active()
 
         if mode == True:
-            gsettings.datetime.set_string('time-format', '12-hour')
-        else:
             gsettings.datetime.set_string('time-format', '24-hour')
+        else:
+            gsettings.datetime.set_string('time-format', '12-hour')
 
 
     def on_check_time_seconds_toggled(self, widget, udata = None):

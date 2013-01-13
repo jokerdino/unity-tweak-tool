@@ -191,8 +191,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Should the launcher be hidden?</property>
-                    <property name="tooltip_text" translatable="yes">Should the launcher be hidden?</property>
                     <property name="margin_right">7</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -257,13 +255,13 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
+                <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_launcher_reveal">
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the option to reveal the dash with the mouse, when auto-hide is enabled.</property>
                     <property name="tooltip_text" translatable="yes">Select the option to reveal the dash with the mouse, when auto-hide is enabled.</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
@@ -283,8 +281,6 @@
                     <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">The amount of &amp;quot;pressure&amp;quot; required to reveal the launcher with the mouse.</property>
-                    <property name="tooltip_text" translatable="yes">The amount of "pressure" required to reveal the launcher with the mouse.</property>
                     <property name="margin_right">7</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Reveal sensitivity:</property>
@@ -303,8 +299,8 @@
                     <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">How much &amp;quot;pressure&amp;quot; should required to reveal the launcher with the mouse.</property>
-                    <property name="tooltip_text" translatable="yes">How much "pressure" should required to reveal the launcher with the mouse.</property>
+                    <property name="tooltip_markup" translatable="yes">How much pointer "pressure" is required to reveal the launcher.</property>
+                    <property name="tooltip_text" translatable="yes">How much pointer "pressure" is required to reveal the launcher.</property>
                     <property name="margin_left">3</property>
                     <property name="margin_top">12</property>
                     <property name="adjustment">adj_reveal_sensitivity</property>
@@ -332,8 +328,8 @@
                         <property name="can_focus">False</property>
                         <property name="receives_default">True</property>
                         <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">The left edge of the current workspace</property>
-                        <property name="tooltip_text" translatable="yes">The left edge of the current workspace</property>
+                        <property name="tooltip_markup" translatable="yes">When in auto-hide mode the left edge of the current workspace triggers the launcher.</property>
+                        <property name="tooltip_text" translatable="yes">When in auto-hide mode the left edge of the current workspace triggers the launcher.</property>
                         <property name="xalign">0</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
@@ -355,8 +351,8 @@
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
                         <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">The top left corner of the current workspace</property>
-                        <property name="tooltip_text" translatable="yes">The top left corner of the current workspace</property>
+                        <property name="tooltip_markup" translatable="yes">When in auto-hide mode the top left corner of the current workspace triggers the launcher.</property>
+                        <property name="tooltip_text" translatable="yes">When in auto-hide mode the top left corner of the current workspace triggers the launcher.</property>
                         <property name="xalign">0</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
@@ -412,8 +408,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable launcher transparency?</property>
-                    <property name="tooltip_text" translatable="yes">Enable launcher transparency?</property>
                     <property name="margin_right">7</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -473,8 +467,8 @@
                     <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">How transparent should the launcher be?</property>
-                    <property name="tooltip_text" translatable="yes">How transparent should the launcher be?</property>
+                    <property name="tooltip_markup" translatable="yes">How transparent the launcher will be.</property>
+                    <property name="tooltip_text" translatable="yes">How transparent the launcher will be.</property>
                     <property name="margin_left">3</property>
                     <property name="margin_top">12</property>
                     <property name="adjustment">adj_launcher_transparency</property>
@@ -509,8 +503,8 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
-                    <property name="tooltip_text" translatable="yes">If selected, the launcher colour itself based on the desktop background</property>
+                    <property name="tooltip_markup" translatable="yes">If selected, the launcher colour is based on the desktop background</property>
+                    <property name="tooltip_text" translatable="yes">If selected, the launcher colour is based on the desktop background</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -528,8 +522,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the option for colouring the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the option for colouring the launcher</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Colour:</property>
@@ -547,8 +539,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the locations which the will launcher visible </property>
-                    <property name="tooltip_text" translatable="yes">Select the locations which the will launcher visible </property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Visibility:</property>
@@ -617,7 +607,7 @@
                     <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on all desktops</property>
+                    <property name="tooltip_markup" translatable="yes">If selected, the launcher is visible on all desktops.</property>
                     <property name="tooltip_text" translatable="yes">If selected, the launcher is visible on all desktops</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">0</property>
@@ -688,8 +678,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
                     <property name="margin_right">5</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -769,8 +757,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Show a &amp;quot;Show Desktop&amp;quot; button on the launcher?</property>
-                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher?</property>
+                    <property name="tooltip_markup" translatable="yes">Show a "Show Desktop" button on the launcher.</property>
+                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher.</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin_left">1</property>
@@ -788,8 +776,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Show a &amp;quot;Show Desktop&amp;quot; button on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Show a "Show Desktop" button on the launcher</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">"Show desktop" icon:</property>
@@ -872,8 +858,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select how the icons are coloured on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select how the icons are coloured on the launcher</property>
                     <property name="margin_right">5</property>
                     <property name="xalign">1</property>
                     <property name="label" translatable="yes">Icon backgrounds:</property>
@@ -939,8 +923,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_markup" translatable="yes">Restore default Unity launcher settings</property>
-                <property name="tooltip_text" translatable="yes">Restore default Unity launcher settings</property>
+                <property name="tooltip_markup" translatable="yes">Restore default Unity launcher settings.</property>
+                <property name="tooltip_text" translatable="yes">Restore default Unity launcher settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
@@ -1000,8 +984,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable dash blur?</property>
-                    <property name="tooltip_text" translatable="yes">Enable dash blur?</property>
                     <property name="halign">end</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
@@ -1062,6 +1044,8 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
+                        <property name="tooltip_markup" translatable="yes">Use a dynamic blur in the dash.</property>
+                        <property name="tooltip_text" translatable="yes">Use a dynamic blur in the dash.</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">radio_dash_blur_static</property>
@@ -1081,6 +1065,8 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">False</property>
+                        <property name="tooltip_markup" translatable="yes">Use a static blur in the dash, uses less resources.</property>
+                        <property name="tooltip_text" translatable="yes">Use a static blur in the dash, uses less resources.</property>
                         <property name="xalign">0</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
@@ -1113,8 +1099,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">False</property>
-                <property name="tooltip_markup" translatable="yes">If enabled, the dash will pull suggestions from online sources.</property>
-                <property name="tooltip_text" translatable="yes">If enabled, the dash will pull suggestions from online sources.</property>
+                <property name="tooltip_markup" translatable="yes">If enabled, the dash will get suggestions from online sources.</property>
+                <property name="tooltip_text" translatable="yes">If enabled, the dash will get suggestions from online sources.</property>
                 <property name="margin_left">18</property>
                 <property name="margin_top">6</property>
                 <property name="xalign">0</property>
@@ -1258,8 +1244,8 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="has_tooltip">True</property>
-                <property name="tooltip_markup" translatable="yes">Restore the default Dash configurations</property>
-                <property name="tooltip_text" translatable="yes">Restore the default Dash configurations</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default Dash settings.</property>
+                <property name="tooltip_text" translatable="yes">Restore the default Dash settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
@@ -1321,8 +1307,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select how long the application menu is visible when an application is first opened</property>
-                    <property name="tooltip_text" translatable="yes">Select how long the application menu is visible when an application is first opened</property>
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -1340,8 +1324,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Enable transparency for the panel?</property>
-                    <property name="tooltip_text" translatable="yes">Enable transparency for the panel?</property>
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -1360,8 +1342,6 @@
                     <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Set the level of transparency for the panel</property>
-                    <property name="tooltip_text" translatable="yes">Set the level of transparency for the panel</property>
                     <property name="margin_right">6</property>
                     <property name="margin_top">6</property>
                     <property name="xalign">1</property>
@@ -1413,6 +1393,8 @@
                       <object class="GtkSpinButton" id="spin_menu_visible">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="tooltip_markup" translatable="yes">Select how long the application menu is visible when an application is first opened</property>
+                        <property name="tooltip_text" translatable="yes">Select how long the application menu is visible when an application is first opened</property>
                         <property name="halign">start</property>
                         <property name="margin_left">2</property>
                         <property name="margin_top">8</property>
@@ -1460,8 +1442,8 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="has_tooltip">True</property>
-                        <property name="tooltip_markup" translatable="yes">How transparent should the panel be?</property>
-                        <property name="tooltip_text" translatable="yes">How transparent should the panel be?</property>
+                        <property name="tooltip_markup" translatable="yes">Set the level of transparency for the panel.</property>
+                        <property name="tooltip_text" translatable="yes">Set the level of transparency for the panel.</property>
                         <property name="margin_left">3</property>
                         <property name="margin_top">9</property>
                         <property name="adjustment">adj_panel_transparency</property>
@@ -1612,7 +1594,6 @@
                                 <property name="tooltip_markup" translatable="yes">Have the clock use 24-hour time.</property>
                                 <property name="tooltip_text" translatable="yes">Have the clock use 24-hour time.</property>
                                 <property name="xalign">0</property>
-                                <property name="active">True</property>
                                 <property name="draw_indicator">True</property>
                                 <signal name="notify::active" handler="on_radio_24hour_toggled" swapped="no"/>
                               </object>
@@ -1785,6 +1766,8 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, show the power menu in the panel.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, show the power menu in the panel.</property>
                             <property name="margin_left">12</property>
                             <property name="xalign">0</property>
                             <property name="active">True</property>
@@ -1810,6 +1793,8 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
+                                <property name="tooltip_markup" translatable="yes">Set the power indicator to be visible when charging or discharging power.</property>
+                                <property name="tooltip_text" translatable="yes">Set the power indicator to be visible when charging or discharging power.</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
                                 <signal name="notify::active" handler="on_radio_power_charging_toggled" swapped="no"/>
@@ -1827,6 +1812,8 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">False</property>
+                                <property name="tooltip_markup" translatable="yes">Set the power indicator to be always visible.</property>
+                                <property name="tooltip_text" translatable="yes">Set the power indicator to be always visible.</property>
                                 <property name="xalign">0</property>
                                 <property name="draw_indicator">True</property>
                                 <property name="group">radio_power_charging</property>
@@ -1883,6 +1870,8 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
+                            <property name="tooltip_markup" translatable="yes">If enabled, show the sound menu in the panel.</property>
+                            <property name="tooltip_text" translatable="yes">If enabled, show the sound menu in the panel.</property>
                             <property name="halign">start</property>
                             <property name="valign">start</property>
                             <property name="margin_left">12</property>
@@ -1920,6 +1909,8 @@
                               <object class="GtkComboBoxText" id="cbox_default_player">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="tooltip_markup" translatable="yes">Select which of the installed audio players is default in the sound menu.</property>
+                                <property name="tooltip_text" translatable="yes">Select which of the installed audio players is default in the sound menu.</property>
                                 <property name="entry_text_column">0</property>
                                 <property name="id_column">1</property>
                                 <signal name="changed" handler="on_cbox_default_player_changed" swapped="no"/>
@@ -1945,6 +1936,8 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
+                            <property name="tooltip_markup" translatable="yes">When using scrolling to change the volume, show on-screen notifications.</property>
+                            <property name="tooltip_text" translatable="yes">When using scrolling to change the volume, show on-screen notifications.</property>
                             <property name="margin_left">20</property>
                             <property name="xalign">0</property>
                             <property name="draw_indicator">True</property>
@@ -2008,8 +2001,8 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="has_tooltip">True</property>
-                <property name="tooltip_markup" translatable="yes">Restore the default Unity panel settings</property>
-                <property name="tooltip_text" translatable="yes">Restore the default Unity panel settings</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default Unity panel settings.</property>
+                <property name="tooltip_text" translatable="yes">Restore the default Unity panel settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
@@ -2194,8 +2187,8 @@
                           <object class="GtkTreeView" id="treeview_unity_switcher_windows">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_markup" translatable="yes">List of window switcher shortcuts</property>
-                            <property name="tooltip_text" translatable="yes">List of window switcher shortcuts</property>
+                            <property name="tooltip_markup" translatable="yes">Window switcher shortcuts</property>
+                            <property name="tooltip_text" translatable="yes">Window switcher shortcuts</property>
                             <property name="model">list_unity_switcher_windows_accelerators</property>
                             <property name="headers_visible">False</property>
                             <property name="headers_clickable">False</property>
@@ -2283,8 +2276,8 @@
                           <object class="GtkTreeView" id="treeview_unity_switcher_launcher">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_markup" translatable="yes">List of launcher switcher shortcuts</property>
-                            <property name="tooltip_text" translatable="yes">List of launcher switcher shortcuts</property>
+                            <property name="tooltip_markup" translatable="yes">Launcher switcher shortcuts</property>
+                            <property name="tooltip_text" translatable="yes">Launcher switcher shortcuts</property>
                             <property name="model">list_unity_switcher_launcher_accelerators</property>
                             <property name="headers_visible">False</property>
                             <property name="headers_clickable">False</property>
@@ -2349,6 +2342,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default window switcher settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
@@ -2410,6 +2404,8 @@
                   <object class="GtkSwitch" id="switch_unity_webapps">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
+                    <property name="tooltip_text" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
                     <property name="halign">start</property>
                     <signal name="notify::active" handler="on_switch_webapps_active_notify" swapped="no"/>
                   </object>
@@ -2424,8 +2420,6 @@
                   <object class="GtkLabel" id="l_switch_unity_webapps">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_markup" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
-                    <property name="tooltip_text" translatable="yes">Enable prompts for webapp integration when visitiing supported websites?</property>
                     <property name="margin_right">6</property>
                     <property name="label" translatable="yes">Integration prompts:</property>
                   </object>
@@ -2489,6 +2483,9 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="model">liststore_allowed_domains</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection" id="treeview-selection3"/>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -2526,6 +2523,9 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="model">liststore_dontask_domains</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection" id="treeview-selection4"/>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -2563,6 +2563,9 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="model">liststore_preauthorized_domains</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection" id="treeview-selection5"/>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -2578,6 +2581,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default Unity Webapps settings.</property>
+                <property name="tooltip_text" translatable="yes">Restore the default Unity Webapps settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
@@ -2663,7 +2668,7 @@
                     <property name="headers_clickable">False</property>
                     <property name="search_column">0</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="treeview-selection4"/>
+                      <object class="GtkTreeSelection" id="treeview-selection7"/>
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeview_unity_additional_column_title">
@@ -2708,8 +2713,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_markup" translatable="yes">Restore the default Unity keyboard shortcut settings</property>
-                <property name="tooltip_text" translatable="yes">Restore the default Unity keyboard shortcut settings</property>
+                <property name="tooltip_markup" translatable="yes">Restore the default Unity keyboard shortcut settings.</property>
+                <property name="tooltip_text" translatable="yes">Restore the default Unity keyboard shortcut settings.</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">12</property>
