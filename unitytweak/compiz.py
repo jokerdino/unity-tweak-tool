@@ -52,7 +52,7 @@ class Compizsettings ():
         self.page.unparent()
 
 
-# Initialise Cairo bits
+        # Initialise Cairo bits
         self.window_snapping_drawable = self.ui['draw_window_snapping']
         self._base_window_snapping_surface = cairo.ImageSurface.create_from_png(os.path.join(settings.UI_DIR, 'monitor-window-snapping.png'))
 
