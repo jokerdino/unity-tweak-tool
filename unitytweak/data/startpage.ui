@@ -19,17 +19,12 @@
   <object class="GtkAction" id="a_tool_window_controls"/>
   <object class="GtkAction" id="a_tool_window_snapping"/>
   <object class="GtkAction" id="a_tool_window_spread"/>
+  <object class="GtkAction" id="a_tool_wm_additional"/>
   <object class="GtkAction" id="a_unity_webapps"/>
   <object class="GtkImage" id="i_tool_additional">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/unity-settings-additional-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_unity_webapps">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="valign">start</property>
-    <property name="pixbuf">icons/36/unity-settings-webapps-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_compiz_switcher">
     <property name="visible">True</property>
@@ -112,6 +107,17 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_wm_additional">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/36/wm-settings-additional-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_unity_webapps">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">start</property>
+    <property name="pixbuf">icons/36/unity-settings-webapps-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_window_controls">
     <property name="visible">True</property>
@@ -505,6 +511,26 @@ Controls</property>
                     <property name="use_underline">True</property>
                     <property name="icon_widget">i_tool_hotcorners</property>
                     <signal name="clicked" handler="on_tool_hotcorners_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="tool_wm_additional">
+                    <property name="use_action_appearance">False</property>
+                    <property name="related_action">a_tool_wm_additional</property>
+                    <property name="width_request">90</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Show the additional settings pane.</property>
+                    <property name="tooltip_text" translatable="yes">Show the additional settings pane.</property>
+                    <property name="valign">start</property>
+                    <property name="label" translatable="yes">Additional</property>
+                    <property name="use_underline">True</property>
+                    <property name="icon_widget">i_tool_wm_additional</property>
+                    <signal name="clicked" handler="on_tool_wm_additional_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>

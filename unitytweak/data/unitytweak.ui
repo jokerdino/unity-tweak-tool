@@ -19,7 +19,9 @@
   <object class="GtkImage" id="i_tool_startpage">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/home-light_36.svg</property>
+    <property name="tooltip_markup" translatable="yes">Unity Tweak Tool Overview pane.</property>
+    <property name="tooltip_text" translatable="yes">Unity Tweak Tool Overview pane.</property>
+    <property name="pixbuf">icons/36/overview-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_themesettings">
     <property name="visible">True</property>
@@ -50,7 +52,6 @@
   <object class="GtkImage" id="image_menu_unity_settings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-missing-image</property>
   </object>
   <object class="GtkWindow" id="unitytweak_main">
     <property name="can_focus">False</property>
@@ -91,6 +92,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Launcher</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_unity_launcher_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -99,6 +101,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Dash</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_unity_dash_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -107,6 +110,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Panel</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_unity_panel_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -115,6 +119,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Switcher</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_unity_switcher_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -123,6 +128,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Additional</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_unity_additional_activate" swapped="no"/>
                               </object>
                             </child>
                           </object>
@@ -146,6 +152,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">General</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_compiz_general_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -154,6 +161,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Workspace</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_compiz_workspace_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -162,6 +170,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Windows spread</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_compiz_windows_spread_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -170,6 +179,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Windows snapping</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_compiz_windows_snapping_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -178,6 +188,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Hotcorners</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_compiz_hotcorners_activate" swapped="no"/>
                               </object>
                             </child>
                           </object>
@@ -201,6 +212,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Theme</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_theme_system_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -209,6 +221,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Icons</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_theme_icon_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -217,6 +230,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Cursor</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_theme_cursor_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -225,6 +239,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Fonts</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_theme_fonts_activate" swapped="no"/>
                               </object>
                             </child>
                           </object>
@@ -248,6 +263,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Desktop Icons</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_desktop_icons_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -256,6 +272,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Security</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_system_security_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -264,6 +281,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Scrolling</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_menuitem_scrolling_activate" swapped="no"/>
                               </object>
                             </child>
                           </object>
@@ -339,7 +357,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_markup" translatable="yes">Show the Home panel</property>
                 <property name="tooltip_text" translatable="yes">Show the Home panel</property>
-                <property name="label" translatable="yes">Home</property>
+                <property name="label" translatable="yes">Overview</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_startpage</property>
                 <style>
@@ -359,8 +377,8 @@
                 <property name="width_request">80</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the Unity settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the Unity settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the Unity settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the Unity settings panel.</property>
                 <property name="label" translatable="yes">Unity</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_unitysettings</property>
@@ -379,8 +397,8 @@
                 <property name="width_request">100</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the window manager settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the window manager settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the window manager settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the window manager settings panel.</property>
                 <property name="label" translatable="yes">Window Manager</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_compizsettings</property>
@@ -399,8 +417,8 @@
                 <property name="width_request">90</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the appearance settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the appearance settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the appearance settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the appearance settings panel.</property>
                 <property name="label" translatable="yes">Appearance</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_themesettings</property>
@@ -419,8 +437,8 @@
                 <property name="width_request">80</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the desktop settings panel</property>
-                <property name="tooltip_text" translatable="yes">Show the desktop settings panel</property>
+                <property name="tooltip_markup" translatable="yes">Show the system settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the system settings panel.</property>
                 <property name="label" translatable="yes">System</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">i_tool_desktopsettings</property>

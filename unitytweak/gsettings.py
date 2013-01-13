@@ -76,6 +76,7 @@ power = canonical('indicator.power')
 scrollbars= canonical('desktop.interface')
 session = canonical('indicator.session')
 sound = canonical('indicator.sound')
+notifyosd = canonical('notify-osd')
 
 antialiasing = gnome('settings-daemon.plugins.xsettings')
 background = gnome('desktop.background')

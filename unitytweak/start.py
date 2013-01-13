@@ -86,6 +86,9 @@ class Startpage ():
     def on_tool_hotcorners_clicked(self, udata):
         self.container['tool_compizsettings'].set_active(True)
         self.notebook.get_nth_page(2).set_current_page(4)
+    def on_tool_wm_additional_clicked(self, udata):
+        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.get_nth_page(2).set_current_page(5)
 
     # Theme settings on Start page
     def on_tool_system_clicked(self, udata):

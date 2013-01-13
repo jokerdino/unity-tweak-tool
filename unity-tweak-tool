@@ -30,7 +30,7 @@
 
 import os, os.path, argparse
 
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, Unity, Dbusmenu, Dee
 
 from unitytweak.ui import ui
 from unitytweak.start import Startpage
@@ -54,6 +54,8 @@ class UnityTweak ():
         self.builder.connect_signals(self)
         self.ui['unitytweak_main'].set_resizable(False)
 
+        self.launcher = Unity.LauncherEntry.get_for_desktop_id("unity-tweak-tool.desktop")
+
         self.notebook = self.ui['nb_unitytweak']
 
         self.startpage = Startpage(self.ui, self.notebook)
@@ -71,15 +73,16 @@ class UnityTweak ():
         self.ui['unitytweak_main'].show_all()
         self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
 
+
         #---------- Command line options: Start ----------------------
 
         parser = argparse.ArgumentParser()
 
         parser.add_argument('-u', '--unity', help='Start in the Unity tab', action='store_true')
         parser.add_argument('-w', '--winmng', help='Start in the WindowManager tab', action='store_true')
-        parser.add_argument('-a', '--appereance', help='Start in the appereance tab', action='store_true')
+        parser.add_argument('-a', '--appearance', help='Start in the appearance tab', action='store_true')
         parser.add_argument('-s', '--system', help='Start in the system tab', action='store_true')
-        parser.add_argument('-r', '--restore', help='Restore settings to its defaults values', action='store_true')
+        parser.add_argument('-r', '--restore', help='Restore settings to its default values', action='store_true')
 
         args = parser.parse_args()
 
@@ -87,7 +90,7 @@ class UnityTweak ():
             self.ui['tool_unitysettings'].set_active(True)            
         elif args.winmng:
             self.ui['tool_compizsettings'].set_active(True)            
-        elif args.appereance:
+        elif args.appearance:
             self.ui['tool_themesettings'].set_active(True)        
         elif args.system:
             self.ui['tool_desktopsettings'].set_active(True)            
@@ -97,7 +100,125 @@ class UnityTweak ():
 
         #----------- Command line options: End -----------------------
 
+
+
+        # ===== Quicklist =====
+        quicklist = Dbusmenu.Menuitem.new()
+        sections = ['Overview', 'Unity', 'Window Manager', 'Appearance', 'System']
+        self.section_menu = [None, None, None, None, None, None]
+        for page_id, page_name in enumerate(sections):
+            section_menu_item = Dbusmenu.Menuitem.new ()
+            section_menu_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, page_name)
+            section_menu_item.property_set(Dbusmenu.MENUITEM_PROP_TOGGLE_TYPE, Dbusmenu.MENUITEM_TOGGLE_RADIO)
+            section_menu_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, True)
+            section_menu_item.connect('item_activated', self.section_menu_item_activated, page_id)
+            quicklist.child_append(section_menu_item)
+            self.section_menu[page_id] = section_menu_item
+
+        self.ui['nb_unitytweak'].connect('change-current-page', self.page_changed)
+        self.launcher.set_property('quicklist', quicklist)
+
         Gtk.main()
+    
+
+    def page_changed(self, controls, page, page_id):
+        ''' Called when the current visible section changes '''
+        for item_id, item in enumerate(self.section_menu):
+            # Check the current section's menu item, unchecking all others
+            if item_id == page_id:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED)
+            else:
+                item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED)
+        
+    def section_menu_item_activated(self, menu_item, obj, page_id):
+        ''' Called when a Quicklist menu item is selected '''
+        self.notebook.set_current_page(page_id)
+        if page_id == 0:
+            self.ui['tool_startpage'].set_active(True)            
+        elif page_id == 1:
+            self.ui['tool_unitysettings'].set_active(True)            
+        elif page_id == 2:
+            self.ui['tool_compizsettings'].set_active(True)            
+        elif page_id == 3:
+            self.ui['tool_themesettings'].set_active(True)        
+        elif page_id == 4:
+            self.ui['tool_desktopsettings'].set_active(True)            
+        else:
+            self.ui['tool_startpage'].set_active(True) 
+        
+    # ===== Menu Bar ==== #
+    
+    # ===== Unity Menu ==== #
+    def on_menuitem_unity_launcher_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(0)
+
+    def on_menuitem_unity_dash_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(1)
+ 
+    def on_menuitem_unity_panel_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(2)
+		
+    def on_menuitem_unity_switcher_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(3)
+		
+    def on_menuitem_unity_additional_activate(self,udata):
+        self.notebook.set_current_page(1)
+        self.unitysettings.page.set_current_page(4)
+        
+    # ===== Compiz Settings Menu ==== #
+    def on_menuitem_compiz_general_activate(self,udata):
+        self.notebook.set_current_page(2)
+        self.compizsettings.page.set_current_page(0)
+        
+    def on_menuitem_compiz_workspace_activate(self,udata):
+        self.notebook.set_current_page(2)
+        self.compizsettings.page.set_current_page(1)
+        
+    def on_menuitem_compiz_windows_spread_activate(self,udata):
+        self.notebook.set_current_page(2)
+        self.compizsettings.page.set_current_page(2)
+        
+    def on_menuitem_compiz_windows_snapping_activate(self,udata):
+        self.notebook.set_current_page(2)
+        self.compizsettings.page.set_current_page(3)
+        
+    def on_menuitem_compiz_hotcorners_activate(self,udata):
+        self.notebook.set_current_page(2)
+        self.compizsettings.page.set_current_page(4)
+
+    # ===== Appearance Settings Menu ==== #
+    def on_menuitem_theme_system_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(0)
+
+    def on_menuitem_theme_icon_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(1)
+
+    def on_menuitem_theme_cursor_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(2)
+
+    def on_menuitem_theme_fonts_activate(self,udata):
+        self.notebook.set_current_page(3)
+        self.themesettings.page.set_current_page(3)
+
+    # ===== System Settings Menu ==== #
+    def on_menuitem_desktop_icons_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(0)
+
+    def on_menuitem_system_security_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(1)
+
+    def on_menuitem_scrolling_activate(self,udata):
+        self.notebook.set_current_page(4)
+        self.desktopsettings.page.set_current_page(2)
 
     # ===== Top Navigation bar =====
     def on_tool_startpage_toggled(self,udata):
@@ -114,9 +235,7 @@ class UnityTweak ():
     def on_tool_desktopsettings_toggled(self,udata):
         self.notebook.set_current_page(4)
 
-
-
-    # gtk search box
+    # ===== GTK Search Box =====
 
     # inserting text shows the secondary icon (stock-clear)
 

@@ -119,9 +119,17 @@ class Themesettings ():
         # System theme
         gtkthemesel=self.ui['tree_gtk_theme'].get_selection()
         gtktheme=gsettings.gnome('desktop.interface').get_string('gtk-theme')
-        gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
 
-        # Window Theme
+# FIXME: Workaround to fix LP bug: #1098845
+        try:
+            gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
+
+# TODO: This except part should do something more.
+        except KeyError:
+            gtkthemesel.unselect_all()
+
+        # Window theme
+
         windowthemesel=self.ui['tree_window_theme'].get_selection()
         windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
         windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
@@ -135,7 +143,8 @@ class Themesettings ():
         cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
         cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
 
-# FIXME: LP bug: #1097227
+# FIXME: Workaround to fix LP bug: #1097227
+
         try:
             cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
 # TODO: except part should make sure the selection is deselected.

@@ -31,7 +31,7 @@
 import os, os.path
 import cairo
 
-from gi.repository import Gtk, Gio, Gdk
+from gi.repository import Gtk, Gdk
 from math import pi, sqrt
 
 from .ui import ui
@@ -51,8 +51,10 @@ class Compizsettings ():
         self.page = self.ui['nb_compizsettings']
         self.page.unparent()
 
+        self.ui['scale_auto_raise_delay'].add_mark(500, Gtk.PositionType.BOTTOM, None)
 
-# Initialise Cairo bits
+
+        # Initialise Cairo bits
         self.window_snapping_drawable = self.ui['draw_window_snapping']
         self._base_window_snapping_surface = cairo.ImageSurface.create_from_png(os.path.join(settings.UI_DIR, 'monitor-window-snapping.png'))
 
@@ -69,10 +71,7 @@ class Compizsettings ():
             'cbox_window_snapping_right': [0, 'right-edge-action'],
             'cbox_window_snapping_bottomright': [0, 'bottom-right-corner-action']
         }
-        for box in self.window_snapping_cboxes:
-            self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
-            self.ui[box].set_active(self.window_snapping_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
+
 
         self.hotcorners_cboxes = {
             'cbox_hotcorners_top': [0, 'Top'],
@@ -84,24 +83,7 @@ class Compizsettings ():
             'cbox_hotcorners_right': [0, 'Right'],
             'cbox_hotcorners_bottomright': [0, 'BottomRight']
         }
-        self.hotcorner_values = {
-            'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
-            'expo': gsettings.expo.get_string('expo-edge').split('|'),
-            'window_spread': gsettings.scale.get_string('initiate-edge').split('|')
-        }
 
-        for box in self.hotcorners_cboxes:
-            if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
-                self.hotcorners_cboxes[box][0] = 1
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
-                self.hotcorners_cboxes[box][0] = 2
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
-                self.hotcorners_cboxes[box][0] = 3
-            else:
-                self.hotcorners_cboxes[box][0] = 0
-
-            self.ui[box].set_active(self.hotcorners_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
         self.refresh()
         self.builder.connect_signals(self)
 
@@ -432,6 +414,53 @@ class Compizsettings ():
             self.ui['color_outline_color'].set_color(gdkcolor)
         del color, valid, gdkcolor
 
+        for box in self.window_snapping_cboxes:
+            self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
+            self.ui[box].set_active(self.window_snapping_cboxes[box][0])
+            self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
+
+        # ===== Hotcorners settings ===== #
+        self.hotcorner_values = {
+            'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
+            'expo': gsettings.expo.get_string('expo-edge').split('|'),
+            'window_spread': gsettings.scale.get_string('initiate-edge').split('|')
+        }
+        for box in self.hotcorners_cboxes:
+            if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
+                self.hotcorners_cboxes[box][0] = 1
+            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
+                self.hotcorners_cboxes[box][0] = 2
+            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
+                self.hotcorners_cboxes[box][0] = 3
+            else:
+                self.hotcorners_cboxes[box][0] = 0
+            self.ui[box].set_active(self.hotcorners_cboxes[box][0])
+            self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
+
+        # ===== Additional settings ===== #
+
+        # Auto raise
+        self.ui['switch_auto_raise'].set_active(gsettings.wm.get_boolean('auto-raise'))
+        self.ui['scale_auto_raise_delay'].set_value(gsettings.wm.get_int('auto-raise-delay'))
+
+        # Titlebar actions
+        self.ui['cbox_double_click'].set_active(gsettings.wm.get_enum('action-double-click-titlebar'))
+        self.ui['cbox_middle_click'].set_active(gsettings.wm.get_enum('action-middle-click-titlebar'))
+        self.ui['cbox_right_click'].set_active(gsettings.wm.get_enum('action-right-click-titlebar'))
+
+        # Focus mode
+        focus_mode = gsettings.wm.get_enum('focus-mode')
+        if focus_mode == 0:
+            self.ui['cbox_focus_mode'].set_active(0)
+        elif focus_mode == 1:
+            self.ui['cbox_focus_mode'].set_active(1)
+        elif focus_mode == 2:
+            self.ui['cbox_focus_mode'].set_active(2)
+        else:
+            pass
+        del focus_mode
+
+
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -700,11 +729,16 @@ class Compizsettings ():
 
     def on_b_compiz_windowsnapping_reset_clicked(self, widget):
         gsettings.core.reset('active-plugins')
-        gsettings.core.reset('show-desktop-edge')
-        gsettings.expo.reset('expo-edge')
         gsettings.grid.reset('fill-color')
         gsettings.grid.reset('outline-color')
+        gsettings.grid.reset('top-left-corner-action')
         gsettings.grid.reset('top-edge-action')
+        gsettings.grid.reset('top-right-corner-action')
+        gsettings.grid.reset('left-edge-action')
+        gsettings.grid.reset('right-edge-action')
+        gsettings.grid.reset('bottom-left-corner-action')
+        gsettings.grid.reset('bottom-edge-action')
+        gsettings.grid.reset('bottom-right-corner-action')
         self.refresh()
 
 
@@ -719,20 +753,65 @@ class Compizsettings ():
                     'cbox_hotcorners_bottomright',
                     'cbox_hotcorners_top',
                     'cbox_hotcorners_bottom']
- 
+
         if not hasattr(self, 'hotcorners_previous'):
             self.hotcorners_previous = {}
- 
+
         if widget.get_active():
             self.ui.sensitize(dependants)
             for box in self.hotcorners_cboxes:
                 self.ui[box].set_active(self.hotcorners_previous[box])
- 
+
         else:
             self.ui.unsensitize(dependants)
             for box in self.hotcorners_cboxes:
                 self.hotcorners_previous[box] = self.hotcorners_cboxes[box][0]
                 self.ui[box].set_active(0)
+
+    def on_b_compiz_hotcorners_reset_clicked(self, widget):
+        gsettings.core.reset('show-desktop-edge')
+        gsettings.expo.reset('expo-edge')
+        gsettings.scale.reset('initiate-edge')
+        self.refresh()
+
+# ----- BEGIN: Additional -----
+
+    def on_switch_auto_raise_active_notify(self, widget, udata = None):
+        mode = self.ui['switch_auto_raise'].get_active()
+        if mode == True:
+            gsettings.wm.set_boolean('auto-raise', True)
+        else:
+            gsettings.wm.set_boolean('auto-raise', False)
+
+    def on_cbox_focus_mode_changed(self, widget, udata = None):
+        mode = self.ui['cbox_focus_mode'].get_active()
+        gsettings.wm.set_enum('focus-mode', mode)
+
+    def on_cbox_double_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_double_click'].get_active()
+        gsettings.wm.set_enum('action-double-click-titlebar', mode)
+
+    def on_cbox_middle_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_middle_click'].get_active()
+        gsettings.wm.set_enum('action-middle-click-titlebar', mode)
+
+    def on_cbox_right_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_right_click'].get_active()
+        gsettings.wm.set_enum('action-right-click-titlebar', mode)
+
+    def on_scale_auto_raise_delay_value_changed(self, widget, udata = None):
+        slider = self.ui['scale_auto_raise_delay']
+        val = slider.get_value()
+        gsettings.wm.set_int('auto-raise-delay', val)
+
+    def on_b_wm_additional_reset_clicked(self, widget):
+        gsettings.wm.reset('auto-raise-delay')
+        gsettings.wm.reset('auto-raise')
+        gsettings.wm.reset('focus-mode')
+        gsettings.wm.reset('action-double-click-titlebar')
+        gsettings.wm.reset('action-middle-click-titlebar')
+        gsettings.wm.reset('action-right-click-titlebar')
+        self.refresh()
 
 if __name__ == '__main__':
 # Fire up the Engines
