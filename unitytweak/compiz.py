@@ -69,10 +69,7 @@ class Compizsettings ():
             'cbox_window_snapping_right': [0, 'right-edge-action'],
             'cbox_window_snapping_bottomright': [0, 'bottom-right-corner-action']
         }
-        for box in self.window_snapping_cboxes:
-            self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
-            self.ui[box].set_active(self.window_snapping_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
+
 
         self.hotcorners_cboxes = {
             'cbox_hotcorners_top': [0, 'Top'],
@@ -84,24 +81,7 @@ class Compizsettings ():
             'cbox_hotcorners_right': [0, 'Right'],
             'cbox_hotcorners_bottomright': [0, 'BottomRight']
         }
-        self.hotcorner_values = {
-            'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
-            'expo': gsettings.expo.get_string('expo-edge').split('|'),
-            'window_spread': gsettings.scale.get_string('initiate-edge').split('|')
-        }
 
-        for box in self.hotcorners_cboxes:
-            if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
-                self.hotcorners_cboxes[box][0] = 1
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
-                self.hotcorners_cboxes[box][0] = 2
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
-                self.hotcorners_cboxes[box][0] = 3
-            else:
-                self.hotcorners_cboxes[box][0] = 0
-
-            self.ui[box].set_active(self.hotcorners_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
         self.refresh()
         self.builder.connect_signals(self)
 
@@ -432,6 +412,30 @@ class Compizsettings ():
             self.ui['color_outline_color'].set_color(gdkcolor)
         del color, valid, gdkcolor
 
+        for box in self.window_snapping_cboxes:
+            self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
+            self.ui[box].set_active(self.window_snapping_cboxes[box][0])
+            self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
+
+        # ===== Hotcorners settings ===== #
+        self.hotcorner_values = {
+            'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
+            'expo': gsettings.expo.get_string('expo-edge').split('|'),
+            'window_spread': gsettings.scale.get_string('initiate-edge').split('|')
+        }
+        for box in self.hotcorners_cboxes:
+            if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
+                self.hotcorners_cboxes[box][0] = 1
+            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
+                self.hotcorners_cboxes[box][0] = 2
+            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
+                self.hotcorners_cboxes[box][0] = 3
+            else:
+                self.hotcorners_cboxes[box][0] = 0
+            self.ui[box].set_active(self.hotcorners_cboxes[box][0])
+            self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
+
+
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -724,15 +728,15 @@ class Compizsettings ():
                     'cbox_hotcorners_bottomright',
                     'cbox_hotcorners_top',
                     'cbox_hotcorners_bottom']
- 
+
         if not hasattr(self, 'hotcorners_previous'):
             self.hotcorners_previous = {}
- 
+
         if widget.get_active():
             self.ui.sensitize(dependants)
             for box in self.hotcorners_cboxes:
                 self.ui[box].set_active(self.hotcorners_previous[box])
- 
+
         else:
             self.ui.unsensitize(dependants)
             for box in self.hotcorners_cboxes:
