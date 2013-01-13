@@ -1838,13 +1838,13 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="l_wm_additional_general">
+              <object class="GtkLabel" id="l_wm_additional_focus">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
                 <property name="margin_top">6</property>
-                <property name="label" translatable="yes">General</property>
+                <property name="label" translatable="yes">Focus Behaviour</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -1877,7 +1877,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_wm_additional_general">
+              <object class="GtkGrid" id="grid_wm_additional_focus">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
