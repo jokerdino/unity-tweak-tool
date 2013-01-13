@@ -440,7 +440,7 @@ class Compizsettings ():
         # ===== Additional settings ===== #
 
         # Auto raise
-        self.ui['check_auto_raise'].set_active(gsettings.wm.get_boolean('auto-raise'))
+        self.ui['switch_auto_raise'].set_active(gsettings.wm.get_boolean('auto-raise'))
         self.ui['scale_auto_raise_delay'].set_value(gsettings.wm.get_int('auto-raise-delay'))
 
         # Titlebar actions
@@ -776,8 +776,8 @@ class Compizsettings ():
 
 # ----- BEGIN: Additional -----
 
-    def on_check_auto_raise_toggled(self, widget):
-        mode = self.ui['check_auto_raise']
+    def on_switch_auto_raise_active_notify(self, widget, udata = None):
+        mode = self.ui['switch_auto_raise'].get_active()
         if mode == True:
             gsettings.wm.set_boolean('auto-raise', True)
         else:
