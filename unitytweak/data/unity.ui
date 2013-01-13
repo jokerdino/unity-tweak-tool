@@ -2462,7 +2462,24 @@
             <property name="margin_top">6</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid" id="grid_unity_additional">
+              <object class="GtkLabel" id="l_unity_addtional_shortcuts">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="label" translatable="yes">Keyboard Shortcuts</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grid_unity_additional_shortcuts">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
@@ -2475,6 +2492,7 @@
                     <property name="receives_default">False</property>
                     <property name="tooltip_markup" translatable="yes">When enabled, pressing the Super key displays an overlay of all Unity keyboard shortcuts</property>
                     <property name="tooltip_text" translatable="yes">When enabled, pressing the Super key displays an overlay of all Unity keyboard shortcuts</property>
+                    <property name="margin_top">6</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
                     <signal name="toggled" handler="on_check_shortcuts_hints_overlay_toggled" swapped="no"/>
@@ -2490,11 +2508,11 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow_unity_additional">
+              <object class="GtkScrolledWindow" id="scrolledwindow_unity_additional_shortcuts">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">18</property>
@@ -2502,7 +2520,7 @@
                 <property name="margin_top">6</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkTreeView" id="treeview_unity_additional">
+                  <object class="GtkTreeView" id="treeview_unity_additional_shortcuts">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_markup" translatable="yes">List of Unity keyboard shortcuts</property>
@@ -2548,7 +2566,78 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_notifications">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">6</property>
+                <property name="label" translatable="yes">Notifications</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grid_notifyosd_follow_mouse">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <child>
+                  <object class="GtkRadioButton" id="radio_all_monitors">
+                    <property name="label" translatable="yes">All displays</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">For multiple displays, notifications are visible on all of them.</property>
+                    <property name="tooltip_text" translatable="yes">For multiple displays, notifications are visible on all of them.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radio_active_monitor</property>
+                    <signal name="toggled" handler="on_radio_all_monitors_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="radio_active_monitor">
+                    <property name="label" translatable="yes">Active display</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip_markup" translatable="yes">For multiple displays, notifications are visible on the active display.</property>
+                    <property name="tooltip_text" translatable="yes">For multiple displays, notifications are visible on the active display.</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_radio_active_monitor_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -2568,7 +2657,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>

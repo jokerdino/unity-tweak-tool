@@ -1880,7 +1880,7 @@
                 </child>
                 <child>
                   <object class="GtkScale" id="scale_auto_raise_delay">
-                    <property name="width_request">134</property>
+                    <property name="width_request">174</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Set the delay for raising newly focused windows.</property>
@@ -1901,7 +1901,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_focus_mode">
-                    <property name="width_request">100</property>
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
@@ -1918,7 +1918,7 @@
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="cbox_focus_mode">
-                    <property name="width_request">140</property>
+                    <property name="width_request">180</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_tooltip">True</property>
@@ -1946,9 +1946,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">If enabled, windows that take focus will be automatically raised.</property>
-                    <property name="tooltip_text" translatable="yes">If enabled, windows that take focus will be automatically raised.</property>
                     <property name="halign">start</property>
-                    <signal name="notify::active" handler="on_switch_auto_raise_active_notify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -2007,7 +2005,6 @@
                 <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_double_click">
-                    <property name="width_request">0</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
@@ -2023,7 +2020,7 @@
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="cbox_double_click">
-                    <property name="width_request">140</property>
+                    <property name="width_request">180</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Select the titlebar's double click action.</property>
@@ -2093,7 +2090,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_right_click">
-                    <property name="width_request">100</property>
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_right">6</property>
