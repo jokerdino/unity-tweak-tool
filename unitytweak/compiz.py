@@ -51,6 +51,8 @@ class Compizsettings ():
         self.page = self.ui['nb_compizsettings']
         self.page.unparent()
 
+        self.ui['scale_auto_raise_delay'].add_mark(500, Gtk.PositionType.BOTTOM, None)
+
 
         # Initialise Cairo bits
         self.window_snapping_drawable = self.ui['draw_window_snapping']
@@ -435,6 +437,29 @@ class Compizsettings ():
             self.ui[box].set_active(self.hotcorners_cboxes[box][0])
             self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
 
+        # ===== Additional settings ===== #
+
+        # Auto raise
+        self.ui['check_auto_raise'].set_active(gsettings.wm.get_boolean('auto-raise'))
+        self.ui['scale_auto_raise_delay'].set_value(gsettings.wm.get_int('auto-raise-delay'))
+
+        # Titlebar actions
+        self.ui['cbox_double_click'].set_active(gsettings.wm.get_enum('action-double-click-titlebar'))
+        self.ui['cbox_middle_click'].set_active(gsettings.wm.get_enum('action-middle-click-titlebar'))
+        self.ui['cbox_right_click'].set_active(gsettings.wm.get_enum('action-right-click-titlebar'))
+
+        # Focus mode
+        focus_mode = gsettings.wm.get_enum('focus-mode')
+        if focus_mode == 0:
+            self.ui['cbox_focus_mode'].set_active(0)
+        elif focus_mode == 1:
+            self.ui['cbox_focus_mode'].set_active(1)
+        elif focus_mode == 2:
+            self.ui['cbox_focus_mode'].set_active(2)
+        else:
+            pass
+        del focus_mode
+
 
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
@@ -747,6 +772,45 @@ class Compizsettings ():
         gsettings.core.reset('show-desktop-edge')
         gsettings.expo.reset('expo-edge')
         gsettings.scale.reset('initiate-edge')
+        self.refresh()
+
+# ----- BEGIN: Additional -----
+
+    def on_check_auto_raise_toggled(self, widget):
+        mode = self.ui['check_auto_raise']
+        if mode == True:
+            gsettings.wm.set_boolean('auto-raise', True)
+        else:
+            gsettings.wm.set_boolean('auto-raise', False)
+
+    def on_cbox_focus_mode_changed(self, widget, udata = None):
+        mode = self.ui['cbox_focus_mode'].get_active()
+        gsettings.wm.set_enum('focus-mode', mode)
+
+    def on_cbox_double_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_double_click'].get_active()
+        gsettings.wm.set_enum('action-double-click-titlebar', mode)
+
+    def on_cbox_middle_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_middle_click'].get_active()
+        gsettings.wm.set_enum('action-middle-click-titlebar', mode)
+
+    def on_cbox_right_click_changed(self, widget, udata = None):
+        mode = self.ui['cbox_right_click'].get_active()
+        gsettings.wm.set_enum('action-right-click-titlebar', mode)
+
+    def on_scale_auto_raise_delay_value_changed(self, widget, udata = None):
+        slider = self.ui['scale_auto_raise_delay']
+        val = slider.get_value()
+        gsettings.wm.set_int('auto-raise-delay', val)
+
+    def on_b_wm_additional_reset_clicked(self, widget):
+        gsettings.wm.reset('auto-raise-delay')
+        gsettings.wm.reset('auto-raise')
+        gsettings.wm.reset('focus-mode')
+        gsettings.wm.reset('action-double-click-titlebar')
+        gsettings.wm.reset('action-middle-click-titlebar')
+        gsettings.wm.reset('action-right-click-titlebar')
         self.refresh()
 
 if __name__ == '__main__':
