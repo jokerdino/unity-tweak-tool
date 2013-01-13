@@ -112,16 +112,18 @@ class Desktopsettings ():
         # ===== Scrolling ===== #
 
         # Scrollbars
-        overlay_scrollbars = gsettings.interface.get_boolean('ubuntu-overlay-scrollbars')
+        overlay_scrollbars = gsettings.scrollbars.get_string('scrollbar-mode')
         dependants = ['l_overlay_scrollbar_mode',
                     'cbox_overlay_scrollbar_mode']
 
-        if overlay_scrollbars == True:
-            self.ui['radio_overlay_scrollbars'].set_active(True)
-            self.ui.sensitize(dependants)
-        else:
-            self.ui['radio_legacy_scrollbars'].set_active(False)
+        if overlay_scrollbars == 'normal':
+            self.ui['radio_overlay_scrollbars'].set_active(False)
+            self.ui['radio_legacy_scrollbars'].set_active(True)
             self.ui.unsensitize(dependants)
+        else:
+            self.ui['radio_overlay_scrollbars'].set_active(True)
+            self.ui['radio_legacy_scrollbars'].set_active(False)
+            self.ui.sensitize(dependants)
         del overlay_scrollbars, dependants
 
         # Scrollbar mode
