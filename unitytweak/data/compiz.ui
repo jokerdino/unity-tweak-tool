@@ -1901,7 +1901,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_focus_mode">
-                    <property name="width_request">150</property>
+                    <property name="width_request">110</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
@@ -2090,7 +2090,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="l_right_click">
-                    <property name="width_request">150</property>
+                    <property name="width_request">110</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_right">6</property>
