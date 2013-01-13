@@ -31,7 +31,7 @@
 import os, os.path
 import cairo
 
-from gi.repository import Gtk, Gio, Gdk
+from gi.repository import Gtk, Gdk
 from math import pi, sqrt
 
 from .ui import ui
@@ -700,11 +700,16 @@ class Compizsettings ():
 
     def on_b_compiz_windowsnapping_reset_clicked(self, widget):
         gsettings.core.reset('active-plugins')
-        gsettings.core.reset('show-desktop-edge')
-        gsettings.expo.reset('expo-edge')
         gsettings.grid.reset('fill-color')
         gsettings.grid.reset('outline-color')
+        gsettings.grid.reset('top-left-corner-action')
         gsettings.grid.reset('top-edge-action')
+        gsettings.grid.reset('top-right-corner-action')
+        gsettings.grid.reset('left-edge-action')
+        gsettings.grid.reset('right-edge-action')
+        gsettings.grid.reset('bottom-left-corner-action')
+        gsettings.grid.reset('bottom-edge-action')
+        gsettings.grid.reset('bottom-right-corner-action')
         self.refresh()
 
 
@@ -733,6 +738,12 @@ class Compizsettings ():
             for box in self.hotcorners_cboxes:
                 self.hotcorners_previous[box] = self.hotcorners_cboxes[box][0]
                 self.ui[box].set_active(0)
+
+    def on_b_compiz_hotcorners_reset_clicked(self, widget):
+        gsettings.core.reset('show-desktop-edge')
+        gsettings.expo.reset('expo-edge')
+        gsettings.scale.reset('initiate-edge')
+        self.refresh()
 
 if __name__ == '__main__':
 # Fire up the Engines
