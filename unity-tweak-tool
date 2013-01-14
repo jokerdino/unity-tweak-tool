@@ -28,7 +28,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-import os, os.path, argparse
+import os, os.path, argparse, sys
 
 from gi.repository import Gtk, Gio, Unity, Dbusmenu, Dee
 
@@ -100,7 +100,20 @@ class UnityTweak ():
 
         #----------- Command line options: End -----------------------
 
+        # ===== PID =====
+        #This is to check if there is already a lock file existing#
+        if os.access(os.path.expanduser("~/.uttpid.lock"), os.F_OK):
+            pidfile = open(os.path.expanduser("~/.uttpid.lock"), "r")
+            pidfile.seek(0)
+            old_pd = pidfile.readline()
+            if os.path.exists("/proc/%s" % old_pd):
+                sys.exit(1)
+            else:
+                os.remove(os.path.expanduser("~/.uttpid.lock"))
 
+        pidfile = open(os.path.expanduser("~/.uttpid.lock"), "w")
+        pidfile.write("%s" % os.getpid())
+        pidfile.close
 
         # ===== Quicklist =====
         quicklist = Dbusmenu.Menuitem.new()
