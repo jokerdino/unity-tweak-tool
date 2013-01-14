@@ -101,17 +101,18 @@ class UnityTweak ():
         #----------- Command line options: End -----------------------
 
         # ===== PID =====
-        #This is to check if there is already a lock file existing#
-        if os.access(os.path.expanduser("~/.uttpid.lock"), os.F_OK):
-            pidfile = open(os.path.expanduser("~/.uttpid.lock"), "r")
+        if not os.path.exists('$HOME/.config/unity-tweak-tool/'):
+            os.makedirs('$HOME/.config/unity-tweak-tool/')
+        if os.access(os.path.expanduser("$HOME/.config/unity-tweak-tool/pid.lockfile"), os.F_OK):
+            pidfile = open(os.path.expanduser("$HOME/.config/unity-tweak-tool/pid.lockfile"), "r")
             pidfile.seek(0)
             old_pd = pidfile.readline()
             if os.path.exists("/proc/%s" % old_pd):
                 sys.exit(1)
             else:
-                os.remove(os.path.expanduser("~/.uttpid.lock"))
+                os.remove(os.path.expanduser("$HOME/.config/unity-tweak-tool/pid.lockfile"))
 
-        pidfile = open(os.path.expanduser("~/.uttpid.lock"), "w")
+        pidfile = open(os.path.expanduser("$HOME/.config/unity-tweak-tool/pid.lockfile"), "w")
         pidfile.write("%s" % os.getpid())
         pidfile.close
 
