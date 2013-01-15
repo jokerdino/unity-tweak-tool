@@ -135,8 +135,8 @@ class Unitysettings ():
         self.ui['cbox_launch_animation'].set_active(gsettings.unityshell.get_int('launch-animation'))
 
         # Show Desktop
-        self.ui['sw_launcher_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
-        self.ui['sw_launcher_show_devices'].set_active(True if 'unity://devices' in gsettings.launcher.get_strv('favorites') else False)
+        self.ui['check_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
+        self.ui['check_show_devices'].set_active(True if 'unity://devices' in gsettings.launcher.get_strv('favorites') else False)
 
         # ====== Dash Helpers ===== #
 
@@ -550,10 +550,10 @@ class Unitysettings ():
         mode = self.ui['cbox_launch_animation'].get_active()
         gsettings.unityshell.set_int('launch-animation', mode)
 
-    def on_sw_launcher_show_desktop_active_notify(self, widget, udata = None):
+    def on_check_show_desktop_toggled(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
-        if self.ui['sw_launcher_show_desktop'].get_active():
+        if self.ui['check_show_desktop'].get_active():
             if desktop not in fav:
                 fav.append(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
@@ -563,10 +563,10 @@ class Unitysettings ():
                 gsettings.launcher.set_strv('favorites', fav)
         del desktop
 
-    def on_sw_launcher_show_devices_active_notify(self, widget, udata = None):
+    def on_check_show_devices_toggled(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         devices = "unity://devices"
-        if self.ui['sw_launcher_show_devices'].get_active():
+        if self.ui['check_show_devices'].get_active():
             if devices not in fav:
                 fav.append(devices)
                 gsettings.launcher.set_strv('favorites', fav)
