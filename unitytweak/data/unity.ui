@@ -674,43 +674,6 @@
                 <property name="halign">start</property>
                 <property name="row_spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="l_icon_size">
-                    <property name="width_request">150</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="margin_right">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Icon size:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton" id="spin_launcher_icon_size">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="has_tooltip">True</property>
-                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
-                    <property name="halign">start</property>
-                    <property name="invisible_char">•</property>
-                    <property name="invisible_char_set">True</property>
-                    <property name="adjustment">adj_launcher_icon_size</property>
-                    <signal name="value-changed" handler="on_spin_launcher_icon_size_value_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkComboBoxText" id="cbox_launch_animation">
                     <property name="width_request">200</property>
                     <property name="visible">True</property>
@@ -866,23 +829,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_show_workspaces">
-                    <property name="width_request">170</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="margin_right">6</property>
-                    <property name="xalign">1</property>
-                    <property name="label" translatable="yes">"Workspace Switcher" icon:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">2</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -893,23 +839,6 @@
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="sw_launcher_show_workspaces">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_markup" translatable="yes">Show the Workspace Switcher item on the launcher.</property>
-                    <property name="tooltip_text" translatable="yes">Show the Workspace Switcher item on the launcher.</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <signal name="notify::active" handler="on_sw_launcher_show_workspaces_active_notify" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
@@ -932,10 +861,41 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkLabel" id="l_icon_size">
+                    <property name="width_request">150</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="margin_right">6</property>
+                    <property name="xalign">1</property>
+                    <property name="label" translatable="yes">Icon size:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkSpinButton" id="spin_launcher_icon_size">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip_markup" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="tooltip_text" translatable="yes">Select the size of the icons on the launcher</property>
+                    <property name="halign">start</property>
+                    <property name="invisible_char">•</property>
+                    <property name="invisible_char_set">True</property>
+                    <property name="adjustment">adj_launcher_icon_size</property>
+                    <signal name="value-changed" handler="on_spin_launcher_icon_size_value_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
               </object>
               <packing>
