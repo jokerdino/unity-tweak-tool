@@ -136,6 +136,8 @@ class Unitysettings ():
 
         # Show Desktop
         self.ui['sw_launcher_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
+        self.ui['sw_launcher_show_devices'].set_active(True if 'unity://devices' in gsettings.launcher.get_strv('favorites') else False)
+        self.ui['sw_launcher_show_workspaces'].set_active(True if 'unity://expo-icon' in gsettings.launcher.get_strv('favorites') else False)
 
 
         # ====== Dash Helpers ===== #
@@ -561,6 +563,33 @@ class Unitysettings ():
             if desktop in fav:
                 fav.remove(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
+        del desktop
+
+    def on_sw_launcher_show_devices_active_notify(self, widget, udata = None):
+        fav = gsettings.launcher.get_strv('favorites')
+        devices = "unity://devices"
+        if self.ui['sw_launcher_show_devices'].get_active():
+            if devices not in fav:
+                fav.append(devices)
+                gsettings.launcher.set_strv('favorites', fav)
+        else:
+            if devices in fav:
+                fav.remove(devices)
+                gsettings.launcher.set_strv('favorites', fav)
+        del devices
+
+    def on_sw_launcher_show_workspaces_active_notify(self, widget, udata = None):
+        fav = gsettings.launcher.get_strv('favorites')
+        expo = "unity://expo-icon"
+        if self.ui['sw_launcher_show_workspaces'].get_active():
+            if expo not in fav:
+                fav.append(expo)
+                gsettings.launcher.set_strv('favorites', fav)
+        else:
+            if expo in fav:
+                fav.remove(expo)
+                gsettings.launcher.set_strv('favorites', fav)
+        del expo
 
     def on_b_unity_launcher_reset_clicked(self, widget):
         gsettings.unityshell.reset('launch-animation')
