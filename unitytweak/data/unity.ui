@@ -846,48 +846,14 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <child>
-                  <object class="GtkCheckButton" id="check_show_devices">
-                    <property name="label" translatable="yes">Mounted devices</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_check_show_devices_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="check_show_desktop">
-                    <property name="label" translatable="yes">"Show Desktop" icon</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_check_show_desktop_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="l_launcher_items">
+                  <object class="GtkLabel" id="l_show_desktop_icon">
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin_right">6</property>
                     <property name="xalign">1</property>
-                    <property name="label" translatable="yes">Show:</property>
+                    <property name="label" translatable="yes">"Show Desktop" icon:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -897,19 +863,24 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="l_launcher_items_empty">
-                    <property name="width_request">150</property>
+                  <object class="GtkSwitch" id="switch_show_desktop">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xalign">1</property>
+                    <signal name="notify::active" handler="on_switch_show_desktop_active_notify" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>

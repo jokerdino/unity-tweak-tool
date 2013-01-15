@@ -135,8 +135,7 @@ class Unitysettings ():
         self.ui['cbox_launch_animation'].set_active(gsettings.unityshell.get_int('launch-animation'))
 
         # Show Desktop
-        self.ui['check_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
-        self.ui['check_show_devices'].set_active(True if 'unity://devices' in gsettings.launcher.get_strv('favorites') else False)
+        self.ui['switch_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
 
         # ====== Dash Helpers ===== #
 
@@ -550,10 +549,10 @@ class Unitysettings ():
         mode = self.ui['cbox_launch_animation'].get_active()
         gsettings.unityshell.set_int('launch-animation', mode)
 
-    def on_check_show_desktop_toggled(self, widget, udata = None):
+    def on_switch_show_desktop_active_notify(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
-        if self.ui['check_show_desktop'].get_active():
+        if self.ui['switch_show_desktop'].get_active():
             if desktop not in fav:
                 fav.append(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
@@ -562,19 +561,6 @@ class Unitysettings ():
                 fav.remove(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
         del desktop
-
-    def on_check_show_devices_toggled(self, widget, udata = None):
-        fav = gsettings.launcher.get_strv('favorites')
-        devices = "unity://devices"
-        if self.ui['check_show_devices'].get_active():
-            if devices not in fav:
-                fav.append(devices)
-                gsettings.launcher.set_strv('favorites', fav)
-        else:
-            if devices in fav:
-                fav.remove(devices)
-                gsettings.launcher.set_strv('favorites', fav)
-        del devices
 
     def on_b_unity_launcher_reset_clicked(self, widget):
         gsettings.unityshell.reset('launch-animation')
@@ -596,11 +582,6 @@ class Unitysettings ():
             fav.remove(desktop)
             gsettings.launcher.set_strv('favorites', fav)
         del desktop
-        devices = "unity://devices"
-        if devices not in fav:
-            fav.append(devices)
-            gsettings.launcher.set_strv('favorites', fav)
-        del devices
         del fav
 
         self.refresh()
