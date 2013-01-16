@@ -28,8 +28,8 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-import os, os.path, argparse, sys
-
+import os, os.path, argparse, sys, dbus, dbus.service
+from dbus.mainloop.glib import DBusGMainLoop
 from gi.repository import Gtk, Gio, Unity, Dbusmenu, Dee
 
 from unitytweak.ui import ui
@@ -41,7 +41,9 @@ from unitytweak.desktop import Desktopsettings
 from unitytweak.about import About
 from unitytweak import settings
 
-class UnityTweak ():
+DBusGMainLoop(set_as_default=True)
+
+class UnityTweak (dbus.service.Object):
     def __init__(self):
         '''Handler Initialisations.
         Obtain all references here.'''
@@ -74,7 +76,7 @@ class UnityTweak ():
         self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
 
 
-        #---------- Command line options: Start ----------------------
+        # =========== Command line options: Start ===============
 
         parser = argparse.ArgumentParser()
 
@@ -87,20 +89,27 @@ class UnityTweak ():
         args = parser.parse_args()
 
         if args.unity:
-            self.ui['tool_unitysettings'].set_active(True)            
+            self.check_running_instance('unity')            
         elif args.winmng:
-            self.ui['tool_compizsettings'].set_active(True)            
+            self.check_running_instance('winmng')            
         elif args.appearance:
-            self.ui['tool_themesettings'].set_active(True)        
+            self.check_running_instance('appearance')    
         elif args.system:
-            self.ui['tool_desktopsettings'].set_active(True)            
+            self.check_running_instance('system')        
         elif args.restore:
             #TODO : Restore everything in one call
-            print()
+            return
+        else: # No/wrong cmd args
+            # FIXME: Will probably cause future problems?            
+            self.check_running_instance('overview')
 
-        #----------- Command line options: End -----------------------
+        # =========== Command line options: End ================
 
-        # ===== PID =====
+
+        Gtk.main()
+
+    def check_running_instance(self, cmd_arg):
+        # ===== PID =====    
         if not os.path.exists(os.path.expanduser('~/.config/unity-tweak-tool/')):
             os.makedirs(os.path.expanduser('~/.config/unity-tweak-tool/'))
 
@@ -109,31 +118,53 @@ class UnityTweak ():
             pidfile.seek(0)
             old_pd = pidfile.readline()
             if os.path.exists("/proc/%s" % old_pd):
+
+                self.call_running_instance(cmd_arg)
                 sys.exit(1)
             else:
                 os.remove(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"))
 
         pidfile = open(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"), "w")
         pidfile.write("%s" % os.getpid())
-        pidfile.close
+        pidfile.close()
+        self.register_dbus_session()
+        self.dbus_callback(cmd_arg)
 
-        # ===== Quicklist =====
-        quicklist = Dbusmenu.Menuitem.new()
-        sections = ['Overview', 'Unity', 'Window Manager', 'Appearance', 'System']
-        self.section_menu = [None, None, None, None, None, None]
-        for page_id, page_name in enumerate(sections):
-            section_menu_item = Dbusmenu.Menuitem.new ()
-            section_menu_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, page_name)
-            section_menu_item.property_set(Dbusmenu.MENUITEM_PROP_TOGGLE_TYPE, Dbusmenu.MENUITEM_TOGGLE_RADIO)
-            section_menu_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, True)
-            section_menu_item.connect('item_activated', self.section_menu_item_activated, page_id)
-            quicklist.child_append(section_menu_item)
-            self.section_menu[page_id] = section_menu_item
+    def call_running_instance(self, cmd_arg):
 
-        self.ui['nb_unitytweak'].connect('change-current-page', self.page_changed)
-        self.launcher.set_property('quicklist', quicklist)
+        bus = dbus.SessionBus()
+        service = bus.get_object('org.freyja.utt', '/org/freyja/utt')
+        callback_method = service.get_dbus_method('dbus_callback', 'org.freyja.utt')
+        callback_method(cmd_arg)
 
-        Gtk.main()    
+
+    @dbus.service.method('org.freyja.utt', in_signature='s')
+    def dbus_callback(self, cmd_arg):
+
+        if(cmd_arg == 'overview'):
+            self.ui['tool_startpage'].set_active(True)
+
+        if(cmd_arg == 'unity'):
+            self.ui['tool_unitysettings'].set_active(True)                        
+
+        elif (cmd_arg == 'winmng'):
+            self.ui['tool_compizsettings'].set_active(True)            
+
+        elif (cmd_arg == 'appearance')    :
+            self.ui['tool_themesettings'].set_active(True)
+            
+        elif (cmd_arg == 'system'):            
+            self.ui['tool_desktopsettings'].set_active(True)            
+
+        elif (cmd_arg == 'restore'):
+            #TODO : Restore everything in one call
+            return
+
+    def register_dbus_session(self):
+        bus_name = dbus.service.BusName('org.freyja.utt', bus=dbus.SessionBus())
+        dbus.service.Object.__init__(self, bus_name, '/org/freyja/utt')
+
+
 
     def page_changed(self, controls, page, page_id):
         ''' Called when the current visible section changes '''
