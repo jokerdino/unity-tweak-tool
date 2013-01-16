@@ -33,7 +33,7 @@ import os, os.path
 from gi.repository import Gtk, Gio
 
 from .ui import ui
-from . import settings
+from . import unitytweakconfig
 
 class Startpage ():
     def __init__(self, container, notebook):
@@ -42,7 +42,7 @@ class Startpage ():
         self.builder = Gtk.Builder()
         self.container = container
         self.notebook = notebook
-        self.glade = (os.path.join(settings.UI_DIR, 
+        self.glade = (os.path.join(unitytweakconfig.get_data_path(), 
                                    'startpage.ui'))
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)

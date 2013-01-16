@@ -35,7 +35,7 @@ from gi.repository import Gtk, Gdk
 from math import pi, sqrt
 
 from .ui import ui
-from . import settings
+from . import unitytweakconfig
 from . import gsettings
 
 class Compizsettings ():
@@ -43,7 +43,7 @@ class Compizsettings ():
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
-        self.glade = (os.path.join(settings.UI_DIR,
+        self.glade = (os.path.join(unitytweakconfig.get_data_path(),
                                     'compiz.ui'))
         self.container = container
         self.builder.add_from_file(self.glade)
@@ -56,10 +56,10 @@ class Compizsettings ():
 
         # Initialise Cairo bits
         self.window_snapping_drawable = self.ui['draw_window_snapping']
-        self._base_window_snapping_surface = cairo.ImageSurface.create_from_png(os.path.join(settings.UI_DIR, 'monitor-window-snapping.png'))
+        self._base_window_snapping_surface = cairo.ImageSurface.create_from_png(os.path.join(unitytweakconfig.get_data_path(), 'monitor-window-snapping.png'))
 
         self.hotcorners_drawable = self.ui['draw_hotcorners']
-        self._base_hotcorners_surface = cairo.ImageSurface.create_from_png(os.path.join(settings.UI_DIR, 'monitor-hotcorners.png'))
+        self._base_hotcorners_surface = cairo.ImageSurface.create_from_png(os.path.join(unitytweakconfig.get_data_path(), 'monitor-hotcorners.png'))
 
         self.window_snapping_cboxes = {
             'cbox_window_snapping_top': [0, 'top-edge-action'],

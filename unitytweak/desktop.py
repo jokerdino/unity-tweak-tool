@@ -33,7 +33,7 @@ import os, os.path
 from gi.repository import Gtk, Gio
 
 from .ui import ui
-from . import settings
+from . import unitytweakconfig
 from . import gsettings
 
 class Desktopsettings ():
@@ -41,7 +41,7 @@ class Desktopsettings ():
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
-        self.glade = (os.path.join(settings.UI_DIR,
+        self.glade = (os.path.join(unitytweakconfig.get_data_path(),
                                     'desktop.ui'))
         self.container = container
         self.builder.add_from_file(self.glade)
