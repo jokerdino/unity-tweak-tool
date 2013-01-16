@@ -144,7 +144,7 @@ class UnityTweak (dbus.service.Object):
         if(cmd_arg == 'overview'):
             self.ui['tool_startpage'].set_active(True)
 
-        if(cmd_arg == 'unity'):
+        elif(cmd_arg == 'unity'):
             self.ui['tool_unitysettings'].set_active(True)                        
 
         elif (cmd_arg == 'winmng'):
