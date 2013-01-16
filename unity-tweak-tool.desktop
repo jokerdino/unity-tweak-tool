@@ -9,24 +9,24 @@ OnlyShowIn=Unity;
 StartupNotify=true
 Terminal=false
 Type=Application
-X-Ayatana-Desktop-Shortcuts=Unity;WinMng;Appereance;System;
+Actions=Unity;WinMng;Appearance;System;
 
-[Unity Shortcut Group]
+[Desktop Action Unity]
 Name=Unity
 Exec=unity-tweak-tool -u
-TargetEnvironment=Unity
+OnlyShowIn=Unity;
 
-[WinMng Shortcut Group]
+[Desktop Action WinMng]
 Name=Window Manager
 Exec=unity-tweak-tool -w
-TargetEnvironment=Unity
+OnlyShowIn=Unity;
 
-[Appereance Shortcut Group]
-Name=Unity
+[Desktop Action Appearance]
+Name=Appearance
 Exec=unity-tweak-tool -a
-TargetEnvironment=Unity
+OnlyShowIn=Unity;
 
-[System Shortcut Group]
-Name=Unity
+[Desktop Action System]
+Name=System
 Exec=unity-tweak-tool -s
-TargetEnvironment=Unity
+OnlyShowIn=Unity;
