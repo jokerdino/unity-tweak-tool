@@ -39,7 +39,7 @@ from unitytweak.compiz import Compizsettings
 from unitytweak.theme import Themesettings
 from unitytweak.desktop import Desktopsettings
 from unitytweak.about import About
-from unitytweak import settings
+from unitytweak import unitytweakconfig
 
 DBusGMainLoop(set_as_default=True)
 
@@ -48,7 +48,7 @@ class UnityTweak (dbus.service.Object):
         '''Handler Initialisations.
         Obtain all references here.'''
         self.builder = Gtk.Builder()
-        self.glade = (os.path.join(settings.UI_DIR,
+        self.glade = (os.path.join(unitytweakconfig.get_data_path(),
                                     'unitytweak.ui'))
         self.builder.add_from_file(self.glade)
         self.ui = ui(self.builder)
@@ -144,7 +144,7 @@ class UnityTweak (dbus.service.Object):
         if(cmd_arg == 'overview'):
             self.ui['tool_startpage'].set_active(True)
 
-        if(cmd_arg == 'unity'):
+        elif(cmd_arg == 'unity'):
             self.ui['tool_unitysettings'].set_active(True)                        
 
         elif (cmd_arg == 'winmng'):

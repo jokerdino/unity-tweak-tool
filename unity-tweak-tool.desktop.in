@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Unity Tweak Tool
+_Comment=UnityTweakTool application
+Categories=GNOME;Utility;
+Exec=unity-tweak-tool
+Icon=unity-tweak-tool
+Terminal=false
+Type=Application

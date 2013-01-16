@@ -9,29 +9,29 @@
   <object class="GtkImage" id="i_tool_compizsettings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-light_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_desktopsettings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/desktop-settings-light_36.svg</property>
+    <property name="pixbuf">media/36/desktop-settings-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_startpage">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="tooltip_markup" translatable="yes">Unity Tweak Tool Overview pane.</property>
     <property name="tooltip_text" translatable="yes">Unity Tweak Tool Overview pane.</property>
-    <property name="pixbuf">icons/36/overview-light_36.svg</property>
+    <property name="pixbuf">media/36/overview-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_themesettings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-light_36.svg</property>
+    <property name="pixbuf">media/36/appearance-settings-light_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_unitysettings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-light_36.svg</property>
+    <property name="pixbuf">media/36/unity-settings-light_36.svg</property>
   </object>
   <object class="GtkImage" id="image_menu_compiz_settings">
     <property name="visible">True</property>

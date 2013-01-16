@@ -21,108 +21,108 @@
   <object class="GtkAction" id="a_tool_window_spread"/>
   <object class="GtkAction" id="a_tool_wm_additional"/>
   <object class="GtkAction" id="a_unity_webapps"/>
+  <object class="GtkImage" id="i_tool_icons">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/appearance-settings-icons-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_additional">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-additional-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_compiz_switcher">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-workspace-switcher-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_cursors">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-cursor-dark_36.svg</property>
+    <property name="pixbuf">media/36/unity-settings-additional-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_dash">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-dash-dark_36.svg</property>
+    <property name="pixbuf">media/36/unity-settings-dash-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_launcher">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-launcher-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_panel">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-panel-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_compiz_switcher">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/wm-settings-workspace-switcher-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_cursors">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/appearance-settings-cursor-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_desktop_icons">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/desktop-settings-icons-dark_36.svg</property>
+    <property name="pixbuf">media/36/desktop-settings-icons-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_desktop_security">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="tooltip_markup" translatable="yes">Show the settings for the security.</property>
     <property name="tooltip_text" translatable="yes">Show the settings for the security.</property>
-    <property name="pixbuf">icons/36/desktop-settings-security-dark_36.svg</property>
+    <property name="pixbuf">media/36/desktop-settings-security-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_fonts">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-font-dark_36.svg</property>
+    <property name="pixbuf">media/36/appearance-settings-font-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_general">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-general-dark_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-general-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_hotcorners">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-hotcorners-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_icons">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-icons-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_launcher">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-launcher-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_panel">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-panel-dark_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-hotcorners-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_scrolling">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/desktop-settings-scrolling-dark_36.svg</property>
+    <property name="pixbuf">media/36/desktop-settings-scrolling-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_system">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-theme-dark_36.svg</property>
+    <property name="pixbuf">media/36/appearance-settings-theme-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_unity_switcher">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/unity-settings-switcher-dark_36.svg</property>
+    <property name="pixbuf">media/36/unity-settings-switcher-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_window_snapping">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-window-snapping-dark_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-window-snapping-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_window_spread">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-window-switcher-dark_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-window-switcher-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_wm_additional">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/wm-settings-additional-dark_36.svg</property>
+    <property name="pixbuf">media/36/wm-settings-additional-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_unity_webapps">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">start</property>
-    <property name="pixbuf">icons/36/unity-settings-webapps-dark_36.svg</property>
+    <property name="pixbuf">media/36/unity-settings-webapps-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_window_controls">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">icons/36/appearance-settings-window-controls-dark_36.svg</property>
+    <property name="pixbuf">media/36/appearance-settings-window-controls-dark_36.svg</property>
   </object>
   <object class="GtkLabel" id="l_desktop_icons">
     <property name="visible">True</property>
@@ -188,7 +188,7 @@ Controls</property>
                   <object class="GtkImage" id="image_box_start_unity">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icons/24/unity-settings-dark_24.svg</property>
+                    <property name="pixbuf">media/24/unity-settings-dark_24.svg</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -379,7 +379,7 @@ Controls</property>
                   <object class="GtkImage" id="image_box_start_compiz">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icons/24/wm-settings-dark_24.svg</property>
+                    <property name="pixbuf">media/24/wm-settings-dark_24.svg</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -576,7 +576,7 @@ Controls</property>
                   <object class="GtkImage" id="image_start_theme">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icons/24/appearance-settings-dark_24.svg</property>
+                    <property name="pixbuf">media/24/appearance-settings-dark_24.svg</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -751,7 +751,7 @@ Controls</property>
                   <object class="GtkImage" id="image_start_desktop">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icons/24/desktop-settings-dark_24.svg</property>
+                    <property name="pixbuf">media/24/desktop-settings-dark_24.svg</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
