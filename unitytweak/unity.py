@@ -50,9 +50,7 @@ class Unitysettings ():
         self.page.unparent()
 
         self.ui['sc_reveal_sensitivity'].add_mark(2.0, Gtk.PositionType.BOTTOM, None)
-
         self.ui['sc_launcher_transparency'].add_mark(.666, Gtk.PositionType.BOTTOM, None)
-
         self.ui['sc_panel_transparency'].add_mark(.67, Gtk.PositionType.BOTTOM, None)
 
         if Gdk.Screen.get_default().get_n_monitors() == 1:
@@ -60,7 +58,6 @@ class Unitysettings ():
                           'radio_launcher_visibility_all',
                           'radio_launcher_visibility_primary']
             self.ui.unsensitize(dependants)
-
 
         self.refresh()
         self.builder.connect_signals(self)
@@ -135,8 +132,7 @@ class Unitysettings ():
         self.ui['cbox_launch_animation'].set_active(gsettings.unityshell.get_int('launch-animation'))
 
         # Show Desktop
-        self.ui['sw_launcher_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
-
+        self.ui['switch_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
 
         # ====== Dash Helpers ===== #
 
@@ -407,6 +403,11 @@ class Unitysettings ():
             self.ui['switch_unity_webapps'].set_active(False)
         del webapp_integration
 
+        # Preauthorized domains
+
+        self.ui['check_preauthorized_amazon'].set_active(True if 'amazon.ca' in gsettings.webapps.get_strv('preauthorized-domains') else False)
+        self.ui['check_preauthorized_ubuntuone'].set_active(True if 'one.ubuntu.com' in gsettings.webapps.get_strv('preauthorized-domains') else False)
+
         # ====== Unity additional helpers ======= #
 
         self.ui['check_shortcuts_hints_overlay'].set_active(gsettings.unityshell.get_boolean('shortcut-overlay'))
@@ -550,10 +551,10 @@ class Unitysettings ():
         mode = self.ui['cbox_launch_animation'].get_active()
         gsettings.unityshell.set_int('launch-animation', mode)
 
-    def on_sw_launcher_show_desktop_active_notify(self, widget, udata = None):
+    def on_switch_show_desktop_active_notify(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
-        if self.ui['sw_launcher_show_desktop'].get_active():
+        if self.ui['switch_show_desktop'].get_active():
             if desktop not in fav:
                 fav.append(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
@@ -561,6 +562,7 @@ class Unitysettings ():
             if desktop in fav:
                 fav.remove(desktop)
                 gsettings.launcher.set_strv('favorites', fav)
+        del desktop
 
     def on_b_unity_launcher_reset_clicked(self, widget):
         gsettings.unityshell.reset('launch-animation')
@@ -575,12 +577,14 @@ class Unitysettings ():
         gsettings.unityshell.reset('edge-responsiveness')
         gsettings.unityshell.reset('reveal-trigger')
 
-        # Remove "Show Desktop" icon
+        # Launcher items
         fav = gsettings.launcher.get_strv('favorites')
         desktop = "unity://desktop-icon"
         if desktop in fav:
             fav.remove(desktop)
             gsettings.launcher.set_strv('favorites', fav)
+        del desktop
+        del fav
 
         self.refresh()
 
@@ -956,13 +960,58 @@ class Unitysettings ():
 
 #----- BEGIN: Webapps -----
 
+    # Integration prompts
     def on_switch_webapps_active_notify(self, widget, udata = None):
         if self.ui['switch_unity_webapps'].get_active() == True:
             gsettings.webapps.set_boolean('integration-allowed', True)
         else:
             gsettings.webapps.set_boolean('integration-allowed', False)
 
+    # Preauthorized domains - Amazon
+    def on_check_preauthorized_amazon_toggled(self, widget):
+        if self.ui['check_preauthorized_amazon'].get_active() == False:
+            preauthorized = gsettings.webapps.get_strv('preauthorized-domains')
+            amazonca = 'amazon.ca'
+            if amazonca in preauthorized:
+                amazonlist = ['amazon.ca', 'amazon.cn', 'amazon.com', 'amazon.co.uk', 'amazon.de', 'amazon.es', 'amazon.fr', 'amazon.it', 'www.amazon.ca', 'www.amazon.cn', 'www.amazon.com', 'www.amazon.co.uk', 'www.amazon.de', 'www.amazon.es', 'www.amazon.fr', 'www.amazon.it']
+                for amazon in amazonlist:
+                    preauthorized.remove(amazon)
+                    gsettings.webapps.set_strv('preauthorized-domains', preauthorized)
+            elif amazonca not in preauthorized:
+                pass
+        else:
+            preauthorized = gsettings.webapps.get_strv('preauthorized-domains')
+            amazonca = 'amazon.ca'
+            if amazonca not in preauthorized:
+                amazonlist = ['amazon.ca', 'amazon.cn', 'amazon.com', 'amazon.co.uk', 'amazon.de', 'amazon.es', 'amazon.fr', 'amazon.it', 'www.amazon.ca', 'www.amazon.cn', 'www.amazon.com', 'www.amazon.co.uk', 'www.amazon.de', 'www.amazon.es', 'www.amazon.fr', 'www.amazon.it']
+                for amazon in amazonlist:
+                    preauthorized.append(amazon)
+                    gsettings.webapps.set_strv('preauthorized-domains', preauthorized)
+            elif amazonca in preauthorized:
+                pass
+
+    # Preauthorized domains - Ubuntu One
+    def on_check_preauthorized_ubuntuone_toggled(self, widget):
+        if self.ui['check_preauthorized_ubuntuone'].get_active() == False:
+            preauthorized = gsettings.webapps.get_strv('preauthorized-domains')
+            ubuntuone = 'one.ubuntu.com'
+            if ubuntuone in preauthorized:
+                preauthorized.remove(ubuntuone)
+                gsettings.webapps.set_strv('preauthorized-domains', preauthorized)
+            elif ubuntuone not in preauthorized:
+                pass
+        else:
+            preauthorized = gsettings.webapps.get_strv('preauthorized-domains')
+            ubuntuone = 'one.ubuntu.com'
+            if ubuntuone not in preauthorized:
+                preauthorized.append(ubuntuone)
+                gsettings.webapps.set_strv('preauthorized-domains', preauthorized)
+            elif ubuntuone in preauthorized:
+                pass
+    
+    # Reset button
     def on_b_unity_webapps_reset_clicked(self, widget):
+        gsettings.webapps.reset('preauthorized-domains')
         gsettings.webapps.reset('integration-allowed')
         self.refresh()
 

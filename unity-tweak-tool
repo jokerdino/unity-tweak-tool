@@ -28,7 +28,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-import os, os.path, argparse
+import os, os.path, argparse, sys
 
 from gi.repository import Gtk, Gio, Unity, Dbusmenu, Dee
 
@@ -100,7 +100,22 @@ class UnityTweak ():
 
         #----------- Command line options: End -----------------------
 
+        # ===== PID =====
+        if not os.path.exists(os.path.expanduser('~/.config/unity-tweak-tool/')):
+            os.makedirs(os.path.expanduser('~/.config/unity-tweak-tool/'))
 
+        if os.access(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"), os.F_OK):
+            pidfile = open(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"), "r")
+            pidfile.seek(0)
+            old_pd = pidfile.readline()
+            if os.path.exists("/proc/%s" % old_pd):
+                sys.exit(1)
+            else:
+                os.remove(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"))
+
+        pidfile = open(os.path.expanduser("~/.config/unity-tweak-tool/pid.lockfile"), "w")
+        pidfile.write("%s" % os.getpid())
+        pidfile.close
 
         # ===== Quicklist =====
         quicklist = Dbusmenu.Menuitem.new()
@@ -118,8 +133,7 @@ class UnityTweak ():
         self.ui['nb_unitytweak'].connect('change-current-page', self.page_changed)
         self.launcher.set_property('quicklist', quicklist)
 
-        Gtk.main()
-    
+        Gtk.main()    
 
     def page_changed(self, controls, page, page_id):
         ''' Called when the current visible section changes '''

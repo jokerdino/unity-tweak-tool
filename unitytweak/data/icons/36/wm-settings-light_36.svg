@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.46666667"
      inkscape:pageshadow="2"
-     inkscape:zoom="11"
-     inkscape:cx="8.5211378"
-     inkscape:cy="24.50481"
+     inkscape:zoom="22"
+     inkscape:cx="15.821538"
+     inkscape:cy="21.438853"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -54,7 +54,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -64,24 +64,20 @@
      inkscape:groupmode="layer"
      transform="translate(0,-28)">
     <rect
-       style="fill:none;stroke:#eae9e7;stroke-width:1.99982572;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect2984"
-       width="26"
-       height="19"
-       x="7"
-       y="37"
-       rx="1.1200136"
-       ry="1.2000175" />
-    <rect
-       style="fill:#eae9e7;fill-opacity:1;stroke:none"
-       id="rect3773"
-       width="2"
-       height="26"
-       x="38"
-       y="-33"
-       rx="0"
        ry="0"
-       transform="matrix(0,1,-1,0,0,0)" />
+       rx="0"
+       y="37"
+       x="7"
+       height="5"
+       width="26"
+       id="rect2985"
+       style="opacity:0.1;fill:#eae9e7;fill-opacity:1;stroke:none" />
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#eae9e7;fill-opacity:1;stroke:none;stroke-width:1.99982572;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 9,36 c -3,0 -3,3 -3,3 l 0,15 c 0,3 3,3 3,3 l 22,0 c 0,0 3,0 3,-3 l 0,-15 c 0,-3 -3,-3 -3,-3 z m 0,2 22,0 c 0,0 1,0 1,1 l 0,15 c 0,0 0,1 -1,1 L 9,55 C 9,55 8,55 8,54 L 8,39 c 0,-1 1,-1 1,-1 z"
+       id="rect2984"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scsccsscsccccccccc" />
     <path
        inkscape:connector-curvature="0"
        id="path3775"
@@ -102,5 +98,29 @@
        id="path3004"
        d="m 20,63 -4,-4 8,0 z"
        style="fill:#eae9e7;fill-opacity:1;stroke:none" />
+    <rect
+       style="fill:#eae9e7;fill-opacity:1;stroke:none"
+       id="rect3773"
+       width="26"
+       height="1"
+       x="7"
+       y="41"
+       rx="0"
+       ry="0" />
+    <path
+       style="fill:#eae9e7;fill-opacity:1;stroke:#eae9e7;stroke-width:0.40000001000000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 9,40 0,-1 1,0 0,1 z"
+       id="path3781"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#eae9e7;fill-opacity:1;stroke:#eae9e7;stroke-width:0.40000001000000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 11,39 0,1 1,0 0,-1 -1,0 z"
+       id="path3783"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#eae9e7;fill-opacity:1;stroke:#eae9e7;stroke-width:0.40000001000000002;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 13,39 0,1 1,0 0,-1 -1,0 z"
+       id="path3785"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
