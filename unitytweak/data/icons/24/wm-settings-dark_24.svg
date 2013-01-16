@@ -14,7 +14,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="wm-settings-dark_24.svg">
+   sodipodi:docname="wm-settings-light_24.svg">
   <defs
      id="defs2987" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.46666667"
      inkscape:pageshadow="2"
-     inkscape:zoom="22"
-     inkscape:cx="7.421842"
-     inkscape:cy="10.924793"
+     inkscape:zoom="44"
+     inkscape:cx="6.5058014"
+     inkscape:cy="13.77491"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -61,23 +61,19 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      transform="translate(0,-40)">
-    <rect
-       style="fill:none;stroke:#333333;stroke-width:1.99982572;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1.99982572000000003;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="M 6.125,45 C 4.9295225,45 4,46.021813 4,47.1875 l 0,9.625 C 4,57.978187 4.9295225,59 6.125,59 l 11.75,0 C 19.070477,59 20,57.978187 20,56.8125 l 0,-9.625 C 20,46.021813 19.070477,45 17.875,45 l -11.75,0 z m 0,2 11.75,0 c 0.0455,0 0.125,0.02357 0.125,0.1875 l 0,9.625 C 18,56.976432 17.920498,57 17.875,57 L 6.125,57 C 6.0795024,57 6,56.976432 6,56.8125 l 0,-9.625 C 6,47.023568 6.0795024,47 6.125,47 z"
        id="rect2984"
-       width="14.000175"
-       height="12.000175"
-       x="4.9999123"
-       y="45.999912"
-       rx="1.1200136"
-       ry="1.2000175" />
+       inkscape:connector-curvature="0" />
     <rect
        style="fill:#333333;fill-opacity:1;stroke:none"
        id="rect3773"
-       width="2"
+       width="1"
        height="14"
-       x="47"
+       x="48"
        y="-19"
-       rx="0.5"
+       rx="0.25"
        ry="0.80000001"
        transform="matrix(0,1,-1,0,0,0)" />
     <path
@@ -100,6 +96,16 @@
        inkscape:connector-curvature="0"
        id="path3779"
        d="m 12,62 -2,-2 4,0 z"
+       style="fill:#333333;fill-opacity:1;stroke:none" />
+    <rect
+       transform="matrix(0,1,-1,0,0,0)"
+       ry="0.80000001"
+       rx="0.25"
+       y="-19"
+       x="48"
+       height="14"
+       width="1"
+       id="rect2993"
        style="fill:#333333;fill-opacity:1;stroke:none" />
   </g>
 </svg>

@@ -14,7 +14,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="wm-settings-dark_24.svg">
+   sodipodi:docname="wm-settings-light_24.svg">
   <defs
      id="defs2987" />
   <sodipodi:namedview
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -73,11 +73,11 @@
     <rect
        style="fill:#eae9e7;fill-opacity:1;stroke:none"
        id="rect3773"
-       width="2"
+       width="1"
        height="14"
-       x="47"
+       x="48"
        y="-19"
-       rx="0.5"
+       rx="0.25"
        ry="0.80000001"
        transform="matrix(0,1,-1,0,0,0)" />
     <path
