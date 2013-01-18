@@ -391,26 +391,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkRadioToolButton" id="tool_desktopsettings">
-                <property name="use_action_appearance">False</property>
-                <property name="related_action">a_tool_desktopsettings</property>
-                <property name="width_request">80</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Show the system settings panel.</property>
-                <property name="tooltip_text" translatable="yes">Show the system settings panel.</property>
-                <property name="label" translatable="yes">System</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">i_tool_desktopsettings</property>
-                <property name="group">tool_startpage</property>
-                <signal name="toggled" handler="on_tool_desktopsettings_toggled" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkRadioToolButton" id="tool_compizsettings">
                 <property name="use_action_appearance">False</property>
                 <property name="related_action">a_tool_compizsettings</property>
@@ -444,6 +424,26 @@
                 <property name="icon_widget">i_tool_themesettings</property>
                 <property name="group">tool_startpage</property>
                 <signal name="toggled" handler="on_tool_themesettings_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkRadioToolButton" id="tool_desktopsettings">
+                <property name="use_action_appearance">False</property>
+                <property name="related_action">a_tool_desktopsettings</property>
+                <property name="width_request">80</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_markup" translatable="yes">Show the system settings panel.</property>
+                <property name="tooltip_text" translatable="yes">Show the system settings panel.</property>
+                <property name="label" translatable="yes">System</property>
+                <property name="use_underline">True</property>
+                <property name="icon_widget">i_tool_desktopsettings</property>
+                <property name="group">tool_startpage</property>
+                <signal name="toggled" handler="on_tool_desktopsettings_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
