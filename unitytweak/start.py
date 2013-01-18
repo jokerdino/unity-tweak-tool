@@ -52,70 +52,70 @@ class Startpage ():
 
     # Unity settings buttons on start page
     def on_tool_launcher_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(0)
     def on_tool_dash_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(1)
     def on_tool_panel_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(2)
     def on_tool_unity_switcher_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(3)
     def on_tool_unity_webapps_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(4)
     def on_tool_additional_clicked(self, udata):
-        self.container['tool_unitysettings'].set_active(True)
+        self.notebook.set_current_page(1)
         self.notebook.get_nth_page(1).set_current_page(5)
 
     # Compiz settings buttons on start page
     def on_tool_general_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(0)
     def on_tool_compiz_switcher_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(1)
     def on_tool_windows_spread_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(2)
     def on_tool_windows_snapping_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(3)
     def on_tool_hotcorners_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(4)
     def on_tool_wm_additional_clicked(self, udata):
-        self.container['tool_compizsettings'].set_active(True)
+        self.notebook.set_current_page(2)
         self.notebook.get_nth_page(2).set_current_page(5)
 
     # Theme settings on Start page
     def on_tool_system_clicked(self, udata):
-        self.container['tool_themesettings'].set_active(True)
+        self.notebook.set_current_page(3)
         self.notebook.get_nth_page(3).set_current_page(0)
     def on_tool_icons_clicked(self, udata):
-        self.container['tool_themesettings'].set_active(True)
+        self.notebook.set_current_page(3)
         self.notebook.get_nth_page(3).set_current_page(1)
     def on_tool_cursors_clicked(self, udata):
-        self.container['tool_themesettings'].set_active(True)
+        self.notebook.set_current_page(3)
         self.notebook.get_nth_page(3).set_current_page(2)
     def on_tool_fonts_clicked(self, udata):
-        self.container['tool_themesettings'].set_active(True)
+        self.notebook.set_current_page(3)
         self.notebook.get_nth_page(3).set_current_page(3)
     def on_tool_window_controls_clicked(self, udata):
-        self.container['tool_themesettings'].set_active(True)
+        self.notebook.set_current_page(3)
         self.notebook.get_nth_page(3).set_current_page(4)
 
     # Desktop settings on start page
     def on_tool_desktop_icons_clicked(self, udata):
-        self.container['tool_desktopsettings'].set_active(True)
+        self.notebook.set_current_page(4)
         self.notebook.get_nth_page(4).set_current_page(0)
     def on_tool_desktop_security_clicked(self, udata):
-        self.container['tool_desktopsettings'].set_active(True)
+        self.notebook.set_current_page(4)
         self.notebook.get_nth_page(4).set_current_page(1)
     def on_tool_desktop_scrolling_clicked(self, udata):
-        self.container['tool_desktopsettings'].set_active(True)
+        self.notebook.set_current_page(4)
         self.notebook.get_nth_page(4).set_current_page(2)
 
 
