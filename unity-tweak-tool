@@ -142,19 +142,8 @@ class UnityTweak (dbus.service.Object):
     def dbus_callback(self, cmd_arg):
 
         if(cmd_arg == 'overview'):
-            self.ui['tool_startpage'].set_active(True)
-
-        elif(cmd_arg == 'unity'):
-            self.ui['tool_unitysettings'].set_active(True)                        
-
-        elif (cmd_arg == 'winmng'):
-            self.ui['tool_compizsettings'].set_active(True)            
-
-        elif (cmd_arg == 'appearance')    :
-            self.ui['tool_themesettings'].set_active(True)
-            
-        elif (cmd_arg == 'system'):            
-            self.ui['tool_desktopsettings'].set_active(True)            
+            #self.ui['tool_overview'].set_active(True)
+            return
 
         elif (cmd_arg == 'restore'):
             #TODO : Restore everything in one call
@@ -266,19 +255,8 @@ class UnityTweak (dbus.service.Object):
         self.desktopsettings.page.set_current_page(2)
 
     # ===== Top Navigation bar =====
-    def on_tool_startpage_toggled(self,udata):
+    def on_b_overview_clicked(self,udata):
         self.notebook.set_current_page(0)
-    def on_tool_unitysettings_toggled(self,udata):
-        self.notebook.set_current_page(1)
-        self.unitysettings.page.set_current_page(0)
-    def on_tool_compizsettings_toggled(self,udata):
-        self.notebook.set_current_page(2)
-        self.compizsettings.page.set_current_page(0)
-    def on_tool_themesettings_toggled(self,udata):
-        self.notebook.set_current_page(3)
-        self.themesettings.page.set_current_page(0)
-    def on_tool_desktopsettings_toggled(self,udata):
-        self.notebook.set_current_page(4)
 
     # ===== GTK Search Box =====
 
