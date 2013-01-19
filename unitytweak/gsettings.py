@@ -72,11 +72,12 @@ def color_to_hash(c):
 
 bluetooth = canonical('indicator.bluetooth')
 datetime = canonical('indicator.datetime')
+hud = canonical('indicator.appmenu.hud')
 power = canonical('indicator.power')
+notifyosd = canonical('notify-osd')
 scrollbars= canonical('desktop.interface')
 session = canonical('indicator.session')
 sound = canonical('indicator.sound')
-notifyosd = canonical('notify-osd')
 
 antialiasing = gnome('settings-daemon.plugins.xsettings')
 background = gnome('desktop.background')
@@ -97,7 +98,7 @@ unityshell = plugin('unityshell')
 zoom = plugin('ezoom')
 
 launcher = unity('Launcher')
-lens_apps = unity('ApplicationsLens')
 lenses = unity('Lenses')
+lens_apps = unity('ApplicationsLens')
 lens_files = unity('FilesLens')
 webapps = unity_webapps('webapps')
