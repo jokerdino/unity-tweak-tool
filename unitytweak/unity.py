@@ -448,6 +448,10 @@ class Unitysettings ():
             pass
         del multihead_mode
 
+        # HUD
+        self.ui['check_hud_store_data'].set_active(True if gsettings.hud.get_boolean('store-usage-data') is True else False)
+
+
 
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
@@ -1023,10 +1027,15 @@ class Unitysettings ():
 
         if widget.get_active():
             gsettings.unityshell.set_boolean('shortcut-overlay', True)
-
         else:
             gsettings.unityshell.set_boolean('shortcut-overlay', False)
 
+    def on_check_hud_store_data_toggled(self, widget, udata = None):
+
+        if self.ui['check_hud_store_data'].get_active() == True:
+            gsettings.hud.set_boolean('store-usage-data', True)
+        else:
+            gsettings.hud.set_boolean('store-usage-data', False)
 
     # keyboard widgets in unity-additional
 

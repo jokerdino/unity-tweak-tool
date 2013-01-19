@@ -2475,6 +2475,44 @@
             <property name="margin_top">6</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkLabel" id="l_hud">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="label" translatable="yes">HUD</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="check_hud_store_data">
+                <property name="label" translatable="yes">Remember previous commands</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_markup" translatable="yes">If enabled, the HUD will remember previously executed entries and sort them by frequently used.</property>
+                <property name="tooltip_text" translatable="yes">If enabled, the HUD will remember previously executed entries and sort them by frequently used.</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_check_hud_store_data_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkLabel" id="l_unity_addtional_shortcuts">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -2488,7 +2526,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -2521,7 +2559,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">1</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -2579,7 +2617,7 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -2598,7 +2636,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -2650,7 +2688,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="position">6</property>
               </packing>
             </child>
             <child>
@@ -2670,7 +2708,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">6</property>
+                <property name="position">8</property>
               </packing>
             </child>
           </object>

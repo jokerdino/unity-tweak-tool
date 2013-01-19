@@ -76,7 +76,7 @@ class UnityTweak (dbus.service.Object):
         self.ui['unitytweak_main'].connect("delete-event", Gtk.main_quit)
 
 
-        # =========== Command line options: Start ===============
+        # ===== Command line options: Start ===== #
 
         parser = argparse.ArgumentParser()
 
@@ -84,7 +84,6 @@ class UnityTweak (dbus.service.Object):
         parser.add_argument('-w', '--winmng', help='Start in the WindowManager tab', action='store_true')
         parser.add_argument('-a', '--appearance', help='Start in the appearance tab', action='store_true')
         parser.add_argument('-s', '--system', help='Start in the system tab', action='store_true')
-        parser.add_argument('-r', '--restore', help='Restore settings to its default values', action='store_true')
 
         args = parser.parse_args()
 
@@ -95,21 +94,17 @@ class UnityTweak (dbus.service.Object):
         elif args.appearance:
             self.check_running_instance('appearance')    
         elif args.system:
-            self.check_running_instance('system')        
-        elif args.restore:
-            #TODO : Restore everything in one call
-            return
+            self.check_running_instance('system')
         else: # No/wrong cmd args
             # FIXME: Will probably cause future problems?            
             self.check_running_instance('overview')
 
-        # =========== Command line options: End ================
-
+        # ===== Command line options: End ===== #
 
         Gtk.main()
 
     def check_running_instance(self, cmd_arg):
-        # ===== PID =====    
+
         if not os.path.exists(os.path.expanduser('~/.config/unity-tweak-tool/')):
             os.makedirs(os.path.expanduser('~/.config/unity-tweak-tool/'))
 
@@ -137,8 +132,8 @@ class UnityTweak (dbus.service.Object):
         callback_method = service.get_dbus_method('dbus_callback', 'org.freyja.utt')
         callback_method(cmd_arg)
 
-
     @dbus.service.method('org.freyja.utt', in_signature='s')
+
     def dbus_callback(self, cmd_arg):
 
         if(cmd_arg == 'overview'):
@@ -156,15 +151,9 @@ class UnityTweak (dbus.service.Object):
         elif (cmd_arg == 'system'):            
             self.notebook.set_current_page(4)
 
-        elif (cmd_arg == 'restore'):
-            #TODO : Restore everything in one call
-            return
-
     def register_dbus_session(self):
         bus_name = dbus.service.BusName('org.freyja.utt', bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, '/org/freyja/utt')
-
-
 
     def page_changed(self, controls, page, page_id):
         ''' Called when the current visible section changes '''
@@ -191,9 +180,9 @@ class UnityTweak (dbus.service.Object):
         else:
             self.notebook.set_current_page(page_id)
         
-    # ===== Menu Bar ==== #
+    # ===== Menu Bar ===== #
     
-    # ===== Unity Menu ==== #
+    # ----- Unity Menu ----- #
     def on_menuitem_unity_launcher_activate(self,udata):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(0)
@@ -214,7 +203,7 @@ class UnityTweak (dbus.service.Object):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(4)
         
-    # ===== Compiz Settings Menu ==== #
+    # ----- Compiz Settings Menu ----- #
     def on_menuitem_compiz_general_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(0)
@@ -235,7 +224,7 @@ class UnityTweak (dbus.service.Object):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(4)
 
-    # ===== Appearance Settings Menu ==== #
+    # ----- Appearance Settings Menu ----- #
     def on_menuitem_theme_system_activate(self,udata):
         self.notebook.set_current_page(3)
         self.themesettings.page.set_current_page(0)
@@ -252,7 +241,7 @@ class UnityTweak (dbus.service.Object):
         self.notebook.set_current_page(3)
         self.themesettings.page.set_current_page(3)
 
-    # ===== System Settings Menu ==== #
+    # ----- System Settings Menu ----- #
     def on_menuitem_desktop_icons_activate(self,udata):
         self.notebook.set_current_page(4)
         self.desktopsettings.page.set_current_page(0)
@@ -265,7 +254,7 @@ class UnityTweak (dbus.service.Object):
         self.notebook.set_current_page(4)
         self.desktopsettings.page.set_current_page(2)
 
-    # ===== Top Navigation bar =====
+    # ----- Top Navigation bar ----- #
     def on_b_overview_clicked(self,udata):
         self.notebook.set_current_page(0)
 
