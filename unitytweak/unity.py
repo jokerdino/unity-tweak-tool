@@ -613,13 +613,14 @@ class Unitysettings ():
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
 
     def on_radio_dash_blur_smart_toggled(self, button, udata = None):
+
         mode = 2 if button.get_active() else 1
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
     def on_check_suggestions_toggled(self, widget, udata = None):
-        if self.ui['check_suggestions'].get_active():
-            gsettings.lenses.set_string('remote-content-search', "all")
 
+        if self.ui['check_suggestions'].get_active() == True:
+            gsettings.lenses.set_string('remote-content-search', "all")
         else:
             gsettings.lenses.set_string('remote-content-search', "none")
 
@@ -683,14 +684,14 @@ class Unitysettings ():
 
     def on_check_panel_opaque_toggled(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_panel_opaque'].get_active() == True:
             gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', True)
         else:
             gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', False)
 
     def on_check_indicator_username_active(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_indicator_username'].get_active() == True:
             gsettings.session.set_boolean('show-real-name-on-panel', True)
         else:
             gsettings.session.set_boolean('show-real-name-on-panel', False)
@@ -709,25 +710,21 @@ class Unitysettings ():
 
     def on_radio_power_charging_toggled(self, button, udata = None):
 
-        mode = self.ui['radio_power_charging'].get_active()
-
-        if mode == 'True':
+        if self.ui['radio_power_charging'].get_active() == True:
             gsettings.power.set_string('icon-policy', "charge")
         else:
             gsettings.power.set_string('icon-policy', "present")
 
     def on_radio_power_always_toggled(self, button, udata = None):
 
-        mode = self.ui['radio_power_always'].get_active()
-
-        if mode == 'True':
+        if self.ui['radio_power_always'].get_active() == True:
             gsettings.power.set_string('icon-policy', "present")
         else:
             gsettings.power.set_string('icon-policy', "charge")
 
     def on_check_indicator_battery_life_toggled(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_indicator_battery'].get_active() == True:
             gsettings.power.set_boolean('show-time', True)
         else:
             gsettings.power.set_boolean('show-time', False)
