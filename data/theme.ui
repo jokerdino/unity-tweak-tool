@@ -1089,7 +1089,7 @@
                   <item translatable="yes">Close, minimize, window title</item>
                   <item translatable="yes">Close, window title, maximize</item>
                 </items>
-                <signal name="changed" handler="on_cbox_cbox_custom_layout_changed" swapped="no"/>
+                <signal name="changed" handler="on_cbox_custom_layout_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

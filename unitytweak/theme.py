@@ -70,8 +70,8 @@ class Themesettings ():
             if all([os.path.isdir(os.path.join(theme[1],req)) for req in required]):
                 iter=self.gtkthemestore.append(theme)
                 themename=os.path.split(theme[1])[1]
-                self.gtkthemes[themename]={"iter":iter,"path":theme[1]}
-                self.windowthemes[themename]={"iter":iter,"path":theme[1]}
+                self.gtkthemes[themename]={'iter':iter,'path':theme[1]}
+                self.windowthemes[themename]={'iter':iter,'path':theme[1]}
 
         self.iconthemestore=Gtk.ListStore(str,str)
         self.cursorthemestore=Gtk.ListStore(str,str)
@@ -98,16 +98,16 @@ class Themesettings ():
         for theme in allithemes:
             iter=self.iconthemestore.append(theme)
             themename=os.path.split(theme[1])[1]
-            self.iconthemes[themename]={"iter":iter,"path":theme[1]}
+            self.iconthemes[themename]={'iter':iter,'path':theme[1]}
             if os.path.isdir(os.path.join(theme[1],'cursors')):
                 iter=self.cursorthemestore.append(theme)
-                self.cursorthemes[themename]={"iter":iter,"path":theme[1]}
+                self.cursorthemes[themename]={'iter':iter,'path':theme[1]}
 
         self.matchthemes=True
         self.refresh()
         self.refresh_window_controls()
         self.refresh_window_controls_combobox()
-        self.refresh_window_controls_checkbox()
+        self.refresh_window_menu_check()
         self.builder.connect_signals(self)
 
 #=====================================================================#
@@ -186,20 +186,19 @@ class Themesettings ():
 # running the entire self.refresh -snwh
 
 
-        # ===== Window Controls ===== #
+    # ===== Window Controls ===== #
 
     # Button layout
     def refresh_window_controls(self):
 
-        button_layout = gsettings.wm.get_string('button-layout')
         combobox = ['cbox_custom_layout']
         dependants = ['radio_left',
                     'radio_right']
-        if button_layout == 'close,minimize,maximize:':
+        if gsettings.wm.get_string('button-layout') == 'close,minimize,maximize:':
             self.ui['radio_left'].set_active(True)
             self.ui['radio_default_layout'].set_active(True)
             self.ui['check_show_menu'].set_active(False)
-        elif button_layout == ':minimize,maximize,close':
+        elif gsettings.wm.get_string('button-layout') == ':minimize,maximize,close':
             self.ui['radio_right'].set_active(True)
             self.ui['check_show_menu'].set_active(False)
         else:
@@ -208,35 +207,27 @@ class Themesettings ():
             self.ui.sensitize(combobox)
         del dependants
         del combobox
-        del button_layout
 
     # Custom Combobox
     def refresh_window_controls_combobox(self):
 
-        button_layout_cbox = gsettings.wm.get_string('button-layout')
-        if button_layout_cbox == 'close:':
+        if gsettings.wm.get_string('button-layout') == 'close:':
             self.ui['cbox_custom_layout'].set_active(1)
-        elif button_layout_cbox == 'close,maximize:':
+        elif gsettings.wm.get_string('button-layout') == 'close,maximize:':
             self.ui['cbox_custom_layout'].set_active(2)
-        elif button_layout_cbox == 'close,minimize:':
+        elif gsettings.wm.get_string('button-layout') == 'close,minimize:':
             self.ui['cbox_custom_layout'].set_active(3)
-        elif button_layout_cbox == 'close:maximize':
+        elif gsettings.wm.get_string('button-layout') == 'close:maximize':
             self.ui['cbox_custom_layout'].set_active(4)
         else:
             self.ui['cbox_custom_layout'].set_active(0)
-        del button_layout_cbox
 
     # Show menu
-    def refresh_window_controls_checkbox(self):
-
-        button_layout_check = gsettings.wm.get_string('button-layout')
-        if button_layout_check.startswith('menu:'):
-            self.ui['check_show_menu'].set_active(True)
-        elif button_layout_check.endswith(':menu'):
+    def refresh_window_menu_check(self):
+        if 'menu' in gsettings.wm.get_string('button-layout'):
             self.ui['check_show_menu'].set_active(True)
         else:
             self.ui['check_show_menu'].set_active(False)
-        del button_layout_check
       
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
@@ -313,22 +304,22 @@ class Themesettings ():
     def on_cbox_antialiasing_changed(self, widget):
         mode = self.ui['cbox_antialiasing'].get_active()
         if mode == 0:
-            gsettings.antialiasing.set_string('antialiasing', "none")
+            gsettings.antialiasing.set_string('antialiasing', 'none')
         elif mode == 1:
-            gsettings.antialiasing.set_string('antialiasing', "grayscale")
+            gsettings.antialiasing.set_string('antialiasing', 'grayscale')
         elif mode == 2:
-            gsettings.antialiasing.set_string('antialiasing', "rgba")
+            gsettings.antialiasing.set_string('antialiasing', 'rgba')
 
     def on_cbox_hinting_changed(self, widget):
         mode = self.ui['cbox_hinting'].get_active()
         if mode == 0:
-            gsettings.antialiasing.set_string('hinting', "none")
+            gsettings.antialiasing.set_string('hinting', 'none')
         elif mode == 1:
-            gsettings.antialiasing.set_string('hinting', "slight")
+            gsettings.antialiasing.set_string('hinting', 'slight')
         elif mode == 2:
-            gsettings.antialiasing.set_string('hinting', "medium")
+            gsettings.antialiasing.set_string('hinting', 'medium')
         elif mode == 3:
-            gsettings.antialiasing.set_string('hinting', "full")
+            gsettings.antialiasing.set_string('hinting', 'full')
             
     def on_spin_textscaling_value_changed(self, widget):
         gsettings.interface.set_double('text-scaling-factor', self.ui['spin_textscaling'].get_value())
@@ -348,97 +339,102 @@ class Themesettings ():
 #----- Begin: Window control settings--------
 
     def on_radio_default_layout_toggled(self, button, udata = None):
-        mode = self.ui['radio_default_layout'].get_active()
         combobox = ['cbox_custom_layout',]
         dependants = ['radio_left',
                     'radio_right',
                     'l_alignment']
-        if mode == True:
+
+        if self.ui['radio_default_layout'].get_active() == True:
             gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
             self.ui.sensitize(dependants)
             self.ui.unsensitize(combobox)
-            self.ui['check_show_menu'].set_active(False)
+            self.refresh_window_menu_check()
         else:
             self.ui.unsensitize(dependants)
             self.ui.sensitize(combobox)
+            self.refresh_window_menu_check()
 
     def on_radio_left_toggled(self, button, udata = None):
-        mode = self.ui['radio_left'].get_active()
-        if mode == True:
+
+        if self.ui['radio_left'].get_active() == True:
             gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
+            self.refresh_window_menu_check()
         else:
             gsettings.wm.set_string('button-layout', ':minimize,maximize,close')
+            self.refresh_window_menu_check()
 
     def on_radio_right_toggled(self, button, udata = None):
-        mode = self.ui['radio_right'].get_active()
-        if mode == True:
+
+        if self.ui['radio_right'].get_active() == True:
             gsettings.wm.set_string('button-layout', ':minimize,maximize,close')
+            self.refresh_window_menu_check()
         else:
             gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
+            self.refresh_window_menu_check()
 
     def on_radio_custom_layout_toggled(self, button, udata = None):
         combobox = ['cbox_custom_layout']
         dependants = ['radio_left',
                     'radio_right',
                     'l_alignment']
+
         if self.ui['radio_custom_layout'].get_active() == True:
             self.ui.sensitize(combobox)
             self.ui.unsensitize(dependants)
+            self.refresh_window_menu_check()
         else:
             self.ui.unsensitize(combobox)
             self.ui.sensitize(dependants)
+            self.refresh_window_menu_check()
 
-    def on_cbox_cbox_custom_layout_changed(self, widget, udata = None):
-        cbox_mode = self.ui['cbox_custom_layout'].get_active()
+    def on_cbox_custom_layout_changed(self, widget, udata = None):
+
         checkbox = ['check_show_menu']
-        if cbox_mode == 0:
+        if self.ui['cbox_custom_layout'].get_active() == 0:
             pass
-        elif cbox_mode == 1:
+        elif self.ui['cbox_custom_layout'].get_active() == 1:
             gsettings.wm.set_string('button-layout', 'close:')
             self.ui.sensitize(checkbox)
-            self.ui['check_show_menu'].set_active(False)
-        elif cbox_mode == 2:
+            self.refresh_window_menu_check()
+        elif self.ui['cbox_custom_layout'].get_active() == 2:
             gsettings.wm.set_string('button-layout', 'close,maximize:')
             self.ui.sensitize(checkbox)
-            self.ui['check_show_menu'].set_active(False)
-        elif cbox_mode == 3:
+            self.refresh_window_menu_check()
+        elif self.ui['cbox_custom_layout'].get_active() == 3:
             gsettings.wm.set_string('button-layout', 'close,minimize:')
             self.ui.sensitize(checkbox)
-            self.ui['check_show_menu'].set_active(False)
-        elif cbox_mode == 4:
+            self.refresh_window_menu_check()
+        elif self.ui['cbox_custom_layout'].get_active() == 4:
             gsettings.wm.set_string('button-layout', 'close:maximize')
             self.ui.unsensitize(checkbox)
-            self.ui['check_show_menu'].set_active(False)
+            self.refresh_window_menu_check()
         else:
             gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
             self.ui.unsensitize(checkbox)
-            self.ui['check_show_menu'].set_active(False)
-        del cbox_mode
+            self.refresh_window_menu_check()
 
     def on_check_show_menu_toggled(self, button, udata = None):
-        button_layout_check = gsettings.wm.get_string('button-layout')
-        if button_layout_check.endswith(':'):
-            value = button_layout_check + 'menu'
+
+        if gsettings.wm.get_string('button-layout').endswith(':'):
+            value = gsettings.wm.get_string('button-layout') + 'menu'
             gsettings.wm.set_string('button-layout', value)
             del value
-            self.ui['radio_custom_layout'].set_active(True)
-            self.refresh_window_controls_combobox()
-        elif button_layout_check.startswith(':'):
-            value = 'menu' + button_layout_check
+        elif gsettings.wm.get_string('button-layout').startswith(':'):
+            value = 'menu' + gsettings.wm.get_string('button-layout')
             gsettings.wm.set_string('button-layout', value)
-            self.ui['radio_custom_layout'].set_active(True)
-            self.refresh_window_controls_combobox()
             del value
         else:
-            gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
-            self.ui['radio_default_layout'].set_active(True)
-        del button_layout_check
+            if 'menu' in gsettings.wm.get_string('button-layout'):
+                value = str(gsettings.wm.get_string('button-layout')).replace('menu', '')
+                gsettings.wm.set_string('button-layout', value)
+            else:
+                return
 
     def on_b_theme_window_controls_reset_clicked(self, widget):
         gsettings.wm.set_string('button-layout', 'close,minimize,maximize:')
         self.refresh_window_controls()
         self.refresh_window_controls_combobox()
-        self.refresh_window_controls_checkbox()
+        self.refresh_window_menu_check()
 
 #----- End: Window control settings--------
         
