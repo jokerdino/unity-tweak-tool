@@ -81,33 +81,10 @@ class Desktopsettings ():
 
         # ===== Security ===== #
 
-        lockscreen = gsettings.lockdown.get_boolean('disable-lock-screen')
-        if lockscreen == True:
-            self.ui['check_security_lock_screen'].set_active(False)
-        else:
-            self.ui['check_security_lock_screen'].set_active(True)
-        del lockscreen
-
-        logout = gsettings.lockdown.get_boolean('disable-log-out')
-        if logout == True:
-            self.ui['check_security_logout'].set_active(False)
-        else:
-            self.ui['check_security_logout'].set_active(True)
-        del logout
-
-        printing = gsettings.lockdown.get_boolean('disable-printing')
-        if printing == True:
-            self.ui['check_security_printing'].set_active(False)
-        else:
-            self.ui['check_security_printing'].set_active(True)
-        del printing
-
-        user_switching = gsettings.lockdown.get_boolean('disable-user-switching')
-        if user_switching == True:
-            self.ui['check_security_user_switching'].set_active(False)
-        else:
-            self.ui['check_security_user_switching'].set_active(True)
-        del user_switching
+        self.ui['check_security_lock_screen'].set_active(True if gsettings.lockdown.get_boolean('disable-lock-screen') is False else False)
+        self.ui['check_security_logout'].set_active(True if gsettings.lockdown.get_boolean('disable-log-out') is False else False)
+        self.ui['check_security_printing'].set_active(True if gsettings.lockdown.get_boolean('disable-printing') is False else False)
+        self.ui['check_security_user_switching'].set_active(True if gsettings.lockdown.get_boolean('disable-user-switching') is False else False)
 
         # ===== Scrolling ===== #
 

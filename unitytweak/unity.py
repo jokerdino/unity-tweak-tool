@@ -190,12 +190,7 @@ class Unitysettings ():
         del opacity
 
         # Panel opacity
-        panel_opacity_value = gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle')
-        if panel_opacity_value == True:
-            self.ui['check_panel_opaque'].set_active(True)
-        else:
-            self.ui['check_panel_opaque'].set_active(False)
-        del panel_opacity_value
+        self.ui['check_panel_opaque'].set_active(gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle'))
 
         # Date time indicator
         clock_visibility = gsettings.datetime.get_boolean('show-clock')
@@ -217,12 +212,7 @@ class Unitysettings ():
         del dependants
 
         # User name indicator
-        show_username = gsettings.session.get_boolean('show-real-name-on-panel')
-        if show_username == True:
-            self.ui['check_indicator_username'].set_active(True)
-        else:
-            self.ui['check_indicator_username'].set_active(False)
-        del show_username
+        self.ui['check_indicator_username'].set_active(gsettings.session.get_boolean('show-real-name-on-panel'))
 
         # Battery status
         battery_status = gsettings.power.get_string('icon-policy')
@@ -233,27 +223,22 @@ class Unitysettings ():
 
         if battery_status == 'present':
             self.ui['check_indicator_battery'].set_active(True)
+            self.ui['radio_power_always'].set_active(True)
             self.ui.sensitize(dependants)
         elif battery_status == 'charge':
             self.ui['check_indicator_battery'].set_active(True)
+            self.ui['radio_power_charging'].set_active(True)
             self.ui.sensitize(dependants)
         elif battery_status == 'never':
             self.ui['check_indicator_battery'].set_active(False)
             self.ui.unsensitize(dependants)
         else:
-            self.ui['check_indicator_battery'].set_active(True)
-            self.ui.sensitize(dependants)
+            return
         del battery_status
         del dependants
 
         # Battery life indicator
-        battery_life = gsettings.power.get_boolean('show-time')
-
-        if battery_life == True:
-            self.ui['check_indicator_battery_life'].set_active(True)
-        else:
-            self.ui['check_indicator_battery_life'].set_active(False)
-        del battery_life
+        self.ui['check_indicator_battery_life'].set_active(gsettings.power.get_boolean('show-time'))
 
         # Time format
         time_format = gsettings.datetime.get_string('time-format')
@@ -265,60 +250,18 @@ class Unitysettings ():
             pass
         del time_format
 
-        # Seconds
-        show_seconds = gsettings.datetime.get_boolean('show-seconds')
-        if show_seconds == True:
-            self.ui['check_time_seconds'].set_active(True)
-        else:
-            self.ui['check_time_seconds'].set_active(False)
-        del show_seconds
-
-        # Date
-        show_date = gsettings.datetime.get_boolean('show-date')
-        if show_date == True:
-            self.ui['check_date'].set_active(True)
-        else:
-            self.ui['check_date'].set_active(False)
-        del show_date
-
-        # Day
-        show_weekday = gsettings.datetime.get_boolean('show-day')
-        if show_weekday == True:
-            self.ui['check_weekday'].set_active(True)
-        else:
-            self.ui['check_weekday'].set_active(False)
-        del show_weekday
-
-        # Calendar
-        show_calendar = gsettings.datetime.get_boolean('show-calendar')
-        if show_calendar == True:
-            self.ui['check_calendar'].set_active(True)
-        else:
-            self.ui['check_calendar'].set_active(False)
-        del show_calendar
+        # Indicator Date-Time 
+        self.ui['check_time_seconds'].set_active(gsettings.datetime.get_boolean('show-seconds'))
+        self.ui['check_date'].set_active(gsettings.datetime.get_boolean('show-date'))
+        self.ui['check_weekday'].set_active(gsettings.datetime.get_boolean('show-day'))
+        self.ui['check_calendar'].set_active(gsettings.datetime.get_boolean('show-calendar'))
 
         # Bluetooth indicator
-        show_bluetooth = gsettings.bluetooth.get_boolean('visible')
-        if show_bluetooth == True:
-            self.ui['check_indicator_bluetooth'].set_active(True)
-        else:
-            self.ui['check_indicator_bluetooth'].set_active(False)
-        del show_bluetooth
+        self.ui['check_indicator_bluetooth'].set_active(gsettings.bluetooth.get_boolean('visible'))
 
         # Sound indicator
-        show_sound = gsettings.sound.get_boolean('visible')
-        if show_sound == True:
-            self.ui['check_indicator_sound'].set_active(True)
-        else:
-            self.ui['check_indicator_sound'].set_active(False)
-        del show_sound
-
-        show_notifyosd = gsettings.sound.get_boolean('show-notify-osd-on-scroll')
-        if show_notifyosd == True:
-            self.ui['check_scroll_notifyosd'].set_active(True)
-        else:
-            self.ui['check_scroll_notifyosd'].set_active(False)
-        del show_notifyosd
+        self.ui['check_indicator_sound'].set_active(gsettings.sound.get_boolean('visible'))
+        self.ui['check_scroll_notifyosd'].set_active(gsettings.sound.get_boolean('show-notify-osd-on-scroll'))
 
          # Default Player
         interested_players = gsettings.sound.get_strv('interested-media-players')
@@ -396,15 +339,9 @@ class Unitysettings ():
         # ====== Unity Webapps helpers ===== #
 
         # Integration
-        webapp_integration = gsettings.webapps.get_boolean('integration-allowed')
-        if webapp_integration == True:
-            self.ui['switch_unity_webapps'].set_active(True)
-        else:
-            self.ui['switch_unity_webapps'].set_active(False)
-        del webapp_integration
+        self.ui['switch_unity_webapps'].set_active(gsettings.webapps.get_boolean('integration-allowed'))
 
         # Preauthorized domains
-
         self.ui['check_preauthorized_amazon'].set_active(True if 'amazon.ca' in gsettings.webapps.get_strv('preauthorized-domains') else False)
         self.ui['check_preauthorized_ubuntuone'].set_active(True if 'one.ubuntu.com' in gsettings.webapps.get_strv('preauthorized-domains') else False)
 
@@ -451,8 +388,6 @@ class Unitysettings ():
         # HUD
         self.ui['check_hud_store_data'].set_active(True if gsettings.hud.get_boolean('store-usage-data') is True else False)
 
-
-
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 
@@ -469,11 +404,11 @@ class Unitysettings ():
                     'cbox_autohide_animation']
 
         if self.ui['sw_launcher_hidemode'].get_active():
-            gsettings.unityshell.set_int("launcher-hide-mode", 1)
+            gsettings.unityshell.set_int('launcher-hide-mode', 1)
             gsettings.unityshell.set_double('edge-responsiveness', 2.0)
             self.ui.sensitize(dependants)
         else:
-            gsettings.unityshell.set_int("launcher-hide-mode", 0)
+            gsettings.unityshell.set_int('launcher-hide-mode', 0)
             self.ui.unsensitize(dependants)
 
     def on_radio_reveal_left_toggled(self, button, udata = None):
@@ -557,7 +492,7 @@ class Unitysettings ():
 
     def on_switch_show_desktop_active_notify(self, widget, udata = None):
         fav = gsettings.launcher.get_strv('favorites')
-        desktop = "unity://desktop-icon"
+        desktop = 'unity://desktop-icon'
         if self.ui['switch_show_desktop'].get_active():
             if desktop not in fav:
                 fav.append(desktop)
@@ -583,7 +518,7 @@ class Unitysettings ():
 
         # Launcher items
         fav = gsettings.launcher.get_strv('favorites')
-        desktop = "unity://desktop-icon"
+        desktop = 'unity://desktop-icon'
         if desktop in fav:
             fav.remove(desktop)
             gsettings.launcher.set_strv('favorites', fav)
@@ -613,15 +548,16 @@ class Unitysettings ():
             gsettings.unityshell.set_int('dash-blur-experimental', 0)
 
     def on_radio_dash_blur_smart_toggled(self, button, udata = None):
+
         mode = 2 if button.get_active() else 1
         gsettings.unityshell.set_int('dash-blur-experimental', mode)
 
     def on_check_suggestions_toggled(self, widget, udata = None):
-        if self.ui['check_suggestions'].get_active():
-            gsettings.lenses.set_string('remote-content-search', "all")
 
+        if self.ui['check_suggestions'].get_active() == True:
+            gsettings.lenses.set_string('remote-content-search', 'all')
         else:
-            gsettings.lenses.set_string('remote-content-search', "none")
+            gsettings.lenses.set_string('remote-content-search', 'none')
 
     def on_check_show_recent_apps_toggled(self, widget, udata = None):
         gsettings.lens_apps.set_boolean('display-recent-apps',
@@ -683,14 +619,14 @@ class Unitysettings ():
 
     def on_check_panel_opaque_toggled(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_panel_opaque'].get_active() == True:
             gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', True)
         else:
             gsettings.unityshell.set_boolean('panel-opacity-maximized-toggle', False)
 
     def on_check_indicator_username_active(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_indicator_username'].get_active() == True:
             gsettings.session.set_boolean('show-real-name-on-panel', True)
         else:
             gsettings.session.set_boolean('show-real-name-on-panel', False)
@@ -702,6 +638,7 @@ class Unitysettings ():
 
         if self.ui['check_indicator_battery'].get_active() == True:
             gsettings.power.set_string('icon-policy', 'charge')
+            self.ui['radio_power_charging'].set_active(True)
             self.ui.sensitize(dependants)
         else:
             gsettings.power.set_string('icon-policy', 'never')
@@ -709,25 +646,21 @@ class Unitysettings ():
 
     def on_radio_power_charging_toggled(self, button, udata = None):
 
-        mode = self.ui['radio_power_charging'].get_active()
-
-        if mode == 'True':
-            gsettings.power.set_string('icon-policy', "charge")
+        if self.ui['radio_power_charging'].get_active() == True:
+            gsettings.power.set_string('icon-policy', 'charge')
         else:
-            gsettings.power.set_string('icon-policy', "present")
+            gsettings.power.set_string('icon-policy', 'present')
 
     def on_radio_power_always_toggled(self, button, udata = None):
 
-        mode = self.ui['radio_power_always'].get_active()
-
-        if mode == 'True':
-            gsettings.power.set_string('icon-policy', "present")
+        if self.ui['radio_power_always'].get_active() == True:
+            gsettings.power.set_string('icon-policy', 'present')
         else:
-            gsettings.power.set_string('icon-policy', "charge")
+            gsettings.power.set_string('icon-policy', 'charge')
 
     def on_check_indicator_battery_life_toggled(self, widget, udata = None):
 
-        if widget.get_active():
+        if self.ui['check_indicator_battery'].get_active() == True:
             gsettings.power.set_boolean('show-time', True)
         else:
             gsettings.power.set_boolean('show-time', False)
@@ -842,18 +775,18 @@ class Unitysettings ():
     def on_check_switcher_showdesktop_toggled(self, widget, udata = None):
 
         if widget.get_active():
-            gsettings.unityshell.set_boolean("disable-show-desktop", False)
+            gsettings.unityshell.set_boolean('disable-show-desktop', False)
 
         else:
-            gsettings.unityshell.set_boolean("disable-show-desktop", True)
+            gsettings.unityshell.set_boolean('disable-show-desktop', True)
 
     def on_check_minimizedwindows_switch_toggled(self, widget, udata = None):
 
         if widget.get_active():
-            gsettings.unityshell.set_boolean("show-minimized-windows", True)
+            gsettings.unityshell.set_boolean('show-minimized-windows', True)
 
         else:
-            gsettings.unityshell.set_boolean("show-minimized-windows", False)
+            gsettings.unityshell.set_boolean('show-minimized-windows', False)
 
     def on_check_autoexposewindows_toggled(self, widget, udata = None):
 
@@ -896,27 +829,27 @@ class Unitysettings ():
     def on_craccel_unity_switcher_windows_accel_cleared(self, craccel, path, model = None):
         model = self.ui['list_unity_switcher_windows_accelerators']
         titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        model.set_value(titer, 1, 'Disabled')
         if path == '0':
-            gsettings.unityshell.set_string('alt-tab-forward', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-forward', 'Disabled')
         elif path == '1':
-            gsettings.unityshell.set_string('alt-tab-prev', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-prev', 'Disabled')
         elif path == '2':
-            gsettings.unityshell.set_string('alt-tab-forward-all', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-forward-all', 'Disabled')
         elif path == '3':
-            gsettings.unityshell.set_string('alt-tab-prev-all', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-prev-all', 'Disabled')
         elif path == '4':
-            gsettings.unityshell.set_string('alt-tab-right', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-right', 'Disabled')
         elif path == '5':
-            gsettings.unityshell.set_string('alt-tab-left', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-left', 'Disabled')
         elif path == '6':
-            gsettings.unityshell.set_string('alt-tab-detail-start', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-detail-start', 'Disabled')
         elif path == '7':
-            gsettings.unityshell.set_string('alt-tab-detail-stop', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-detail-stop', 'Disabled')
         elif path == '8':
-            gsettings.unityshell.set_string('alt-tab-next-window', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-next-window', 'Disabled')
         elif path == '9':
-            gsettings.unityshell.set_string('alt-tab-prev-window', "Disabled")
+            gsettings.unityshell.set_string('alt-tab-prev-window', 'Disabled')
 
     # keyboard widgets in unity-launcher-switcher
 
@@ -935,11 +868,11 @@ class Unitysettings ():
     def on_craccel_unity_switcher_launcher_accel_cleared(self, craccel, path, model = None):
         model = self.ui['list_unity_switcher_launcher_accelerators']
         titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        model.set_value(titer, 1, 'Disabled')
         if path == '0':
-            gsettings.unityshell.set_string('launcher-switcher-forward', "Disabled")
+            gsettings.unityshell.set_string('launcher-switcher-forward', 'Disabled')
         else:
-            gsettings.unityshell.set_string('launcher-switcher-prev', "Disabled")
+            gsettings.unityshell.set_string('launcher-switcher-prev', 'Disabled')
 
     def on_b_unity_switcher_reset_clicked(self, widget):
         gsettings.unityshell.reset('alt-tab-bias-viewport')
@@ -1062,17 +995,17 @@ class Unitysettings ():
     def on_craccel_unity_additional_accel_cleared(self, craccel, path, model = None):
         model = self.ui['list_unity_additional_accelerators']
         titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        model.set_value(titer, 1, 'Disabled')
         if path == '0':
-            gsettings.unityshell.set_string('show-hud', "Disabled")
+            gsettings.unityshell.set_string('show-hud', 'Disabled')
         elif path == '1':
-            gsettings.unityshell.set_string('show-launcher', "Disabled")
+            gsettings.unityshell.set_string('show-launcher', 'Disabled')
         elif path == '2':
-            gsettings.unityshell.set_string('execute-command', "Disabled")
+            gsettings.unityshell.set_string('execute-command', 'Disabled')
         elif path == '3':
-            gsettings.unityshell.set_string('keyboard-focus', "Disabled")
+            gsettings.unityshell.set_string('keyboard-focus', 'Disabled')
         else:
-            gsettings.unityshell.set_string('panel-first-menu', "Disabled")
+            gsettings.unityshell.set_string('panel-first-menu', 'Disabled')
 
     def on_radio_all_monitors_toggled(self, widget, udata = None):
         if self.ui['radio_all_monitors'].get_active() == True:

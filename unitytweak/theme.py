@@ -129,7 +129,6 @@ class Themesettings ():
             gtkthemesel.unselect_all()
 
         # Window theme
-
         windowthemesel=self.ui['tree_window_theme'].get_selection()
         windowtheme=gsettings.gnome('desktop.wm.preferences').get_string('theme')
         windowthemesel.select_iter(self.windowthemes[windowtheme]['iter'])
