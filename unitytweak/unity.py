@@ -56,7 +56,10 @@ class Unitysettings ():
         if Gdk.Screen.get_default().get_n_monitors() == 1:
             dependants = ['l_launcher_visibility',
                           'radio_launcher_visibility_all',
-                          'radio_launcher_visibility_primary']
+                          'radio_launcher_visibility_primary',
+                          'l_notifications',
+                          'radio_active_monitor',
+                          'radio_all_monitors']
             self.ui.unsensitize(dependants)
 
         self.refresh()
