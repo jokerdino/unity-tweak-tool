@@ -579,8 +579,6 @@
               <object class="GtkGrid" id="grid_font_settings">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">18</property>
-                <property name="margin_right">18</property>
                 <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_defaultfont">
@@ -765,8 +763,6 @@
               <object class="GtkGrid" id="grid_font_appearance">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">18</property>
-                <property name="margin_right">18</property>
                 <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="l_antialiasing">
