@@ -21,6 +21,16 @@
   <object class="GtkAction" id="a_tool_window_spread"/>
   <object class="GtkAction" id="a_tool_wm_additional"/>
   <object class="GtkAction" id="a_unity_webapps"/>
+  <object class="GtkImage" id="i_tool_window_spread">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/wm-settings-window-switcher-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_wm_additional">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/wm-settings-additional-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_additional">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -83,6 +93,12 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/unity-settings-panel-dark_36.svg</property>
   </object>
+  <object class="GtkImage" id="i_unity_webapps">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">start</property>
+    <property name="pixbuf">media/36/unity-settings-webapps-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_scrolling">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -103,22 +119,6 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/wm-settings-window-snapping-dark_36.svg</property>
   </object>
-  <object class="GtkImage" id="i_tool_window_spread">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/wm-settings-window-switcher-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_wm_additional">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/wm-settings-additional-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_unity_webapps">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="valign">start</property>
-    <property name="pixbuf">media/36/unity-settings-webapps-dark_36.svg</property>
-  </object>
   <object class="GtkImage" id="i_window_controls">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -129,7 +129,7 @@
     <property name="can_focus">False</property>
     <property name="valign">start</property>
     <property name="yalign">1</property>
-    <property name="ypad">6</property>
+    <property name="ypad">10</property>
     <property name="label" translatable="yes">Desktop Icons</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
@@ -362,7 +362,6 @@ controls</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">end</property>
-            <property name="margin_top">12</property>
             <property name="margin_bottom">12</property>
           </object>
           <packing>
@@ -565,7 +564,6 @@ controls</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">start</property>
-            <property name="margin_top">12</property>
             <property name="margin_bottom">12</property>
           </object>
           <packing>
@@ -742,7 +740,6 @@ controls</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">start</property>
-            <property name="margin_top">12</property>
             <property name="margin_bottom">12</property>
           </object>
           <packing>
