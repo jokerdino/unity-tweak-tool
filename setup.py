@@ -146,6 +146,9 @@ DistUtilsExtra.auto.setup(
     #author_email='email@ubuntu.com',
     description='A One-stop configuration tool for Unity',
     url='https://launchpad.net/unity-tweak-tool',
+    data_files=[
+               ('share/icons/gnome/scalable/apps/', glob.glob("data/media/scalable/*svg")),
+               ],
     cmdclass={'install': InstallAndUpdateDataDirectory}
     )
 
