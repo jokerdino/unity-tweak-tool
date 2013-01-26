@@ -41,6 +41,11 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/unity-settings-dash-dark_36.svg</property>
   </object>
+  <object class="GtkImage" id="i_tool_desktop_icons">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/desktop-settings-icons-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_desktop_security">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -78,6 +83,11 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/unity-settings-panel-dark_36.svg</property>
   </object>
+  <object class="GtkImage" id="i_tool_scrolling">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/desktop-settings-scrolling-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_system">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -103,21 +113,11 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/wm-settings-additional-dark_36.svg</property>
   </object>
-  <object class="GtkImage" id="i_tool_desktop_icons">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/desktop-settings-icons-dark_36.svg</property>
-  </object>
   <object class="GtkImage" id="i_unity_webapps">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">start</property>
     <property name="pixbuf">media/36/unity-settings-webapps-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_scrolling">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/desktop-settings-scrolling-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_window_controls">
     <property name="visible">True</property>
@@ -128,7 +128,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">start</property>
-    <property name="yalign">1</property>
+    <property name="ypad">6</property>
     <property name="label" translatable="yes">Desktop Icons</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
@@ -139,6 +139,7 @@
     <property name="can_focus">False</property>
     <property name="valign">end</property>
     <property name="vexpand">True</property>
+    <property name="ypad">6</property>
     <property name="label" translatable="yes">Window
 Snapping</property>
     <property name="justify">center</property>
@@ -148,6 +149,7 @@ Snapping</property>
     <property name="width_request">70</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="ypad">6</property>
     <property name="label" translatable="yes">Window
 Spread</property>
     <property name="justify">center</property>
@@ -156,8 +158,7 @@ Spread</property>
   <object class="GtkLabel" id="l_window_controls">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="yalign">1</property>
-    <property name="ypad">10</property>
+    <property name="ypad">6</property>
     <property name="label" translatable="yes">Window
 controls</property>
     <property name="justify">center</property>
