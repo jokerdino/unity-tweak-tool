@@ -21,31 +21,6 @@
   <object class="GtkAction" id="a_tool_window_spread"/>
   <object class="GtkAction" id="a_tool_wm_additional"/>
   <object class="GtkAction" id="a_unity_webapps"/>
-  <object class="GtkImage" id="i_tool_icons">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/appearance-settings-icons-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_additional">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/unity-settings-additional-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_dash">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/unity-settings-dash-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_launcher">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/unity-settings-launcher-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_panel">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/unity-settings-panel-dark_36.svg</property>
-  </object>
   <object class="GtkImage" id="i_tool_compiz_switcher">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -55,6 +30,11 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/appearance-settings-cursor-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_dash">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-dash-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_desktop_icons">
     <property name="visible">True</property>
@@ -82,6 +62,26 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/wm-settings-hotcorners-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_icons">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/appearance-settings-icons-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_additional">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-additional-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_launcher">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-launcher-dark_36.svg</property>
+  </object>
+  <object class="GtkImage" id="i_tool_panel">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-panel-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_scrolling">
     <property name="visible">True</property>
@@ -124,10 +124,19 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/appearance-settings-window-controls-dark_36.svg</property>
   </object>
+  <object class="GtkLabel" id="l_tool_workspace">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label" translatable="yes">Workspace
+Settings</property>
+    <property name="justify">center</property>
+    <property name="wrap">True</property>
+  </object>
   <object class="GtkLabel" id="l_desktop_icons">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">start</property>
+    <property name="margin_bottom">1</property>
     <property name="label" translatable="yes">Desktop Icons</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
@@ -227,7 +236,7 @@ controls</property>
                   <object class="GtkToolButton" id="tool_launcher">
                     <property name="use_action_appearance">False</property>
                     <property name="related_action">a_tool_launcher</property>
-                    <property name="width_request">85</property>
+                    <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the Unity launcher settings</property>
@@ -420,7 +429,7 @@ controls</property>
                   <object class="GtkToolButton" id="tool_general">
                     <property name="use_action_appearance">False</property>
                     <property name="related_action">a_tool_general</property>
-                    <property name="width_request">85</property>
+                    <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the general settings for the window manager</property>
@@ -448,8 +457,8 @@ controls</property>
                     <property name="tooltip_text" translatable="yes">Show the settings for the workspace switcher</property>
                     <property name="valign">start</property>
                     <property name="vexpand">True</property>
-                    <property name="label" translatable="yes">Workspaces</property>
                     <property name="use_underline">True</property>
+                    <property name="label_widget">l_tool_workspace</property>
                     <property name="icon_widget">i_tool_compiz_switcher</property>
                     <signal name="clicked" handler="on_tool_compiz_switcher_clicked" swapped="no"/>
                   </object>
@@ -623,7 +632,7 @@ controls</property>
                   <object class="GtkToolButton" id="tool_system">
                     <property name="use_action_appearance">False</property>
                     <property name="related_action">a_tool_system</property>
-                    <property name="width_request">85</property>
+                    <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the global system themes</property>
@@ -800,7 +809,7 @@ controls</property>
                   <object class="GtkToolButton" id="tool_desktop_icons">
                     <property name="use_action_appearance">False</property>
                     <property name="related_action">a_tool_desktop_icons</property>
-                    <property name="width_request">85</property>
+                    <property name="width_request">90</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_markup" translatable="yes">Show the settings for the desktop icons</property>
