@@ -8,7 +8,7 @@
   <object class="GtkImage" id="image_overview">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">media/24/overview_24_symbolic.svg</property>
+    <property name="pixbuf">/usr/share/icons/gnome/scalable/apps/unity-tweak-tool-overview-symbolic.svg</property>
   </object>
   <object class="GtkImage" id="image_menu_compiz_settings">
     <property name="visible">True</property>

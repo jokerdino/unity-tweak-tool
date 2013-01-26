@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-17 09:37-0500\n"
+"POT-Creation-Date: 2013-01-26 15:59-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,8 +131,8 @@ msgstr ""
 msgid "Cursor theme"
 msgstr ""
 
-#: ../data/theme.ui.h:29 ../data/startpage.ui.h:22 ../data/unitytweak.ui.h:11
-#: ../data/compiz.ui.h:32 ../data/unity.ui.h:88
+#: ../data/theme.ui.h:29 ../data/compiz.ui.h:32 ../data/unitytweak.ui.h:10
+#: ../data/unity.ui.h:88 ../data/startpage.ui.h:21
 msgid "General"
 msgstr ""
 
@@ -174,8 +174,8 @@ msgid ""
 "the window titlebar."
 msgstr ""
 
-#: ../data/theme.ui.h:39 ../data/startpage.ui.h:29 ../data/unitytweak.ui.h:16
-#: ../data/unity.ui.h:49
+#: ../data/theme.ui.h:39 ../data/unitytweak.ui.h:15 ../data/unity.ui.h:49
+#: ../data/startpage.ui.h:29
 msgid "Appearance"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Restore system's default font configurations"
 msgstr ""
 
-#: ../data/theme.ui.h:53 ../data/startpage.ui.h:37 ../data/unitytweak.ui.h:20
+#: ../data/theme.ui.h:53 ../data/unitytweak.ui.h:19 ../data/startpage.ui.h:37
 msgid "Fonts"
 msgstr ""
 
@@ -321,241 +321,7 @@ msgstr ""
 msgid "Window Controls"
 msgstr ""
 
-#: ../data/about.ui.h:1
-msgid "Copyright © 2013 Freyja Development team"
-msgstr ""
-
-#: ../data/about.ui.h:2
-msgid ""
-"Unity Tweak Tool is a settings manager intended to be used with Ubuntu Unity."
-msgstr ""
-
-#: ../data/about.ui.h:3
-msgid "Unity Tweak Tool on Launchpad"
-msgstr ""
-
-#: ../data/about.ui.h:4
-msgid "GPL3"
-msgstr ""
-
-#: ../data/startpage.ui.h:1
-msgid "Show the settings for the security."
-msgstr ""
-
-#: ../data/startpage.ui.h:2 ../data/unitytweak.ui.h:22 ../data/desktop.ui.h:18
-msgid "Desktop Icons"
-msgstr ""
-
-#: ../data/startpage.ui.h:3 ../data/compiz.ui.h:61
-msgid "Window snapping"
-msgstr ""
-
-#: ../data/startpage.ui.h:4 ../data/compiz.ui.h:56
-msgid "Window spread"
-msgstr ""
-
-#: ../data/startpage.ui.h:5 ../data/compiz.ui.h:44
-msgid "Workspaces"
-msgstr ""
-
-#: ../data/startpage.ui.h:6
-msgid ""
-"Window\n"
-"Controls"
-msgstr ""
-
-#: ../data/startpage.ui.h:8 ../data/unitytweak.ui.h:4
-msgid "Unity"
-msgstr ""
-
-#: ../data/startpage.ui.h:9
-msgid "Show the Unity launcher settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:10 ../data/unitytweak.ui.h:5 ../data/unity.ui.h:87
-msgid "Launcher"
-msgstr ""
-
-#: ../data/startpage.ui.h:11
-msgid "Show the Unity Dash settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:12 ../data/unitytweak.ui.h:6 ../data/unity.ui.h:108
-msgid "Dash"
-msgstr ""
-
-#: ../data/startpage.ui.h:13
-msgid "Show the Unity Panel settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:14 ../data/unitytweak.ui.h:7 ../data/unity.ui.h:153
-msgid "Panel"
-msgstr ""
-
-#: ../data/startpage.ui.h:15
-msgid "Show the Unity Switcher settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:16 ../data/unitytweak.ui.h:8 ../data/unity.ui.h:169
-msgid "Switcher"
-msgstr ""
-
-#: ../data/startpage.ui.h:17 ../data/unity.ui.h:176
-msgid "Webapps"
-msgstr ""
-
-#: ../data/startpage.ui.h:18
-msgid "Show the additional Unity settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:19 ../data/unitytweak.ui.h:9 ../data/compiz.ui.h:91
-#: ../data/unity.ui.h:187
-msgid "Additional"
-msgstr ""
-
-#: ../data/startpage.ui.h:20 ../data/unitytweak.ui.h:10
-msgid "Window Manager"
-msgstr ""
-
-#: ../data/startpage.ui.h:21
-msgid "Show the general settings for the window manager"
-msgstr ""
-
-#: ../data/startpage.ui.h:23
-msgid "Show the settings for the workspace switcher"
-msgstr ""
-
-#: ../data/startpage.ui.h:24
-msgid "Show the settings for window spread behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:25
-msgid "Show the settings for window snapping behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:26
-msgid "Show the settings for hotcorner behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:27 ../data/unitytweak.ui.h:15 ../data/compiz.ui.h:63
-msgid "Hotcorners"
-msgstr ""
-
-#: ../data/startpage.ui.h:28
-msgid "Show the additional settings pane."
-msgstr ""
-
-#: ../data/startpage.ui.h:30
-msgid "Show the settings for the global system themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:31 ../data/unitytweak.ui.h:17
-msgid "Theme"
-msgstr ""
-
-#: ../data/startpage.ui.h:32
-msgid "Show the settings for the icon themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:33 ../data/unitytweak.ui.h:18 ../data/unity.ui.h:66
-msgid "Icons"
-msgstr ""
-
-#: ../data/startpage.ui.h:34
-msgid "Show the settings for the cursor themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:35 ../data/unitytweak.ui.h:19
-msgid "Cursor"
-msgstr ""
-
-#: ../data/startpage.ui.h:36
-msgid "Show the settings for the system-wide fonts"
-msgstr ""
-
-#: ../data/startpage.ui.h:38 ../data/unitytweak.ui.h:21
-msgid "System"
-msgstr ""
-
-#: ../data/startpage.ui.h:39
-msgid "Show the settings for the desktop icons"
-msgstr ""
-
-#: ../data/startpage.ui.h:40 ../data/unitytweak.ui.h:23
-#: ../data/desktop.ui.h:30
-msgid "Security"
-msgstr ""
-
-#: ../data/startpage.ui.h:41
-msgid "Show the settings for the scrolling."
-msgstr ""
-
-#: ../data/startpage.ui.h:42 ../data/unitytweak.ui.h:24
-#: ../data/desktop.ui.h:44
-msgid "Scrolling"
-msgstr ""
-
-#: ../unity-tweak-tool.desktop.in.h:1 ../data/unitytweak.ui.h:2
-msgid "Unity Tweak Tool"
-msgstr ""
-
-#: ../unity-tweak-tool.desktop.in.h:2
-msgid "Configuration frontend for the Unity desktop environment"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:1
-msgid "Unity Tweak Tool Overview pane."
-msgstr ""
-
-#: ../data/unitytweak.ui.h:3
-msgid "_File"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:12
-msgid "Workspace"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:13
-msgid "Windows spread"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:14
-msgid "Windows snapping"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:25
-msgid "_Help"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:26
-msgid "Show the Home panel"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:27
-msgid "Overview"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:28
-msgid "Show the Unity settings panel."
-msgstr ""
-
-#: ../data/unitytweak.ui.h:29
-msgid "Show the window manager settings panel."
-msgstr ""
-
-#: ../data/unitytweak.ui.h:30
-msgid "Show the appearance settings panel."
-msgstr ""
-
-#: ../data/unitytweak.ui.h:31
-msgid "Show the system settings panel."
-msgstr ""
-
-#: ../data/unitytweak.ui.h:32
-msgid "Search Unity Tweak Tool"
-msgstr ""
-
-#. FIXME : This is guaranteed to fail.
+#. FIXME : Guaranteed to fail.
 #: ../data/desktop.ui.h:1
 msgid "Icons on desktop:"
 msgstr ""
@@ -620,6 +386,10 @@ msgstr ""
 msgid "Restore the default configurations for Desktop icons"
 msgstr ""
 
+#: ../data/desktop.ui.h:18 ../data/unitytweak.ui.h:21 ../data/startpage.ui.h:2
+msgid "Desktop Icons"
+msgstr ""
+
 #: ../data/desktop.ui.h:19
 msgid "Desktop lock"
 msgstr ""
@@ -665,6 +435,11 @@ msgstr ""
 
 #: ../data/desktop.ui.h:29
 msgid "Restore the default configurations for Security settings"
+msgstr ""
+
+#: ../data/desktop.ui.h:30 ../data/unitytweak.ui.h:22
+#: ../data/startpage.ui.h:40
+msgid "Security"
 msgstr ""
 
 #: ../data/desktop.ui.h:31
@@ -715,7 +490,21 @@ msgstr ""
 msgid "Touch scrolling"
 msgstr ""
 
-#. FIXME : Guaranteed to fail
+#: ../data/desktop.ui.h:44 ../data/unitytweak.ui.h:23
+#: ../data/startpage.ui.h:42
+msgid "Scrolling"
+msgstr ""
+
+#. FIXME : Guaranteed to fail. Arguments mismatch.
+#: ../unity-tweak-tool.desktop.in.h:1 ../data/unitytweak.ui.h:1
+msgid "Unity Tweak Tool"
+msgstr ""
+
+#: ../unity-tweak-tool.desktop.in.h:2
+msgid "Configuration frontend for the Unity desktop environment"
+msgstr ""
+
+#. FIXME : This is guaranteed to fail.
 #: ../data/compiz.ui.h:1
 msgid "Zoom"
 msgstr ""
@@ -878,6 +667,10 @@ msgstr ""
 msgid "Restore default workspace configuration"
 msgstr ""
 
+#: ../data/compiz.ui.h:44 ../data/startpage.ui.h:23
+msgid "Workspaces"
+msgstr ""
+
 #: ../data/compiz.ui.h:45
 msgid "Enable the window spread?"
 msgstr ""
@@ -926,6 +719,10 @@ msgstr ""
 msgid "Restore default window spread settings"
 msgstr ""
 
+#: ../data/compiz.ui.h:56 ../data/startpage.ui.h:4
+msgid "Window spread"
+msgstr ""
+
 #: ../data/compiz.ui.h:57
 msgid "Window snapping:"
 msgstr ""
@@ -942,8 +739,16 @@ msgstr ""
 msgid "Behaviour"
 msgstr ""
 
+#: ../data/compiz.ui.h:61 ../data/startpage.ui.h:3
+msgid "Window snapping"
+msgstr ""
+
 #: ../data/compiz.ui.h:62
 msgid "Hotcorners:"
+msgstr ""
+
+#: ../data/compiz.ui.h:63 ../data/unitytweak.ui.h:14 ../data/startpage.ui.h:27
+msgid "Hotcorners"
 msgstr ""
 
 #: ../data/compiz.ui.h:64
@@ -1056,6 +861,11 @@ msgstr ""
 
 #: ../data/compiz.ui.h:90
 msgid "Restore the default settings for the additional options."
+msgstr ""
+
+#: ../data/compiz.ui.h:91 ../data/unitytweak.ui.h:8 ../data/unity.ui.h:190
+#: ../data/startpage.ui.h:18
+msgid "Additional"
 msgstr ""
 
 #: ../data/compiz.ui.h:92
@@ -1174,7 +984,91 @@ msgstr ""
 msgid "Top Right Corner"
 msgstr ""
 
-#. FIXME : This should fail. 2 missing arguments.
+#: ../data/about.ui.h:1
+msgid "Copyright © 2013 Freyja Development team"
+msgstr ""
+
+#: ../data/about.ui.h:2
+msgid ""
+"Unity Tweak Tool is a settings manager intended to be used with Ubuntu Unity."
+msgstr ""
+
+#: ../data/about.ui.h:3
+msgid "Unity Tweak Tool on Launchpad"
+msgstr ""
+
+#: ../data/about.ui.h:4
+msgid "GPL3"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:2
+msgid "_File"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:3 ../data/startpage.ui.h:7
+msgid "Unity"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:4 ../data/unity.ui.h:87 ../data/startpage.ui.h:9
+msgid "Launcher"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:5 ../data/unity.ui.h:108 ../data/startpage.ui.h:11
+msgid "Dash"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:6 ../data/unity.ui.h:153 ../data/startpage.ui.h:13
+msgid "Panel"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:7 ../data/unity.ui.h:169 ../data/startpage.ui.h:15
+msgid "Switcher"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:9 ../data/startpage.ui.h:19
+msgid "Window Manager"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:11
+msgid "Workspace"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:12
+msgid "Windows spread"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:13
+msgid "Windows snapping"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:16 ../data/startpage.ui.h:31
+msgid "Theme"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:17 ../data/unity.ui.h:66 ../data/startpage.ui.h:33
+msgid "Icons"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:18 ../data/startpage.ui.h:35
+msgid "Cursor"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:20 ../data/startpage.ui.h:38
+msgid "System"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:24
+msgid "_Help"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:25
+msgid " Overview"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:26
+msgid "Search Unity Tweak Tool"
+msgstr ""
+
 #: ../data/unity.ui.h:1
 msgid "Invoke HUD"
 msgstr ""
@@ -1840,44 +1734,141 @@ msgstr ""
 msgid "Restore the default Unity Webapps settings."
 msgstr ""
 
+#: ../data/unity.ui.h:176 ../data/startpage.ui.h:16
+msgid "Webapps"
+msgstr ""
+
 #: ../data/unity.ui.h:177
-msgid "Keyboard Shortcuts"
+msgid "HUD"
 msgstr ""
 
 #: ../data/unity.ui.h:178
-msgid "Hold Super for keyboard shortcuts"
+msgid "Remember previous commands"
 msgstr ""
 
 #: ../data/unity.ui.h:179
+msgid ""
+"If enabled, the HUD will remember previously executed entries and sort them "
+"by frequently used."
+msgstr ""
+
+#: ../data/unity.ui.h:180
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: ../data/unity.ui.h:181
+msgid "Hold Super for keyboard shortcuts"
+msgstr ""
+
+#: ../data/unity.ui.h:182
 msgid ""
 "When enabled, pressing the Super key displays an overlay of all Unity "
 "keyboard shortcuts"
 msgstr ""
 
-#: ../data/unity.ui.h:180
+#: ../data/unity.ui.h:183
 msgid "List of Unity keyboard shortcuts"
 msgstr ""
 
-#: ../data/unity.ui.h:181
+#: ../data/unity.ui.h:184
 msgid "Notifications"
 msgstr ""
 
-#: ../data/unity.ui.h:182
+#: ../data/unity.ui.h:185
 msgid "All displays"
 msgstr ""
 
-#: ../data/unity.ui.h:183
+#: ../data/unity.ui.h:186
 msgid "For multiple displays, notifications are visible on all of them."
 msgstr ""
 
-#: ../data/unity.ui.h:184
+#: ../data/unity.ui.h:187
 msgid "Active display"
 msgstr ""
 
-#: ../data/unity.ui.h:185
+#: ../data/unity.ui.h:188
 msgid "For multiple displays, notifications are visible on the active display."
 msgstr ""
 
-#: ../data/unity.ui.h:186
+#: ../data/unity.ui.h:189
 msgid "Restore the default Unity keyboard shortcut settings."
+msgstr ""
+
+#. FIXME : Guaranteed to fail
+#: ../data/startpage.ui.h:1
+msgid "Show the settings for the security."
+msgstr ""
+
+#: ../data/startpage.ui.h:5
+msgid ""
+"Window\n"
+"controls"
+msgstr ""
+
+#: ../data/startpage.ui.h:8
+msgid "Show the Unity launcher settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:10
+msgid "Show the Unity Dash settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:12
+msgid "Show the Unity Panel settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:14
+msgid "Show the Unity Switcher settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:17
+msgid "Show the additional Unity settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:20
+msgid "Show the general settings for the window manager"
+msgstr ""
+
+#: ../data/startpage.ui.h:22
+msgid "Show the settings for the workspace switcher"
+msgstr ""
+
+#: ../data/startpage.ui.h:24
+msgid "Show the settings for window spread behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:25
+msgid "Show the settings for window snapping behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:26
+msgid "Show the settings for hotcorner behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:28
+msgid "Show the additional settings pane."
+msgstr ""
+
+#: ../data/startpage.ui.h:30
+msgid "Show the settings for the global system themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:32
+msgid "Show the settings for the icon themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:34
+msgid "Show the settings for the cursor themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:36
+msgid "Show the settings for the system-wide fonts"
+msgstr ""
+
+#: ../data/startpage.ui.h:39
+msgid "Show the settings for the desktop icons"
+msgstr ""
+
+#: ../data/startpage.ui.h:41
+msgid "Show the settings for the scrolling."
 msgstr ""
