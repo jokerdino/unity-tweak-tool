@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 #
 # Team:
-#   J Phani Mahesh <phanimahesh@gmail.com> 
-#   Barneedhar (jokerdino) <barneedhar@ubuntu.com> 
+#   J Phani Mahesh <phanimahesh@gmail.com>
+#   Barneedhar (jokerdino) <barneedhar@ubuntu.com>
 #   Amith KK <amithkumaran@gmail.com>
 #   Georgi Karavasilev <motorslav@gmail.com>
 #   Sam Tran <samvtran@gmail.com>
@@ -58,6 +58,12 @@ class UnityTweak (dbus.service.Object):
 
         self.launcher = Unity.LauncherEntry.get_for_desktop_id("unity-tweak-tool.desktop")
 
+        # Symbolic icons
+        self.icons = Gtk.IconTheme.get_default()
+        self.style_context = self.ui['toolbar_main'].get_style_context()
+        self.style_context.add_class(Gtk.STYLE_CLASS_PRIMARY_TOOLBAR)
+        self.style_context.connect('changed', self.on_style_context_change)
+
         self.notebook = self.ui['nb_unitytweak']
 
         self.startpage = Startpage(self.ui, self.notebook)
@@ -88,15 +94,15 @@ class UnityTweak (dbus.service.Object):
         args = parser.parse_args()
 
         if args.unity:
-            self.check_running_instance('unity')            
+            self.check_running_instance('unity')
         elif args.winmng:
-            self.check_running_instance('winmng')            
+            self.check_running_instance('winmng')
         elif args.appearance:
-            self.check_running_instance('appearance')    
+            self.check_running_instance('appearance')
         elif args.system:
             self.check_running_instance('system')
         else: # No/wrong cmd args
-            # FIXME: Will probably cause future problems?            
+            # FIXME: Will probably cause future problems?
             self.check_running_instance('overview')
 
         # ===== Command line options: End ===== #
@@ -147,8 +153,8 @@ class UnityTweak (dbus.service.Object):
 
         elif (cmd_arg == 'appearance')    :
             self.notebook.set_current_page(3)
-            
-        elif (cmd_arg == 'system'):            
+
+        elif (cmd_arg == 'system'):
             self.notebook.set_current_page(4)
 
     def register_dbus_session(self):
@@ -163,7 +169,7 @@ class UnityTweak (dbus.service.Object):
                 item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED)
             else:
                 item.property_set_int(Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED)
-        
+
     def section_menu_item_activated(self, menu_item, obj, page_id):
         ''' Called when a Quicklist menu item is selected '''
         self.notebook.set_current_page(page_id)
@@ -179,9 +185,9 @@ class UnityTweak (dbus.service.Object):
             self.notebook.set_current_page(page_id)
         else:
             self.notebook.set_current_page(page_id)
-        
+
     # ===== Menu Bar ===== #
-    
+
     # ----- Unity Menu ----- #
     def on_menuitem_unity_launcher_activate(self,udata):
         self.notebook.set_current_page(1)
@@ -190,36 +196,36 @@ class UnityTweak (dbus.service.Object):
     def on_menuitem_unity_dash_activate(self,udata):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(1)
- 
+
     def on_menuitem_unity_panel_activate(self,udata):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(2)
-		
+
     def on_menuitem_unity_switcher_activate(self,udata):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(3)
-		
+
     def on_menuitem_unity_additional_activate(self,udata):
         self.notebook.set_current_page(1)
         self.unitysettings.page.set_current_page(4)
-        
+
     # ----- Compiz Settings Menu ----- #
     def on_menuitem_compiz_general_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(0)
-        
+
     def on_menuitem_compiz_workspace_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(1)
-        
+
     def on_menuitem_compiz_windows_spread_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(2)
-        
+
     def on_menuitem_compiz_windows_snapping_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(3)
-        
+
     def on_menuitem_compiz_hotcorners_activate(self,udata):
         self.notebook.set_current_page(2)
         self.compizsettings.page.set_current_page(4)
@@ -257,6 +263,14 @@ class UnityTweak (dbus.service.Object):
     # ----- Top Navigation bar ----- #
     def on_b_overview_clicked(self,udata):
         self.notebook.set_current_page(0)
+
+    # Symbolic icon
+    def on_style_context_change(self, widget):
+        self.main_fg_color = self.style_context.get_color(Gtk.StateFlags.ACTIVE)
+        symbolic_icon = self.icons.lookup_icon('unity-tweak-tool-overview-symbolic', 24, Gtk.IconLookupFlags.FORCE_SIZE)
+        if symbolic_icon:
+            symbolic_icon_pixbuf, was_sym = symbolic_icon.load_symbolic(self.main_fg_color, None, None, None)
+            self.ui['image_overview'].set_from_pixbuf(symbolic_icon_pixbuf)
 
     # ===== GTK Search Box =====
 
