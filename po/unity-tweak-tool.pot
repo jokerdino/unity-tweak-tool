@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-26 15:14-0500\n"
+"POT-Creation-Date: 2013-01-26 15:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,308 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/theme.ui.h:1
-msgid "Available themes"
+#: ../data/about.ui.h:1
+msgid "Copyright © 2013 Freyja Development team"
 msgstr ""
 
-#: ../data/theme.ui.h:2
-msgid "List of GTK Themes"
-msgstr ""
-
-#: ../data/theme.ui.h:3
-msgid "GTK Theme"
-msgstr ""
-
-#: ../data/theme.ui.h:4
-msgid "List of Window decoration themes"
-msgstr ""
-
-#: ../data/theme.ui.h:5
-msgid "Window decoration theme"
-msgstr ""
-
-#: ../data/theme.ui.h:6
-msgid "Install theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:7
-msgid "Add Theme"
-msgstr ""
-
-#: ../data/theme.ui.h:8
-msgid "Remove theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:9
-msgid "Remove Theme"
-msgstr ""
-
-#: ../data/theme.ui.h:10
-msgid "Preferences"
-msgstr ""
-
-#: ../data/theme.ui.h:11
-msgid "Display incomplete themes"
-msgstr ""
-
-#: ../data/theme.ui.h:12
-msgid "If enabled, incomplete themes will appear in the lists of themes."
-msgstr ""
-
-#: ../data/theme.ui.h:13
-msgid "Match themes"
-msgstr ""
-
-#: ../data/theme.ui.h:14
+#: ../data/about.ui.h:2
 msgid ""
-"When enabled, the GTK Theme is matched to its default Window decorations."
+"Unity Tweak Tool is a settings manager intended to be used with Ubuntu Unity."
 msgstr ""
 
-#: ../data/theme.ui.h:15 ../data/unity.ui.h:85 ../data/compiz.ui.h:30
-#: ../data/desktop.ui.h:16
-msgid "Restore defaults"
+#: ../data/about.ui.h:3
+msgid "Unity Tweak Tool on Launchpad"
 msgstr ""
 
-#: ../data/theme.ui.h:16
-msgid "Restore system's default theme configurations"
+#: ../data/about.ui.h:4
+msgid "GPL3"
 msgstr ""
 
-#: ../data/theme.ui.h:17
-msgid "System theme"
+#: ../unity-tweak-tool.desktop.in.h:1 ../data/unitytweak.ui.h:1
+msgid "Unity Tweak Tool"
 msgstr ""
 
-#: ../data/theme.ui.h:18
-msgid "List of icon themes"
-msgstr ""
-
-#: ../data/theme.ui.h:19
-msgid "Icon theme"
-msgstr ""
-
-#: ../data/theme.ui.h:20
-msgid "Install icon theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:21
-msgid "Remove icon theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:22
-msgid "Restore system's default icon theme configurations"
-msgstr ""
-
-#: ../data/theme.ui.h:23
-msgid "List of cursor themes"
-msgstr ""
-
-#: ../data/theme.ui.h:24
-msgid "Cursor Theme"
-msgstr ""
-
-#: ../data/theme.ui.h:25
-msgid "Install cursor theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:26
-msgid "Remove cursor theme(s)"
-msgstr ""
-
-#: ../data/theme.ui.h:27
-msgid "Restore system's default cursor theme configurations"
-msgstr ""
-
-#: ../data/theme.ui.h:28
-msgid "Cursor theme"
-msgstr ""
-
-#: ../data/theme.ui.h:29 ../data/unity.ui.h:88 ../data/startpage.ui.h:22
-#: ../data/unitytweak.ui.h:10 ../data/compiz.ui.h:32
-msgid "General"
-msgstr ""
-
-#: ../data/theme.ui.h:30
-msgid "Select the default font for all applications."
-msgstr ""
-
-#: ../data/theme.ui.h:31
-msgid "Default font:"
-msgstr ""
-
-#: ../data/theme.ui.h:32
-msgid "Select the default font used for reading documents."
-msgstr ""
-
-#: ../data/theme.ui.h:33
-msgid "Document font:"
-msgstr ""
-
-#: ../data/theme.ui.h:34
-msgid "Select the default monospace font."
-msgstr ""
-
-#: ../data/theme.ui.h:35
-msgid "Monospace font:"
-msgstr ""
-
-#: ../data/theme.ui.h:36
-msgid "Select the default font for the window titlebar."
-msgstr ""
-
-#: ../data/theme.ui.h:37
-msgid "Window title font:"
-msgstr ""
-
-#: ../data/theme.ui.h:38
-msgid ""
-"Select the default font for the window titlebar.Select the default font for "
-"the window titlebar."
-msgstr ""
-
-#: ../data/theme.ui.h:39 ../data/unity.ui.h:49 ../data/startpage.ui.h:29
-#: ../data/unitytweak.ui.h:15
-msgid "Appearance"
-msgstr ""
-
-#: ../data/theme.ui.h:40
-msgid "Select the type of antialiasing used to render fonts."
-msgstr ""
-
-#: ../data/theme.ui.h:41
-msgid "Antialiasing:"
-msgstr ""
-
-#: ../data/theme.ui.h:42 ../data/compiz.ui.h:17
-msgid "None"
-msgstr ""
-
-#: ../data/theme.ui.h:43
-msgid "Grayscale"
-msgstr ""
-
-#: ../data/theme.ui.h:44
-msgid "RGBA"
-msgstr ""
-
-#: ../data/theme.ui.h:45
-msgid "Select the type of hinting to use when rendering fonts"
-msgstr ""
-
-#: ../data/theme.ui.h:46
-msgid "Slight"
-msgstr ""
-
-#: ../data/theme.ui.h:47
-msgid "Medium"
-msgstr ""
-
-#: ../data/theme.ui.h:48
-msgid "Full"
-msgstr ""
-
-#: ../data/theme.ui.h:49
-msgid "Hinting:"
-msgstr ""
-
-#: ../data/theme.ui.h:50
-msgid ""
-"Select the factor used to enlarge or reduce text display, without changing "
-"font size."
-msgstr ""
-
-#: ../data/theme.ui.h:51
-msgid "Text scaling factor:"
-msgstr ""
-
-#: ../data/theme.ui.h:52
-msgid "Restore system's default font configurations"
-msgstr ""
-
-#: ../data/theme.ui.h:53 ../data/startpage.ui.h:37 ../data/unitytweak.ui.h:19
-msgid "Fonts"
-msgstr ""
-
-#: ../data/theme.ui.h:54
-msgid "Layout:"
-msgstr ""
-
-#: ../data/theme.ui.h:55 ../data/desktop.ui.h:35
-msgid "Default"
-msgstr ""
-
-#: ../data/theme.ui.h:56
-msgid "Use the default window button layout."
-msgstr ""
-
-#: ../data/theme.ui.h:57
-msgid "Left"
-msgstr ""
-
-#: ../data/theme.ui.h:58
-msgid "Align the window controls to the left side of the window."
-msgstr ""
-
-#: ../data/theme.ui.h:59
-msgid "Right"
-msgstr ""
-
-#: ../data/theme.ui.h:60
-msgid "Align the window controls to the right side of the window."
-msgstr ""
-
-#: ../data/theme.ui.h:61
-msgid "Alignment:"
-msgstr ""
-
-#: ../data/theme.ui.h:62
-msgid "Custom"
-msgstr ""
-
-#: ../data/theme.ui.h:63
-msgid "Use a custom window button layout."
-msgstr ""
-
-#: ../data/theme.ui.h:64
-msgid "Select a custom window controls layout."
-msgstr ""
-
-#: ../data/theme.ui.h:65
-msgid "Current layout"
-msgstr ""
-
-#: ../data/theme.ui.h:66
-msgid "Close button only"
-msgstr ""
-
-#: ../data/theme.ui.h:67
-msgid "Close, maximize, window title"
-msgstr ""
-
-#: ../data/theme.ui.h:68
-msgid "Close, minimize, window title"
-msgstr ""
-
-#: ../data/theme.ui.h:69
-msgid "Close, window title, maximize"
-msgstr ""
-
-#: ../data/theme.ui.h:70
-msgid "Show menu button"
-msgstr ""
-
-#: ../data/theme.ui.h:71
-msgid "If enabled, show the window menu in the titlebar."
-msgstr ""
-
-#: ../data/theme.ui.h:72
-msgid "Restore Defaults"
-msgstr ""
-
-#: ../data/theme.ui.h:73
-msgid "Restore default window controls settings."
-msgstr ""
-
-#: ../data/theme.ui.h:74
-msgid "Window Controls"
+#: ../unity-tweak-tool.desktop.in.h:2
+msgid "Configuration frontend for the Unity desktop environment"
 msgstr ""
 
 #: ../data/unity.ui.h:1
@@ -519,6 +240,11 @@ msgid ""
 "the launcher."
 msgstr ""
 
+#: ../data/unity.ui.h:49 ../data/theme.ui.h:39 ../data/unitytweak.ui.h:15
+#: ../data/startpage.ui.h:29
+msgid "Appearance"
+msgstr ""
+
 #: ../data/unity.ui.h:50
 msgid "Transparency:"
 msgstr ""
@@ -583,7 +309,7 @@ msgstr ""
 msgid "If selected, the launcher is visible on the primary desktop"
 msgstr ""
 
-#: ../data/unity.ui.h:66 ../data/startpage.ui.h:33 ../data/unitytweak.ui.h:17
+#: ../data/unity.ui.h:66 ../data/unitytweak.ui.h:17 ../data/startpage.ui.h:33
 msgid "Icons"
 msgstr ""
 
@@ -659,12 +385,22 @@ msgstr ""
 msgid "\"Show Desktop\" icon:"
 msgstr ""
 
+#: ../data/unity.ui.h:85 ../data/desktop.ui.h:16 ../data/compiz.ui.h:30
+#: ../data/theme.ui.h:15
+msgid "Restore defaults"
+msgstr ""
+
 #: ../data/unity.ui.h:86
 msgid "Restore default Unity launcher settings."
 msgstr ""
 
-#: ../data/unity.ui.h:87 ../data/startpage.ui.h:10 ../data/unitytweak.ui.h:4
+#: ../data/unity.ui.h:87 ../data/unitytweak.ui.h:4 ../data/startpage.ui.h:10
 msgid "Launcher"
+msgstr ""
+
+#: ../data/unity.ui.h:88 ../data/compiz.ui.h:32 ../data/theme.ui.h:29
+#: ../data/unitytweak.ui.h:10 ../data/startpage.ui.h:22
+msgid "General"
 msgstr ""
 
 #: ../data/unity.ui.h:89
@@ -743,7 +479,7 @@ msgstr ""
 msgid "Restore the default Dash settings."
 msgstr ""
 
-#: ../data/unity.ui.h:108 ../data/startpage.ui.h:12 ../data/unitytweak.ui.h:5
+#: ../data/unity.ui.h:108 ../data/unitytweak.ui.h:5 ../data/startpage.ui.h:12
 msgid "Dash"
 msgstr ""
 
@@ -928,7 +664,7 @@ msgstr ""
 msgid "Restore the default Unity panel settings."
 msgstr ""
 
-#: ../data/unity.ui.h:153 ../data/startpage.ui.h:14 ../data/unitytweak.ui.h:6
+#: ../data/unity.ui.h:153 ../data/unitytweak.ui.h:6 ../data/startpage.ui.h:14
 msgid "Panel"
 msgstr ""
 
@@ -993,7 +729,7 @@ msgstr ""
 msgid "Restore the default window switcher settings."
 msgstr ""
 
-#: ../data/unity.ui.h:169 ../data/startpage.ui.h:16 ../data/unitytweak.ui.h:7
+#: ../data/unity.ui.h:169 ../data/unitytweak.ui.h:7 ../data/startpage.ui.h:16
 msgid "Switcher"
 msgstr ""
 
@@ -1082,171 +818,189 @@ msgstr ""
 msgid "Restore the default Unity keyboard shortcut settings."
 msgstr ""
 
-#: ../data/unity.ui.h:190 ../data/startpage.ui.h:19 ../data/unitytweak.ui.h:8
-#: ../data/compiz.ui.h:91
+#: ../data/unity.ui.h:190 ../data/compiz.ui.h:91 ../data/unitytweak.ui.h:8
+#: ../data/startpage.ui.h:19
 msgid "Additional"
 msgstr ""
 
-#: ../data/startpage.ui.h:1
-msgid "Show the settings for the security."
+#: ../data/desktop.ui.h:1
+msgid "Icons on desktop:"
 msgstr ""
 
-#: ../data/startpage.ui.h:2 ../data/unitytweak.ui.h:21 ../data/desktop.ui.h:18
+#: ../data/desktop.ui.h:2
+msgid "A list of icons to display on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:3
+msgid "Display:"
+msgstr ""
+
+#: ../data/desktop.ui.h:4
+msgid "Home Folder"
+msgstr ""
+
+#: ../data/desktop.ui.h:5
+msgid "Show a shortcut to &quot;Home Folder&quot; on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:6
+msgid "Show a shortcut to \"Home Folder\" on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:7
+msgid "Network"
+msgstr ""
+
+#: ../data/desktop.ui.h:8
+msgid "Show a shortcut to &quot;Network&quot; on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:9
+msgid "Show a shortcut to \"Network\" on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:10
+msgid "Rubbish Bin"
+msgstr ""
+
+#: ../data/desktop.ui.h:11
+msgid "Show a shortcut to &quot;Trash&quot; on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:12
+msgid "Show a shortcut to \"Trash\" on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:13
+msgid "Devices"
+msgstr ""
+
+#: ../data/desktop.ui.h:14
+msgid "Show a shortcut to &quot;Devices&quot; on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:15
+msgid "Show a shortcut to \"Devices\" on the desktop"
+msgstr ""
+
+#: ../data/desktop.ui.h:17
+msgid "Restore the default configurations for Desktop icons"
+msgstr ""
+
+#: ../data/desktop.ui.h:18 ../data/unitytweak.ui.h:21 ../data/startpage.ui.h:2
 msgid "Desktop Icons"
 msgstr ""
 
-#: ../data/startpage.ui.h:3 ../data/compiz.ui.h:61
-msgid "Window snapping"
+#: ../data/desktop.ui.h:19
+msgid "Desktop lock"
 msgstr ""
 
-#: ../data/startpage.ui.h:4 ../data/compiz.ui.h:56
-msgid "Window spread"
+#: ../data/desktop.ui.h:20
+msgid "If enabled, the user can activate the desktop lock screen."
 msgstr ""
 
-#: ../data/startpage.ui.h:5 ../data/compiz.ui.h:44
-msgid "Workspaces"
+#: ../data/desktop.ui.h:21
+msgid "User log out"
 msgstr ""
 
-#: ../data/startpage.ui.h:6
+#: ../data/desktop.ui.h:22
+msgid "If enabled, users can log out of the session they&apos;re in."
+msgstr ""
+
+#: ../data/desktop.ui.h:23
+msgid "If enabled, users can log out of the session they're in."
+msgstr ""
+
+#: ../data/desktop.ui.h:24
+msgid "User switching"
+msgstr ""
+
+#: ../data/desktop.ui.h:25
 msgid ""
-"Window\n"
-"Controls"
+"If enabled, allow the user to switch to another account while their session "
+"is active."
 msgstr ""
 
-#: ../data/startpage.ui.h:8 ../data/unitytweak.ui.h:3
-msgid "Unity"
+#: ../data/desktop.ui.h:26
+msgid "Printing"
 msgstr ""
 
-#: ../data/startpage.ui.h:9
-msgid "Show the Unity launcher settings"
+#: ../data/desktop.ui.h:27
+msgid ""
+"If enabled, allow the access to the system&apos;s printers and print setup."
 msgstr ""
 
-#: ../data/startpage.ui.h:11
-msgid "Show the Unity Dash settings"
+#: ../data/desktop.ui.h:28
+msgid "If enabled, allow the access to the system's printers and print setup."
 msgstr ""
 
-#: ../data/startpage.ui.h:13
-msgid "Show the Unity Panel settings"
+#: ../data/desktop.ui.h:29
+msgid "Restore the default configurations for Security settings"
 msgstr ""
 
-#: ../data/startpage.ui.h:15
-msgid "Show the Unity Switcher settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:18
-msgid "Show the additional Unity settings"
-msgstr ""
-
-#: ../data/startpage.ui.h:20 ../data/unitytweak.ui.h:9
-msgid "Window Manager"
-msgstr ""
-
-#: ../data/startpage.ui.h:21
-msgid "Show the general settings for the window manager"
-msgstr ""
-
-#: ../data/startpage.ui.h:23
-msgid "Show the settings for the workspace switcher"
-msgstr ""
-
-#: ../data/startpage.ui.h:24
-msgid "Show the settings for window spread behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:25
-msgid "Show the settings for window snapping behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:26
-msgid "Show the settings for hotcorner behaviour"
-msgstr ""
-
-#: ../data/startpage.ui.h:27 ../data/unitytweak.ui.h:14 ../data/compiz.ui.h:63
-msgid "Hotcorners"
-msgstr ""
-
-#: ../data/startpage.ui.h:28
-msgid "Show the additional settings pane."
-msgstr ""
-
-#: ../data/startpage.ui.h:30
-msgid "Show the settings for the global system themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:31 ../data/unitytweak.ui.h:16
-msgid "Theme"
-msgstr ""
-
-#: ../data/startpage.ui.h:32
-msgid "Show the settings for the icon themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:34
-msgid "Show the settings for the cursor themes"
-msgstr ""
-
-#: ../data/startpage.ui.h:35 ../data/unitytweak.ui.h:18
-msgid "Cursor"
-msgstr ""
-
-#: ../data/startpage.ui.h:36
-msgid "Show the settings for the system-wide fonts"
-msgstr ""
-
-#: ../data/startpage.ui.h:38 ../data/unitytweak.ui.h:20
-msgid "System"
-msgstr ""
-
-#: ../data/startpage.ui.h:39
-msgid "Show the settings for the desktop icons"
-msgstr ""
-
-#: ../data/startpage.ui.h:40 ../data/unitytweak.ui.h:22
-#: ../data/desktop.ui.h:30
+#: ../data/desktop.ui.h:30 ../data/unitytweak.ui.h:22
+#: ../data/startpage.ui.h:40
 msgid "Security"
 msgstr ""
 
-#: ../data/startpage.ui.h:41
-msgid "Show the settings for the scrolling."
+#: ../data/desktop.ui.h:31
+msgid "Scrollbars"
 msgstr ""
 
-#: ../data/startpage.ui.h:42 ../data/unitytweak.ui.h:23
-#: ../data/desktop.ui.h:44
+#: ../data/desktop.ui.h:32
+msgid "Legacy"
+msgstr ""
+
+#: ../data/desktop.ui.h:33
+msgid "Overlay "
+msgstr ""
+
+#: ../data/desktop.ui.h:34
+msgid "Select the behaviour of the overlay scrollbars."
+msgstr ""
+
+#: ../data/desktop.ui.h:35 ../data/theme.ui.h:55
+msgid "Default"
+msgstr ""
+
+#: ../data/desktop.ui.h:36
+msgid "Overlay with mouse"
+msgstr ""
+
+#: ../data/desktop.ui.h:37
+msgid "No overlay"
+msgstr ""
+
+#: ../data/desktop.ui.h:38
+msgid "Behaviour:"
+msgstr ""
+
+#: ../data/desktop.ui.h:39
+msgid "Edge"
+msgstr ""
+
+#: ../data/desktop.ui.h:40
+msgid "If enabled, edge scrolling is active on touchpads."
+msgstr ""
+
+#: ../data/desktop.ui.h:41
+msgid "Two-finger"
+msgstr ""
+
+#: ../data/desktop.ui.h:42
+msgid "If enabled, two-finger scrolling is active on multitouch touchpads."
+msgstr ""
+
+#: ../data/desktop.ui.h:43
+msgid "Touch scrolling"
+msgstr ""
+
+#: ../data/desktop.ui.h:44 ../data/unitytweak.ui.h:23
+#: ../data/startpage.ui.h:42
 msgid "Scrolling"
 msgstr ""
 
-#: ../data/unitytweak.ui.h:1 ../unity-tweak-tool.desktop.in.h:1
-msgid "Unity Tweak Tool"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:2
-msgid "_File"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:11
-msgid "Workspace"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:12
-msgid "Windows spread"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:13
-msgid "Windows snapping"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:24
-msgid "_Help"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:25
-msgid " Overview"
-msgstr ""
-
-#: ../data/unitytweak.ui.h:26
-msgid "Search Unity Tweak Tool"
-msgstr ""
-
+#. FIXME : Guaranteed to fail.
 #: ../data/compiz.ui.h:1
 msgid "Zoom"
 msgstr ""
@@ -1303,6 +1057,10 @@ msgstr ""
 
 #: ../data/compiz.ui.h:16
 msgid "Minimize:"
+msgstr ""
+
+#: ../data/compiz.ui.h:17 ../data/theme.ui.h:42
+msgid "None"
 msgstr ""
 
 #: ../data/compiz.ui.h:18
@@ -1401,6 +1159,10 @@ msgstr ""
 msgid "Restore default workspace configuration"
 msgstr ""
 
+#: ../data/compiz.ui.h:44 ../data/startpage.ui.h:5
+msgid "Workspaces"
+msgstr ""
+
 #: ../data/compiz.ui.h:45
 msgid "Enable the window spread?"
 msgstr ""
@@ -1449,6 +1211,10 @@ msgstr ""
 msgid "Restore default window spread settings"
 msgstr ""
 
+#: ../data/compiz.ui.h:56 ../data/startpage.ui.h:4
+msgid "Window spread"
+msgstr ""
+
 #: ../data/compiz.ui.h:57
 msgid "Window snapping:"
 msgstr ""
@@ -1461,8 +1227,16 @@ msgstr ""
 msgid "Outline colour:"
 msgstr ""
 
+#: ../data/compiz.ui.h:61 ../data/startpage.ui.h:3
+msgid "Window snapping"
+msgstr ""
+
 #: ../data/compiz.ui.h:62
 msgid "Hotcorners:"
+msgstr ""
+
+#: ../data/compiz.ui.h:63 ../data/unitytweak.ui.h:14 ../data/startpage.ui.h:27
+msgid "Hotcorners"
 msgstr ""
 
 #: ../data/compiz.ui.h:64
@@ -1689,183 +1463,409 @@ msgstr ""
 msgid "Top Right Corner"
 msgstr ""
 
-#: ../data/desktop.ui.h:1
-msgid "Icons on desktop:"
+#: ../data/theme.ui.h:1
+msgid "Available themes"
 msgstr ""
 
-#: ../data/desktop.ui.h:2
-msgid "A list of icons to display on the desktop"
+#: ../data/theme.ui.h:2
+msgid "List of GTK Themes"
 msgstr ""
 
-#: ../data/desktop.ui.h:3
-msgid "Display:"
+#: ../data/theme.ui.h:3
+msgid "GTK Theme"
 msgstr ""
 
-#: ../data/desktop.ui.h:4
-msgid "Home Folder"
+#: ../data/theme.ui.h:4
+msgid "List of Window decoration themes"
 msgstr ""
 
-#: ../data/desktop.ui.h:5
-msgid "Show a shortcut to &quot;Home Folder&quot; on the desktop"
+#: ../data/theme.ui.h:5
+msgid "Window decoration theme"
 msgstr ""
 
-#: ../data/desktop.ui.h:6
-msgid "Show a shortcut to \"Home Folder\" on the desktop"
+#: ../data/theme.ui.h:6
+msgid "Install theme(s)"
 msgstr ""
 
-#: ../data/desktop.ui.h:7
-msgid "Network"
+#: ../data/theme.ui.h:7
+msgid "Add Theme"
 msgstr ""
 
-#: ../data/desktop.ui.h:8
-msgid "Show a shortcut to &quot;Network&quot; on the desktop"
+#: ../data/theme.ui.h:8
+msgid "Remove theme(s)"
 msgstr ""
 
-#: ../data/desktop.ui.h:9
-msgid "Show a shortcut to \"Network\" on the desktop"
+#: ../data/theme.ui.h:9
+msgid "Remove Theme"
 msgstr ""
 
-#: ../data/desktop.ui.h:10
-msgid "Rubbish Bin"
+#: ../data/theme.ui.h:10
+msgid "Preferences"
 msgstr ""
 
-#: ../data/desktop.ui.h:11
-msgid "Show a shortcut to &quot;Trash&quot; on the desktop"
+#: ../data/theme.ui.h:11
+msgid "Display incomplete themes"
 msgstr ""
 
-#: ../data/desktop.ui.h:12
-msgid "Show a shortcut to \"Trash\" on the desktop"
+#: ../data/theme.ui.h:12
+msgid "If enabled, incomplete themes will appear in the lists of themes."
 msgstr ""
 
-#: ../data/desktop.ui.h:13
-msgid "Devices"
+#: ../data/theme.ui.h:13
+msgid "Match themes"
 msgstr ""
 
-#: ../data/desktop.ui.h:14
-msgid "Show a shortcut to &quot;Devices&quot; on the desktop"
-msgstr ""
-
-#: ../data/desktop.ui.h:15
-msgid "Show a shortcut to \"Devices\" on the desktop"
-msgstr ""
-
-#: ../data/desktop.ui.h:17
-msgid "Restore the default configurations for Desktop icons"
-msgstr ""
-
-#: ../data/desktop.ui.h:19
-msgid "Desktop lock"
-msgstr ""
-
-#: ../data/desktop.ui.h:20
-msgid "If enabled, the user can activate the desktop lock screen."
-msgstr ""
-
-#: ../data/desktop.ui.h:21
-msgid "User log out"
-msgstr ""
-
-#: ../data/desktop.ui.h:22
-msgid "If enabled, users can log out of the session they&apos;re in."
-msgstr ""
-
-#: ../data/desktop.ui.h:23
-msgid "If enabled, users can log out of the session they're in."
-msgstr ""
-
-#: ../data/desktop.ui.h:24
-msgid "User switching"
-msgstr ""
-
-#: ../data/desktop.ui.h:25
+#: ../data/theme.ui.h:14
 msgid ""
-"If enabled, allow the user to switch to another account while their session "
-"is active."
+"When enabled, the GTK Theme is matched to its default Window decorations."
 msgstr ""
 
-#: ../data/desktop.ui.h:26
-msgid "Printing"
+#: ../data/theme.ui.h:16
+msgid "Restore system's default theme configurations"
 msgstr ""
 
-#: ../data/desktop.ui.h:27
+#: ../data/theme.ui.h:17
+msgid "System theme"
+msgstr ""
+
+#: ../data/theme.ui.h:18
+msgid "List of icon themes"
+msgstr ""
+
+#: ../data/theme.ui.h:19
+msgid "Icon theme"
+msgstr ""
+
+#: ../data/theme.ui.h:20
+msgid "Install icon theme(s)"
+msgstr ""
+
+#: ../data/theme.ui.h:21
+msgid "Remove icon theme(s)"
+msgstr ""
+
+#: ../data/theme.ui.h:22
+msgid "Restore system's default icon theme configurations"
+msgstr ""
+
+#: ../data/theme.ui.h:23
+msgid "List of cursor themes"
+msgstr ""
+
+#: ../data/theme.ui.h:24
+msgid "Cursor Theme"
+msgstr ""
+
+#: ../data/theme.ui.h:25
+msgid "Install cursor theme(s)"
+msgstr ""
+
+#: ../data/theme.ui.h:26
+msgid "Remove cursor theme(s)"
+msgstr ""
+
+#: ../data/theme.ui.h:27
+msgid "Restore system's default cursor theme configurations"
+msgstr ""
+
+#: ../data/theme.ui.h:28
+msgid "Cursor theme"
+msgstr ""
+
+#: ../data/theme.ui.h:30
+msgid "Select the default font for all applications."
+msgstr ""
+
+#: ../data/theme.ui.h:31
+msgid "Default font:"
+msgstr ""
+
+#: ../data/theme.ui.h:32
+msgid "Select the default font used for reading documents."
+msgstr ""
+
+#: ../data/theme.ui.h:33
+msgid "Document font:"
+msgstr ""
+
+#: ../data/theme.ui.h:34
+msgid "Select the default monospace font."
+msgstr ""
+
+#: ../data/theme.ui.h:35
+msgid "Monospace font:"
+msgstr ""
+
+#: ../data/theme.ui.h:36
+msgid "Select the default font for the window titlebar."
+msgstr ""
+
+#: ../data/theme.ui.h:37
+msgid "Window title font:"
+msgstr ""
+
+#: ../data/theme.ui.h:38
 msgid ""
-"If enabled, allow the access to the system&apos;s printers and print setup."
+"Select the default font for the window titlebar.Select the default font for "
+"the window titlebar."
 msgstr ""
 
-#: ../data/desktop.ui.h:28
-msgid "If enabled, allow the access to the system's printers and print setup."
+#: ../data/theme.ui.h:40
+msgid "Select the type of antialiasing used to render fonts."
 msgstr ""
 
-#: ../data/desktop.ui.h:29
-msgid "Restore the default configurations for Security settings"
+#: ../data/theme.ui.h:41
+msgid "Antialiasing:"
 msgstr ""
 
-#: ../data/desktop.ui.h:31
-msgid "Scrollbars"
+#: ../data/theme.ui.h:43
+msgid "Grayscale"
 msgstr ""
 
-#: ../data/desktop.ui.h:32
-msgid "Legacy"
+#: ../data/theme.ui.h:44
+msgid "RGBA"
 msgstr ""
 
-#: ../data/desktop.ui.h:33
-msgid "Overlay "
+#: ../data/theme.ui.h:45
+msgid "Select the type of hinting to use when rendering fonts"
 msgstr ""
 
-#: ../data/desktop.ui.h:34
-msgid "Select the behaviour of the overlay scrollbars."
+#: ../data/theme.ui.h:46
+msgid "Slight"
 msgstr ""
 
-#: ../data/desktop.ui.h:36
-msgid "Overlay with mouse"
+#: ../data/theme.ui.h:47
+msgid "Medium"
 msgstr ""
 
-#: ../data/desktop.ui.h:37
-msgid "No overlay"
+#: ../data/theme.ui.h:48
+msgid "Full"
 msgstr ""
 
-#: ../data/desktop.ui.h:38
-msgid "Behaviour:"
+#: ../data/theme.ui.h:49
+msgid "Hinting:"
 msgstr ""
 
-#: ../data/desktop.ui.h:39
-msgid "Edge"
-msgstr ""
-
-#: ../data/desktop.ui.h:40
-msgid "If enabled, edge scrolling is active on touchpads."
-msgstr ""
-
-#: ../data/desktop.ui.h:41
-msgid "Two-finger"
-msgstr ""
-
-#: ../data/desktop.ui.h:42
-msgid "If enabled, two-finger scrolling is active on multitouch touchpads."
-msgstr ""
-
-#: ../data/desktop.ui.h:43
-msgid "Touch scrolling"
-msgstr ""
-
-#. FIXME : Guaranteed to fail
-#: ../data/about.ui.h:1
-msgid "Copyright © 2013 Freyja Development team"
-msgstr ""
-
-#: ../data/about.ui.h:2
+#: ../data/theme.ui.h:50
 msgid ""
-"Unity Tweak Tool is a settings manager intended to be used with Ubuntu Unity."
+"Select the factor used to enlarge or reduce text display, without changing "
+"font size."
 msgstr ""
 
-#: ../data/about.ui.h:3
-msgid "Unity Tweak Tool on Launchpad"
+#: ../data/theme.ui.h:51
+msgid "Text scaling factor:"
 msgstr ""
 
-#: ../data/about.ui.h:4
-msgid "GPL3"
+#: ../data/theme.ui.h:52
+msgid "Restore system's default font configurations"
 msgstr ""
 
-#: ../unity-tweak-tool.desktop.in.h:2
-msgid "Configuration frontend for the Unity desktop environment"
+#: ../data/theme.ui.h:53 ../data/unitytweak.ui.h:19 ../data/startpage.ui.h:37
+msgid "Fonts"
+msgstr ""
+
+#: ../data/theme.ui.h:54
+msgid "Layout:"
+msgstr ""
+
+#: ../data/theme.ui.h:56
+msgid "Use the default window button layout."
+msgstr ""
+
+#: ../data/theme.ui.h:57
+msgid "Left"
+msgstr ""
+
+#: ../data/theme.ui.h:58
+msgid "Align the window controls to the left side of the window."
+msgstr ""
+
+#: ../data/theme.ui.h:59
+msgid "Right"
+msgstr ""
+
+#: ../data/theme.ui.h:60
+msgid "Align the window controls to the right side of the window."
+msgstr ""
+
+#: ../data/theme.ui.h:61
+msgid "Alignment:"
+msgstr ""
+
+#: ../data/theme.ui.h:62
+msgid "Custom"
+msgstr ""
+
+#: ../data/theme.ui.h:63
+msgid "Use a custom window button layout."
+msgstr ""
+
+#: ../data/theme.ui.h:64
+msgid "Select a custom window controls layout."
+msgstr ""
+
+#: ../data/theme.ui.h:65
+msgid "Current layout"
+msgstr ""
+
+#: ../data/theme.ui.h:66
+msgid "Close button only"
+msgstr ""
+
+#: ../data/theme.ui.h:67
+msgid "Close, maximize, window title"
+msgstr ""
+
+#: ../data/theme.ui.h:68
+msgid "Close, minimize, window title"
+msgstr ""
+
+#: ../data/theme.ui.h:69
+msgid "Close, window title, maximize"
+msgstr ""
+
+#: ../data/theme.ui.h:70
+msgid "Show menu button"
+msgstr ""
+
+#: ../data/theme.ui.h:71
+msgid "If enabled, show the window menu in the titlebar."
+msgstr ""
+
+#: ../data/theme.ui.h:72
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../data/theme.ui.h:73
+msgid "Restore default window controls settings."
+msgstr ""
+
+#: ../data/theme.ui.h:74
+msgid "Window Controls"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:2
+msgid "_File"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:3 ../data/startpage.ui.h:8
+msgid "Unity"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:9 ../data/startpage.ui.h:20
+msgid "Window Manager"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:11
+msgid "Workspace"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:12
+msgid "Windows spread"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:13
+msgid "Windows snapping"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:16 ../data/startpage.ui.h:31
+msgid "Theme"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:18 ../data/startpage.ui.h:35
+msgid "Cursor"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:20 ../data/startpage.ui.h:38
+msgid "System"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:24
+msgid "_Help"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:25
+msgid " Overview"
+msgstr ""
+
+#: ../data/unitytweak.ui.h:26
+msgid "Search Unity Tweak Tool"
+msgstr ""
+
+#: ../data/startpage.ui.h:1
+msgid "Show the settings for the security."
+msgstr ""
+
+#: ../data/startpage.ui.h:6
+msgid ""
+"Window\n"
+"Controls"
+msgstr ""
+
+#: ../data/startpage.ui.h:9
+msgid "Show the Unity launcher settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:11
+msgid "Show the Unity Dash settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:13
+msgid "Show the Unity Panel settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:15
+msgid "Show the Unity Switcher settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:18
+msgid "Show the additional Unity settings"
+msgstr ""
+
+#: ../data/startpage.ui.h:21
+msgid "Show the general settings for the window manager"
+msgstr ""
+
+#: ../data/startpage.ui.h:23
+msgid "Show the settings for the workspace switcher"
+msgstr ""
+
+#: ../data/startpage.ui.h:24
+msgid "Show the settings for window spread behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:25
+msgid "Show the settings for window snapping behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:26
+msgid "Show the settings for hotcorner behaviour"
+msgstr ""
+
+#: ../data/startpage.ui.h:28
+msgid "Show the additional settings pane."
+msgstr ""
+
+#: ../data/startpage.ui.h:30
+msgid "Show the settings for the global system themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:32
+msgid "Show the settings for the icon themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:34
+msgid "Show the settings for the cursor themes"
+msgstr ""
+
+#: ../data/startpage.ui.h:36
+msgid "Show the settings for the system-wide fonts"
+msgstr ""
+
+#: ../data/startpage.ui.h:39
+msgid "Show the settings for the desktop icons"
+msgstr ""
+
+#: ../data/startpage.ui.h:41
+msgid "Show the settings for the scrolling."
 msgstr ""
