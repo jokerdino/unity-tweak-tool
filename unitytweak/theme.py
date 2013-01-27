@@ -150,6 +150,9 @@ class Themesettings ():
         except KeyError:
             cursorthemesel.unselect_all()
 
+        # Cursor size
+        self.ui['check_cursor_size'].set_active(True if gsettings.interface.get_int('cursor-size') is 48 else False)
+
         # ===== Fonts ===== #
 
         # Fonts
@@ -275,7 +278,13 @@ class Themesettings ():
     # TODO 
         print('To do')
 
-    # Cursor theme
+
+
+#----- End: Theme settings------
+
+#----- Begin: Cursor settings--------
+
+    # Cursor
     def on_tree_cursor_theme_cursor_changed(self,udata=None):
         cursortreesel = self.ui['tree_cursor_theme'].get_selection()
         if cursortreesel is None:
@@ -285,7 +294,14 @@ class Themesettings ():
         theme=os.path.split(themepath)[1]
         gsettings.gnome('desktop.interface').set_string('cursor-theme',theme)
 
-#----- End: Theme settings------
+    # Cursor Size
+    def on_check_cursor_size_toggled(self, widget, udata = None):
+        if self.ui['check_cursor_size'].get_active() == True :
+            gsettings.interface.set_int('cursor-size', 48)
+        else:
+            gsettings.interface.set_int('cursor-size', 24)
+
+#----- End: Cursor settings------
 
 #----- Begin: Font settings--------
 

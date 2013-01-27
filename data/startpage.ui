@@ -21,6 +21,11 @@
   <object class="GtkAction" id="a_tool_window_spread"/>
   <object class="GtkAction" id="a_tool_wm_additional"/>
   <object class="GtkAction" id="a_unity_webapps"/>
+  <object class="GtkImage" id="i_tool_additional">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">media/36/unity-settings-additional-dark_36.svg</property>
+  </object>
   <object class="GtkImage" id="i_tool_compiz_switcher">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -67,11 +72,6 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/appearance-settings-icons-dark_36.svg</property>
-  </object>
-  <object class="GtkImage" id="i_tool_additional">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">media/36/unity-settings-additional-dark_36.svg</property>
   </object>
   <object class="GtkImage" id="i_tool_launcher">
     <property name="visible">True</property>
@@ -124,14 +124,6 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">media/36/appearance-settings-window-controls-dark_36.svg</property>
   </object>
-  <object class="GtkLabel" id="l_tool_workspace">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="label" translatable="yes">Workspace
-Settings</property>
-    <property name="justify">center</property>
-    <property name="wrap">True</property>
-  </object>
   <object class="GtkLabel" id="l_desktop_icons">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -161,11 +153,19 @@ Spread</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
   </object>
+  <object class="GtkLabel" id="l_tool_workspace">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label" translatable="yes">Workspace
+Settings</property>
+    <property name="justify">center</property>
+    <property name="wrap">True</property>
+  </object>
   <object class="GtkLabel" id="l_window_controls">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label" translatable="yes">Window
-controls</property>
+Controls</property>
     <property name="justify">center</property>
     <property name="wrap">True</property>
   </object>
@@ -231,7 +231,7 @@ controls</property>
                 <property name="margin_top">6</property>
                 <property name="toolbar_style">both</property>
                 <property name="show_arrow">False</property>
-                <property name="icon_size">5</property>
+                <property name="icon_size">6</property>
                 <child>
                   <object class="GtkToolButton" id="tool_launcher">
                     <property name="use_action_appearance">False</property>
