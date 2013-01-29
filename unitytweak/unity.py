@@ -173,6 +173,16 @@ class Unitysettings ():
         # Files Lens
         self.ui['check_use_locate'].set_active(gsettings.lens_files.get_boolean('use-locate'))
 
+        # Run Command History
+        dependants = ['b_clear_run_history']
+        if gsettings.runner.get_strv('history') == '[]':
+            self.ui.unsensitize(dependants) 
+            self.ui['b_clear_run_history'].set_active(False)
+        else:
+            self.ui.sensitize(dependants)
+        del dependants
+
+
         # ====== Panel Helpers ====== #
 
         self.ui['spin_menu_visible'].set_value(gsettings.unityshell.get_int('menus-discovery-duration'))
@@ -574,6 +584,8 @@ class Unitysettings ():
         gsettings.lens_files.set_boolean('use-locate',
                             self.ui['check_use_locate'].get_active())
 
+    def on_b_clear_run_history_clicked(self, widget):
+        gsettings.runner.reset('history')
 
     def on_b_unity_dash_reset_clicked(self, widget):
         gsettings.unityshell.reset('dash-blur-experimental')

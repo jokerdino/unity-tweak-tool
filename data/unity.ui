@@ -846,12 +846,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkLabel" id="l_show_desktop_icon">
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
@@ -867,6 +861,12 @@
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -1140,7 +1140,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -1192,7 +1192,43 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">6</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="l_run_command">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin_left">12</property>
+                <property name="margin_top">12</property>
+                <property name="label" translatable="yes">Run Command</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="b_clear_run_history">
+                <property name="label" translatable="yes">Clear History</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="margin_left">18</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <signal name="clicked" handler="on_b_clear_run_history_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">8</property>
               </packing>
             </child>
             <child>
@@ -1213,7 +1249,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">9</property>
+                <property name="position">11</property>
               </packing>
             </child>
           </object>
