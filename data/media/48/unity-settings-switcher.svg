@@ -14,8 +14,8 @@
    height="48"
    id="svg2985"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="unity-settings-switcher.svg"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="unity-settings-switcher-dark_48.svg"
    inkscape:export-filename="/media/acw-02/frank-souza/projetos/icones/utt/icons/36/unity-settings-switcher-dark_48.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -109,7 +109,7 @@
        xlink:href="#linearGradient3927-5"
        id="linearGradient3284"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-8.0000003e-8,17)"
+       gradientTransform="translate(0,17)"
        x1="2"
        y1="5"
        x2="46"
@@ -419,7 +419,7 @@
        fx="24"
        fy="40"
        r="22"
-       gradientTransform="matrix(1.2148761,-5.6094276e-8,3.03719e-8,0.64393939,-5.157026,14.242425)"
+       gradientTransform="matrix(1.2727273,-5.9393939e-8,3.1818181e-8,0.68181818,-6.5454558,12.727274)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -429,17 +429,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="13.630768"
-     inkscape:cy="9.550826"
+     inkscape:zoom="11.313708"
+     inkscape:cx="31.408306"
+     inkscape:cy="27.260376"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="709"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-4"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      showborder="true">
@@ -459,7 +459,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -478,12 +478,21 @@
        rx="1"
        ry="0.9375" />
     <rect
+       ry="3"
+       rx="3"
+       y="20"
+       x="2"
+       height="36"
+       width="44"
+       id="rect3943-4"
+       style="fill:#ffffff;fill-opacity:1;stroke:none" />
+    <rect
        style="fill:url(#radialGradient3156);fill-opacity:1;stroke:none"
        id="rect3977"
-       width="42"
-       height="34"
-       x="3"
-       y="23"
+       width="44"
+       height="36"
+       x="2"
+       y="22"
        rx="3"
        ry="3" />
     <rect
@@ -497,10 +506,10 @@
        ry="0" />
     <path
        style="fill:url(#linearGradient3284);fill-opacity:1;stroke:none"
-       d="m 4,22 c -2,0 -2,2 -2,2 l 0,32 c 0,2 2,2 2,2 l 40,0 c 0,0 2,-1 2,-3 l 0,-31 c 0,-2 -2,-2 -2,-2 z M 4.9999999,24 43,24 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 4.9999999,56 c -0.554,0 -1,-0.446 -1,-1 l 0,-30 c 0,-0.554 0.446,-1 1,-1 z"
+       d="m 5,22 c -1.662,0 -3,1.338 -3,3 l 0,30 c 0,1.662 1.338,3 3,3 l 38,0 c 1.662,0 3,-1.338 3,-3 l 0,-30 c 0,-1.662 -1.338,-3 -3,-3 z m 0,2 38,0 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 5,56 C 4.446,56 4,55.554 4,55 L 4,25 c 0,-0.554 0.446,-1 1,-1 z"
        id="path3919-9"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="scsccsscssssssssss" />
+       sodipodi:nodetypes="ssssssssssssssssss" />
     <rect
        ry="2"
        rx="2"
@@ -572,11 +581,11 @@
        sodipodi:cy="37.5"
        sodipodi:rx="2.5"
        sodipodi:ry="2.5"
-       d="M 10,37.5 C 10,38.880712 8.8807119,40 7.5,40 6.1192881,40 5,38.880712 5,37.5 5,36.119288 6.1192881,35 7.5,35 8.8807119,35 10,36.119288 10,37.5 z"
+       d="m 10,37.5 a 2.5,2.5 0 1 1 -5,0 2.5,2.5 0 1 1 5,0 z"
        transform="matrix(1.2,0,0,1.2,6,-5)" />
     <path
        transform="matrix(1.2,0,0,1.2,24,-5)"
-       d="M 10,37.5 C 10,38.880712 8.8807119,40 7.5,40 6.1192881,40 5,38.880712 5,37.5 5,36.119288 6.1192881,35 7.5,35 8.8807119,35 10,36.119288 10,37.5 z"
+       d="m 10,37.5 a 2.5,2.5 0 1 1 -5,0 2.5,2.5 0 1 1 5,0 z"
        sodipodi:ry="2.5"
        sodipodi:rx="2.5"
        sodipodi:cy="37.5"

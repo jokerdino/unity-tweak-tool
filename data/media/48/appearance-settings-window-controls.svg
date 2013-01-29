@@ -14,8 +14,8 @@
    height="48"
    id="svg2985"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="appearance-settings-window-controls.svg"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="appearance-settings-window-controls-dark_48.svg"
    inkscape:export-filename="/media/acw-02/frank-souza/projetos/icones/utt/icons/36/appearance-settings-window-controls-dark_48.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -193,7 +193,7 @@
        xlink:href="#linearGradient4103"
        id="radialGradient3070"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-6.360104e-5,1.5,-2.5267385,0,177.67993,-26.742386)"
+       gradientTransform="matrix(-6.6629661e-5,1.5882353,-2.6470594,0,184.99802,-30.668409)"
        cx="38.828259"
        cy="66.109375"
        fx="38.828259"
@@ -393,17 +393,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="22.627417"
-     inkscape:cx="58.065389"
-     inkscape:cy="43.644399"
+     inkscape:zoom="7.9999996"
+     inkscape:cx="31.886026"
+     inkscape:cy="32.530893"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="709"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-4"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      showborder="true">
@@ -423,7 +423,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -432,6 +432,15 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      transform="translate(0,-16)">
+    <rect
+       ry="3"
+       rx="3"
+       y="20"
+       x="2"
+       height="36"
+       width="44"
+       id="rect3943-4"
+       style="fill:#ffffff;fill-opacity:1;stroke:none" />
     <rect
        style="opacity:0.68499122;fill:url(#linearGradient3291);fill-opacity:1;stroke:none"
        id="rect4020-0"
@@ -444,10 +453,10 @@
     <rect
        ry="3"
        rx="3"
-       y="23"
-       x="3"
-       height="34"
-       width="42"
+       y="22"
+       x="2"
+       height="36"
+       width="44"
        id="rect3068"
        style="fill:url(#radialGradient3070);fill-opacity:1;stroke:none" />
     <rect
@@ -516,9 +525,9 @@
        style="opacity:0.39267016;fill:#000000;fill-opacity:1;stroke:none" />
     <path
        style="fill:url(#linearGradient3284);fill-opacity:1;stroke:none"
-       d="m 4,22 c -1.9871905,0 -2,1.871897 -2,2 l 0,32 c 0,0 0,2 2,2 l 40,0 c 2,0 2,-2 2,-2 l 0,-32 c 0,-2 -2,-2 -2,-2 z m 1,2 38,0 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 5,56 C 4.446,56 4,55.554 4,55 L 4,25 c 0,-0.554 0.446,-1 1,-1 z"
+       d="m 5,22 c -1.662,0 -3,1.338 -3,3 l 0,30 c 0,1.662 1.338,3 3,3 l 38,0 c 1.662,0 3,-1.338 3,-3 l 0,-30 c 0,-1.662 -1.338,-3 -3,-3 z m 0,2 38,0 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 5,56 C 4.446,56 4,55.554 4,55 L 4,25 c 0,-0.554 0.446,-1 1,-1 z"
        id="path3919-9"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="sccsscscssssssssss" />
+       sodipodi:nodetypes="ssssssssssssssssss" />
   </g>
 </svg>

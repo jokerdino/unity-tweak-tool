@@ -14,8 +14,8 @@
    height="48"
    id="svg2985"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="appearance-settings-theme.svg"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="appearance-settings-theme-dark_48.svg"
    inkscape:export-filename="/media/acw-02/frank-souza/projetos/icones/utt/icons/36/appearance-settings-theme-dark_48.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -397,17 +397,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="29.309324"
-     inkscape:cy="35.128737"
+     inkscape:zoom="5.6568539"
+     inkscape:cx="62.18704"
+     inkscape:cy="11.155202"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="709"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-4"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      showborder="true">
@@ -427,7 +427,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -445,6 +445,15 @@
        y="57"
        rx="1"
        ry="0.9375" />
+    <rect
+       ry="3"
+       rx="3"
+       y="20"
+       x="2"
+       height="36"
+       width="44"
+       id="rect3943-4"
+       style="fill:#ffffff;fill-opacity:1;stroke:none" />
     <path
        style="fill:url(#radialGradient3031);fill-opacity:1;stroke:none"
        d="M 4 8 L 4 40 L 9 40 L 14 40 L 19 40 L 24 40 L 29 40 L 34 40 L 39 40 L 44 40 L 44 8 L 39 8 L 34 8 L 29 8 L 24 8 L 19 8 L 14 8 L 9 8 L 4 8 z "
@@ -509,9 +518,9 @@
        ry="0" />
     <path
        style="fill:url(#linearGradient3284);fill-opacity:1;stroke:none"
-       d="m 4,22 c 0,0 -2,0 -2,2 l 0,32 c 0,2 2,2 2,2 l 40,0 c 2,0 2,-2 2,-2 l 0,-31 c 0,-1.662 -1.338,-3 -3,-3 z m 1,2 38,0 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 5,56 C 4.446,56 4,55.554 4,55 L 4,25 c 0,-0.554 0.446,-1 1,-1 z"
+       d="m 5,22 c -1.662,0 -3,1.338 -3,3 l 0,30 c 0,1.662 1.338,3 3,3 l 38,0 c 1.662,0 3,-1.338 3,-3 l 0,-30 c 0,-1.662 -1.338,-3 -3,-3 z m 0,2 38,0 c 0.554,0 1,0.446 1,1 l 0,30 c 0,0.554 -0.446,1 -1,1 L 5,56 C 4.446,56 4,55.554 4,55 L 4,25 c 0,-0.554 0.446,-1 1,-1 z"
        id="path3919-9"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="csscscsscsssssssss" />
+       sodipodi:nodetypes="ssssssssssssssssss" />
   </g>
 </svg>
