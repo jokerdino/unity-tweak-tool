@@ -72,7 +72,6 @@ class Compizsettings ():
             'cbox_window_snapping_bottomright': [0, 'bottom-right-corner-action']
         }
 
-
         self.hotcorners_cboxes = {
             'cbox_hotcorners_top': [0, 'Top'],
             'cbox_hotcorners_topleft': [0, 'TopLeft'],
@@ -449,16 +448,14 @@ class Compizsettings ():
         self.ui['cbox_right_click'].set_active(gsettings.wm.get_enum('action-right-click-titlebar'))
 
         # Focus mode
-        focus_mode = gsettings.wm.get_enum('focus-mode')
-        if focus_mode == 0:
+        if gsettings.wm.get_enum('focus-mode') == 0:
             self.ui['cbox_focus_mode'].set_active(0)
-        elif focus_mode == 1:
+        elif gsettings.wm.get_enum('focus-mode') == 1:
             self.ui['cbox_focus_mode'].set_active(1)
-        elif focus_mode == 2:
+        elif gsettings.wm.get_enum('focus-mode') == 2:
             self.ui['cbox_focus_mode'].set_active(2)
         else:
             pass
-        del focus_mode
 
 
 # TODO : Find a clever way or set each one manually.
@@ -473,28 +470,22 @@ class Compizsettings ():
 #___________________________________________________________/
 
 # ===== BEGIN: Compiz settings =====
-#-----BEGIN: General -----
 
-     # selective sensitivity in compiz - general
+#-----BEGIN: General -----
 
     def on_sw_compiz_zoom_active_notify(self, widget, udata = None):
         dependants = ['scrolledwindow_compiz_general_zoom']
-
         plugins = gsettings.core.get_strv('active-plugins')
-
-        if widget.get_active():
+        if self.ui['sw_compiz_zoom'].get_active() == True:
             self.ui.sensitize(dependants)
             if 'ezoom' not in plugins:
                 plugins.append('ezoom')
                 gsettings.core.set_strv('active-plugins', plugins)
-
         else:
             self.ui.unsensitize(dependants)
             if 'ezoom' in plugins:
                 plugins.remove('ezoom')
                 gsettings.core.set_strv('active-plugins', plugins)
-
-    # keyboard widgets in compiz-general-zoom
 
     def on_craccel_compiz_general_zoom_accel_edited(self, craccel, path, key, mods, hwcode, model = None):
         model = self.ui['list_compiz_general_zoom_accelerators']
@@ -515,16 +506,11 @@ class Compizsettings ():
         elif path  ==  '1':
             gsettings.zoom.set_string('zoom-out-key', "Disabled")
 
-    #-----General: OpenGL
-
     def on_cbox_opengl_changed(self, widget, udata = None):
-        mode = self.ui['cbox_opengl'].get_active()
-        gsettings.opengl.set_int('texture-filter', mode)
+        gsettings.opengl.set_int('texture-filter', self.ui['cbox_opengl'].get_active())
 
     def on_check_synctovblank_toggled(self, widget, udata = None):
         gsettings.opengl.set_boolean('sync-to-vblank', self.ui['check_synctovblank'].get_active())
-
-    # keyboard widgets in compiz-general-keys
 
     def on_craccel_compiz_general_keys_accel_edited(self, craccel, path, key, mods, hwcode, model = None):
         model = self.ui['list_compiz_general_keys_accelerators']
@@ -539,9 +525,8 @@ class Compizsettings ():
             gsettings.core.set_string('show-desktop-key', accel)
 
     def on_craccel_compiz_general_keys_accel_cleared(self, craccel, path, model = None):
-        model = self.ui['list_compiz_general_keys_accelerators']
         titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        self.ui['list_compiz_general_keys_accelerators'].set_value(titer, 1, "Disabled")
         if path  ==  '0':
             gsettings.core.set_string('close-window-key', "Disabled")
         elif path  ==  '1':
@@ -574,15 +559,13 @@ class Compizsettings ():
 
 #-----BEGIN: Workspaces -----
 
-    # selective sensitivity in compiz - workspaces
-
     def on_sw_workspace_switcher_active_notify(self, widget, udata = None):
         dependants = ['l_horizontal_desktop',
                     'l_vertical_desktop',
                     'spin_horizontal_desktop',
                     'spin_vertical_desktop']
 
-        if widget.get_active():
+        if self.ui['sw_workspace_switcher'].get_active() == True:
             self.ui.sensitize(dependants)
             gsettings.core.set_int('hsize', 2)
             gsettings.core.set_int('hsize', 2)
@@ -597,31 +580,24 @@ class Compizsettings ():
             self.ui['spin_vertical_desktop'].set_value(1)
 
     def on_spin_horizontal_desktop_value_changed(self, widget, udata = None):
-        hsize = self.ui['spin_horizontal_desktop'].get_value()
-        gsettings.core.set_int('hsize', hsize)
+        gsettings.core.set_int('hsize', self.ui['spin_horizontal_desktop'].get_value())
 
     def on_spin_vertical_desktop_value_changed(self, widget, udata = None):
-        vsize = self.ui['spin_vertical_desktop'].get_value()
-        gsettings.core.set_int('vsize', vsize)
+        gsettings.core.set_int('vsize', self.ui['spin_vertical_desktop'].get_value())
 
     def on_color_desk_outline_color_set(self, widget, udata = None):
-        color = self.ui['color_desk_outline'].get_color()
-        colorhash = gsettings.color_to_hash(color)
+        colorhash = gsettings.color_to_hash(self.ui['color_desk_outline'].get_color())
         gsettings.expo.set_string('selected-color', colorhash)
 
-    # keyboard widgets in compiz-workspace
-
     def on_craccel_compiz_workspace_accel_edited(self, craccel, path, key, mods, hwcode, model = None):
-        model = self.ui['list_compiz_workspace_accelerators']
         accel = Gtk.accelerator_name(key, mods)
-        titer = model.get_iter(path)
-        model.set_value(titer, 1, accel)
+        titer = self.ui['list_compiz_workspace_accelerators'].get_iter(path)
+        self.ui['list_compiz_workspace_accelerators'].set_value(titer, 1, accel)
         gsettings.expo.set_string('expo-key', accel)
 
     def on_craccel_compiz_workspace_accel_cleared(self, craccel, path, model = None):
-        model = self.ui['list_compiz_workspace_accelerators']
-        titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        titer = self.ui['list_compiz_workspace_accelerators'].get_iter(path)
+        self.ui['list_compiz_workspace_accelerators'].set_value(titer, 1, "Disabled")
         gsettings.expo.set_string('expo-key', "Disabled")
 
     def on_b_compiz_workspace_reset_clicked(self, widget):
@@ -633,8 +609,6 @@ class Compizsettings ():
 
 #-----BEGIN: Windows Spread -----
 
-    # selective sensitivity in compiz - windows spread
-
     def on_sw_windows_spread_active_notify(self, widget, udata = None):
         dependants = ['l_compiz_spacing',
                     'spin_compiz_spacing',
@@ -644,13 +618,11 @@ class Compizsettings ():
 
         plugins = gsettings.core.get_strv('active-plugins')
 
-        # XXX: Playing with this switch can crash Unity and/or Compiz
-        if widget.get_active():
+        if self.ui['sw_windows_spread'].get_active() == True:
             self.ui.sensitize(dependants)
             if 'scale' not in plugins:
                 plugins.append('scale')
                 gsettings.core.set_strv('active-plugins', plugins)
-
         else:
             self.ui.unsensitize(dependants)
             if 'scale' in plugins:
@@ -661,33 +633,29 @@ class Compizsettings ():
         gsettings.scale.set_int('spacing', self.ui['spin_compiz_spacing'].get_value())
 
     def on_check_overlay_emblem_toggled(self, widget):
-        if self.ui['check_overlay_emblem'].get_active():
+        if self.ui['check_overlay_emblem'].get_active() == True:
             gsettings.scale.set_int('overlay-icon', 1)
         else:
             gsettings.scale.set_int('overlay-icon', 0)
 
     def on_check_click_desktop_toggled(self, widget):
-
-        if self.ui['check_click_desktop'].get_active():
+        if self.ui['check_click_desktop'].get_active() == True:
             gsettings.scale.set_boolean('show-desktop', True)
         else:
             gsettings.scale.set_boolean('show-desktop', False)
 
-    # keyboard widgets in compiz-windows-spread
     def on_craccel_compiz_windows_spread_accel_edited(self, craccel, path, key, mods, hwcode, model = None):
-        model = self.ui['list_compiz_windows_spread_accelerators']
         accel = Gtk.accelerator_name(key, mods)
-        titer = model.get_iter(path)
-        model.set_value(titer, 1, accel)
+        titer = self.ui['list_compiz_windows_spread_accelerators'].get_iter(path)
+        self.ui['list_compiz_windows_spread_accelerators'].set_value(titer, 1, accel)
         if path  ==  '0':
             gsettings.scale.set_string("initiate-key", accel)
         else:
             gsettings.scale.set_string("initiate-all-key", accel)
 
     def on_craccel_compiz_windows_spread_accel_cleared(self, craccel, path, model = None):
-        model = self.ui['list_compiz_windows_spread_accelerators']
         titer = model.get_iter(path)
-        model.set_value(titer, 1, "Disabled")
+        self.ui['list_compiz_windows_spread_accelerators'].set_value(titer, 1, "Disabled")
         if path  ==  '0':
             gsettings.scale.set_string("initiate-key", "Disabled")
         else:
@@ -702,29 +670,26 @@ class Compizsettings ():
         gsettings.scale.reset('initiate-all-key')
         self.refresh()
 
-    # Compiz - Window snapping
+#-----BEGIN: Window Snapping -----
+
     def on_sw_window_snapping_active_notify(self, widget, udata=None):
 
         plugins = gsettings.core.get_strv('active-plugins')
-
-        if widget.get_active():
+        if self.ui['sw_window_snapping'].get_active() == True:
             if 'grid' not in plugins:
                 plugins.append('grid')
                 gsettings.core.set_strv('active-plugins', plugins)
-
         else:
             if 'grid' in plugins:
                 plugins.remove('grid')
                 gsettings.core.set_strv('active-plugins', plugins)
 
     def on_color_outline_color_color_set(self, widget, udata=None):
-        color = self.ui['color_outline_color'].get_color()
-        colorhash = gsettings.color_to_hash(color)
+        colorhash = gsettings.color_to_hash(self.ui['color_outline_color'].get_color())
         gsettings.grid.set_string('outline-color', colorhash)
 
     def on_color_fill_color_color_set(self, widget, udata=None):
-        color = self.ui['color_fill_color'].get_color()
-        colorhash = gsettings.color_to_hash(color)
+        colorhash = gsettings.color_to_hash(self.ui['color_fill_color'].get_color())
         gsettings.grid.set_string('fill-color', colorhash)
 
     def on_b_compiz_windowsnapping_reset_clicked(self, widget):
@@ -757,7 +722,7 @@ class Compizsettings ():
         if not hasattr(self, 'hotcorners_previous'):
             self.hotcorners_previous = {}
 
-        if widget.get_active():
+        if self.ui['switch_hotcorners'].get_active() == True:
             self.ui.sensitize(dependants)
             for box in self.hotcorners_cboxes:
                 self.ui[box].set_active(self.hotcorners_previous[box])
@@ -777,32 +742,27 @@ class Compizsettings ():
 # ----- BEGIN: Additional -----
 
     def on_switch_auto_raise_active_notify(self, widget, udata = None):
-        mode = self.ui['switch_auto_raise'].get_active()
-        if mode == True:
+        if self.ui['switch_auto_raise'].get_active() == True:
             gsettings.wm.set_boolean('auto-raise', True)
         else:
             gsettings.wm.set_boolean('auto-raise', False)
 
     def on_cbox_focus_mode_changed(self, widget, udata = None):
-        mode = self.ui['cbox_focus_mode'].get_active()
-        gsettings.wm.set_enum('focus-mode', mode)
+        gsettings.wm.set_enum('focus-mode', self.ui['cbox_focus_mode'].get_active())
 
     def on_cbox_double_click_changed(self, widget, udata = None):
-        mode = self.ui['cbox_double_click'].get_active()
-        gsettings.wm.set_enum('action-double-click-titlebar', mode)
+        gsettings.wm.set_enum('action-double-click-titlebar', self.ui['cbox_double_click'].get_active())
 
     def on_cbox_middle_click_changed(self, widget, udata = None):
-        mode = self.ui['cbox_middle_click'].get_active()
-        gsettings.wm.set_enum('action-middle-click-titlebar', mode)
+        gsettings.wm.set_enum('action-middle-click-titlebar', self.ui['cbox_middle_click'].get_active())
 
     def on_cbox_right_click_changed(self, widget, udata = None):
-        mode = self.ui['cbox_right_click'].get_active()
-        gsettings.wm.set_enum('action-right-click-titlebar', mode)
+        gsettings.wm.set_enum('action-right-click-titlebar', self.ui['cbox_right_click'].get_active())
 
     def on_scale_auto_raise_delay_value_changed(self, widget, udata = None):
-        slider = self.ui['scale_auto_raise_delay']
-        val = slider.get_value()
-        gsettings.wm.set_int('auto-raise-delay', val)
+        value = self.ui['scale_auto_raise_delay'].get_value()
+        gsettings.wm.set_int('auto-raise-delay', value)
+        del value
 
     def on_b_wm_additional_reset_clicked(self, widget):
         gsettings.wm.reset('auto-raise-delay')

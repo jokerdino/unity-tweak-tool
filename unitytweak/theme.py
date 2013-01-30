@@ -53,7 +53,8 @@ class Themesettings ():
         self.windowthemestore=self.gtkthemestore
         self.ui['tree_gtk_theme'].set_model(self.gtkthemestore)
         self.ui['tree_window_theme'].set_model(self.windowthemestore)
-# Get all themes
+        
+        # Get all themes
         systhdir='/usr/share/themes'
         systemthemes=[(theme.capitalize(),os.path.join(systhdir,theme)) for theme in os.listdir(systhdir) if os.path.isdir(os.path.join(systhdir,theme))]
         try:
@@ -116,15 +117,16 @@ class Themesettings ():
 
 
     def refresh(self):
+    
         # System theme
         gtkthemesel=self.ui['tree_gtk_theme'].get_selection()
         gtktheme=gsettings.gnome('desktop.interface').get_string('gtk-theme')
 
-# FIXME: Workaround to fix LP bug: #1098845
+        # FIXME: Workaround to fix LP bug: #1098845
         try:
             gtkthemesel.select_iter(self.gtkthemes[gtktheme]['iter'])
 
-# TODO: This except part should do something more.
+        # TODO: This except part should do something more.
         except KeyError:
             gtkthemesel.unselect_all()
 
@@ -142,11 +144,11 @@ class Themesettings ():
         cursorthemesel=self.ui['tree_cursor_theme'].get_selection()
         cursortheme=gsettings.gnome('desktop.interface').get_string('cursor-theme')
 
-# FIXME: Workaround to fix LP bug: #1097227
+        # FIXME: Workaround to fix LP bug: #1097227
 
         try:
             cursorthemesel.select_iter(self.cursorthemes[cursortheme]['iter'])
-# TODO: except part should make sure the selection is deselected.
+        # TODO: except part should make sure the selection is deselected.
         except KeyError:
             cursorthemesel.unselect_all()
 
@@ -161,32 +163,26 @@ class Themesettings ():
         self.ui['font_monospace'].set_font_name(gsettings.interface.get_string('monospace-font-name'))
         self.ui['font_window_title'].set_font_name(gsettings.wm.get_string('titlebar-font'))
 
-        # Antialiasing        
-        antialiasing = gsettings.antialiasing.get_string('antialiasing')
-        if antialiasing == 'none':
+        # Antialiasing
+        if gsettings.antialiasing.get_string('antialiasing') == 'none':
             self.ui['cbox_antialiasing'].set_active(0)
-        elif antialiasing == 'grayscale':
+        elif gsettings.antialiasing.get_string('antialiasing') == 'grayscale':
             self.ui['cbox_antialiasing'].set_active(1)
-        elif antialiasing == 'rgba':
+        elif gsettings.antialiasing.get_string('antialiasing') == 'rgba':
             self.ui['cbox_antialiasing'].set_active(2)
 
         # Hinting            
-        hinting = gsettings.antialiasing.get_string('hinting')
-        if hinting == 'none':
+        if gsettings.antialiasing.get_string('hinting') == 'none':
             self.ui['cbox_hinting'].set_active(0)
-        elif hinting == 'slight':
+        elif gsettings.antialiasing.get_string('hinting') == 'slight':
             self.ui['cbox_hinting'].set_active(1)
-        elif hinting == 'medium':
+        elif gsettings.antialiasing.get_string('hinting') == 'medium':
             self.ui['cbox_hinting'].set_active(2)
-        elif hinting == 'full':
+        elif gsettings.antialiasing.get_string('hinting') == 'full':
             self.ui['cbox_hinting'].set_active(3)
 
         # Scaling        
         self.ui['spin_textscaling'].set_value(gsettings.interface.get_double('text-scaling-factor'))
-
-
-# Custom refresh functions, due to the reset button for the window controls calls a segmentation fault when
-# running the entire self.refresh -snwh
 
 
     # ===== Window Controls ===== #
@@ -286,8 +282,7 @@ class Themesettings ():
 
     # Cursor
     def on_tree_cursor_theme_cursor_changed(self,udata=None):
-        cursortreesel = self.ui['tree_cursor_theme'].get_selection()
-        if cursortreesel is None:
+        if self.ui['tree_cursor_theme'].get_selection() is None:
             return
         cursorthemestore,iter = cursortreesel.get_selected()
         themepath=cursorthemestore.get_value(iter,1)
@@ -318,23 +313,21 @@ class Themesettings ():
         gsettings.wm.set_string('titlebar-font', self.ui['font_window_title'].get_font_name())
         
     def on_cbox_antialiasing_changed(self, widget):
-        mode = self.ui['cbox_antialiasing'].get_active()
-        if mode == 0:
+        if self.ui['cbox_antialiasing'].get_active() == 0:
             gsettings.antialiasing.set_string('antialiasing', 'none')
-        elif mode == 1:
+        elif self.ui['cbox_antialiasing'].get_active() == 1:
             gsettings.antialiasing.set_string('antialiasing', 'grayscale')
-        elif mode == 2:
+        elif self.ui['cbox_antialiasing'].get_active() == 2:
             gsettings.antialiasing.set_string('antialiasing', 'rgba')
 
     def on_cbox_hinting_changed(self, widget):
-        mode = self.ui['cbox_hinting'].get_active()
-        if mode == 0:
+        if self.ui['cbox_hinting'].get_active() == 0:
             gsettings.antialiasing.set_string('hinting', 'none')
-        elif mode == 1:
+        elif self.ui['cbox_hinting'].get_active() == 1:
             gsettings.antialiasing.set_string('hinting', 'slight')
-        elif mode == 2:
+        elif self.ui['cbox_hinting'].get_active() == 2:
             gsettings.antialiasing.set_string('hinting', 'medium')
-        elif mode == 3:
+        elif v == 3:
             gsettings.antialiasing.set_string('hinting', 'full')
             
     def on_spin_textscaling_value_changed(self, widget):

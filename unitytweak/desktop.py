@@ -30,7 +30,7 @@
 
 import os, os.path
 
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, Gdk
 
 from .ui import ui
 from . import unitytweakconfig
@@ -51,6 +51,7 @@ class Desktopsettings ():
 
         self.refresh()
         self.builder.connect_signals(self)
+
 #=====================================================================#
 #                                Helpers                              #
 #=====================================================================#
@@ -58,21 +59,22 @@ class Desktopsettings ():
         '''Reads the current config and refreshes the displayed values'''
 
         # ===== Icons ===== #
-        desktop_icons = gsettings.background.get_boolean('show-desktop-icons')
+    
+        # Show desktop icons
         dependants = ['l_desktop_icons_display',
                     'check_desktop_home',
                     'check_desktop_networkserver',
                     'check_desktop_trash',
                     'check_desktop_devices']
-        if desktop_icons == True:
+        if gsettings.background.get_boolean('show-desktop-icons') == True:
             self.ui['switch_desktop_icons'].set_active(True)
             self.ui.sensitize(dependants)
         else:
             self.ui['switch_desktop_icons'].set_active(False)
             self.ui.unsensitize(dependants)
-        del desktop_icons
         del dependants
 
+        # Visible icons
         self.ui['check_desktop_home'].set_active(gsettings.desktop.get_boolean('home-icon-visible'))
         self.ui['check_desktop_networkserver'].set_active(gsettings.desktop.get_boolean('network-icon-visible'))
         self.ui['check_desktop_trash'].set_active(gsettings.desktop.get_boolean('trash-icon-visible'))
@@ -121,6 +123,9 @@ class Desktopsettings ():
         else:
             self.ui['radio_two_finger'].set_active(True)
         del scroll_mode
+
+        # Horizontal Scrolling
+        self.ui['check_horizontal_scrolling'].set_active(True if gsettings.touch.get_boolean('horiz-scroll-enabled') is True else False)
 
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
@@ -214,8 +219,7 @@ class Desktopsettings ():
     def on_radio_legacy_scrollbars_toggled(self, button, udata = None):
         dependants = ['l_overlay_scrollbar_mode',
                     'cbox_overlay_scrollbar_mode']
-        mode = self.ui['radio_legacy_scrollbars'].get_active()
-        if mode == True:
+        if self.ui['radio_legacy_scrollbars'].get_active() == True:
             gsettings.scrollbars.set_string('scrollbar-mode', 'normal')
             self.ui.unsensitize(dependants)
         else:
@@ -225,8 +229,7 @@ class Desktopsettings ():
     def on_radio_overlay_scrollbars_toggled(self, button, udata = None):
         dependants = ['l_overlay_scrollbar_mode',
                     'cbox_overlay_scrollbar_mode']
-        mode = self.ui['radio_overlay_scrollbars'].get_active()
-        if mode == True:
+        if self.ui['radio_overlay_scrollbars'].get_active() == True:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
             self.ui.sensitize(dependants)
         else:
@@ -234,29 +237,32 @@ class Desktopsettings ():
             self.ui.unsensitize(dependants)
 
     def on_cbox_overlay_scrollbar_mode_changed(self, widget, udata = None):
-        mode = self.ui['cbox_overlay_scrollbar_mode'].get_active()
-        if mode == 0:
+        if self.ui['cbox_overlay_scrollbar_mode'].get_active() == 0:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
-        elif mode == 1:
+        elif self.ui['cbox_overlay_scrollbar_mode'].get_active() == 1:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-pointer')
-        elif mode == 2:
+        elif self.ui['cbox_overlay_scrollbar_mode'].get_active() == 2:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-touch')
         else:
             gsettings.scrollbars.set_string('scrollbar-mode', 'overlay-auto')
 
     def on_radio_edge_toggled(self, button, udata = None):
-        mode = self.ui['radio_edge'].get_active()
-        if mode == True:
+        if self.ui['radio_edge'].get_active() == True:
             gsettings.touch.set_string('scroll-method', 'edge-scrolling')
         else:
             gsettings.touch.set_string('scroll-method', 'two-finger-scrolling')
 
     def on_radio_two_finger_toggled(self, button, udata = None):
-        mode = self.ui['radio_two_finger'].get_active()
-        if mode == True:
+        if self.ui['radio_two_finger'].get_active() == True:
             gsettings.touch.set_string('scroll-method', 'two-finger-scrolling')
         else:
             gsettings.touch.set_string('scroll-method', 'edge-scrolling')
+
+    def on_check_horizontal_scrolling_toggled(self, widget, udata = None):
+        if self.ui['check_horizontal_scrolling'].get_active() == True :
+            gsettings.touch.set_boolean('horiz-scroll-enabled', True)
+        else:
+            gsettings.touch.set_boolean('horiz-scroll-enabled', False)
 
     def on_b_settings_scrolling_reset_clicked(self, widget):
         gsettings.touch.reset('scroll-method')
