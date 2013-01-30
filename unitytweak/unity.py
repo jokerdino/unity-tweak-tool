@@ -98,8 +98,7 @@ class Unitysettings ():
         # Transparency
         dependants = ['l_launcher_transparency_scale',
                     'sc_launcher_transparency']
-        opacity = gsettings.unityshell.get_double('launcher-opacity')
-        if opacity == 1:
+        if gsettings.unityshell.get_double('launcher-opacity') == 1:
             self.ui['sw_launcher_transparent'].set_active(False)
             self.ui.unsensitize(dependants)
         else:
@@ -107,13 +106,10 @@ class Unitysettings ():
             self.ui.sensitize(dependants)
         self.ui['sc_launcher_transparency'].set_value(0.67)
         del dependants
-        del opacity
 
         # Visibility
-        mode = gsettings.unityshell.get_int('num-launchers')
-        self.ui['radio_launcher_visibility_all'].set_active(True if mode is 0 else False)
-        self.ui['radio_launcher_visibility_primary'].set_active(True if mode is 1 else False)
-        del mode
+        self.ui['radio_launcher_visibility_all'].set_active(True if gsettings.unityshell.get_int('num-launchers') is 0 else False)
+        self.ui['radio_launcher_visibility_primary'].set_active(True if gsettings.unityshell.get_int('num-launchers') is 1 else False)
 
         # Colour
         color = gsettings.unityshell.get_string('background-color')
@@ -140,15 +136,14 @@ class Unitysettings ():
         # ====== Dash Helpers ===== #
 
         # Blur
-        dash_blur = gsettings.unityshell.get_int('dash-blur-experimental')
         dependants = ['radio_dash_blur_smart',
                     'radio_dash_blur_static',
                     'l_dash_blur_type']
 
-        if dash_blur == 0:
+        if gsettings.unityshell.get_int('dash-blur-experimental') == 0:
             self.ui['sw_dash_blur'].set_active(False)
             self.ui.unsensitize(dependants)
-        elif dash_blur == 1:
+        elif gsettings.unityshell.get_int('dash-blur-experimental') == 1:
             self.ui['sw_dash_blur'].set_active(True)
             self.ui.sensitize(dependants)
             self.ui['radio_dash_blur_static'].set_active(True)
@@ -159,12 +154,10 @@ class Unitysettings ():
         del dependants
 
         # Suggestions
-        suggestions = gsettings.lenses.get_string('remote-content-search')
-        if suggestions == 'all':
+        if gsettings.lenses.get_string('remote-content-search') == 'all':
             self.ui['check_suggestions'].set_active(True)
         else:
             self.ui['check_suggestions'].set_active(False)
-        del suggestions
 
         # Applications Lens
         self.ui['check_show_recent_apps'].set_active(gsettings.lens_apps.get_boolean('display-recent-apps'))
@@ -191,22 +184,19 @@ class Unitysettings ():
                     'sc_panel_transparency',
                     'check_panel_opaque']
 
-        opacity = gsettings.unityshell.get_double('panel-opacity')
-        if opacity == 1:
+        if gsettings.unityshell.get_double('panel-opacity') == 1:
             self.ui['sw_transparent_panel'].set_active(False)
             self.ui.unsensitize(dependants)
         else:
             self.ui['sw_transparent_panel'].set_active(True)
             self.ui.sensitize(dependants)
-        self.ui['sc_panel_transparency'].set_value(opacity)
+        self.ui['sc_panel_transparency'].set_value(gsettings.unityshell.get_double('panel-opacity'))
         del dependants
-        del opacity
 
         # Panel opacity
         self.ui['check_panel_opaque'].set_active(gsettings.unityshell.get_boolean('panel-opacity-maximized-toggle'))
 
         # Date time indicator
-        clock_visibility = gsettings.datetime.get_boolean('show-clock')
         dependants = ['radio_12hour',
                     'radio_24hour',
                     'check_date',
@@ -215,53 +205,47 @@ class Unitysettings ():
                     'l_clock',
                     'check_time_seconds']
 
-        if clock_visibility == True:
+        if gsettings.datetime.get_boolean('show-clock') == True:
             self.ui['check_indicator_datetime'].set_active(True)
             self.ui.sensitize(dependants)
         else:
             self.ui['check_indicator_datetime'].set_active(False)
             self.ui.sensitize(dependants)
-        del clock_visibility
         del dependants
 
         # User name indicator
         self.ui['check_indicator_username'].set_active(gsettings.session.get_boolean('show-real-name-on-panel'))
 
         # Battery status
-        battery_status = gsettings.power.get_string('icon-policy')
-
         dependants = ['check_indicator_battery_life',
                     'radio_power_charging',
                     'radio_power_always']
 
-        if battery_status == 'present':
+        if gsettings.power.get_string('icon-policy') == 'present':
             self.ui['check_indicator_battery'].set_active(True)
             self.ui['radio_power_always'].set_active(True)
             self.ui.sensitize(dependants)
-        elif battery_status == 'charge':
+        elif gsettings.power.get_string('icon-policy') == 'charge':
             self.ui['check_indicator_battery'].set_active(True)
             self.ui['radio_power_charging'].set_active(True)
             self.ui.sensitize(dependants)
-        elif battery_status == 'never':
+        elif gsettings.power.get_string('icon-policy') == 'never':
             self.ui['check_indicator_battery'].set_active(False)
             self.ui.unsensitize(dependants)
         else:
             return
-        del battery_status
         del dependants
 
         # Battery life indicator
         self.ui['check_indicator_battery_life'].set_active(gsettings.power.get_boolean('show-time'))
 
         # Time format
-        time_format = gsettings.datetime.get_string('time-format')
-        if time_format == '12-hour':
+        if gsettings.datetime.get_string('time-format') == '12-hour':
             self.ui['radio_12hour'].set_active(True)
-        elif time_format == '24-hour':
+        elif gsettings.datetime.get_string('time-format') == '24-hour':
             self.ui['radio_24hour'].set_active(True)
         else:
-            pass
-        del time_format
+            return
 
         # Indicator Date-Time 
         self.ui['check_time_seconds'].set_active(gsettings.datetime.get_boolean('show-seconds'))
@@ -292,6 +276,7 @@ class Unitysettings ():
         self.ui['check_minimizedwindows_switch'].set_active(gsettings.unityshell.get_boolean('show-minimized-windows'))
         self.ui['check_autoexposewindows'].set_active(gsettings.unityshell.get_boolean('alt-tab-timeout'))
 
+        # Window Switcher accelerators 
         model = self.ui['list_unity_switcher_windows_accelerators']
 
         alt_tab_forward = gsettings.unityshell.get_string('alt-tab-forward')
@@ -337,6 +322,7 @@ class Unitysettings ():
 
         del model
 
+        # Launcher switcher accelerators 
         model = self.ui['list_unity_switcher_launcher_accelerators']
 
         launcher_switcher_forward = gsettings.unityshell.get_string('launcher-switcher-forward')
@@ -348,6 +334,7 @@ class Unitysettings ():
         model.set_value(iter_launcher_switcher_prev, 1, launcher_switcher_prev)
 
         del model, launcher_switcher_forward, iter_launcher_switcher_forward, launcher_switcher_prev, iter_launcher_switcher_prev
+
 
         # ====== Unity Webapps helpers ===== #
 
@@ -387,16 +374,14 @@ class Unitysettings ():
         del model, show_hud, iter_show_hud, show_launcher, iter_show_launcher, execute_command, iter_execute_command, keyboard_focus, iter_keyboard_focus, panel_first_menu, iter_panel_first_menu
 
         # Notifyosd
-        multihead_mode = gsettings.notifyosd.get_string('multihead-mode')
-        if multihead_mode == 'follow-focus':
+        if gsettings.notifyosd.get_string('multihead-mode') == 'follow-focus':
             self.ui['radio_active_monitor'].set_active(True)
             self.ui['radio_all_monitors'].set_active(False)
-        elif multihead_mode == 'dont-follow-focus':
+        elif gsettings.notifyosd.get_string('multihead-mode') == 'dont-follow-focus':
             self.ui['radio_active_monitor'].set_active(False)
             self.ui['radio_all_monitors'].set_active(True)
         else:
-            pass
-        del multihead_mode
+            return
 
         # HUD
         self.ui['check_hud_store_data'].set_active(True if gsettings.hud.get_boolean('store-usage-data') is True else False)
@@ -435,14 +420,14 @@ class Unitysettings ():
 
 # XXX :Strictly speaking, only one of these two will suffice.
     def on_radio_reveal_topleft_toggled(self, button, udata = None):
-        radio = self.ui['radio_reveal_topleft']
-        mode = 0 if not radio.get_active() else 1
+        mode = 0 if not self.ui['radio_reveal_topleft'].get_active() else 1
         gsettings.unityshell.set_int('reveal-trigger', mode)
+        del mode
 
     def on_sc_reveal_sensitivity_value_changed(self, widget, udata = None):
-        slider = self.ui['sc_reveal_sensitivity']
-        val = slider.get_value()
-        gsettings.unityshell.set_double('edge-responsiveness', val)
+        value = self.ui['sc_reveal_sensitivity'].get_value()
+        gsettings.unityshell.set_double('edge-responsiveness', value)
+        del value
 
     def on_sw_launcher_transparent_active_notify(self, widget, udata = None):
         dependants = ['l_launcher_transparency_scale',
@@ -545,6 +530,7 @@ class Unitysettings ():
 # ----- BEGIN: Dash -----
 
     def on_sw_dash_blur_active_notify(self, widget, udata = None):
+
         dependants = ['radio_dash_blur_smart',
                     'radio_dash_blur_static',
                     'l_dash_blur_type']
