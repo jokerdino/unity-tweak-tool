@@ -383,7 +383,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">12</property>
-                <property name="margin_bottom">6</property>
                 <property name="label" translatable="yes">Appearance</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
@@ -669,6 +668,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
+                <property name="margin_top">6</property>
                 <property name="row_spacing">6</property>
                 <child>
                   <object class="GtkSpinButton" id="spin_launcher_icon_size">
@@ -2494,7 +2494,7 @@
           <object class="GtkLabel" id="l_page_webapps">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Webapps</property>
+            <property name="label" translatable="yes">Web Apps</property>
           </object>
           <packing>
             <property name="position">4</property>
