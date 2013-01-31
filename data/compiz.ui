@@ -2263,10 +2263,13 @@
         <col id="0" translatable="yes">Toggle Desktop</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Activate Workspace Switcher</col>
+        <col id="0" translatable="yes">Show Workspaces</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Activate Window Spread</col>
+        <col id="0" translatable="yes">Window Spread</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Spread all Windows</col>
       </row>
     </data>
   </object>

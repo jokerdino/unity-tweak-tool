@@ -214,6 +214,13 @@ class Compizsettings ():
         else:
             clear_corners.append('window_spread')
 
+        if combobox.get_active() == 4:
+            if self.hotcorners_cboxes[cbox_id][1] not in self.hotcorner_values['all_window_spread']:
+                self.hotcorner_values['all_window_spread'].append(self.hotcorners_cboxes[cbox_id][1])
+                gsettings.scale.set_string('initiate-all-edge', '|'.join(self.hotcorner_values['all_window_spread']))
+        else:
+            clear_corners.append('all_window_spread')
+
         # Removing potentially conflicting bindings
         if 'show_desktop' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['show_desktop']:
             self.hotcorner_values['show_desktop'].remove(self.hotcorners_cboxes[cbox_id][1])
@@ -224,6 +231,9 @@ class Compizsettings ():
         if 'window_spread' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['window_spread']:
             self.hotcorner_values['window_spread'].remove(self.hotcorners_cboxes[cbox_id][1])
             gsettings.scale.set_string('initiate-edge', '|'.join(self.hotcorner_values['window_spread']))
+        if 'all_window_spread' in clear_corners and self.hotcorners_cboxes[cbox_id][1] in self.hotcorner_values['all_window_spread']:
+            self.hotcorner_values['all_window_spread'].remove(self.hotcorners_cboxes[cbox_id][1])
+            gsettings.scale.set_string('initiate-all-edge', '|'.join(self.hotcorner_values['all_window_spread']))
 
         self.hotcorners_drawable.queue_draw()
 
@@ -422,7 +432,8 @@ class Compizsettings ():
         self.hotcorner_values = {
             'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
             'expo': gsettings.expo.get_string('expo-edge').split('|'),
-            'window_spread': gsettings.scale.get_string('initiate-edge').split('|')
+            'window_spread': gsettings.scale.get_string('initiate-edge').split('|'),
+            'all_window_spread': gsettings.scale.get_string('initiate-all-edge').split('|')
         }
         for box in self.hotcorners_cboxes:
             if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
@@ -431,6 +442,8 @@ class Compizsettings ():
                 self.hotcorners_cboxes[box][0] = 2
             elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
                 self.hotcorners_cboxes[box][0] = 3
+            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['all_window_spread']:
+                self.hotcorners_cboxes[box][0] = 4
             else:
                 self.hotcorners_cboxes[box][0] = 0
             self.ui[box].set_active(self.hotcorners_cboxes[box][0])
@@ -737,6 +750,7 @@ class Compizsettings ():
         gsettings.core.reset('show-desktop-edge')
         gsettings.expo.reset('expo-edge')
         gsettings.scale.reset('initiate-edge')
+        gsettings.scale.reset('initiate-all-edge')
         self.refresh()
 
 # ----- BEGIN: Additional -----
