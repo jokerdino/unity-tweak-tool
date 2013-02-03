@@ -15,8 +15,7 @@ Depends: ${python3:Depends},
  gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
  python3-distutils-extra (>= 2.10),
- unity (>= 6.8),
- overlay-scrollbar (>= 0.2.16),
+ unity (>= 6.8)
  ${misc:Depends}
 Description: configuration manager for Unity desktop environment.
  Unity Tweak Tool is a one-stop settings manager for Ubuntu Unity.
