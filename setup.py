@@ -124,6 +124,8 @@ DistUtilsExtra.auto.setup(
     url='https://launchpad.net/unity-tweak-tool',
     data_files=[
                ('share/icons/gnome/scalable/apps/', glob.glob("data/media/scalable/*svg")),
+               ('share/icons/hicolor/16x16/apps/', glob.glob("data/media/hicolor/16x16/apps/*.png")),
+               ('share/icons/hicolor/24x24/apps/', glob.glob("data/media/hicolor/24x24/apps/*.png")),
                ('share/icons/hicolor/32x32/apps/', glob.glob("data/media/hicolor/32x32/apps/*.png")),
                ('share/icons/hicolor/48x48/apps/', glob.glob("data/media/hicolor/48x48/apps/*.png")),
                ('share/icons/hicolor/64x64/apps/', glob.glob("data/media/hicolor/64x64/apps/*.png")),
