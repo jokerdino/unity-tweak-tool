@@ -335,6 +335,7 @@
                     <property name="related_action">a_tool_overview</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="has_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="valign">center</property>
                     <property name="margin_left">12</property>
@@ -367,9 +368,8 @@
                 <property name="can_focus">False</property>
                 <child>
                   <object class="GtkEntry" id="tool_entry_search">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="has_focus">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="no_show_all">True</property>
                     <property name="tooltip_markup" translatable="yes">Search Unity Tweak Tool</property>
                     <property name="tooltip_text" translatable="yes">Search Unity Tweak Tool</property>
                     <property name="margin_right">10</property>
