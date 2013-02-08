@@ -744,7 +744,7 @@ class Unitysettings ():
 
     def on_b_unity_panel_reset_clicked(self, widget):
         gsettings.sound.reset('visible')
-#        gsettings.bluetooth.reset('visible')
+        gsettings.bluetooth.reset('visible')
         gsettings.datetime.reset('show-calendar')
         gsettings.datetime.reset('show-day')
         gsettings.datetime.reset('show-date')

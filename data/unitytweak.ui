@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkAction" id="a_tool_cogmenu"/>
   <object class="GtkAction" id="a_tool_overview">
     <property name="hide_if_empty">False</property>
     <property name="always_show_image">True</property>
