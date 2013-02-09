@@ -273,10 +273,10 @@ class UnityTweak (dbus.service.Object):
             overview_symbolic_icon_pixbuf, was_sym = overview_symbolic_icon.load_symbolic(self.main_fg_color, None, None, None)
             self.ui['image_overview'].set_from_pixbuf(overview_symbolic_icon_pixbuf)
 
-        cogmenu_symbolic_icon = self.icons.lookup_icon('unity-tweak-tool-cogmenu-symbolic', 24, Gtk.IconLookupFlags.FORCE_SIZE)
-        if cogmenu_symbolic_icon:
-            cogmenu_symbolic_icon_pixbuf, was_sym = cogmenu_symbolic_icon.load_symbolic(self.main_fg_color, None, None, None)
-            self.ui['image_cogmenu'].set_from_pixbuf(cogmenu_symbolic_icon_pixbuf)
+#        cogmenu_symbolic_icon = self.icons.lookup_icon('unity-tweak-tool-cogmenu-symbolic', 24, Gtk.IconLookupFlags.FORCE_SIZE)
+#        if cogmenu_symbolic_icon:
+#            cogmenu_symbolic_icon_pixbuf, was_sym = cogmenu_symbolic_icon.load_symbolic(self.main_fg_color, None, None, None)
+#            self.ui['image_cogmenu'].set_from_pixbuf(cogmenu_symbolic_icon_pixbuf)
 
     # ===== GTK Search Box =====
 
