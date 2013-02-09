@@ -4,11 +4,11 @@ Upstream-Contact: Barneedhar Vigneshwar <barneedhar@ubuntu.com>
 Source: https://launchpad.net/unity-tweak-tool/+download
 
 Files: *
-Copyright: 2012, Barneedhar Vigneshwar <barneedhar@ubuntu.com>
+Copyright: 2012, Frejya Development Team
 License: GPL-3+
 
 Files: debian/*
-Copyright: 2012, Barneedhar Vigneshwar <barneedhar@ubuntu.com>
+Copyright: 2012, Frejya Development Team
 License: GPL-3+
 
 License: GPL-3+
