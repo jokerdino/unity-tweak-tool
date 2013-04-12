@@ -1,13 +1,8 @@
 ###Priorities
 
-1. Gtk Application and preventing multiple instances
-2. Insensitive checks in Appearance sections
-3. Installation and removable themes in Appearance sections
-4. Prevent crashing upon missing schema / key -- AssertionError
-       - Mainly Touchpad (Under System Section - Touch - Scrolling and
-       - Overlay scrollbar (Under System Section - Scrollbars)
-5. [Only on 13.04] Launcher icon size can be set below 32 -- up to 8 pixels.
-6. Prevent same keybindings from being set
+1. Insensitive checks in Appearance sections
+2. Installation and removable themes in Appearance sections
+3. Prevent same keybindings from being set
 
 -----------------------
 
