@@ -2,6 +2,8 @@ unity-tweak-tool (0.0.5) UNRELEASED; urgency=low
 
   [ J Phani Mahesh ]
   * Bug-fix only release (LP: #???????)
+  * UnityTweakTool/__init__.py
+    - Refine single-instance checking (LP: #1170571)
   * UnityTweakTool/section/unity.py
     - Fix Show recently used and more suggestions in dash search (LP: #1166294)
     - Fix reversed launcher transparency switch (LP: #1168834)
@@ -11,6 +13,8 @@ unity-tweak-tool (0.0.5) UNRELEASED; urgency=low
     - Fix TypeError in get_rgba() (LP: #1165627)
 
   [ Barneedhar Vigneshwar ]
+  * data/unity.ui
+    - Fix 'radio_launcher_visibility_primary' (LP: #1173977)
   * UnityTweakTool/section/unity.py
     - Fix 'Can't set background blur to static' (LP: #1167343)
   * UnityTweakTool/section/sphagetti/compiz.py
