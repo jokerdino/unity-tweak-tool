@@ -31,7 +31,7 @@
 
 import os, os.path
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Gio
 
 from UnityTweakTool.config.ui import ui
 from . import unitytweakconfig
@@ -85,16 +85,19 @@ class Unitysettings ():
 
 
         # ====== Panel Helpers ====== #
-         # Default Player
-        interested_players = gsettings.sound.get_strv('interested-media-players')
-        preferred_players = gsettings.sound.get_strv('preferred-media-players')
-
-        for player in interested_players:
-            self.ui['cbox_default_player'].append_text(player.capitalize())
-# Sanity check for LP:1219318. Ideally we need checkboxes to cover all cases.
-            if len(preferred_players)>0:
-                if preferred_players[0] in interested_players:
-                    self.ui['cbox_default_player'].set_active(interested_players.index(preferred_players[0]))
+             # Default Player
+        if ('com.canonical.indicator.sound' in Gio.Settings.list_schemas()):     
+            interested_players = gsettings.sound.get_strv('interested-media-players')
+            preferred_players = gsettings.sound.get_strv('preferred-media-players')
+    
+            for player in interested_players:
+                self.ui['cbox_default_player'].append_text(player.capitalize())
+    # Sanity check for LP:1219318. Ideally we need checkboxes to cover all cases.
+                if len(preferred_players)>0:
+                    if preferred_players[0] in interested_players:
+                        self.ui['cbox_default_player'].set_active(interested_players.index(preferred_players[0]))
+        else:
+            self.ui.unsensitize(['l_default_player','cbox_default_player'])
 
         # ====== Unity Switcher helpers ====== #
         # Window Switcher accelerators
@@ -227,7 +230,8 @@ class Unitysettings ():
         gsettings.sound.set_strv('preferred-media-players', [combobox_text.lower()])
 
     def on_b_unity_panel_reset_clicked(self, widget):
-        gsettings.sound.reset('preferred-media-players')
+        if ('com.canonical.indicator.sound' in Gio.Settings.list_schemas()):     
+            gsettings.sound.reset('preferred-media-players')
 
         self.refresh()
 
