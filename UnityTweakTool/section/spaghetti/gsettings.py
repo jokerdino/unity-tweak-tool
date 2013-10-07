@@ -29,9 +29,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-import sys,os
-from gi.repository import Gio,  Gdk,Gtk
-import UnityTweakTool.config.data as data
+from gi.repository import Gio,  Gdk
 
 def test_schema(schema):
     if schema in Gio.Settings.list_relocatable_schemas():
@@ -39,16 +37,7 @@ def test_schema(schema):
     elif schema in Gio.Settings.list_schemas():
         pass
     else:
-        print("Error: schema %s not installed" % schema)
-        builder=Gtk.Builder()
-        builder.set_translation_domain('unity-tweak-tool')
-        ui = os.path.join(data.get_data_path(),'errordialog.ui')
-        builder.add_from_file(ui)
-        dialog = builder.get_object('errordialog')
-        message = schema + "\n\nIn order to work properly, Unity Tweak Tool recommends you install the necessary packages"
-        dialog.format_secondary_text(message)
-        dialog.run()
-        sys.exit()
+        raise Exception("Schema %s not installed" % schema)
 
 def test_key(schema, key):
     if key in schema.list_keys():
@@ -59,35 +48,53 @@ def test_key(schema, key):
 def plugin(plugin):
     schema = 'org.compiz.'+plugin
     path = '/org/compiz/profiles/unity/plugins/'+plugin+'/'
-    test_schema(schema)
-    return Gio.Settings(schema = schema,  path = path)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema = schema,  path = path)
+    except Exception:
+        print("schema %s not installed" % schema)
 
 def unity(child = None):
     schema = 'com.canonical.Unity'
     schema = schema+'.'+child if child else schema
-    test_schema(schema)
-    return Gio.Settings(schema)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema)
+    except Exception:
+        print("schema %s not installed" % schema)
 
 def unity_webapps(child = None):
     schema = 'com.canonical.unity'
     schema = schema+'.'+child if child else schema
-    test_schema(schema)
-    return Gio.Settings(schema)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema)
+    except Exception:
+        print("schema %s not installed" % schema)
 
 def canonical(child):
     schema = 'com.canonical.'+child
-    test_schema(schema)
-    return Gio.Settings(schema)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema)
+    except Exception:
+        print("schema %s not installed"% schema)
 
 def compiz(child):
     schema = 'org.compiz.'+child
-    test_schema(schema)
-    return Gio.Settings(schema)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema)
+    except Exception:
+        print("schema %s not installed" % schema)
 
 def gnome(child):
     schema = 'org.gnome.'+child
-    test_schema(schema)
-    return Gio.Settings(schema)
+    try:
+        test_schema(schema)
+        return Gio.Settings(schema)
+    except Exception:
+        print("schema %s not installed" % schema)
 
 def color_to_hash(c,alpha=1):
     """Convert a Gdk.Color or Gdk.RGBA object to hex representation, overriding the alpha if asked"""
