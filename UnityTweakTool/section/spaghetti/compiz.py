@@ -32,7 +32,7 @@
 import os, os.path
 import cairo
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Gio
 from math import pi, sqrt
 
 from UnityTweakTool.config.ui import ui
@@ -234,261 +234,277 @@ class Compizsettings ():
 
     def refresh(self):
 
-        plugins = gsettings.core.get_strv('active-plugins')
-        if 'ezoom' in plugins:
-            self.ui['sw_compiz_zoom'].set_active(True)
-        else:
-            self.ui['sw_compiz_zoom'].set_active(False)
-        del plugins
-
+        if ('org.compiz.core' in Gio.Settings.list_schemas()):
+            plugins = gsettings.core.get_strv('active-plugins')
+            if 'ezoom' in plugins:
+                self.ui['sw_compiz_zoom'].set_active(True)
+            else:
+                self.ui['sw_compiz_zoom'].set_active(False)
+            del plugins
+    
         model = self.ui['list_compiz_general_zoom_accelerators']
 
-        zoom_in_key = gsettings.zoom.get_string('zoom-in-key')
-        iter_zoom_in_key = model.get_iter_first()
-        model.set_value(iter_zoom_in_key, 1, zoom_in_key)
+        if ('org.compiz.zoom' in Gio.Settings.list_schemas()):
+            zoom_in_key = gsettings.zoom.get_string('zoom-in-key')
+            iter_zoom_in_key = model.get_iter_first()
+            model.set_value(iter_zoom_in_key, 1, zoom_in_key)
+            
+            zoom_out_key = gsettings.zoom.get_string('zoom-out-key')
+            iter_zoom_out_key = model.iter_next(iter_zoom_in_key)
+            model.set_value(iter_zoom_out_key, 1, zoom_out_key)
+    
+            del model, zoom_in_key, iter_zoom_in_key, zoom_out_key, iter_zoom_out_key
 
-        zoom_out_key = gsettings.zoom.get_string('zoom-out-key')
-        iter_zoom_out_key = model.iter_next(iter_zoom_in_key)
-        model.set_value(iter_zoom_out_key, 1, zoom_out_key)
-
-        del model, zoom_in_key, iter_zoom_in_key, zoom_out_key, iter_zoom_out_key
-
-        self.ui['cbox_opengl'].set_active(gsettings.opengl.get_int('texture-filter'))
+        if ('org.compiz.opengl' in Gio.Settings.list_schemas()):
+            self.ui['cbox_opengl'].set_active(gsettings.opengl.get_int('texture-filter'))
 
         model = self.ui['list_compiz_general_keys_accelerators']
 
-        close_window_key = gsettings.core.get_string('close-window-key')
-        iter_close_window_key = model.get_iter_first()
-        model.set_value(iter_close_window_key, 1, close_window_key)
+        if ('org.compiz.core' in Gio.Settings.list_schemas()):
+            close_window_key = gsettings.core.get_string('close-window-key')
+            iter_close_window_key = model.get_iter_first()
+            model.set_value(iter_close_window_key, 1, close_window_key)
+    
+            initiate_key = gsettings.move.get_string('initiate-key')
+            iter_initiate_key = model.iter_next(iter_close_window_key)
+            model.set_value(iter_initiate_key, 1, initiate_key)
+    
+            show_desktop_key = gsettings.core.get_string('show-desktop-key')
+            iter_show_desktop_key = model.iter_next(iter_initiate_key)
+            model.set_value(iter_show_desktop_key, 1, show_desktop_key)
 
-        initiate_key = gsettings.move.get_string('initiate-key')
-        iter_initiate_key = model.iter_next(iter_close_window_key)
-        model.set_value(iter_initiate_key, 1, initiate_key)
-
-        show_desktop_key = gsettings.core.get_string('show-desktop-key')
-        iter_show_desktop_key = model.iter_next(iter_initiate_key)
-        model.set_value(iter_show_desktop_key, 1, show_desktop_key)
-
-        del model, close_window_key, iter_close_window_key, initiate_key, iter_initiate_key, show_desktop_key, iter_show_desktop_key
+            del model, close_window_key, iter_close_window_key, initiate_key, iter_initiate_key, show_desktop_key, iter_show_desktop_key
 
 
         # Animations
-        unminimize_value = gsettings.animation.get_strv('unminimize-effects')
-        dependants = ['cbox_minimize_animation',
-                    'l_minimize_animation',
-                    'cbox_unminimize_animation',
-                    'l_unminimize_animation']
+        if ('org.compiz.animation' in Gio.Settings.list_schemas()):
+            unminimize_value = gsettings.animation.get_strv('unminimize-effects')
+            dependants = ['cbox_minimize_animation',
+                        'l_minimize_animation',
+                        'cbox_unminimize_animation',
+                        'l_unminimize_animation']
+    
+            if unminimize_value == ['animation:None']:
+                self.ui['cbox_unminimize_animation'].set_active(0)
+                self.ui['switch_window_animations'].set_active(False)
+                self.ui.unsensitize(dependants)
+            elif unminimize_value == ['animation:Random']:
+                self.ui['cbox_unminimize_animation'].set_active(1)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Curved Fold']:
+                self.ui['cbox_unminimize_animation'].set_active(2)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Fade']:
+                self.ui['cbox_unminimize_animation'].set_active(3)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Glide 1']:
+                self.ui['cbox_unminimize_animation'].set_active(4)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Glide 2']:
+                self.ui['cbox_unminimize_animation'].set_active(5)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Horizontal Folds']:
+                self.ui['cbox_unminimize_animation'].set_active(6)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Magic Lamp']:
+                self.ui['cbox_unminimize_animation'].set_active(7)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Magic Lamp Wavy']:
+                self.ui['cbox_unminimize_animation'].set_active(8)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Sidekick']:
+                self.ui['cbox_unminimize_animation'].set_active(9)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif unminimize_value == ['animation:Zoom']:
+                self.ui['cbox_unminimize_animation'].set_active(10)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            else:
+                self.ui['cbox_unminimize_animation'].set_active(0)
+                self.ui['switch_window_animations'].set_active(False)
+                self.ui.unsensitize(dependants)
+            del unminimize_value
 
-        if unminimize_value == ['animation:None']:
-            self.ui['cbox_unminimize_animation'].set_active(0)
-            self.ui['switch_window_animations'].set_active(False)
-            self.ui.unsensitize(dependants)
-        elif unminimize_value == ['animation:Random']:
-            self.ui['cbox_unminimize_animation'].set_active(1)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Curved Fold']:
-            self.ui['cbox_unminimize_animation'].set_active(2)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Fade']:
-            self.ui['cbox_unminimize_animation'].set_active(3)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Glide 1']:
-            self.ui['cbox_unminimize_animation'].set_active(4)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Glide 2']:
-            self.ui['cbox_unminimize_animation'].set_active(5)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Horizontal Folds']:
-            self.ui['cbox_unminimize_animation'].set_active(6)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Magic Lamp']:
-            self.ui['cbox_unminimize_animation'].set_active(7)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Magic Lamp Wavy']:
-            self.ui['cbox_unminimize_animation'].set_active(8)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Sidekick']:
-            self.ui['cbox_unminimize_animation'].set_active(9)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif unminimize_value == ['animation:Zoom']:
-            self.ui['cbox_unminimize_animation'].set_active(10)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        else:
-            self.ui['cbox_unminimize_animation'].set_active(0)
-            self.ui['switch_window_animations'].set_active(False)
-            self.ui.unsensitize(dependants)
-        del unminimize_value
+            minimize_value = gsettings.animation.get_strv('minimize-effects')
+    
+            if minimize_value == ['animation:None']:
+                self.ui['cbox_minimize_animation'].set_active(0)
+                self.ui['switch_window_animations'].set_active(False)
+                self.ui.unsensitize(dependants)
+            elif minimize_value == ['animation:Random']:
+                self.ui['cbox_minimize_animation'].set_active(1)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Curved Fold']:
+                self.ui['cbox_minimize_animation'].set_active(2)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Fade']:
+                self.ui['cbox_minimize_animation'].set_active(3)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Glide 1']:
+                self.ui['cbox_minimize_animation'].set_active(4)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Glide 2']:
+                self.ui['cbox_minimize_animation'].set_active(5)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Horizontal Folds']:
+                self.ui['cbox_minimize_animation'].set_active(6)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Magic Lamp']:
+                self.ui['cbox_minimize_animation'].set_active(7)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Magic Lamp Wavy']:
+                self.ui['cbox_minimize_animation'].set_active(8)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            elif minimize_value == ['animation:Sidekick']:
+                self.ui['cbox_minimize_animation'].set_active(9)
+                self.ui['switch_window_animations'].set_active(True)
+            elif minimize_value == ['animation:Zoom']:
+                self.ui['cbox_minimize_animation'].set_active(10)
+                self.ui['switch_window_animations'].set_active(True)
+                self.ui.sensitize(dependants)
+            else:
+                self.ui['cbox_minimize_animation'].set_active(0)
+                self.ui['switch_window_animations'].set_active(False)
+                self.ui.unsensitize(dependants)
+            del minimize_value
+    
+            # ===== Workspace settings ===== #
+    
+        if ('org.compiz.core' in Gio.Settings.list_schemas()):
+            hsize = gsettings.core.get_int('hsize')
+            vsize = gsettings.core.get_int('vsize')
+            dependants = ['spin_horizontal_desktop',
+                        'spin_vertical_desktop']
+    
+            if hsize > 1 or vsize > 1:
+                self.ui['sw_workspace_switcher'].set_active(True)
+                self.ui.sensitize(dependants)
+            else:
+                self.ui['sw_workspace_switcher'].set_active(False)
+                self.ui.unsensitize(dependants)
+    
+            self.ui['spin_horizontal_desktop'].set_value(hsize)
+            self.ui['spin_vertical_desktop'].set_value(vsize)
+            del hsize, vsize
 
-        minimize_value = gsettings.animation.get_strv('minimize-effects')
-
-        if minimize_value == ['animation:None']:
-            self.ui['cbox_minimize_animation'].set_active(0)
-            self.ui['switch_window_animations'].set_active(False)
-            self.ui.unsensitize(dependants)
-        elif minimize_value == ['animation:Random']:
-            self.ui['cbox_minimize_animation'].set_active(1)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Curved Fold']:
-            self.ui['cbox_minimize_animation'].set_active(2)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Fade']:
-            self.ui['cbox_minimize_animation'].set_active(3)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Glide 1']:
-            self.ui['cbox_minimize_animation'].set_active(4)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Glide 2']:
-            self.ui['cbox_minimize_animation'].set_active(5)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Horizontal Folds']:
-            self.ui['cbox_minimize_animation'].set_active(6)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Magic Lamp']:
-            self.ui['cbox_minimize_animation'].set_active(7)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Magic Lamp Wavy']:
-            self.ui['cbox_minimize_animation'].set_active(8)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        elif minimize_value == ['animation:Sidekick']:
-            self.ui['cbox_minimize_animation'].set_active(9)
-            self.ui['switch_window_animations'].set_active(True)
-        elif minimize_value == ['animation:Zoom']:
-            self.ui['cbox_minimize_animation'].set_active(10)
-            self.ui['switch_window_animations'].set_active(True)
-            self.ui.sensitize(dependants)
-        else:
-            self.ui['cbox_minimize_animation'].set_active(0)
-            self.ui['switch_window_animations'].set_active(False)
-            self.ui.unsensitize(dependants)
-        del minimize_value
-
-        # ===== Workspace settings ===== #
-
-        hsize = gsettings.core.get_int('hsize')
-        vsize = gsettings.core.get_int('vsize')
-        dependants = ['spin_horizontal_desktop',
-                    'spin_vertical_desktop']
-
-        if hsize > 1 or vsize > 1:
-            self.ui['sw_workspace_switcher'].set_active(True)
-            self.ui.sensitize(dependants)
-        else:
-            self.ui['sw_workspace_switcher'].set_active(False)
-            self.ui.unsensitize(dependants)
-
-        self.ui['spin_horizontal_desktop'].set_value(hsize)
-        self.ui['spin_vertical_desktop'].set_value(vsize)
-        del hsize, vsize
-
-        color = gsettings.expo.get_string('selected-color')
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['color_desk_outline'].set_color(gdkcolor)
-        del color, valid, gdkcolor
+        if ('org.compiz.expo' in Gio.Settings.list_schemas()):
+            color = gsettings.expo.get_string('selected-color')
+            valid, gdkcolor = Gdk.Color.parse(color[:-2])
+            if valid:
+                self.ui['color_desk_outline'].set_color(gdkcolor)
+            del color, valid, gdkcolor
 
         model = self.ui['list_compiz_workspace_accelerators']
 
-        expo_key = gsettings.expo.get_string('expo-key')
-        iter_expo_key = model.get_iter_first()
-        model.set_value(iter_expo_key, 1, expo_key)
-
-        del model, expo_key, iter_expo_key
-
+        if ('org.compiz.expo' in Gio.Settings.list_schemas()):
+            expo_key = gsettings.expo.get_string('expo-key')
+            iter_expo_key = model.get_iter_first()
+            model.set_value(iter_expo_key, 1, expo_key)
+    
+            del model, expo_key, iter_expo_key
+    
         # ===== Windows Spread settings ===== #
-
-        plugins = gsettings.core.get_strv('active-plugins')
-        if 'scale' in plugins:
-            self.ui['sw_windows_spread'].set_active(True)
-        else:
-            self.ui['sw_windows_spread'].set_active(False)
-        del plugins
-
-        self.ui['spin_compiz_spacing'].set_value(gsettings.scale.get_int('spacing'))
-
-        if gsettings.scale.get_int('overlay-icon') >=  1:
-            self.ui['check_overlay_emblem'].set_active(True)
-        else:
-            self.ui['check_overlay_emblem'].set_active(False)
-
-        self.ui['check_click_desktop'].set_active(gsettings.scale.get_boolean('show-desktop'))
-
-        model = self.ui['list_compiz_windows_spread_accelerators']
-
-        initiate_key = gsettings.scale.get_string('initiate-key')
-        iter_initiate_key = model.get_iter_first()
-        model.set_value(iter_initiate_key, 1, initiate_key)
-
-        initiate_all_key = gsettings.scale.get_string('initiate-all-key')
-        iter_initiate_all_key = model.iter_next(iter_initiate_key)
-        model.set_value(iter_initiate_all_key, 1, initiate_all_key)
-
-        del model, initiate_key, iter_initiate_key, initiate_all_key, iter_initiate_all_key
-
-        # ===== Window Snapping settings ===== #
-
-        plugins = gsettings.core.get_strv('active-plugins')
-        if 'grid' in plugins:
-            self.ui['sw_window_snapping'].set_active(True)
-        else:
-            self.ui['sw_window_snapping'].set_active(False)
-        del plugins
-
-        color = gsettings.grid.get_string('fill-color')
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['color_fill_color'].set_color(gdkcolor)
-        del color, valid, gdkcolor
-
-        color = gsettings.grid.get_string('outline-color')
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['color_outline_color'].set_color(gdkcolor)
-        del color, valid, gdkcolor
-
-        for box in self.window_snapping_cboxes:
-            self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
-            self.ui[box].set_active(self.window_snapping_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
-
-        # ===== Hotcorners settings ===== #
-        self.hotcorner_values = {
-            'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
-            'expo': gsettings.expo.get_string('expo-edge').split('|'),
-            'window_spread': gsettings.scale.get_string('initiate-edge').split('|'),
-            'all_window_spread': gsettings.scale.get_string('initiate-all-edge').split('|')
-        }
-        for box in self.hotcorners_cboxes:
-            if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
-                self.hotcorners_cboxes[box][0] = 1
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
-                self.hotcorners_cboxes[box][0] = 2
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
-                self.hotcorners_cboxes[box][0] = 3
-            elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['all_window_spread']:
-                self.hotcorners_cboxes[box][0] = 4
+        if ('org.compiz.core' in Gio.Settings.list_schemas()):
+            plugins = gsettings.core.get_strv('active-plugins')
+            if 'scale' in plugins:
+                self.ui['sw_windows_spread'].set_active(True)
             else:
-                self.hotcorners_cboxes[box][0] = 0
-            self.ui[box].set_active(self.hotcorners_cboxes[box][0])
-            self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
+                self.ui['sw_windows_spread'].set_active(False)
+            del plugins
+    
+        
 
+        if ('org.compiz.scale' in Gio.Settings.list_schemas()):
+            self.ui['spin_compiz_spacing'].set_value(gsettings.scale.get_int('spacing'))
+            if gsettings.scale.get_int('overlay-icon') >=  1:
+                self.ui['check_overlay_emblem'].set_active(True)
+            else:
+                self.ui['check_overlay_emblem'].set_active(False)
+    
+            self.ui['check_click_desktop'].set_active(gsettings.scale.get_boolean('show-desktop'))
+    
+            model = self.ui['list_compiz_windows_spread_accelerators']
+
+            initiate_key = gsettings.scale.get_string('initiate-key')
+            iter_initiate_key = model.get_iter_first()
+            model.set_value(iter_initiate_key, 1, initiate_key)
+    
+            initiate_all_key = gsettings.scale.get_string('initiate-all-key')
+            iter_initiate_all_key = model.iter_next(iter_initiate_key)
+            model.set_value(iter_initiate_all_key, 1, initiate_all_key)
+    
+            del model, initiate_key, iter_initiate_key, initiate_all_key, iter_initiate_all_key
+    
+        # ===== Window Snapping settings ===== #
+        if ('org.compiz.core' in Gio.Settings.list_schemas()):
+             plugins = gsettings.core.get_strv('active-plugins')
+             if 'grid' in plugins:
+                 self.ui['sw_window_snapping'].set_active(True)
+             else:
+                 self.ui['sw_window_snapping'].set_active(False)
+             del plugins
+     
+             color = gsettings.grid.get_string('fill-color')
+             valid, gdkcolor = Gdk.Color.parse(color[:-2])
+             if valid:
+                 self.ui['color_fill_color'].set_color(gdkcolor)
+             del color, valid, gdkcolor
+     
+             color = gsettings.grid.get_string('outline-color')
+             valid, gdkcolor = Gdk.Color.parse(color[:-2])
+             if valid:
+                 self.ui['color_outline_color'].set_color(gdkcolor)
+             del color, valid, gdkcolor
+     
+        if ('org.compiz.grid' in Gio.Settings.list_schemas()):
+            for box in self.window_snapping_cboxes:
+                self.window_snapping_cboxes[box][0] = gsettings.grid.get_int(self.window_snapping_cboxes[box][1])
+                self.ui[box].set_active(self.window_snapping_cboxes[box][0])
+                self.ui[box].connect("changed", self.on_cbox_window_snapping_changed, box)
+    
+        # ===== Hotcorners settings ===== #
+        if ('org.compiz.core' and
+             'org.compiz.expo' and
+             'org.compiz.scale'                        
+                in Gio.Settings.list_schemas()):
+
+            self.hotcorner_values = {
+                'show_desktop': gsettings.core.get_string('show-desktop-edge').split('|'),
+                'expo': gsettings.expo.get_string('expo-edge').split('|'),
+                'window_spread': gsettings.scale.get_string('initiate-edge').split('|'),
+                'all_window_spread': gsettings.scale.get_string('initiate-all-edge').split('|')
+            }
+            for box in self.hotcorners_cboxes:
+                if self.hotcorners_cboxes[box][1] in self.hotcorner_values['show_desktop']:
+                    self.hotcorners_cboxes[box][0] = 1
+                elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['expo']:
+                    self.hotcorners_cboxes[box][0] = 2
+                elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['window_spread']:
+                    self.hotcorners_cboxes[box][0] = 3
+                elif self.hotcorners_cboxes[box][1] in self.hotcorner_values['all_window_spread']:
+                    self.hotcorners_cboxes[box][0] = 4
+                else:
+                    self.hotcorners_cboxes[box][0] = 0
+                self.ui[box].set_active(self.hotcorners_cboxes[box][0])
+                self.ui[box].connect("changed", self.on_cbox_hotcorners_changed, box)
+    
         # ===== Additional settings ===== #
 
         # Auto raise
@@ -511,19 +527,20 @@ class Compizsettings ():
             pass
 
         # Resize colours
-        color = gsettings.resize.get_string('border-color')
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['colorbutton_resize_outline'].set_color(gdkcolor)
-        del color, valid, gdkcolor
-
-        color = gsettings.resize.get_string('fill-color')
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['colorbutton_resize_fill'].set_color(gdkcolor)
-        del color, valid, gdkcolor
-
-
+        if ('org.compiz.resize' in Gio.Settings.list_schemas()):
+            color = gsettings.resize.get_string('border-color')
+            valid, gdkcolor = Gdk.Color.parse(color[:-2])
+            if valid:
+                self.ui['colorbutton_resize_outline'].set_color(gdkcolor)
+            del color, valid, gdkcolor
+    
+            color = gsettings.resize.get_string('fill-color')
+            valid, gdkcolor = Gdk.Color.parse(color[:-2])
+            if valid:
+                self.ui['colorbutton_resize_fill'].set_color(gdkcolor)
+            del color, valid, gdkcolor
+    
+    
 # TODO : Find a clever way or set each one manually.
 # Do it the dumb way now. BIIIG refactoring needed later.
 

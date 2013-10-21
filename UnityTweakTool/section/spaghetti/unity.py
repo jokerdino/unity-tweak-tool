@@ -58,31 +58,34 @@ class Unitysettings ():
     def refresh(self):
         '''Reads the current config and refreshes the displayed values'''
         # Colour
-        color = gsettings.unityshell.get_string('background-color')
-        if color.endswith('00'):
-            self.ui['radio_launcher_color_cham'].set_active(True)
-            self.ui.unsensitize(['color_launcher_color_cus'])
-        else:
-            self.ui['radio_launcher_color_cus'].set_active(True)
-            self.ui.sensitize(['color_launcher_color_cus'])
-        valid, gdkcolor = Gdk.Color.parse(color[:-2])
-        if valid:
-            self.ui['color_launcher_color_cus'].set_color(gdkcolor)
-        del color, valid, gdkcolor
-
+        if ('org.compiz.unityshell' in Gio.Settings.list_schemas()):
+            color = gsettings.unityshell.get_string('background-color')
+            if color.endswith('00'):
+                self.ui['radio_launcher_color_cham'].set_active(True)
+                self.ui.unsensitize(['color_launcher_color_cus'])
+            else:
+                self.ui['radio_launcher_color_cus'].set_active(True)
+                self.ui.sensitize(['color_launcher_color_cus'])
+            valid, gdkcolor = Gdk.Color.parse(color[:-2])
+            if valid:
+                self.ui['color_launcher_color_cus'].set_color(gdkcolor)
+            del color, valid, gdkcolor
+    
         # Show Desktop
-        self.ui['sw_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
+        if ('org.compiz.unityshell' in Gio.Settings.list_schemas()):
+            self.ui['sw_show_desktop'].set_active(True if 'unity://desktop-icon' in gsettings.launcher.get_strv('favorites') else False)
 
         # ====== Dash Helpers ===== #
         # Run Command History
         dependants = ['b_clear_run_history']
-        if gsettings.runner.get_strv('history') == '[]':
-            self.ui.unsensitize(dependants)
-            self.ui['b_clear_run_history'].set_active(False)
-        else:
-            self.ui.sensitize(dependants)
-        del dependants
-
+        if ('com.canonical.Unity.runner' in Gio.Settings.list_schemas()):
+            if gsettings.runner.get_strv('history') == '[]':
+                self.ui.unsensitize(dependants)
+                self.ui['b_clear_run_history'].set_active(False)
+            else:
+                self.ui.sensitize(dependants)
+            del dependants
+    
 
         # ====== Panel Helpers ====== #
              # Default Player
@@ -103,77 +106,81 @@ class Unitysettings ():
         # Window Switcher accelerators
         model = self.ui['list_unity_switcher_windows_accelerators']
 
-        alt_tab_forward = gsettings.unityshell.get_string('alt-tab-forward')
-        iter_alt_tab_forward = model.get_iter_first()
-        model.set_value(iter_alt_tab_forward, 1, alt_tab_forward)
-
-        alt_tab_prev = gsettings.unityshell.get_string('alt-tab-prev')
-        iter_alt_tab_prev = model.iter_next(iter_alt_tab_forward)
-        model.set_value(iter_alt_tab_prev, 1, alt_tab_prev)
-
-        alt_tab_forward_all = gsettings.unityshell.get_string('alt-tab-forward-all')
-        iter_alt_tab_forward_all = model.iter_next(iter_alt_tab_prev)
-        model.set_value(iter_alt_tab_forward_all, 1, alt_tab_forward_all)
-
-        alt_tab_prev_all = gsettings.unityshell.get_string('alt-tab-prev-all')
-        iter_alt_tab_prev_all = model.iter_next(iter_alt_tab_forward_all)
-        model.set_value(iter_alt_tab_prev_all, 1, alt_tab_prev_all)
-
-        alt_tab_next_window = gsettings.unityshell.get_string('alt-tab-next-window')
-        iter_alt_tab_next_window = model.iter_next(iter_alt_tab_prev_all)
-        model.set_value(iter_alt_tab_next_window, 1, alt_tab_next_window)
-
-        alt_tab_prev_window = gsettings.unityshell.get_string('alt-tab-prev-window')
-
-        iter_alt_tab_prev_window = model.iter_next(iter_alt_tab_next_window)
-        model.set_value(iter_alt_tab_prev_window, 1, alt_tab_prev_window)
-
-        del model
-
+        if ('org.compiz.unityshell' in Gio.Settings.list_schemas()):
+            alt_tab_forward = gsettings.unityshell.get_string('alt-tab-forward')
+            iter_alt_tab_forward = model.get_iter_first()
+            model.set_value(iter_alt_tab_forward, 1, alt_tab_forward)
+    
+            alt_tab_prev = gsettings.unityshell.get_string('alt-tab-prev')
+            iter_alt_tab_prev = model.iter_next(iter_alt_tab_forward)
+            model.set_value(iter_alt_tab_prev, 1, alt_tab_prev)
+    
+            alt_tab_forward_all = gsettings.unityshell.get_string('alt-tab-forward-all')
+            iter_alt_tab_forward_all = model.iter_next(iter_alt_tab_prev)
+            model.set_value(iter_alt_tab_forward_all, 1, alt_tab_forward_all)
+    
+            alt_tab_prev_all = gsettings.unityshell.get_string('alt-tab-prev-all')
+            iter_alt_tab_prev_all = model.iter_next(iter_alt_tab_forward_all)
+            model.set_value(iter_alt_tab_prev_all, 1, alt_tab_prev_all)
+    
+            alt_tab_next_window = gsettings.unityshell.get_string('alt-tab-next-window')
+            iter_alt_tab_next_window = model.iter_next(iter_alt_tab_prev_all)
+            model.set_value(iter_alt_tab_next_window, 1, alt_tab_next_window)
+    
+            alt_tab_prev_window = gsettings.unityshell.get_string('alt-tab-prev-window')
+    
+            iter_alt_tab_prev_window = model.iter_next(iter_alt_tab_next_window)
+            model.set_value(iter_alt_tab_prev_window, 1, alt_tab_prev_window)
+    
+            del model
+    
         # Launcher switcher accelerators
         model = self.ui['list_unity_switcher_launcher_accelerators']
 
-        launcher_switcher_forward = gsettings.unityshell.get_string('launcher-switcher-forward')
-        iter_launcher_switcher_forward = model.get_iter_first()
-        model.set_value(iter_launcher_switcher_forward, 1, launcher_switcher_forward)
+        if ('org.compiz.unityshell' in Gio.Settings.list_schemas()):
+            launcher_switcher_forward = gsettings.unityshell.get_string('launcher-switcher-forward')
+            iter_launcher_switcher_forward = model.get_iter_first()
+            model.set_value(iter_launcher_switcher_forward, 1, launcher_switcher_forward)
+    
+            launcher_switcher_prev = gsettings.unityshell.get_string('launcher-switcher-prev')
+            iter_launcher_switcher_prev = model.iter_next(iter_launcher_switcher_forward)
+            model.set_value(iter_launcher_switcher_prev, 1, launcher_switcher_prev)
 
-        launcher_switcher_prev = gsettings.unityshell.get_string('launcher-switcher-prev')
-        iter_launcher_switcher_prev = model.iter_next(iter_launcher_switcher_forward)
-        model.set_value(iter_launcher_switcher_prev, 1, launcher_switcher_prev)
-
-        del model, launcher_switcher_forward, iter_launcher_switcher_forward, launcher_switcher_prev, iter_launcher_switcher_prev
+            del model, launcher_switcher_forward, iter_launcher_switcher_forward, launcher_switcher_prev, iter_launcher_switcher_prev
 
 
         # ====== Unity Webapps helpers ===== #
         # Preauthorized domains
-        self.ui['check_preauthorized_amazon'].set_active(True if 'amazon.ca' in gsettings.webapps.get_strv('preauthorized-domains') else False)
-        self.ui['check_preauthorized_ubuntuone'].set_active(True if 'one.ubuntu.com' in gsettings.webapps.get_strv('preauthorized-domains') else False)
-
+        if ('com.canonical.unity.webapps' in Gio.Settings.list_schemas()):
+            self.ui['check_preauthorized_amazon'].set_active(True if 'amazon.ca' in gsettings.webapps.get_strv('preauthorized-domains') else False)
+            self.ui['check_preauthorized_ubuntuone'].set_active(True if 'one.ubuntu.com' in gsettings.webapps.get_strv('preauthorized-domains') else False)
+    
         # ====== Unity additional helpers ======= #
         model = self.ui['list_unity_additional_accelerators']
 
-        show_hud = gsettings.unityshell.get_string('show-hud')
-        iter_show_hud = model.get_iter_first()
-        model.set_value(iter_show_hud, 1, show_hud)
-
-        show_launcher = gsettings.unityshell.get_string('show-launcher')
-        iter_show_launcher = model.iter_next(iter_show_hud)
-        model.set_value(iter_show_launcher, 1, show_launcher)
-
-        execute_command = gsettings.unityshell.get_string('execute-command')
-        iter_execute_command = model.iter_next(iter_show_launcher)
-        model.set_value(iter_execute_command, 1, execute_command)
-
-        keyboard_focus = gsettings.unityshell.get_string('keyboard-focus')
-        iter_keyboard_focus = model.iter_next(iter_execute_command)
-        model.set_value(iter_keyboard_focus, 1, keyboard_focus)
-
-        panel_first_menu = gsettings.unityshell.get_string('panel-first-menu')
-        iter_panel_first_menu = model.iter_next(iter_keyboard_focus)
-        model.set_value(iter_panel_first_menu, 1, panel_first_menu)
-
-        del model, show_hud, iter_show_hud, show_launcher, iter_show_launcher, execute_command, iter_execute_command, keyboard_focus, iter_keyboard_focus, panel_first_menu, iter_panel_first_menu
-
+        if ('org.compiz.unityshell' in Gio.Settings.list_schemas()):
+            show_hud = gsettings.unityshell.get_string('show-hud')
+            iter_show_hud = model.get_iter_first()
+            model.set_value(iter_show_hud, 1, show_hud)
+    
+            show_launcher = gsettings.unityshell.get_string('show-launcher')
+            iter_show_launcher = model.iter_next(iter_show_hud)
+            model.set_value(iter_show_launcher, 1, show_launcher)
+    
+            execute_command = gsettings.unityshell.get_string('execute-command')
+            iter_execute_command = model.iter_next(iter_show_launcher)
+            model.set_value(iter_execute_command, 1, execute_command)
+    
+            keyboard_focus = gsettings.unityshell.get_string('keyboard-focus')
+            iter_keyboard_focus = model.iter_next(iter_execute_command)
+            model.set_value(iter_keyboard_focus, 1, keyboard_focus)
+    
+            panel_first_menu = gsettings.unityshell.get_string('panel-first-menu')
+            iter_panel_first_menu = model.iter_next(iter_keyboard_focus)
+            model.set_value(iter_panel_first_menu, 1, panel_first_menu)
+    
+            del model, show_hud, iter_show_hud, show_launcher, iter_show_launcher, execute_command, iter_execute_command, keyboard_focus, iter_keyboard_focus, panel_first_menu, iter_panel_first_menu
+    
 
 # ===== BEGIN: Unity settings =====
 # ----- BEGIN: Launcher -----
